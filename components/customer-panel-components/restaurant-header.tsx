@@ -1,0 +1,135 @@
+import { Badge } from "@/components/ui/badge"
+import { Star, Clock, Truck, MapPin, Phone, Info } from "lucide-react"
+
+interface RestaurantHeaderProps {
+  restaurant: {
+    name: string
+    image: string
+    coverImage?: string
+    rating: number
+    reviewCount: number
+    deliveryTime: string
+    deliveryFee: number
+    serviceFee: number
+    cuisine: string
+    priceRange: string
+    distance: number
+    address: string
+    phone: string
+    description: string
+    openingHours: string
+    minimumOrder: number
+  }
+}
+
+export function RestaurantHeader({ restaurant }: RestaurantHeaderProps) {
+  return (
+    <div className="relative">
+      {/* Cover Image */}
+      <div className="h-64 md:h-80 relative overflow-hidden">
+        <img
+          src={restaurant.coverImage || restaurant.image || "/placeholder.svg"}
+          alt={restaurant.name}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/20"></div>
+      </div>
+
+      {/* Restaurant Info */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative -mt-16 bg-background rounded-lg shadow-lg border border-border p-6">
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Restaurant Logo */}
+            <div className="flex-shrink-0">
+              <img
+                src={restaurant.image || "/placeholder.svg"}
+                alt={restaurant.name}
+                className="w-24 h-24 rounded-lg object-cover border-4 border-background shadow-md"
+              />
+            </div>
+
+            {/* Restaurant Details */}
+            <div className="flex-1">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div>
+                  <h1 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-2">
+                    {restaurant.name}
+                  </h1>
+                  <div className="flex items-center gap-4 mb-3">
+                    <div className="flex items-center space-x-1">
+                      <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      <span className="font-medium">{restaurant.rating}</span>
+                      <span className="text-muted-foreground">({restaurant.reviewCount} reviews)</span>
+                    </div>
+                    <Badge variant="outline">{restaurant.cuisine}</Badge>
+                    <Badge variant="outline">{restaurant.priceRange}</Badge>
+                  </div>
+                  <p className="text-muted-foreground mb-4 max-w-2xl">{restaurant.description}</p>
+                </div>
+
+                {/* Delivery Info */}
+                <div className="bg-muted/50 rounded-lg p-4 min-w-64">
+                  <h3 className="font-heading font-semibold text-foreground mb-3">Delivery Info</h3>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <Clock className="w-4 h-4 text-muted-foreground" />
+                        <span>Delivery time</span>
+                      </div>
+                      <span className="font-medium">{restaurant.deliveryTime}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <Truck className="w-4 h-4 text-muted-foreground" />
+                        <span>Delivery fee</span>
+                      </div>
+                      <span className="font-medium">
+                        {restaurant.deliveryFee === 0 ? "Free" : `$${restaurant.deliveryFee}`}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <Info className="w-4 h-4 text-muted-foreground" />
+                        <span>Service fee</span>
+                      </div>
+                      <span className="font-medium">${restaurant.serviceFee}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <MapPin className="w-4 h-4 text-muted-foreground" />
+                        <span>Distance</span>
+                      </div>
+                      <span className="font-medium">{restaurant.distance} km</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Info */}
+              <div className="flex flex-col sm:flex-row gap-4 mt-4 pt-4 border-t border-border">
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                  <MapPin className="w-4 h-4" />
+                  <span>{restaurant.address}</span>
+                </div>
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                  <Phone className="w-4 h-4" />
+                  <span>{restaurant.phone}</span>
+                </div>
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                  <Clock className="w-4 h-4" />
+                  <span>{restaurant.openingHours}</span>
+                </div>
+              </div>
+
+              {restaurant.minimumOrder > 0 && (
+                <div className="mt-3 p-3 bg-primary/10 rounded-lg">
+                  <p className="text-sm text-primary font-medium">Minimum order: ${restaurant.minimumOrder}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
