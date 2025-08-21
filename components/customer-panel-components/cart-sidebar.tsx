@@ -31,7 +31,7 @@ export function CartSidebar({ isOpen, onClose, restaurant }: CartSidebarProps) {
   if (items.length === 0) {
     return (
       <Sheet open={isOpen} onOpenChange={onClose}>
-        <SheetContent className="w-full sm:max-w-lg">
+        <SheetContent className="w-full sm:max-w-lg max-md">
           <SheetHeader>
             <SheetTitle>Your Cart</SheetTitle>
           </SheetHeader>
@@ -56,7 +56,7 @@ export function CartSidebar({ isOpen, onClose, restaurant }: CartSidebarProps) {
           <p className="text-sm text-muted-foreground">From {restaurant.name}</p>
         </SheetHeader>
 
-        <div className="flex-1 overflow-y-auto py-4">
+        <div className="flex-1 overflow-y-auto py-4 px-6">
           <div className="space-y-4">
             {items.map((item) => (
               <div key={item.id} className="flex gap-3 p-3 border border-border rounded-lg">
@@ -116,7 +116,7 @@ export function CartSidebar({ isOpen, onClose, restaurant }: CartSidebarProps) {
         </div>
 
         {/* Order Summary */}
-        <div className="border-t border-border pt-4 space-y-3">
+        <div className="border-t border-border p-6 space-y-3">
           <div className="flex justify-between text-sm">
             <span>Subtotal</span>
             <span>${subtotal.toFixed(2)}</span>

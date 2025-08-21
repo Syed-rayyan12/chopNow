@@ -111,7 +111,7 @@ const getStatusBadge = (status: string) => {
 
 export function DashboardOverview() {
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-6">
       {/* Welcome Section */}
       <div className="bg-gradient-to-r from-orange-400 to-amber-400 rounded-lg p-6 text-white">
         <h2 className="text-2xl font-bold mb-2">Welcome back, Admin!</h2>

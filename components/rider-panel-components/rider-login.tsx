@@ -27,7 +27,7 @@ export function RiderLogin({ onLogin }: RiderLoginProps) {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+          <div className="mx-auto w-16 h-16 bg-[#dd6636] rounded-full flex items-center justify-center">
             <span className="text-white font-bold text-xl">CN</span>
           </div>
           <CardTitle className="text-2xl font-bold text-gray-800">ChopNow Rider</CardTitle>
@@ -70,7 +70,7 @@ export function RiderLogin({ onLogin }: RiderLoginProps) {
             </div>
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
+              className="w-full bg-[#dd6636]"
             >
               Sign In
             </Button>

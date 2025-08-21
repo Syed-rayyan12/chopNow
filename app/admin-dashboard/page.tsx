@@ -1,11 +1,12 @@
-"use client"
+import { DashboardOverview } from '@/components/admin-panel-components/dashboard-overview'
+import React from 'react'
 
-import MainAdminDashboard from "@/components/admin-panel-components/main-admin-dashboard"
-
-
-
-const Page = () => {
-  return <MainAdminDashboard />
+const page = () => {
+  return (
+    <>
+       <DashboardOverview/>
+    </>
+  )
 }
 
-export default Page
+export default page

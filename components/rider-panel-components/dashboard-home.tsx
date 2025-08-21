@@ -119,23 +119,23 @@ const getStatusBadge = (status: string) => {
 export function DashboardHome() {
   const [isOnline, setIsOnline] = useState(true);
   return (
-    <div className="p-4 lg:p-6 space-y-6">
+    <div className="flex flex-col gap-6">
       {/* Welcome Section */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
+      <div className="flex bg-gradient-to-r from-orange-400 to-amber-400 p-6  flex-col sm:flex-row sm:items-center sm:justify-between rounded-lg sm:space-y-0">
         <div>
-          <h2 className="text-2xl font-bold text-orange-900">Good Morning, John!</h2>
-          <p className="text-orange-700">Ready to start earning today?</p>
+          <h2 className="text-2xl font-bold mb-2 text-white">Good Morning, John!</h2>
+          <p className="text-orange-100">Ready to start earning today?</p>
         </div>
         <div className="flex items-center space-x-3">
-      <Switch
-        checked={isOnline}
-        onCheckedChange={setIsOnline}
-        className={isOnline ? "data-[state=checked]:bg-green-500" : "data-[state=unchecked]:bg-orange-500"}
-      />
-      <Label className={isOnline ? "text-green-700 font-medium" : "text-orange-700 font-medium"}>
-        {isOnline ? "Online" : "Offline"}
-      </Label>
-    </div>
+          <Switch
+            checked={isOnline}
+            onCheckedChange={setIsOnline}
+            className={isOnline ? "data-[state=checked]:bg-green-500" : "data-[state=unchecked]:bg-orange-500"}
+          />
+          <Label className={isOnline ? "text-green-700 font-medium" : "text-orange-700 font-medium"}>
+            {isOnline ? "Online" : "Offline"}
+          </Label>
+        </div>
       </div>
 
       {/* Stats Grid */}
@@ -163,58 +163,58 @@ export function DashboardHome() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Active Orders */}
         <Card className="bg-white border-orange-200 shadow-sm">
-      <CardHeader>
-        <CardTitle className="flex items-center space-x-2 text-orange-900">
-          <Package className="h-5 w-5 text-orange-600" />
-          <span>Active Orders</span>
-          <Badge className="bg-orange-100 text-orange-800">
-            {activeOrders.length}
-          </Badge>
-        </CardTitle>
-      </CardHeader>
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2 text-orange-900">
+              <Package className="h-5 w-5 text-orange-600" />
+              <span>Active Orders</span>
+              <Badge className="bg-orange-100 text-orange-800">
+                {activeOrders.length}
+              </Badge>
+            </CardTitle>
+          </CardHeader>
 
-      <CardContent className="space-y-4">
-        {activeOrders.map((order) => (
-          <div
-            key={order.id}
-            className="p-4 border border-orange-100 bg-orange-50 rounded-lg"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <div>
-                <p className="font-semibold text-orange-900">{order.id}</p>
-                <p className="text-sm text-amber-600">
-                  {order.restaurant} • {order.items} items
-                </p>
+          <CardContent className="space-y-4">
+            {activeOrders.map((order) => (
+              <div
+                key={order.id}
+                className="p-4 border border-orange-100 bg-orange-50 rounded-lg"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <div>
+                    <p className="font-semibold text-orange-900">{order.id}</p>
+                    <p className="text-sm text-amber-600">
+                      {order.restaurant} • {order.items} items
+                    </p>
+                  </div>
+                  {getStatusBadge(order.status)}
+                </div>
+
+                <div className="flex items-center space-x-2 text-sm text-orange-700 mb-3">
+                  <MapPin className="h-4 w-4" />
+                  <span>{order.address}</span>
+                </div>
+
+                <div className="flex space-x-2">
+                  <Button
+                    size="sm"
+                    className="flex-1 bg-orange-500 hover:bg-orange-600 text-white"
+                  >
+                    <Navigation className="h-4 w-4 mr-2" />
+                    Navigate
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="flex-1 bg-white border-orange-200 text-orange-800 hover:bg-orange-50"
+                  >
+                    <Phone className="h-4 w-4 mr-2" />
+                    Call
+                  </Button>
+                </div>
               </div>
-              {getStatusBadge(order.status)}
-            </div>
-
-            <div className="flex items-center space-x-2 text-sm text-orange-700 mb-3">
-              <MapPin className="h-4 w-4" />
-              <span>{order.address}</span>
-            </div>
-
-            <div className="flex space-x-2">
-              <Button
-                size="sm"
-                className="flex-1 bg-orange-500 hover:bg-orange-600 text-white"
-              >
-                <Navigation className="h-4 w-4 mr-2" />
-                Navigate
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className="flex-1 bg-white border-orange-200 text-orange-800 hover:bg-orange-50"
-              >
-                <Phone className="h-4 w-4 mr-2" />
-                Call
-              </Button>
-            </div>
-          </div>
-        ))}
-      </CardContent>
-    </Card>
+            ))}
+          </CardContent>
+        </Card>
 
 
         <Card className="bg-white border-orange-200 shadow-sm">

@@ -45,6 +45,8 @@ import {
   Plus,
   Download,
   Reply,
+  CheckCircle,
+  CircleX,
 } from "lucide-react"
 
 type OrderStatus = "pending" | "in-progress" | "completed" | "cancelled"
@@ -234,48 +236,56 @@ export default function MainRestaurantDashboard() {
   const renderOverview = () => (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="border-orange-200">
+        <Card className="border-orange-200 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-orange-700">Pending Orders</CardTitle>
-            <Clock className="h-4 w-4 text-orange-600" />
+            <div className="bg-orange-100 p-2 rounded-full">
+              <Clock className="h-4 w-4 text-orange-600" />
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-orange-800">{getOrdersByStatus("pending").length}</div>
           </CardContent>
         </Card>
-        <Card className="border-blue-200">
+        <Card className="border-orange-200 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-blue-700">In Progress</CardTitle>
-            <Package className="h-4 w-4 text-blue-600" />
+            <CardTitle className="text-sm font-medium text-orange-700">In Progress</CardTitle>
+            <div className="bg-amber-100 rounded-full p-2">
+              <Package className="h-4 w-4 text-amber-600" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-800">{getOrdersByStatus("in-progress").length}</div>
+            <div className="text-2xl font-bold text-orange-800">{getOrdersByStatus("in-progress").length}</div>
           </CardContent>
         </Card>
-        <Card className="border-green-200">
+        <Card className="border-orange-200 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-green-700">Completed</CardTitle>
-            <Check className="h-4 w-4 text-green-600" />
+            <CardTitle className="text-sm font-medium text-orange-700">Completed</CardTitle>
+            <div className="bg-green-100 p-2 rounded-full">
+              <CheckCircle className="h-4 w-4 text-green-600" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-800">{getOrdersByStatus("completed").length}</div>
+            <div className="text-2xl font-bold text-orange-800">{getOrdersByStatus("completed").length}</div>
           </CardContent>
         </Card>
-        <Card className="border-red-200">
+        <Card className="border-orange-200 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-red-700">Cancelled</CardTitle>
-            <X className="h-4 w-4 text-red-600" />
+            <CardTitle className="text-sm font-medium text-orange-700">Cancelled</CardTitle>
+            <div className="rounded-full bg-orange-100 p-2">
+              <CircleX className="h-4 w-4 text-orange-600" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-red-800">{getOrdersByStatus("cancelled").length}</div>
+            <div className="text-2xl font-bold text-orange-800">{getOrdersByStatus("cancelled").length}</div>
           </CardContent>
         </Card>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="border-orange-200">
+        <Card className="border-orange-200 bg-white">
           <CardHeader>
-            <CardTitle className="text-orange-700">Today's Earnings</CardTitle>
+            <CardTitle className="text-orange-800">Today's Earnings</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-orange-800 mb-2">$342.50</div>
@@ -286,12 +296,12 @@ export default function MainRestaurantDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="border-amber-200">
+        <Card className="border-amber-200 bg-white">
           <CardHeader>
-            <CardTitle className="text-amber-700">Weekly Earnings</CardTitle>
+            <CardTitle className="text-orange-800">Weekly Earnings</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-amber-800 mb-2">$1,250.00</div>
+            <div className="text-3xl font-bold text-orange-800 mb-2">$1,250.00</div>
             <div className="text-sm text-green-600 flex items-center">
               <TrendingUp className="h-4 w-4 mr-1" />
               +8% from last week
@@ -302,7 +312,7 @@ export default function MainRestaurantDashboard() {
 
       <Card className="border-orange-200">
         <CardHeader>
-          <CardTitle className="text-orange-700">Top Selling Dishes</CardTitle>
+          <CardTitle className="text-orange-800">Top Selling Dishes</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
@@ -312,7 +322,7 @@ export default function MainRestaurantDashboard() {
                   <div className="bg-orange-100 text-orange-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium">
                     {index + 1}
                   </div>
-                  <span className="font-medium">{item.name}</span>
+                  <span className="font-medium text-orange-700">{item.name}</span>
                 </div>
                 <span className="text-orange-600 font-medium">${item.price}</span>
               </div>
@@ -326,46 +336,55 @@ export default function MainRestaurantDashboard() {
   const renderOrders = () => (
     <div className="space-y-6">
       <Tabs value={activeOrderTab} onValueChange={setActiveOrderTab}>
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="new" className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-700">
+        <TabsList className="grid w-full grid-cols-4 bg-orange-100 border border-orange-200">
+          <TabsTrigger
+            value="new"
+            className="data-[state=active]:bg-white data-[state=active]:text-orange-700"
+          >
             New Orders
           </TabsTrigger>
-          <TabsTrigger value="progress" className="data-[state=active]:bg-blue-100 data-[state=active]:text-blue-700">
+          <TabsTrigger
+            value="progress"
+            className="data-[state=active]:bg-white data-[state=active]:text-orange-700"
+          >
             In Progress
           </TabsTrigger>
           <TabsTrigger
             value="completed"
-            className="data-[state=active]:bg-green-100 data-[state=active]:text-green-700"
+            className="data-[state=active]:bg-white data-[state=active]:text-orange-700"
           >
             Completed
           </TabsTrigger>
-          <TabsTrigger value="cancelled" className="data-[state=active]:bg-red-100 data-[state=active]:text-red-700">
+          <TabsTrigger
+            value="cancelled"
+            className="data-[state=active]:bg-white data-[state=active]:text-orange-700"
+          >
             Cancelled
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="new" className="space-y-4">
           {getOrdersByStatus("pending").map((order) => (
-            <Card key={order.id} className="border-orange-200">
+            <Card key={order.id} className="border-orange-200 bg-white">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
-                      <span className="font-semibold text-orange-700">#{order.id}</span>
+                      <span className="font-semibold text-orange-800">#{order.id}</span>
                       <Badge className={getStatusColor(order.status)}>{order.status}</Badge>
                     </div>
                     <div className="text-sm text-gray-600">
-                      <p>
-                        <strong>Customer:</strong> {order.customerName}
+                      <p className="text-orange-600">
+                        <strong className="text-orange-700">Customer:</strong> {order.customerName}
                       </p>
-                      <p>
-                        <strong>Items:</strong> {order.items.join(", ")}
+                      <p className="text-orange-600">
+                        <strong className="text-orange-700">Items:</strong> {order.items.join(", ")}
                       </p>
-                      <p>
-                        <strong>Total:</strong> ${order.totalPrice}
+                      <p className="text-orange-600">
+                        <strong className="text-orange-700">Total:</strong> ${order.totalPrice}
                       </p>
-                      <p>
-                        <strong>Time:</strong> {order.time}
+                      <p className="text-orange-600">
+                        <strong className="text-orange-700">Time:</strong> {order.time}
                       </p>
                     </div>
                   </div>
@@ -387,26 +406,26 @@ export default function MainRestaurantDashboard() {
 
         <TabsContent value="progress" className="space-y-4">
           {getOrdersByStatus("in-progress").map((order) => (
-            <Card key={order.id} className="border-blue-200">
+            <Card key={order.id} className="border-orange-200 bg-white">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
-                      <span className="font-semibold text-blue-700">#{order.id}</span>
+                      <span className="font-semibold text-orange-800">#{order.id}</span>
                       <Badge className={getStatusColor(order.status)}>{order.status}</Badge>
                     </div>
                     <div className="text-sm text-gray-600">
-                      <p>
-                        <strong>Customer:</strong> {order.customerName}
+                      <p className="text-orange-600">
+                        <strong className="text-orange-700">Customer:</strong> {order.customerName}
                       </p>
-                      <p>
-                        <strong>Items:</strong> {order.items.join(", ")}
+                      <p className="text-orange-600">
+                        <strong className="text-orange-700">Items:</strong> {order.items.join(", ")}
                       </p>
-                      <p>
-                        <strong>Total:</strong> ${order.totalPrice}
+                      <p className="text-orange-600">
+                        <strong className="text-orange-700">Total:</strong> ${order.totalPrice}
                       </p>
-                      <p>
-                        <strong>Time:</strong> {order.time}
+                      <p className="text-orange-600">
+                        <strong className="text-orange-700">Time:</strong> {order.time}
                       </p>
                     </div>
                   </div>
@@ -419,28 +438,28 @@ export default function MainRestaurantDashboard() {
           ))}
         </TabsContent>
 
-        <TabsContent value="completed" className="space-y-4">
+        <TabsContent value="completed" className="space-y-4  bg-white">
           {getOrdersByStatus("completed").map((order) => (
-            <Card key={order.id} className="border-green-200">
+            <Card key={order.id} className="border-orange-200 ">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
-                      <span className="font-semibold text-green-700">#{order.id}</span>
+                      <span className="font-semibold text-orange-700">#{order.id}</span>
                       <Badge className={getStatusColor(order.status)}>{order.status}</Badge>
                     </div>
                     <div className="text-sm text-gray-600">
-                      <p>
-                        <strong>Customer:</strong> {order.customerName}
+                      <p className="text-orange-600">
+                        <strong className="text-orange-700">Customer:</strong> {order.customerName}
                       </p>
-                      <p>
-                        <strong>Items:</strong> {order.items.join(", ")}
+                      <p className="text-orange-600">
+                        <strong className="text-orange-700">Items:</strong> {order.items.join(", ")}
                       </p>
-                      <p>
-                        <strong>Total:</strong> ${order.totalPrice}
+                      <p className="text-orange-600">
+                        <strong className="text-orange-700">Total:</strong> ${order.totalPrice}
                       </p>
-                      <p>
-                        <strong>Time:</strong> {order.time}
+                      <p className="text-orange-600">
+                        <strong className="text-orange-700">Time:</strong> {order.time}
                       </p>
                     </div>
                   </div>
@@ -525,7 +544,7 @@ export default function MainRestaurantDashboard() {
     return (
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold text-orange-700">Menu Management</h2>
+          <h2 className="text-2xl font-bold text-orange-800">Menu Management</h2>
           <Dialog
             open={showAddMenuItem}
             onOpenChange={(open) => {
@@ -534,7 +553,7 @@ export default function MainRestaurantDashboard() {
             }}
           >
             <DialogTrigger asChild>
-              <Button className="bg-orange-600 hover:bg-orange-700">
+              <Button className="bg-orange-500 hover:bg-orange-600">
                 <Plus className="h-4 w-4 mr-2" />
                 Add New Item
               </Button>
@@ -641,18 +660,18 @@ export default function MainRestaurantDashboard() {
           )}
         </div>
 
-        <Card className="border-orange-200">
+        <Card className="border-orange-200 bg-white">
           <CardContent className="p-0">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-orange-50 border-b border-orange-200">
+                <thead className=" border-b border-orange-200">
                   <tr>
-                    <th className="text-left p-4 font-medium text-orange-700">Photo</th>
-                    <th className="text-left p-4 font-medium text-orange-700">Name</th>
-                    <th className="text-left p-4 font-medium text-orange-700">Category</th>
-                    <th className="text-left p-4 font-medium text-orange-700">Price</th>
-                    <th className="text-left p-4 font-medium text-orange-700">Available</th>
-                    <th className="text-left p-4 font-medium text-orange-700">Actions</th>
+                    <th className="text-left p-4 font-medium text-orange-800">Photo</th>
+                    <th className="text-left p-4 font-medium text-orange-800">Name</th>
+                    <th className="text-left p-4 font-medium text-orange-800">Category</th>
+                    <th className="text-left p-4 font-medium text-orange-800">Price</th>
+                    <th className="text-left p-4 font-medium text-orange-800">Available</th>
+                    <th className="text-left p-4 font-medium text-orange-800">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -666,9 +685,9 @@ export default function MainRestaurantDashboard() {
                             className="w-12 h-12 rounded-lg object-cover"
                           />
                         </td>
-                        <td className="p-4 font-medium">{item.name}</td>
-                        <td className="p-4 text-gray-600">{item.category}</td>
-                        <td className="p-4 font-medium text-orange-600">${item.price}</td>
+                        <td className="p-4 font-medium text-orange-800">{item.name}</td>
+                        <td className="p-4 text-amber-600">{item.category}</td>
+                        <td className="p-4 font-medium text-orange-800">${item.price}</td>
                         <td className="p-4">
                           <Switch
                             checked={item.available}
@@ -706,25 +725,25 @@ export default function MainRestaurantDashboard() {
   const renderEarnings = () => (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="border-orange-200">
+        <Card className="border-orange-200  bg-white">
           <CardHeader>
-            <CardTitle className="text-orange-700">Today</CardTitle>
+            <CardTitle className="text-orange-800">Today</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-orange-800">$342.50</div>
           </CardContent>
         </Card>
-        <Card className="border-amber-200">
+        <Card className="border-orange-200 bg-white">
           <CardHeader>
-            <CardTitle className="text-amber-700">This Week</CardTitle>
+            <CardTitle className="text-orange-800">This Week</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-amber-800">$1,250.00</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200">
+        <Card className="border-orange-200 bg-white">
           <CardHeader>
-            <CardTitle className="text-orange-700">This Month</CardTitle>
+            <CardTitle className="text-orange-800">This Month</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-orange-800">$4,890.00</div>
@@ -732,9 +751,9 @@ export default function MainRestaurantDashboard() {
         </Card>
       </div>
 
-      <Card className="border-orange-200">
+      <Card className="border-orange-200 bg-white">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-orange-700">Transaction History</CardTitle>
+          <CardTitle className="text-orange-800">Transaction History</CardTitle>
           <div className="flex space-x-2">
             <Button size="sm" variant="outline">
               <Download className="h-4 w-4 mr-2" />
@@ -749,20 +768,20 @@ export default function MainRestaurantDashboard() {
         <CardContent>
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-orange-50 border-b border-orange-200">
+              <thead className=" border-b border-orange-200">
                 <tr>
-                  <th className="text-left p-3 font-medium text-orange-700">Date</th>
-                  <th className="text-left p-3 font-medium text-orange-700">Order ID</th>
-                  <th className="text-left p-3 font-medium text-orange-700">Amount</th>
-                  <th className="text-left p-3 font-medium text-orange-700">Status</th>
+                  <th className="text-left p-3 font-medium text-orange-800">Order ID</th>
+                  <th className="text-left p-3 font-medium text-orange-800">Date</th>
+                  <th className="text-left p-3 font-medium text-orange-800">Amount</th>
+                  <th className="text-left p-3 font-medium text-orange-800">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {transactions.map((transaction) => (
-                  <tr key={transaction.id} className="border-b border-orange-100">
-                    <td className="p-3">{transaction.date}</td>
-                    <td className="p-3 font-medium">#{transaction.orderId}</td>
-                    <td className="p-3 font-medium text-orange-600">${transaction.amount}</td>
+                  <tr key={transaction.id} className="border-b hover:bg-orange-50 border-orange-100">
+                    <td className="p-3 font-medium text-orange-800">#{transaction.orderId}</td>
+                    <td className="p-3 text-orange-700">{transaction.date}</td>
+                    <td className="p-3 font-medium text-orange-800">${transaction.amount}</td>
                     <td className="p-3">
                       <Badge
                         className={
@@ -991,19 +1010,18 @@ export default function MainRestaurantDashboard() {
       {notifications.map((notification) => (
         <Card
           key={notification.id}
-          className={`border-orange-200 ${notification.status === "unread" ? "bg-orange-50" : ""}`}
+          className={`border-orange-200 bg-white ${notification.status === "unread" ? "bg-white" : ""}`}
         >
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-start space-x-3">
                 <div
-                  className={`p-2 rounded-full ${
-                    notification.type === "order"
-                      ? "bg-orange-100 text-orange-600"
-                      : notification.type === "stock"
-                        ? "bg-red-100 text-red-600"
-                        : "bg-green-100 text-green-600"
-                  }`}
+                  className={`p-2 rounded-full ${notification.type === "order"
+                    ? "bg-orange-100 text-orange-600"
+                    : notification.type === "stock"
+                      ? "bg-red-100 text-red-600"
+                      : "bg-green-100 text-green-600"
+                    }`}
                 >
                   {notification.type === "order" && <ShoppingCart className="h-4 w-4" />}
                   {notification.type === "stock" && <Package className="h-4 w-4" />}
@@ -1028,43 +1046,43 @@ export default function MainRestaurantDashboard() {
 
   const renderSupport = () => (
     <div className="space-y-6">
-      <Card className="border-orange-200">
+      <Card className="border-orange-200 bg-white">
         <CardHeader>
-          <CardTitle className="text-orange-700">Contact Admin</CardTitle>
+          <CardTitle className="text-orange-800">Contact Admin</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <Label htmlFor="subject">Subject</Label>
-            <Input id="subject" placeholder="Enter subject" />
+            <Label htmlFor="subject" className="pb-2">Subject</Label>
+            <Input className="border-orange-200" id="subject" placeholder="Enter subject" />
           </div>
           <div>
-            <Label htmlFor="message">Message</Label>
-            <Textarea id="message" placeholder="Describe your issue or question" rows={4} />
+            <Label htmlFor="message" className="pb-2">Message</Label>
+            <Textarea className="border-orange-200" id="message" placeholder="Describe your issue or question" rows={4} />
           </div>
-          <Button className="bg-orange-600 hover:bg-orange-700">Send Message</Button>
+          <Button className="bg-orange-500 hover:bg-orange-600">Send Message</Button>
         </CardContent>
       </Card>
 
-      <Card className="border-orange-200">
+      <Card className="border-orange-200 bg-white">
         <CardHeader>
-          <CardTitle className="text-orange-700">Frequently Asked Questions</CardTitle>
+          <CardTitle className="text-orange-800">Frequently Asked Questions</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <h4 className="font-medium">How do I update my menu items?</h4>
-            <p className="text-sm text-gray-600">
+            <h4 className="font-medium text-orange-600">How do I update my menu items?</h4>
+            <p className="text-sm text-gray-500">
               Go to Menu Management section and click on the edit button next to any item.
             </p>
           </div>
           <div className="space-y-2">
-            <h4 className="font-medium">When do I receive payments?</h4>
-            <p className="text-sm text-gray-600">
+            <h4 className="font-medium text-orange-600">When do I receive payments?</h4>
+            <p className="text-sm text-gray-500">
               Payments are processed weekly every Monday for the previous week's orders.
             </p>
           </div>
           <div className="space-y-2">
-            <h4 className="font-medium">How do I handle order cancellations?</h4>
-            <p className="text-sm text-gray-600">
+            <h4 className="font-medium text-orange-600">How do I handle order cancellations?</h4>
+            <p className="text-sm text-gray-500">
               You can cancel orders from the Orders section before they are marked as in-progress.
             </p>
           </div>
@@ -1099,19 +1117,18 @@ export default function MainRestaurantDashboard() {
   return (
     <div className="flex h-screen bg-background">
       <div
-        className={`bg-sidebar border-r border-sidebar-border transition-all duration-300 ${
-          sidebarCollapsed ? "w-16" : "w-64"
-        } flex flex-col`}
+        className={`bg-sidebar border-r border-sidebar-border transition-all duration-300 ${sidebarCollapsed ? "w-16" : "w-64"
+          } flex flex-col`}
       >
         <div className="p-4 border-b border-sidebar-border">
           <div className="flex items-center space-x-2">
-            <div className="bg-gradient-to-r from-orange-400 to-amber-400 p-2 rounded-lg">
+            <div className="bg-[#dd6636] p-2 rounded-lg">
               <ChefHat className="h-6 w-6 text-white" />
             </div>
             {!sidebarCollapsed && (
               <div>
-                <h1 className="font-bold text-lg text-sidebar-foreground">RestaurantHub</h1>
-                <p className="text-xs text-sidebar-foreground/70">Dashboard</p>
+                <h1 className="font-bold text-lg text-orange-900">Restaurant Panel</h1>
+                <p className="text-xs text-amber-700">Dashboard</p>
               </div>
             )}
           </div>
@@ -1125,11 +1142,10 @@ export default function MainRestaurantDashboard() {
               <button
                 key={item.id}
                 onClick={() => setActiveSection(item.id)}
-                className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors ${
-                  isActive
-                    ? "bg-orange-100 text-orange-700 border border-orange-200"
-                    : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                }`}
+                className={`w-full flex items-center space-x-3 text-amber-700 px-3 py-2 rounded-lg transition-colors ${isActive
+                  ? "bg-orange-100 text-amber-700 border border-orange-200"
+                  : " hover:bg-orange-50 hover:text-orange-800"
+                  }`}
               >
                 <Icon className="h-5 w-5 flex-shrink-0" />
                 {!sidebarCollapsed && <span className="text-sm font-medium">{item.label}</span>}
