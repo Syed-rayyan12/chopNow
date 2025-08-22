@@ -60,7 +60,7 @@ export function OrdersSection() {
 
   return (
     <div className="p-4">
-      <div className="mb-6">
+      <div className="mb-6 ">
         <h1 className="text-2xl font-bold text-orange-800">Orders</h1>
         <p className="text-amber-600">Manage your deliveries</p>
       </div>
@@ -73,7 +73,7 @@ export function OrdersSection() {
 
         <TabsContent value="active" className="space-y-4">
           {activeOrders.map((order) => (
-            <Card key={order.id} className="border border-orange-200">
+            <Card key={order.id} className="border border-orange-200 bg-white">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-lg text-orange-800">{order.id}</CardTitle>
@@ -90,27 +90,27 @@ export function OrdersSection() {
                   <span>•</span>
                   <span className="text-amber-600">{order.items} items</span>
                   <span>•</span>
-                  <span className="font-semibold text-orange-700">{order.total}</span>
+                  <span className="font-semibold text-orange-800">{order.total}</span>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <MapPin className="h-4 w-4 text-orange-800" />
-                    <span className="text-sm text-amber-600">{order.address}</span>
+                    <span className="text-sm text-orange-700">{order.address}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Phone className="h-4 w-4 text-orange-800" />
-                    <span className="text-sm text-amber-600">{order.phone}</span>
+                    <span className="text-sm text-orange-700">{order.phone}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Timer className="h-4 w-4 text-orange-800" />
-                    <span className="text-sm text-amber-600">ETA: {order.estimatedTime}</span>
+                    <span className="text-sm text-orange-700">ETA: {order.estimatedTime}</span>
                   </div>
                 </div>
 
                 <div className="flex space-x-2">
-                  <Button size="sm" variant="outline" className="flex-1 bg-transparent border border-orange-200 hover:bg-orange-50">
+                  <Button size="sm" variant="outline" className="flex-1 bg-transparent border border-orange-200 hover:bg-orange-400">
                     <Phone className="h-4 w-4 mr-2" />
                     Call Customer
                   </Button>
@@ -133,7 +133,7 @@ export function OrdersSection() {
 
         <TabsContent value="completed" className="space-y-4 ">
           {completedOrders.map((order) => (
-            <Card key={order.id} className="border border-orange-200">
+            <Card key={order.id} className="border border-orange-200 bg-white">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-3">
                   <div>

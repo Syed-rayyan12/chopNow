@@ -199,7 +199,7 @@ export function DeliveryTracking() {
     <div className="space-y-4">
       {/* Header Stats */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <Card className="border border-orange-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-amber-800">Active Deliveries</CardTitle>
             <Truck className="h-4 w-4 text-amber-600" />
@@ -209,7 +209,7 @@ export function DeliveryTracking() {
             <p className="text-xs text-amber-700">+2 from last hour</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="border border-orange-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-amber-800">Available Drivers</CardTitle>
             <MapPin className="h-4 w-4 text-amber-600" />
@@ -219,7 +219,7 @@ export function DeliveryTracking() {
             <p className="text-xs text-amber-700">3 drivers online</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="border border-orange-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-amber-800">Avg. Delivery Time</CardTitle>
             <Clock className="h-4 w-4 text-amber-600" />
@@ -229,7 +229,7 @@ export function DeliveryTracking() {
             <p className="text-xs text-green-600">-2m from yesterday</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="border border-orange-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-amber-800">Success Rate</CardTitle>
             <CheckCircle className="h-4 w-4 text-amber-600" />
@@ -257,12 +257,12 @@ export function DeliveryTracking() {
                 placeholder="Search deliveries..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-8"
+                className="pl-8 border border-orange-200"
               />
             </div>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
               <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Filter by status" />
+                <SelectValue className="border border-orange-200" placeholder="Filter by status" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Status</SelectItem>

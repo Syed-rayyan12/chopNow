@@ -1,63 +1,61 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
+const salesData = [
+  {
+    name: "John Doe",
+    avatar: "/user-avatar-1.png",
+    fallback: "JD",
+    items: "Jollof Rice + Egusi Soup",
+    amount: "+£24.50",
+  },
+  {
+    name: "Sarah Miller",
+    avatar: "/user-avatar-2.png",
+    fallback: "SM",
+    items: "Pepper Soup + Plantain",
+    amount: "+£18.75",
+  },
+  {
+    name: "Michael Johnson",
+    avatar: "/user-avatar-3.png",
+    fallback: "MJ",
+    items: "Curry Combo",
+    amount: "+£32.00",
+  },
+  {
+    name: "Lisa Wilson",
+    avatar: "/user-avatar-4.png",
+    fallback: "LW",
+    items: "Okra Soup Special",
+    amount: "+£21.25",
+  },
+  {
+    name: "David Brown",
+    avatar: "/user-avatar-5.png",
+    fallback: "DB",
+    items: "Mixed Grill Platter",
+    amount: "+£45.00",
+  },
+]
+
 export function RecentSales() {
   return (
-    <div className="space-y-8">
-      <div className="flex items-center">
-        <Avatar className="h-9 w-9">
-          <AvatarImage src="/user-avatar-1.png" alt="Avatar" />
-          <AvatarFallback>JD</AvatarFallback>
-        </Avatar>
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none text-amber-900">John Doe</p>
-          <p className="text-sm text-amber-700">Jollof Rice + Egusi Soup</p>
+    <div className="space-y-4">
+      {salesData.map((sale, index) => (
+        <div key={index} className="flex items-center border border-orange-200 rounded-lg shadow p-3">
+          <Avatar className="h-9 w-9">
+            <AvatarImage className="bg-orange-50" src={sale.avatar} alt={sale.name} />
+            <AvatarFallback>{sale.fallback}</AvatarFallback>
+          </Avatar>
+          <div className="ml-4 space-y-1">
+            <p className="text-sm font-medium leading-none text-amber-900">
+              {sale.name}
+            </p>
+            <p className="text-sm text-amber-700">{sale.items}</p>
+          </div>
+          <div className="ml-auto font-medium text-amber-900">{sale.amount}</div>
         </div>
-        <div className="ml-auto font-medium text-amber-900">+£24.50</div>
-      </div>
-      <div className="flex items-center">
-        <Avatar className="flex h-9 w-9 items-center justify-center space-y-0 border">
-          <AvatarImage src="/user-avatar-2.png" alt="Avatar" />
-          <AvatarFallback>SM</AvatarFallback>
-        </Avatar>
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none text-amber-900">Sarah Miller</p>
-          <p className="text-sm text-amber-700">Pepper Soup + Plantain</p>
-        </div>
-        <div className="ml-auto font-medium text-amber-900">+£18.75</div>
-      </div>
-      <div className="flex items-center">
-        <Avatar className="h-9 w-9">
-          <AvatarImage src="/user-avatar-3.png" alt="Avatar" />
-          <AvatarFallback>MJ</AvatarFallback>
-        </Avatar>
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none text-amber-900">Michael Johnson</p>
-          <p className="text-sm text-amber-700">Curry Combo</p>
-        </div>
-        <div className="ml-auto font-medium text-amber-900">+£32.00</div>
-      </div>
-      <div className="flex items-center">
-        <Avatar className="h-9 w-9">
-          <AvatarImage src="/user-avatar-4.png" alt="Avatar" />
-          <AvatarFallback>LW</AvatarFallback>
-        </Avatar>
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none text-amber-900">Lisa Wilson</p>
-          <p className="text-sm text-amber-700">Okra Soup Special</p>
-        </div>
-        <div className="ml-auto font-medium text-amber-900">+£21.25</div>
-      </div>
-      <div className="flex items-center">
-        <Avatar className="h-9 w-9">
-          <AvatarImage src="/user-avatar-5.png" alt="Avatar" />
-          <AvatarFallback>DB</AvatarFallback>
-        </Avatar>
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none text-amber-900">David Brown</p>
-          <p className="text-sm text-amber-700">Mixed Grill Platter</p>
-        </div>
-        <div className="ml-auto font-medium text-amber-900">+£45.00</div>
-      </div>
+      ))}
     </div>
   )
 }

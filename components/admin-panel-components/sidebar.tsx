@@ -17,7 +17,6 @@ const navigation = [
   { href: "/admin-dashboard/orders", name: "Orders", icon: ShoppingBag },
   { href: "/admin-dashboard/restaurants", name: "Restaurants", icon: Store },
   { href: "/admin-dashboard/users", name: "Users", icon: Users },
-  { href: "/admin-dashboard/menu", name: "Menu Management", icon: ChefHat },
   { href: "/admin-dashboard/analytics", name: "Analytics", icon: BarChart3 },
   { href: "/admin-dashboard/delivery-tracking", name: "Delivery Tracking", icon: Truck },
 
@@ -66,7 +65,7 @@ export function Sidebar({ collapsed, setCollapsed }: { collapsed: boolean, setCo
       {/* Desktop Sidebar */}
       <div
         className={cn(
-          "hidden lg:flex lg:flex-col min-h-screen top-0 left-0 z-50 h-full bg-white border-r border-orange-200 transition-all duration-300",
+          "hidden xl:flex lg:flex-col min-h-screen top-0 left-0 z-50 h-full bg-white border-r border-orange-200 transition-all duration-300",
           collapsed ? "w-16" : "w-64"
         )}
       >

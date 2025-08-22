@@ -85,12 +85,12 @@ export function AnalyticsDashboard() {
   return (
     <div className="space-y-4">
       {/* Header Controls */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-2">
+      <div className="flex items-center max-sm:flex-col max-sm:items-start max-sm:gap-3 justify-between">
+        <div className="flex max-sm:flex-col max-sm:items-start max-sm:gap-3 items-center space-x-2">
           <CalendarDateRangePicker />
           <Select value={dateRange} onValueChange={setDateRange}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Select period" />
+              <SelectValue className="border border-orange-600" placeholder="Select period" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="7d">Last 7 days</SelectItem>
@@ -100,13 +100,13 @@ export function AnalyticsDashboard() {
             </SelectContent>
           </Select>
         </div>
-        <div className="flex items-center space-x-2">
-          <Button variant="outline" size="sm">
-            <Filter className="mr-2 h-4 w-4" />
+        <div className="flex  items-center space-x-2">
+          <Button className="border border-orange-200" variant="outline" size="sm">
+            <Filter className="mr-2 h-4 w-4 " />
             Filter
           </Button>
-          <Button variant="outline" size="sm">
-            <Download className="mr-2 h-4 w-4" />
+          <Button className="border border-orange-200" variant="outline" size="sm">
+            <Download className="mr-2 h-4 w-4 " />
             Export
           </Button>
         </div>
@@ -114,7 +114,7 @@ export function AnalyticsDashboard() {
 
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <Card className="border border-orange-200  bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-amber-800">Total Revenue</CardTitle>
             <DollarSign className="h-4 w-4 text-amber-600" />
@@ -127,7 +127,7 @@ export function AnalyticsDashboard() {
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="border border-orange-200  bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-amber-800">Total Orders</CardTitle>
             <ShoppingCart className="h-4 w-4 text-amber-600" />
@@ -140,7 +140,7 @@ export function AnalyticsDashboard() {
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="border border-orange-200 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-amber-800">Active Users</CardTitle>
             <Users className="h-4 w-4 text-amber-600" />
@@ -153,7 +153,7 @@ export function AnalyticsDashboard() {
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="border border-orange-200 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-amber-800">Avg. Order Value</CardTitle>
             <DollarSign className="h-4 w-4 text-amber-600" />
@@ -180,12 +180,12 @@ export function AnalyticsDashboard() {
 
         <TabsContent value="overview" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="col-span-4">
+            <Card className="col-span-4 bg-white border border-orange-200">
               <CardHeader>
                 <CardTitle className="text-amber-900">Revenue Overview</CardTitle>
                 <CardDescription>Monthly revenue and order trends</CardDescription>
               </CardHeader>
-              <CardContent className="pl-2">
+              <CardContent className="pl-2 overflow-hidden">
                 <ChartContainer
                   config={{
                     revenue: {
@@ -218,26 +218,26 @@ export function AnalyticsDashboard() {
                 </ChartContainer>
               </CardContent>
             </Card>
-            <Card className="col-span-3">
-              <CardHeader>
+            <Card className="col-span-3 bg-white border border-orange-200">
+              <CardHeader className="text-center">
                 <CardTitle className="text-amber-900">Order Categories</CardTitle>
                 <CardDescription>Distribution by cuisine type</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex flex-col items-center justify-center">
                 <ChartContainer
                   config={{
                     value: {
                       label: "Percentage",
                     },
                   }}
-                  className="h-[300px]"
+                  className="h-[300px] w-full flex flex-col items-center justify-center"
                 >
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Pie
                         data={categoryData}
                         cx="50%"
-                        cy="50%"
+                        cy="40%" // move pie slightly up to give space for legend
                         innerRadius={60}
                         outerRadius={100}
                         paddingAngle={5}
@@ -247,8 +247,16 @@ export function AnalyticsDashboard() {
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
                       </Pie>
-                      <ChartTooltip content={<ChartTooltipContent />} />
-                      <Legend />
+                      <ChartTooltip
+                        contentStyle={{ textAlign: "center" }}
+                        content={<ChartTooltipContent />}
+                      />
+                      <Legend
+                        layout="horizontal"
+                        align="center"
+                        verticalAlign="bottom"
+                        wrapperStyle={{ marginTop: 20 }}
+                      />
                     </PieChart>
                   </ResponsiveContainer>
                 </ChartContainer>
@@ -257,7 +265,7 @@ export function AnalyticsDashboard() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <Card>
+            <Card className="bg-white border border-orange-200">
               <CardHeader>
                 <CardTitle className="text-amber-900">Hourly Order Pattern</CardTitle>
                 <CardDescription>Orders throughout the day</CardDescription>

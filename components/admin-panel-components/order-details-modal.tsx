@@ -58,15 +58,15 @@ export function OrderDetailsModal({ order, isOpen, onClose }: OrderDetailsModalP
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="w-[50%] max-lg:w-[80%] max-sm:w-[100%] mx-auto max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl text-orange-800">Order Details - {order.id}</DialogTitle>
           <DialogDescription className="text-amber-600">Complete information about this order</DialogDescription>
         </DialogHeader>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+        <div className="grid grid-cols-2 max-xl:grid-cols-1 gap-6 mt-6">
           {/* Customer Information */}
-          <Card className="border-orange-200">
+          <Card className="border-orange-200 w-full">
             <CardHeader>
               <CardTitle className="flex items-center text-orange-800">
                 <User className="w-5 h-5 mr-2" />
@@ -103,14 +103,14 @@ export function OrderDetailsModal({ order, isOpen, onClose }: OrderDetailsModalP
           </Card>
 
           {/* Order Information */}
-          <Card className="border-orange-200">
+          <Card className="border-orange-200  w-full">
             <CardHeader>
               <CardTitle className="flex items-center text-orange-800">
                 <Store className="w-5 h-5 mr-2" />
                 Order Information
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 ">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
                   <Store className="w-5 h-5 text-orange-600" />
@@ -160,65 +160,68 @@ export function OrderDetailsModal({ order, isOpen, onClose }: OrderDetailsModalP
           </Card>
         </div>
 
-        {/* Order Items */}
-        <Card className="border-orange-200">
-          <CardHeader>
-            <CardTitle className="text-orange-800">Order Items</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              {order.items.map((item, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-amber-50 rounded-lg">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                      <span className="text-sm font-medium text-orange-600">{index + 1}</span>
+        <div className="grid grid-cols-1 gap-6 mt-6">
+
+
+          {/* Order Items */}
+          <Card className="border-orange-200  w-full">
+            <CardHeader>
+              <CardTitle className="text-orange-800">Order Items</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {order.items.map((item, index) => (
+                  <div key={index} className="flex items-center justify-between p-3 bg-white shadow border border-orange-200 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                        <span className="text-sm font-medium text-orange-600">{index + 1}</span>
+                      </div>
+                      <span className="font-medium text-orange-800">{item}</span>
                     </div>
-                    <span className="font-medium text-orange-800">{item}</span>
+                    <span className="text-orange-600">1x</span>
                   </div>
-                  <span className="text-orange-600">1x</span>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
 
-            <Separator className="my-4 bg-orange-200" />
+              <Separator className="my-4 bg-orange-200" />
 
-            <div className="flex justify-between items-center">
-              <span className="text-lg font-bold text-orange-800">Total Amount</span>
-              <span className="text-2xl font-bold text-orange-800">£{order.amount.toFixed(2)}</span>
-            </div>
-          </CardContent>
-        </Card>
+              <div className="flex justify-between items-center">
+                <span className="text-lg font-bold text-orange-800">Total Amount</span>
+                <span className="text-2xl font-bold text-orange-800">£{order.amount.toFixed(2)}</span>
+              </div>
+            </CardContent>
+          </Card>
 
-        {/* Status Management */}
-        <Card className="border-orange-200">
-          <CardHeader>
-            <CardTitle className="flex items-center text-orange-800">
-              {getStatusIcon(currentStatus)}
-              <span className="ml-2">Order Status</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center space-x-4">
-              <Select value={currentStatus} onValueChange={handleStatusUpdate}>
-                <SelectTrigger className="w-48 border-orange-200">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="pending">Pending</SelectItem>
-                  <SelectItem value="preparing">Preparing</SelectItem>
-                  <SelectItem value="out-for-delivery">Out for Delivery</SelectItem>
-                  <SelectItem value="delivered">Delivered</SelectItem>
-                  <SelectItem value="cancelled">Cancelled</SelectItem>
-                </SelectContent>
-              </Select>
+          {/* Status Management */}
+          <Card className="border-orange-200  w-full">
+            <CardHeader>
+              <CardTitle className="flex items-center text-orange-800">
+                {getStatusIcon(currentStatus)}
+                <span className="ml-2">Order Status</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center space-x-4">
+                <Select value={currentStatus} onValueChange={handleStatusUpdate}>
+                  <SelectTrigger className="w-48 border-orange-200">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="pending">Pending</SelectItem>
+                    <SelectItem value="preparing">Preparing</SelectItem>
+                    <SelectItem value="out-for-delivery">Out for Delivery</SelectItem>
+                    <SelectItem value="delivered">Delivered</SelectItem>
+                    <SelectItem value="cancelled">Cancelled</SelectItem>
+                  </SelectContent>
+                </Select>
 
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white">Update Status</Button>
-            </div>
-          </CardContent>
-        </Card>
-
+                <Button className="bg-orange-500 hover:bg-orange-600 text-white">Update Status</Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
         {/* Action Buttons */}
-        <div className="flex justify-end space-x-3 pt-4 border-t border-orange-200">
+        <div className="flex justify-end  max-lg:justify-center max-lg:flex-col max-lg:gap-3 gap-3  pt-4 border-t border-orange-200">
           <Button
             variant="outline"
             onClick={onClose}

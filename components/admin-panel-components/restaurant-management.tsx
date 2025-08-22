@@ -184,52 +184,52 @@ export function RestaurantManagement() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="">
         <div>
           <h1 className="text-3xl font-bold text-orange-800">Restaurant Management</h1>
           <p className="text-amber-600">Manage partner restaurants and their performance</p>
         </div>
-        <div className="flex items-center space-x-3">
+        {/* <div className="flex items-center space-x-3">
           <Button onClick={() => setShowAddModal(true)} className="bg-orange-500 hover:bg-orange-600 text-white">
             <Plus className="w-4 h-4 mr-2" />
             Add Restaurant
           </Button>
-        </div>
+        </div> */}
       </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-        <Card className="border-orange-200">
+        <Card className="border-orange-200 bg-white">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-orange-800">{restaurantStats.total}</div>
             <div className="text-sm text-amber-600">Total Restaurants</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200">
+        <Card className="border-orange-200 bg-white">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-green-700">{restaurantStats.active}</div>
             <div className="text-sm text-amber-600">Active</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200">
+        <Card className="border-orange-200 bg-white">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-amber-700">{restaurantStats.pending}</div>
             <div className="text-sm text-amber-600">Pending</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200">
+        <Card className="border-orange-200 bg-white">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-red-700">{restaurantStats.inactive}</div>
             <div className="text-sm text-amber-600">Inactive</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200">
+        <Card className="border-orange-200 bg-white">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-orange-800">£{restaurantStats.totalRevenue.toLocaleString()}</div>
             <div className="text-sm text-amber-600">Total Revenue</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200">
+        <Card className="border-orange-200 bg-white">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-orange-800">{restaurantStats.avgRating.toFixed(1)}</div>
             <div className="text-sm text-amber-600">Avg Rating</div>
@@ -238,17 +238,17 @@ export function RestaurantManagement() {
       </div>
 
       {/* Filters and Search */}
-      <Card className="border-orange-200">
+      <Card className="border-orange-200 bg-white">
         <CardHeader>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center max-md:flex-col max-md:items-center max-md:gap-3 space-x-4">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-amber-500 h-4 w-4" />
                 <Input
                   placeholder="Search restaurants, cuisine, location..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-80 border-orange-200 focus:border-orange-400 focus:ring-orange-400"
+                  className="pl-10 w-80 max-sm:w-full border-orange-200 focus:border-orange-400 focus:ring-orange-400"
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
@@ -280,7 +280,7 @@ export function RestaurantManagement() {
         </CardHeader>
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-4 bg-amber-50">
+            <TabsList className="lg:grid hidden w-full  grid-cols-4 bg-amber-50">
               <TabsTrigger
                 value="all"
                 className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"

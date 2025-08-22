@@ -141,7 +141,7 @@ export function DashboardHome() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
-          <Card key={stat.title} className="border-orange-200">
+          <Card key={stat.title} className="border-orange-200 bg-white">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-amber-700">{stat.title}</CardTitle>
               <div className={`p-2 rounded-full ${stat.bgColor}`}>
@@ -162,12 +162,12 @@ export function DashboardHome() {
       {/* Active Orders & Recent Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Active Orders */}
-        <Card className="bg-white border-orange-200 shadow-sm">
+        <Card className="bg-white border-orange-200  shadow-sm">
           <CardHeader>
-            <CardTitle className="flex items-center space-x-2 text-orange-900">
+            <CardTitle className="flex items-center space-x-2 text-orange-800">
               <Package className="h-5 w-5 text-orange-600" />
-              <span>Active Orders</span>
-              <Badge className="bg-orange-100 text-orange-800">
+              <span className="text-orange-800">Active Orders</span>
+              <Badge className="bg-white  text-orange-800">
                 {activeOrders.length}
               </Badge>
             </CardTitle>
@@ -177,11 +177,11 @@ export function DashboardHome() {
             {activeOrders.map((order) => (
               <div
                 key={order.id}
-                className="p-4 border border-orange-100 bg-orange-50 rounded-lg"
+                className="p-4 border border-orange-200 shadow bg-white rounded-lg"
               >
                 <div className="flex items-center justify-between mb-3">
                   <div>
-                    <p className="font-semibold text-orange-900">{order.id}</p>
+                    <p className="font-semibold text-orange-800">{order.id}</p>
                     <p className="text-sm text-amber-600">
                       {order.restaurant} • {order.items} items
                     </p>
@@ -205,7 +205,7 @@ export function DashboardHome() {
                   <Button
                     size="sm"
                     variant="outline"
-                    className="flex-1 bg-white border-orange-200 text-orange-800 hover:bg-orange-50"
+                    className="flex-1 bg-white border-orange-200 text-orange-800 hover:bg-orange-400"
                   >
                     <Phone className="h-4 w-4 mr-2" />
                     Call
@@ -223,14 +223,14 @@ export function DashboardHome() {
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 text-orange-900">
               <TrendingUp className="h-5 w-5 text-orange-600" />
-              <span>Recent Activity</span>
+              <span className="text-orange-800">Recent Activity</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {orders.map((order, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between p-3 bg-orange-50 rounded-lg border border-orange-100"
+                className="flex items-center justify-between p-3 bg-white rounded-lg border border-orange-200 shadow"
               >
                 <div className="flex items-center space-x-3">
                   <div className={`p-2 ${order.iconBg} rounded-full`}>
@@ -262,14 +262,14 @@ export function DashboardHome() {
             ))}
 
             {/* Ratings */}
-            <div className="flex items-center justify-between p-3 bg-orange-50 rounded-lg border border-orange-100">
+            <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-orange-200 shadow">
               <div className="flex items-center space-x-3">
                 <div className="p-2 bg-orange-100 rounded-full">
                   <Star className="h-4 w-4 text-orange-600" />
                 </div>
                 <div>
                   <p className="font-medium text-orange-800">New 5-star Rating</p>
-                  <p className="text-sm text-orange-700">Great service!</p>
+                  <p className="text-sm text-amber-600">Great service!</p>
                 </div>
               </div>
               <div className="text-right">
@@ -278,14 +278,14 @@ export function DashboardHome() {
             </div>
 
             {/* Bonuses */}
-            <div className="flex items-center justify-between p-3 bg-orange-50 rounded-lg border border-orange-100">
+            <div className="flex items-center justify-between p-3 bg-white shadow rounded-lg border border-orange-200">
               <div className="flex items-center space-x-3">
                 <div className="p-2 bg-amber-100 rounded-full">
                   <DollarSign className="h-4 w-4 text-amber-600" />
                 </div>
                 <div>
                   <p className="font-medium text-orange-800">Weekly Bonus Earned</p>
-                  <p className="text-sm text-orange-700">Completed 50+ orders</p>
+                  <p className="text-sm text-amber-600">Completed 50+ orders</p>
                 </div>
               </div>
               <div className="text-right">

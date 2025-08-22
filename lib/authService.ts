@@ -1,8 +1,9 @@
 // lib/api/authService.ts
 
-export interface RegisterPayload {
+export interface SignupPayload {
   firstName: string;
   lastName: string;
+  email:string;
   number: string;
   password: string;
   role?: string; // optional if backend supports multiple roles
@@ -24,34 +25,42 @@ export interface AuthResponse {
 }
 
 // ✅ keep API base in one place
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:5000/api";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000/api";
 
 // Helper to make fetch requests (generic for type safety)
 async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-  const res = await fetch(`${API_BASE}${endpoint}`, {
-    headers: {
-      "Content-Type": "application/json",
-      ...(options.headers || {}),
-    },
-    ...options,
-  });
+  try {
+    const res = await fetch(`${API_BASE}${endpoint}`, {
+      headers: {
+        "Content-Type": "application/json",
+        ...(options.headers || {}),
+      },
+      ...options,
+    });
 
-  // Handle error response
-  if (!res.ok) {
-    let errorMessage = "Something went wrong";
-    try {
-      const errorData = await res.json();
-      errorMessage = errorData.message || errorMessage;
-    } catch (_) {}
-    throw new Error(errorMessage);
+    // Handle non-2xx responses
+    if (!res.ok) {
+      let errorMessage = `Request failed with status ${res.status}`;
+      try {
+        const errorData = await res.json();
+        errorMessage = errorData.message || errorMessage;
+      } catch (_) {
+        // ignore parse errors
+      }
+      throw new Error(errorMessage);
+    }
+
+    // Success (2xx)
+    return (await res.json()) as T;
+  } catch (err: any) {
+    // Handle network failures or unexpected issues
+    throw new Error(`API request failed: ${err.message}`);
   }
-
-  return (await res.json()) as T;
 }
 
 // ✅ Register
-export async function registerUser(userData: RegisterPayload): Promise<AuthResponse> {
-  return request<AuthResponse>("/auth/register", {
+export async function registerUser(userData: SignupPayload): Promise<AuthResponse> {
+  return request<AuthResponse>("/auth/signup", {
     method: "POST",
     body: JSON.stringify(userData),
   });

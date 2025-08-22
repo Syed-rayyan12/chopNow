@@ -64,13 +64,13 @@ export function EarningsSection() {
           return (
             <Card
               key={idx}
-              className=" text-orange-800 border border-orange-200"
+              className=" text-orange-800 border border-orange-200 bg-white"
             >
               <CardContent className="p-4">
                 <div className="flex items-center space-x-2">
                   <Icon className="h-6 w-6" />
                   <div>
-                    <p className="text-sm text-amber-600/80">{stat.title}</p>
+                    <p className="text-sm text-amber-600">{stat.title}</p>
                     <p className="text-2xl font-bold">{stat.value}</p>
                   </div>
                 </div>
@@ -82,14 +82,14 @@ export function EarningsSection() {
 
 
       {/* Detailed Breakdown */}
-      <Tabs defaultValue="today" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-2 bg-orange-200/30 border border-orange-200 ">
+      <Tabs defaultValue="today" className="space-y-4 rounded-lg">
+        <TabsList className="grid w-full grid-cols-2  border border-orange-200 bg-orange-200/30 ">
           <TabsTrigger className="text-black" value="today">Today</TabsTrigger>
           <TabsTrigger className="text-black" value="week">This Week</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="today" className="space-y-4">
-          <Card className="border border-orange-200">
+        <TabsContent value="today" className="space-y-4 ">
+          <Card className="border border-orange-200 bg-white">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <Clock className="h-5 w-5 text-orange-600" />
@@ -98,7 +98,7 @@ export function EarningsSection() {
             </CardHeader>
             <CardContent className="space-y-3">
               {todayEarnings.map((hour, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-orange-100 border border-orange-200 rounded-lg">
+                <div key={index} className="flex items-center justify-between p-3 shadow border border-orange-200 bg-white rounded-lg">
                   <div>
                     <p className="font-medium text-orange-800">{hour.time}</p>
                     <p className="text-sm text-amber-600">{hour.orders} orders completed</p>
@@ -112,24 +112,24 @@ export function EarningsSection() {
           </Card>
         </TabsContent>
 
-        <TabsContent value="week" className="space-y-4">
-          <Card>
+        <TabsContent value="week" className="space-y-4 ">
+          <Card className="bg-white">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <Calendar className="h-5 w-5 text-orange-600" />
-                <span>Daily Breakdown</span>
+                <span className="text-orange-800">Daily Breakdown</span>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               {weeklyStats.map((day, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div key={index} className="flex items-center justify-between p-3 border border-orange-200 bg-white shadow rounded-lg">
                   <div>
-                    <p className="font-medium">{day.day}</p>
-                    <p className="text-sm text-gray-600">{day.orders} orders completed</p>
+                    <p className="font-medium text-orange-800">{day.day}</p>
+                    <p className="text-sm text-amber-600">{day.orders} orders completed</p>
                   </div>
                   <div className="text-right">
-                    <p className="font-semibold text-green-600">{day.earnings}</p>
-                    <p className="text-xs text-gray-500">
+                    <p className="font-semibold text-orange-800">{day.earnings}</p>
+                    <p className="text-xs text-amber-600">
                       £{(Number.parseFloat(day.earnings.replace("£", "")) / day.orders).toFixed(2)}/order
                     </p>
                   </div>

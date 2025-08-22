@@ -24,6 +24,7 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { OrderDetailsModal } from "./order-details-modal"
 
+// ---------- ORDERS DATA ----------
 const orders = [
   {
     id: "ORD-001",
@@ -97,6 +98,17 @@ const orders = [
   },
 ]
 
+// ---------- TABS DATA ----------
+const tabs = [
+  { value: "all", label: "All" },
+  { value: "pending", label: "Pending" },
+  { value: "preparing", label: "Preparing" },
+  { value: "out-for-delivery", label: "Delivery" },
+  { value: "delivered", label: "Delivered" },
+  { value: "cancelled", label: "Cancelled" },
+]
+
+// ---------- STATUS BADGES ----------
 const getStatusBadge = (status: string) => {
   switch (status) {
     case "delivered":
@@ -152,6 +164,7 @@ const getPaymentStatusBadge = (status: string) => {
   }
 }
 
+// ---------- MAIN COMPONENT ----------
 export function OrdersManagement() {
   const [selectedOrder, setSelectedOrder] = useState<(typeof orders)[0] | null>(null)
   const [searchTerm, setSearchTerm] = useState("")
@@ -182,9 +195,9 @@ export function OrdersManagement() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between space-y-3 md:space-y-0">
         <div>
-          <h1 className="text-3xl font-bold text-orange-800">Orders Management</h1>
+          <h1 className="text-2xl font-bold text-orange-800">Orders Management</h1>
           <p className="text-amber-600">Manage and track all customer orders</p>
         </div>
         <div className="flex items-center space-x-3">
@@ -196,61 +209,33 @@ export function OrdersManagement() {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        <Card className="border-orange-200">
-          <CardContent className="p-4">
-            <div className="text-2xl font-bold text-orange-800">{orderStats.total}</div>
-            <div className="text-sm text-amber-600">Total Orders</div>
-          </CardContent>
-        </Card>
-        <Card className="border-orange-200">
-          <CardContent className="p-4">
-            <div className="text-2xl font-bold text-amber-700">{orderStats.pending}</div>
-            <div className="text-sm text-amber-600">Pending</div>
-          </CardContent>
-        </Card>
-        <Card className="border-orange-200">
-          <CardContent className="p-4">
-            <div className="text-2xl font-bold text-orange-700">{orderStats.preparing}</div>
-            <div className="text-sm text-amber-600">Preparing</div>
-          </CardContent>
-        </Card>
-        <Card className="border-orange-200">
-          <CardContent className="p-4">
-            <div className="text-2xl font-bold text-blue-700">{orderStats.outForDelivery}</div>
-            <div className="text-sm text-amber-600">Out for Delivery</div>
-          </CardContent>
-        </Card>
-        <Card className="border-orange-200">
-          <CardContent className="p-4">
-            <div className="text-2xl font-bold text-green-700">{orderStats.delivered}</div>
-            <div className="text-sm text-amber-600">Delivered</div>
-          </CardContent>
-        </Card>
-        <Card className="border-orange-200">
-          <CardContent className="p-4">
-            <div className="text-2xl font-bold text-red-700">{orderStats.cancelled}</div>
-            <div className="text-sm text-amber-600">Cancelled</div>
-          </CardContent>
-        </Card>
+      <div className="grid grid-cols-6 gap-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
+        {Object.entries(orderStats).map(([key, value]) => (
+          <Card key={key} className="border-orange-200 bg-white">
+            <CardContent className="p-4">
+              <div className="text-2xl font-bold text-orange-800">{value}</div>
+              <div className="text-sm text-amber-600">{key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
 
       {/* Filters and Search */}
-      <Card className="border-orange-200">
+      <Card className="border-orange-200 bg-white w-full mx-auto">
         <CardHeader>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-4">
-              <div className="relative">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0">
+              <div className="relative w-full sm:w-auto">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-amber-500 h-4 w-4" />
                 <Input
                   placeholder="Search orders, customers, restaurants..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-80 border-orange-200 focus:border-orange-400 focus:ring-orange-400"
+                  className="pl-10 w-full sm:w-80 border-orange-200 focus:border-orange-400 focus:ring-orange-400"
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-40 border-orange-200">
+                <SelectTrigger className="w-full sm:w-40 border-orange-200 flex items-center">
                   <Filter className="w-4 h-4 mr-2" />
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
@@ -266,49 +251,22 @@ export function OrdersManagement() {
             </div>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="w-full overflow-x-auto">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-6 bg-amber-50">
-              <TabsTrigger
-                value="all"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
-              >
-                All
-              </TabsTrigger>
-              <TabsTrigger
-                value="pending"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
-              >
-                Pending
-              </TabsTrigger>
-              <TabsTrigger
-                value="preparing"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
-              >
-                Preparing
-              </TabsTrigger>
-              <TabsTrigger
-                value="out-for-delivery"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
-              >
-                Delivery
-              </TabsTrigger>
-              <TabsTrigger
-                value="delivered"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
-              >
-                Delivered
-              </TabsTrigger>
-              <TabsTrigger
-                value="cancelled"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
-              >
-                Cancelled
-              </TabsTrigger>
+            <TabsList className=" gap-2 hidden overflow-x-auto lg:grid lg:grid-cols-6 w-full bg-amber-50">
+              {tabs.map((tab) => (
+                <TabsTrigger
+                  key={tab.value}
+                  value={tab.value}
+                  className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800 min-w-[120px]"
+                >
+                  {tab.label}
+                </TabsTrigger>
+              ))}
             </TabsList>
 
             <TabsContent value={activeTab} className="mt-6">
-              <Table>
+              <Table className="min-w-[700px] md:min-w-full">
                 <TableHeader>
                   <TableRow className="border-orange-200">
                     <TableHead className="text-orange-800">Order ID</TableHead>

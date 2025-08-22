@@ -121,7 +121,7 @@ export function DashboardOverview() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
-          <Card key={stat.title} className="border-orange-200">
+          <Card key={stat.title} className="border-orange-200 bg-white">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-amber-700">{stat.title}</CardTitle>
               <div className={`p-2 rounded-full ${stat.bgColor}`}>
@@ -140,7 +140,7 @@ export function DashboardOverview() {
       </div>
 
       {/* Recent Orders */}
-      <Card className="border-orange-200">
+      <Card className="border-orange-200 bg-white">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
@@ -157,9 +157,9 @@ export function DashboardOverview() {
             {recentOrders.map((order) => (
               <div
                 key={order.id}
-                className="flex items-center justify-between p-4 bg-amber-50 rounded-lg border border-orange-100"
+                className="flex items-center justify-between p-4 bg-white rounded-lg border shadow border-orange-200"
               >
-                <div className="flex items-center space-x-4">
+                <div className="flex max-sm:flex-col items-center space-x-4">
                   <div>
                     <p className="font-medium text-orange-800">{order.id}</p>
                     <p className="text-sm text-amber-600">{order.customer}</p>
@@ -169,7 +169,7 @@ export function DashboardOverview() {
                     <p className="text-xs text-amber-600">{order.time}</p>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4">
+                <div className="flex max-sm:flex-col items-center space-x-4">
                   <span className="font-bold text-orange-800">{order.amount}</span>
                   {getStatusBadge(order.status)}
                 </div>

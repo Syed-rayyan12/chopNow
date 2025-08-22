@@ -10,17 +10,17 @@ export default function AdminDashboardLayout({ children }: { children: React.Rea
   const [collapsed, setCollapsed] = useState(false)
 
   return (
-    <div className="min-h-screen bg-orange-50 flex">
+    <div className="flex fixed w-full h-screen overflow-hidden">
       {/* Sidebar */}
       <RiderSidebar collapsed={collapsed} setCollapsed={setCollapsed} />
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col overflow-y-auto">
         {/* Header */}
         <RiderHeader collapsed={collapsed} setCollapsed={setCollapsed} />
 
         {/* Dynamic Page Content */}
-        <main className="flex-1 overflow-auto bg-amber-50 py-6 px-6">
+        <main className="flex-1 overflow-y-auto bg-amber-50  py-6 px-6">
           {children}
         </main>
       </div>
