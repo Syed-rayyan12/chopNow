@@ -1,65 +1,79 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Car, PanelBottomCloseIcon, UtensilsCrossed } from "lucide-react"
-import { useState } from "react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Car, UtensilsCrossed, LogIn, UserPlus, ArrowBigDown, ArrowDown, ChevronDown, PanelBottom } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { useState } from "react"
 
 export function RestaurantRiderNavbar() {
-  const [activePanel, setActivePanel] = useState<"rider" | "restaurant" | null>(null)
+  const [open, setOpen] = useState(false)
   const router = useRouter()
 
-  const handlePanelSelect = (panel: "rider" | "restaurant") => {
-    setActivePanel(panel)
-    console.log(`Navigating to ${panel} panel`)
-
-    if (panel === "rider") {
-      router.push("/rider-login")
-    } else if (panel === "restaurant") {
-      router.push("/restaurant-login") // go to login first
-    }
+  const navigateTo = (path: string) => {
+    router.push(path)
   }
 
   return (
     <nav className="bg-orange-100 border-b border-border px-4 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo/Brand */}
-        <PanelBottomCloseIcon />
-        <p className="text-md text-muted-foreground">
+        {/* Logo / Brand */}
+        <div className="flex items-center space-x-2">
+          <PanelBottom className="w-6 h-6 text-orange-600" />
+          <span className="text-md font-normal text-muted-foreground">
           Click below to go to Rider or Restaurant Panel
-        </p>
-
-        {/* Panel Buttons */}
-        <div className="flex items-center space-x-3">
-          {/* Rider Panel */}
-          <Button
-            className={`flex items-center space-x-2 ${
-              activePanel === "rider" ? "bg-blue-500 text-white hover:bg-blue-600" : ""
-            }`}
-            onClick={() => handlePanelSelect("rider")}
-          >
-            <Car className="w-4 h-4" />
-            <span>Rider Panel</span>
-          </Button>
-
-          {/* Restaurant Panel */}
-          <Button
-            className={`flex items-center space-x-2 ${
-              activePanel === "restaurant" ? "bg-green-500 text-white hover:bg-green-600" : ""
-            }`}
-            onClick={() => handlePanelSelect("restaurant")}
-          >
-            <UtensilsCrossed className="w-4 h-4" />
-            <span>Restaurant Panel</span>
-          </Button>
+          </span>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <Button variant="ghost" size="sm">
-            <Car className="w-5 h-5" />
-          </Button>
-        </div>
+        {/* Dropdown Menu */}
+       
+        <DropdownMenu open={open} onOpenChange={setOpen}>
+          <DropdownMenuTrigger asChild>
+            <div className="relative flex items-center">
+              <Button
+                className="bg-orange-500 px-4 hover:bg-orange-500 text-white flex items-center justify-between gap-2"
+                variant="outline"
+              >
+                Select Panel
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    open ? "rotate-180" : ""
+                  }`}
+                />
+              </Button>
+            </div>
+          </DropdownMenuTrigger>
+
+          <DropdownMenuContent className="w-56">
+            {/* Rider Panel */}
+            <DropdownMenuLabel>Rider Panel</DropdownMenuLabel>
+            <DropdownMenuItem onClick={() => navigateTo("/rider-signIn")}>
+              <LogIn className="w-4 h-4 mr-2" />
+              Sign In
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => navigateTo("/rider-signup")}>
+              <UserPlus className="w-4 h-4 mr-2" />
+              Sign Up
+            </DropdownMenuItem>
+
+            {/* Restaurant Panel */}
+            <DropdownMenuLabel>Restaurant Panel</DropdownMenuLabel>
+            <DropdownMenuItem onClick={() => navigateTo("/restaurant-signIn")}>
+              <LogIn className="w-4 h-4 mr-2" />
+              Sign In
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => navigateTo("/restaurant-signup")}>
+              <UserPlus className="w-4 h-4 mr-2" />
+              Sign Up
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </nav>
   )

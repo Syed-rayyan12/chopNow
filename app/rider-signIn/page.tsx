@@ -10,7 +10,7 @@ const Page = () => {
 
   const handleLogin = () => {
     setIsLoggedIn(true)
-    router.push("/rider-main-dashboard") // Navigate to dashboard after login
+    router.push("/rider-dashboard") // Navigate to dashboard after login
   }
 
   if (!isLoggedIn) {

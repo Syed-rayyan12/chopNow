@@ -6,7 +6,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Eye, EyeOff, Phone, Lock } from "lucide-react"
+import { Eye, EyeOff, Phone, Lock, Mail } from "lucide-react"
 
 interface RiderLoginProps {
   onLogin: () => void
@@ -36,12 +36,12 @@ export function RestaurantSignIn({ onLogin }: RiderLoginProps) {
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Phone Number</label>
+              <label className="text-sm font-medium text-gray-700">Email</label>
               <div className="relative">
-                <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                 <Input
-                  type="tel"
-                  placeholder="+44 7123 456789"
+                  type="text"
+                  placeholder=""
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="pl-10"

@@ -5,7 +5,12 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import {
   LayoutDashboard, ShoppingBag, Store, Users, ChefHat, BarChart3, Truck, Settings, LogOut,
-  MenuIcon
+  MenuIcon,
+  CreditCard,
+  HelpCircle,
+  Home,
+  ShoppingCart,
+  Star
 } from "lucide-react"
 
 import {
@@ -13,14 +18,14 @@ import {
 } from "@/components/ui/sheet"
 
 const navigation = [
-  { href: "/admin-dashboard", name: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin-dashboard/orders", name: "Orders", icon: ShoppingBag },
-  { href: "/admin-dashboard/restaurants", name: "Restaurants", icon: Store },
-  { href: "/admin-dashboard/users", name: "Users", icon: Users },
-  { href: "/admin-dashboard/analytics", name: "Analytics", icon: BarChart3 },
-  { href: "/admin-dashboard/delivery-tracking", name: "Delivery Tracking", icon: Truck },
-
+  { href: "/restaurant/overview", name: "Overview", icon: Home },
+  { href: "/restaurant/orders", name: "Orders", icon: ShoppingCart },
+  { href: "/restaurant/menu", name: "Menu Management", icon: ChefHat },
+  { href: "/restaurant/earnings", name: "Earnings & Payments", icon: CreditCard },
+  { href: "/restaurant/reviews", name: "Reviews & Ratings", icon: Star },
+  { href: "/restaurant/support", name: "Support", icon: HelpCircle },
 ]
+
 
 export function Sidebar({ collapsed, setCollapsed }: { collapsed: boolean, setCollapsed: (v: boolean) => void }) {
   const pathname = usePathname()

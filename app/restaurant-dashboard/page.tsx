@@ -1,7 +1,8 @@
-import MainRestaurantDashboard from "@/components/restaurant-panel-components/main-restaurant-dashboard";
+import { OverviewSection } from "@/components/restaurant-panel-components/overview-section";
+
 
 
 
 export default function Home() {
-  return <MainRestaurantDashboard />
+  return <OverviewSection orders={[]} menuItems={[]} />
 }
