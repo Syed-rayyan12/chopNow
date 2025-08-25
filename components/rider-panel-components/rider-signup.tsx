@@ -14,7 +14,8 @@ export default function riderSignup() {
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
-        number: "",
+        email: "",
+        phone: "",
         password: "",
     })
 
@@ -48,14 +49,15 @@ export default function riderSignup() {
                 throw new Error(data.message || "Something went wrong")
             }
 
+            if (data.token) localStorage.setItem("token", data.token)
             // Save token to localStorage/session if needed
-            localStorage.setItem("token", data.token)
+           
 
             // Redirect user based on role (example)
-            if (data.user.role === "rider") {
+            if (data.user.role === "RIDER") {
                 router.push("/rider-dashboard")
             } else {
-                router.push("/dashboard")
+                router.push("/rider-dashboard")
             }
         } catch (err: any) {
             setError(err.message)
@@ -106,15 +108,29 @@ export default function riderSignup() {
                             />
                         </div>
 
+                        <div className="space-y-2 relative">
+                            <label className="text-sm font-medium text-gray-700">Email</label>
+                            <User className="absolute top-6 inset-y-0 left-3 my-auto h-4 w-4 text-gray-400" />
+                            <Input
+                                type="text"
+                                name="email"
+                                placeholder="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                className="pl-10 border border-orange-200"
+                                required
+                            />
+                        </div>
+
                         {/* Phone Number */}
                         <div className="space-y-2 relative">
                             <label className="text-sm font-medium text-gray-700">Phone Number</label>
                             <Phone className="absolute top-6 inset-y-0 left-3 my-auto h-4 w-4 text-gray-400" />
                             <Input
                                 type="tel"
-                                name="number"
+                                name="phone"
                                 placeholder="+44 7123 456789"
-                                value={formData.number}
+                                value={formData.phone}
                                 onChange={handleChange}
                                 className="pl-10 border border-orange-200"
                                 required

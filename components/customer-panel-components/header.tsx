@@ -73,7 +73,7 @@ export function Header() {
             </Button>
 
             {/* User Menu */}
-            {user ? (
+        
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm" className="flex items-center gap-2">
@@ -101,13 +101,7 @@ export function Header() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-            ) : (
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/login">
-                  <User className="w-5 h-5" />
-                </Link>
-              </Button>
-            )}
+           
 
             <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

@@ -1,12 +1,10 @@
-// lib/api/authService.ts
-
 export interface SignupPayload {
   firstName: string;
   lastName: string;
-  email:string;
-  number: string;
+  email: string;
+  phone: string;
   password: string;
-  role?: string; // optional if backend supports multiple roles
+  // role?: string; // ❌ Removed since role is set by backend
 }
 
 export interface LoginPayload {
@@ -17,17 +15,19 @@ export interface LoginPayload {
 export interface AuthResponse {
   token: string;
   user: {
-    id: string;
-    name: string;
+    id: number;
+    firstName: string;
+    lastName: string;
+    phone: string;
     email: string;
-    role: string;
+    role?: string;
   };
 }
 
-// ✅ keep API base in one place
+// ✅ Centralized API base URL
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000/api";
 
-// Helper to make fetch requests (generic for type safety)
+// ✅ Generic request handler
 async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   try {
     const res = await fetch(`${API_BASE}${endpoint}`, {
@@ -45,22 +45,37 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
         const errorData = await res.json();
         errorMessage = errorData.message || errorMessage;
       } catch (_) {
-        // ignore parse errors
+        // ignore JSON parse errors
       }
       throw new Error(errorMessage);
     }
 
-    // Success (2xx)
+    // Success
     return (await res.json()) as T;
   } catch (err: any) {
-    // Handle network failures or unexpected issues
     throw new Error(`API request failed: ${err.message}`);
   }
 }
 
-// ✅ Register
+// ✅ User Signup
 export async function registerUser(userData: SignupPayload): Promise<AuthResponse> {
   return request<AuthResponse>("/auth/signup", {
+    method: "POST",
+    body: JSON.stringify(userData),
+  });
+}
+
+// ✅ Rider Signup
+export async function registerRider(userData: SignupPayload): Promise<AuthResponse> {
+  return request<AuthResponse>("/auth/signup-rider", {
+    method: "POST",
+    body: JSON.stringify(userData),
+  });
+}
+
+// ✅ Restaurant Signup
+export async function registerRestaurant(userData: SignupPayload): Promise<AuthResponse> {
+  return request<AuthResponse>("/auth/signup-restaurant", {
     method: "POST",
     body: JSON.stringify(userData),
   });
