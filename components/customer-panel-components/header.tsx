@@ -78,7 +78,7 @@ export function Header() {
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm" className="flex items-center gap-2">
                     <User className="w-5 h-5" />
-                    <span className="hidden sm:inline">{user.name.split(" ")[0]}</span>
+                    <span className="hidden sm:inline"></span>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
