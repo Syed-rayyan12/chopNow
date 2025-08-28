@@ -80,8 +80,6 @@ const onlineMs = sessions.reduce((sum: number, s: typeof sessions[number]): numb
   return sum + diff;
 }, 0);
 
-
-
   res.json({
     todayEarnings: earningsAgg._sum.riderPayout ?? 0,
     ordersCompletedToday: completedCount,
@@ -142,7 +140,7 @@ router.get("/orders/completed", async (req: AuthRequest, res) => {
       riderId,
       status: "DELIVERED",
       deliveredAt: { gte: from, lte: to },
-    },
+     },
     orderBy: { deliveredAt: "desc" },
     include: {
       restaurant: true,
@@ -185,7 +183,7 @@ router.get("/earnings/summary", async (req: AuthRequest, res) => {
     where: { riderId, startedAt: { lte: weekEnd }, OR: [{ endedAt: { gte: weekStart } }, { endedAt: null }] },
   });
   const now = new Date();
- const ms = sessions.reduce((sum: number, s: typeof sessions[number]): number => {
+  const ms = sessions.reduce((sum: number, s: typeof sessions[number]): number => {
   const start = s.startedAt < weekStart ? weekStart : s.startedAt;
   const end = s.endedAt ?? now;
   const clampedEnd = end > weekEnd ? weekEnd : end;
