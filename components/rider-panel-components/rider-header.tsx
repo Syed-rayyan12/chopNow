@@ -43,7 +43,7 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
 
   const handleLogout = () => {
     localStorage.removeItem("token")
-    router.push("/rider-signup")
+    router.push("/rider-signIn")
   }
 
   return (

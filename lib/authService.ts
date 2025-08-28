@@ -4,7 +4,6 @@ export interface SignupPayload {
   email: string;
   phone: string;
   password: string;
-  // role?: string; // ❌ Removed since role is set by backend
 }
 
 export interface LoginPayload {
@@ -28,7 +27,7 @@ export interface AuthResponse {
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000/api";
 
 // ✅ Generic request handler
-async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+export async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   try {
     const res = await fetch(`${API_BASE}${endpoint}`, {
       headers: {
@@ -38,19 +37,15 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
       ...options,
     });
 
-    // Handle non-2xx responses
     if (!res.ok) {
       let errorMessage = `Request failed with status ${res.status}`;
       try {
         const errorData = await res.json();
         errorMessage = errorData.message || errorMessage;
-      } catch (_) {
-        // ignore JSON parse errors
-      }
+      } catch (_) {}
       throw new Error(errorMessage);
     }
 
-    // Success
     return (await res.json()) as T;
   } catch (err: any) {
     throw new Error(`API request failed: ${err.message}`);
@@ -67,7 +62,7 @@ export async function registerUser(userData: SignupPayload): Promise<AuthRespons
 
 // ✅ Rider Signup
 export async function registerRider(userData: SignupPayload): Promise<AuthResponse> {
-  return request<AuthResponse>("/auth/signup-rider", {
+  return request<AuthResponse>("/rider/signup", {
     method: "POST",
     body: JSON.stringify(userData),
   });
@@ -75,15 +70,31 @@ export async function registerRider(userData: SignupPayload): Promise<AuthRespon
 
 // ✅ Restaurant Signup
 export async function registerRestaurant(userData: SignupPayload): Promise<AuthResponse> {
-  return request<AuthResponse>("/auth/signup-restaurant", {
+  return request<AuthResponse>("/restaurant/signup", {
     method: "POST",
     body: JSON.stringify(userData),
   });
 }
 
-// ✅ Login
+// ✅ Admin Signup
+export async function registerAdmin(userData: SignupPayload): Promise<AuthResponse> {
+  return request<AuthResponse>("/admin/signup", {
+    method: "POST",
+    body: JSON.stringify(userData),
+  });
+}
+
+// ✅ Login (for user by default)
 export async function loginUser(credentials: LoginPayload): Promise<AuthResponse> {
   return request<AuthResponse>("/auth/login", {
+    method: "POST",
+    body: JSON.stringify(credentials),
+  });
+}
+
+// ✅ Rider Login
+export async function loginRider(credentials: LoginPayload): Promise<AuthResponse> {
+  return request<AuthResponse>("/rider/login", {
     method: "POST",
     body: JSON.stringify(credentials),
   });

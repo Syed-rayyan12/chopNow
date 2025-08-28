@@ -5,168 +5,170 @@ import { useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Phone, EyeOff, Eye, User } from "lucide-react"
-import { Button } from "react-day-picker"
+import { Button } from "@/components/ui/button"
+import Toaster from "@/components/ui/toaster"
+import { useToast } from "@/hooks/use-toast"
 
-export default function riderSignup() {
-    const router = useRouter()
-    const [showPassword, setShowPassword] = useState(false)
+export default function RiderSignup() {
+  const router = useRouter()
+  const { toast } = useToast() // ✅ Correct way to trigger a toast
 
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        password: "",
+  const [showPassword, setShowPassword] = useState(false)
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    password: "",
+  })
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     })
+  }
 
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState<string | null>(null)
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        })
+    try {
+      const res = await fetch("http://localhost:4000/api/rider/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) throw new Error(data.message || "Something went wrong")
+      if (data.token) localStorage.setItem("token", data.token)
+
+      // ✅ Trigger toast
+      toast({
+        title: "User Created Successfully!",
+        duration: 3000,
+      })
+
+      // Redirect after toast duration
+      setTimeout(() => {
+        router.push("/rider-signIn")
+      }, 3000)
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
     }
+  }
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        setLoading(true)
-        setError(null)
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-orange-100 relative">
+      {/* ✅ Render Toaster */}
+      <Toaster />
 
-        try {
-            const res = await fetch("http://localhost:4000/api/auth/signup", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            })
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center space-y-4">
+          <div className="mx-auto w-16 h-16 bg-[#dd6636] rounded-full flex items-center justify-center">
+            <span className="text-white font-bold text-xl">CN</span>
+          </div>
+          <CardTitle className="text-2xl font-bold text-gray-800">ChopNow Rider</CardTitle>
+          <p className="text-gray-600">Sign up to start delivering</p>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* First Name */}
+            <div className="space-y-2 relative">
+              <label className="text-sm font-medium text-gray-700">First Name</label>
+              <User className="absolute top-6 inset-y-0 left-3 my-auto h-4 w-4 text-gray-400" />
+              <Input
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                value={formData.firstName}
+                onChange={handleChange}
+                className="pl-10 border border-orange-200"
+                required
+              />
+            </div>
 
-            const data = await res.json()
+            {/* Last Name */}
+            <div className="space-y-2 relative">
+              <label className="text-sm font-medium text-gray-700">Last Name</label>
+              <User className="absolute top-6 inset-y-0 left-3 my-auto h-4 w-4 text-gray-400" />
+              <Input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                value={formData.lastName}
+                onChange={handleChange}
+                className="pl-10 border border-orange-200"
+                required
+              />
+            </div>
 
-            if (!res.ok) {
-                throw new Error(data.message || "Something went wrong")
-            }
+            {/* Email */}
+            <div className="space-y-2 relative">
+              <label className="text-sm font-medium text-gray-700">Email</label>
+              <User className="absolute top-6 inset-y-0 left-3 my-auto h-4 w-4 text-gray-400" />
+              <Input
+                type="text"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                className="pl-10 border border-orange-200"
+                required
+              />
+            </div>
 
-            if (data.token) localStorage.setItem("token", data.token)
-            // Save token to localStorage/session if needed
-           
+            {/* Phone Number */}
+            <div className="space-y-2 relative">
+              <label className="text-sm font-medium text-gray-700">Phone Number</label>
+              <Phone className="absolute top-6 inset-y-0 left-3 my-auto h-4 w-4 text-gray-400" />
+              <Input
+                type="tel"
+                name="phone"
+                placeholder="+44 7123 456789"
+                value={formData.phone}
+                onChange={handleChange}
+                className="pl-10 border border-orange-200"
+                required
+              />
+            </div>
 
-            // Redirect user based on role (example)
-            if (data.user.role === "RIDER") {
-                router.push("/rider-dashboard")
-            } else {
-                router.push("/rider-dashboard")
-            }
-        } catch (err: any) {
-            setError(err.message)
-        } finally {
-            setLoading(false)
-        }
-    }
+            {/* Password */}
+            <div className="space-y-2 relative">
+              <label className="text-sm font-medium text-gray-700">Password</label>
+              <Input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Enter your password"
+                value={formData.password}
+                onChange={handleChange}
+                className="pr-10 border border-orange-200"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute top-6 inset-y-0 right-3 my-auto text-gray-400 hover:text-gray-600"
+              >
+                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+              </button>
+            </div>
 
-    return (
-        <div className="flex justify-center items-center min-h-screen bg-orange-100">
-            <Card className="w-full max-w-md">
-                <CardHeader className="text-center space-y-4">
-                    <div className="mx-auto w-16 h-16 bg-[#dd6636] rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-xl">CN</span>
-                    </div>
-                    <CardTitle className="text-2xl font-bold text-gray-800">ChopNow Rider</CardTitle>
-                    <p className="text-gray-600">Sign up to start delivering</p>
-                </CardHeader>
-                <CardContent>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        {/* First Name */}
-                        <div className="space-y-2 relative">
-                            <label className="text-sm font-medium text-gray-700">First Name</label>
-                            <User className="absolute top-6 inset-y-0 left-3 my-auto h-4 w-4 text-gray-400" />
-                            <Input
-                                type="text"
-                                name="firstName"
-                                placeholder="First Name"
-                                value={formData.firstName}
-                                onChange={handleChange}
-                                className="pl-10 border border-orange-200"
-                                required
-                            />
-                        </div>
+            <Button type="submit" className="w-full bg-[#dd6636] text-white rounded-lg px-2 py-2">
+              {loading ? "Signing up..." : "Sign Up"}
+            </Button>
 
-                        {/* Last Name */}
-                        <div className="space-y-2 relative">
-                            <label className="text-sm font-medium text-gray-700">Last Name</label>
-                            <User className="absolute top-6 inset-y-0 left-3 my-auto h-4 w-4 text-gray-400" />
-                            <Input
-                                type="text"
-                                name="lastName"
-                                placeholder="Last Name"
-                                value={formData.lastName}
-                                onChange={handleChange}
-                                className="pl-10 border border-orange-200"
-                                required
-                            />
-                        </div>
-
-                        <div className="space-y-2 relative">
-                            <label className="text-sm font-medium text-gray-700">Email</label>
-                            <User className="absolute top-6 inset-y-0 left-3 my-auto h-4 w-4 text-gray-400" />
-                            <Input
-                                type="text"
-                                name="email"
-                                placeholder="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="pl-10 border border-orange-200"
-                                required
-                            />
-                        </div>
-
-                        {/* Phone Number */}
-                        <div className="space-y-2 relative">
-                            <label className="text-sm font-medium text-gray-700">Phone Number</label>
-                            <Phone className="absolute top-6 inset-y-0 left-3 my-auto h-4 w-4 text-gray-400" />
-                            <Input
-                                type="tel"
-                                name="phone"
-                                placeholder="+44 7123 456789"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                className="pl-10 border border-orange-200"
-                                required
-                            />
-                        </div>
-
-                        {/* Password */}
-                        <div className="space-y-2 relative">
-                            <label className="text-sm font-medium text-gray-700">Password</label>
-                            <Input
-                                type={showPassword ? "text" : "password"}
-                                name="password"
-                                placeholder="Enter your password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                className=" pr-10 border border-orange-200"
-                                required
-                            />
-                            <button
-                                type="button"
-                                onClick={() => setShowPassword(!showPassword)}
-                                className="absolute top-6 inset-y-0 right-3 my-auto text-gray-400 hover:text-gray-600"
-                            >
-                                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                            </button>
-                        </div>
-
-                        <Button type="submit" className="w-full bg-[#dd6636] text-white rounded-lg px-2 py-2">
-                            {loading ? "Signing up..." : "Sign Up"}
-                        </Button>
-
-                        {error && <p className="text-red-500 mt-3 text-center">{error}</p>}
-                    </form>
-
-                </CardContent>
-            </Card>
-        </div>
-    )
+            {error && <p className="text-red-500 mt-3 text-center">{error}</p>}
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  )
 }

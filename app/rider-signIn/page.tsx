@@ -8,16 +8,7 @@ const Page = () => {
   const router = useRouter()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  const handleLogin = () => {
-    setIsLoggedIn(true)
-    router.push("/rider-dashboard") // Navigate to dashboard after login
-  }
-
-  if (!isLoggedIn) {
-    return <RiderLogin onLogin={handleLogin} />
-  }
-
-  return null
+  return <RiderLogin />
 }
 
-export default Page;
+export default Page

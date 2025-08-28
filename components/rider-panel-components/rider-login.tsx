@@ -1,30 +1,67 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Eye, EyeOff, Phone, Lock, Mail } from "lucide-react"
+import { Eye, EyeOff, Lock, Mail } from "lucide-react"
+import Toaster from "@/components/ui/toaster"
+import { useToast } from "@/hooks/use-toast"
 
-interface RiderLoginProps {
-  onLogin: () => void
-}
+export function RiderLogin() {
+  const router = useRouter()
+  const { toast } = useToast() // ✅ useToast for showing toasts
 
-export function RiderLogin({ onLogin }: RiderLoginProps) {
   const [showPassword, setShowPassword] = useState(false)
-  const [phone, setPhone] = useState("")
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Simulate login
-    onLogin()
+    setLoading(true)
+
+    try {
+      const res = await fetch("http://localhost:4000/api/rider/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) throw new Error(data.message || "Login failed")
+
+      if (data.token) {
+        localStorage.setItem("token", data.token)
+
+        toast({
+          title: "Login Successful!",
+          duration: 3000,
+        })
+
+        setTimeout(() => {
+          router.push("/rider-dashboard") // change to your dashboard route
+        }, 3000)
+      }
+    } catch (err: any) {
+      toast({
+        title: "Login Failed",
+        description: err.message,
+        variant: "destructive",
+        duration: 4000,
+      })
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center p-4 relative">
+      {/* ✅ Toaster */}
+      <Toaster />
+
       <Card className="w-full max-w-md">
         <CardHeader className="text-center space-y-4">
           <div className="mx-auto w-16 h-16 bg-[#dd6636] rounded-full flex items-center justify-center">
@@ -35,6 +72,7 @@ export function RiderLogin({ onLogin }: RiderLoginProps) {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
+            {/* Email */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">Email</label>
               <div className="relative">
@@ -42,12 +80,15 @@ export function RiderLogin({ onLogin }: RiderLoginProps) {
                 <Input
                   type="text"
                   placeholder="Enter Your Email"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="pl-10"
+                  required
                 />
               </div>
             </div>
+
+            {/* Password */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">Password</label>
               <div className="relative">
@@ -58,6 +99,7 @@ export function RiderLogin({ onLogin }: RiderLoginProps) {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="pl-10 pr-10"
+                  required
                 />
                 <button
                   type="button"
@@ -68,12 +110,11 @@ export function RiderLogin({ onLogin }: RiderLoginProps) {
                 </button>
               </div>
             </div>
-            <Button
-              type="submit"
-              className="w-full bg-[#dd6636]"
-            >
-              Sign In
+
+            <Button type="submit" className="w-full bg-[#dd6636]">
+              {loading ? "Signing in..." : "Sign In"}
             </Button>
+
             <div className="text-center">
               <a href="#" className="text-sm text-orange-600 hover:text-orange-700">
                 Forgot Password?
