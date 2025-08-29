@@ -314,4 +314,96 @@ router.post("/status/offline", async (req: AuthRequest, res) => {
   res.json(closed);
 });
 
+
+
+/**
+ * 9) Combined Dashboard API
+ * GET /rider/dashboard
+ * Returns: { summary, activeOrders, recentOrders }
+ */
+router.get("/dashboard", async (req: AuthRequest, res) => {
+  try {
+    const riderId = req.user!.id as number;
+
+    // 1) Summary
+    const todayStart = startOfToday();
+    const todayEnd = endOfToday();
+
+    const earningsAgg = await prisma.order.aggregate({
+      _sum: { riderPayout: true },
+      where: {
+        riderId,
+        status: "DELIVERED",
+        deliveredAt: { gte: todayStart, lte: todayEnd },
+      },
+    });
+
+    const completedCount = await prisma.order.count({
+      where: {
+        riderId,
+        status: "DELIVERED",
+        deliveredAt: { gte: todayStart, lte: todayEnd },
+      },
+    });
+
+    const ratingAgg = await prisma.rating.aggregate({
+      _avg: { score: true },
+      where: { riderId },
+    });
+
+    const sessions = await prisma.riderOnlineSession.findMany({
+      where: {
+        riderId,
+        startedAt: { lte: todayEnd },
+        OR: [{ endedAt: { gte: todayStart } }, { endedAt: null }],
+      },
+    });
+
+    const now = new Date();
+    const onlineMs = sessions.reduce((sum: number, s: typeof sessions[number]): number => {
+      const start = s.startedAt < todayStart ? todayStart : s.startedAt;
+      const end = s.endedAt ?? now;
+      const clampedEnd = end > todayEnd ? todayEnd : end;
+      const diff = Math.max(0, clampedEnd.getTime() - start.getTime());
+      return sum + diff;
+    }, 0);
+
+    const summary = {
+      todayEarnings: earningsAgg._sum.riderPayout ?? 0,
+      ordersCompletedToday: completedCount,
+      avgRating: ratingAgg._avg.score ?? 0,
+      onlineTimeMinutesToday: Math.round(onlineMs / 60000),
+    };
+
+    // 2) Active Orders
+    const activeOrders = await prisma.order.findMany({
+      where: { riderId, status: { in: ["ASSIGNED", "PICKED_UP"] } },
+      orderBy: { assignedAt: "desc" },
+      include: {
+        restaurant: true,
+        items: true,
+      },
+    });
+
+    // 3) Recent Orders
+    const recentOrders = await prisma.order.findMany({
+      where: { riderId, status: "DELIVERED" },
+      orderBy: { deliveredAt: "desc" },
+      take: 10,
+      include: {
+        restaurant: true,
+        items: true,
+      },
+    });
+
+    res.json({ summary, activeOrders, recentOrders });
+  } catch (error) {
+    console.error("❌ Error in /rider/dashboard:", error);
+    res.status(500).json({ error: "Failed to fetch dashboard data" });
+  }
+});
+
+
+
+
 export default router;
