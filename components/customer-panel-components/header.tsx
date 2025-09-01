@@ -13,16 +13,37 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useCart } from "@/contexts/cart-context"
 import { useAuth } from "@/contexts/auth-context"
-import { MapPin, Menu, X, ShoppingCart, User, LogOut, Settings } from "lucide-react"
+import { MapPin, Menu, X, ShoppingCart, User, LogOut, Settings, LogIn, UserPlus } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export function Header() {
+  const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { getCartCount } = useCart()
   const { user, logout } = useAuth()
   const cartCount = getCartCount()
 
+  const handleLogin = () => {
+
+    router.push("/user-signIn")
+
+  }
+
+  const handleSignup = () => {
+
+    router.push("/user-signup")
+
+  }
+
   const handleLogout = () => {
-    logout()
+    // ✅ Remove token
+    localStorage.removeItem("token")
+
+    // ✅ Optional: Clear other stored data
+    localStorage.removeItem("user")
+
+    // ✅ Redirect to login page
+    router.push("/login")
   }
 
   return (
@@ -72,36 +93,50 @@ export function Header() {
               </Link>
             </Button>
 
-            {/* User Menu */}
-        
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="flex items-center gap-2">
-                    <User className="w-5 h-5" />
-                    <span className="hidden sm:inline"></span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuItem asChild>
-                    <Link href="/profile" className="flex items-center">
-                      <Settings className="w-4 h-4 mr-2" />
-                      Profile & Settings
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link href="/profile?tab=orders" className="flex items-center">
-                      <ShoppingCart className="w-4 h-4 mr-2" />
-                      Order History
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout} className="text-destructive">
-                    <LogOut className="w-4 h-4 mr-2" />
-                    Sign Out
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-           
+
+            <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="sm" className="flex items-center gap-2">
+            <User className="w-5 h-5" />
+            <span className="hidden sm:inline"></span>
+          </Button>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent align="end" className="w-56">
+          {user ? (
+            // ✅ When user is logged in
+            <>
+              <DropdownMenuItem asChild>
+                <Link href="/profile" className="flex items-center">
+                  <Settings className="w-4 h-4 mr-2" />
+                  Profile
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuItem onClick={handleLogout} className="text-destructive">
+                <LogOut className="w-4 h-4 mr-2" />
+                Logout
+              </DropdownMenuItem>
+            </>
+          ) : (
+            // ✅ When user is logged out
+            <>
+              <DropdownMenuItem onClick={handleLogin}>
+                <LogIn className="w-4 h-4 mr-2" />
+                Sign In
+              </DropdownMenuItem>
+
+              <DropdownMenuItem onClick={handleSignup}>
+                <UserPlus className="w-4 h-4 mr-2" />
+                Sign Up
+              </DropdownMenuItem>
+            </>
+          )}
+        </DropdownMenuContent>
+      </DropdownMenu>
+
 
             <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -126,23 +161,14 @@ export function Header() {
               <Link href="/offers" className="text-foreground hover:text-primary transition-colors">
                 Offers
               </Link>
-              {user && (
-                <>
-                  <Link href="/profile" className="text-foreground hover:text-primary transition-colors">
-                    Profile
-                  </Link>
-                  <button
-                    onClick={handleLogout}
-                    className="text-left text-destructive hover:text-destructive/80 transition-colors"
-                  >
-                    Sign Out
-                  </button>
-                </>
-              )}
+
             </div>
           </div>
         )}
       </div>
+
+     
+
     </header>
   )
 }

@@ -7,4 +7,4 @@ const Page = () => {
   return <DashboardHome />
 }
 
-export default Page
+export default Page                     

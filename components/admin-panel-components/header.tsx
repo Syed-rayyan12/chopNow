@@ -24,6 +24,18 @@ import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 
+interface Notification {
+  id: string
+  message: string
+  time: string
+  status: "read" | "unread"
+}
+type DashboardHeaderProps = {
+  collapsed: boolean
+  setCollapsed: (collapsed: boolean) => void
+  notifications: Notification[]
+}
+
 const MenuNav = [
   { href: "/admin-dashboard", name: "Dashboard", icon: LayoutDashboard },
   { href: "/admin-dashboard/orders", name: "Orders", icon: ShoppingBag },
@@ -33,10 +45,10 @@ const MenuNav = [
   { href: "/admin-dashboard/delivery-tracking", name: "Delivery Tracking", icon: Truck },
 ]
 
-export function Header({ collapsed, setCollapsed }: any) {
+export function Header({ collapsed, setCollapsed, notifications }: DashboardHeaderProps) {
   const pathname = usePathname()
-
   const [mobileOpen, setMobileOpen] = useState(false)
+  const unreadCount = notifications.filter((n) => n.status === "unread").length
 
   return (
     <header className="bg-white border-b border-orange-200 px-6 py-4 h-16">
@@ -120,13 +132,36 @@ export function Header({ collapsed, setCollapsed }: any) {
             />
           </div>
 
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-amber-700 hover:text-orange-800 hover:bg-orange-100"
-          >
-            <Bell className="h-5 w-5" />
-          </Button>
+        
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="relative">
+                <Bell className="h-5 w-5" />
+                {unreadCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {unreadCount}
+                  </span>
+                )}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-80">
+              {notifications.length === 0 ? (
+                <DropdownMenuItem className="p-3 text-sm text-gray-500">
+                  No new notifications
+                </DropdownMenuItem>
+              ) : (
+                notifications.slice(0, 3).map((notification) => (
+                  <DropdownMenuItem key={notification.id} className="p-3">
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium">{notification.message}</p>
+                      <p className="text-xs text-gray-500">{notification.time}</p>
+                    </div>
+                  </DropdownMenuItem>
+                ))
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-
 import adminRoutes from "./routes/admin";
 import userRoutes from "./routes/user";
 import restaurantRoutes from "./routes/restaurant";

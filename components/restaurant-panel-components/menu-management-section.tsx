@@ -1,7 +1,5 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -18,22 +16,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Search, Plus, Edit, Trash2 } from "lucide-react"
+import { MenuItem } from "@/types/menu"
+import { EditModal } from "./editModal"
+import { DeleteModal } from "./deleteModal"
 
-interface MenuItem {
-  id: string
-  name: string
-  category: string
-  price: number
-  available: boolean
-  image: string
-}
 
-interface MenuManagementSectionProps {
-  menuItems: MenuItem[]
-  setMenuItems: React.Dispatch<React.SetStateAction<MenuItem[]>>
-}
+// ✅ Import your modal
 
-export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagementSectionProps) {
+
+export function MenuManagementSection() {
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([])
   const [menuSearchQuery, setMenuSearchQuery] = useState("")
   const [showAddMenuItem, setShowAddMenuItem] = useState(false)
   const [newMenuItem, setNewMenuItem] = useState({
@@ -46,9 +38,17 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
   })
   const [selectedImage, setSelectedImage] = useState<File | null>(null)
   const [imagePreview, setImagePreview] = useState<string>("")
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false)
+  // ✅ For editing
+  const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null)
+  const [isEditOpen, setIsEditOpen] = useState(false)
 
   const toggleMenuItemAvailability = (id: string) => {
-    setMenuItems((prev) => prev.map((item) => (item.id === id ? { ...item, available: !item.available } : item)))
+    setMenuItems((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, available: !item.available } : item
+      )
+    )
   }
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,6 +85,7 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
         price: Number.parseFloat(newMenuItem.price),
         available: newMenuItem.available,
         image: imagePreview || "/vibrant-food-dish.png",
+        description: newMenuItem.description,
       }
       setMenuItems((prev) => [...prev, newItem])
       resetForm()
@@ -92,14 +93,32 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
     }
   }
 
+  const handleEdit = (item: MenuItem) => {
+    setSelectedItem(item)
+    setIsEditOpen(true)
+  }
+
+  const handleDelete = (id: string) => {
+    setMenuItems(prev => prev.filter(item => item.id !== id))
+    setIsDeleteOpen(false)
+    setSelectedItem(null)
+  }
+
+  const handleSave = (updatedItem: MenuItem) => {
+    setMenuItems((prev) =>
+      prev.map((item) => (item.id === updatedItem.id ? updatedItem : item))
+    )
+  }
+
   const filteredMenuItems = menuItems.filter(
     (item) =>
       item.name.toLowerCase().includes(menuSearchQuery.toLowerCase()) ||
-      item.category.toLowerCase().includes(menuSearchQuery.toLowerCase()),
+      item.category.toLowerCase().includes(menuSearchQuery.toLowerCase())
   )
 
   return (
     <div className="space-y-6">
+      {/* Header */}
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-orange-800">Menu Management</h2>
         <Dialog
@@ -118,7 +137,9 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
           <DialogContent className="max-w-md">
             <DialogHeader>
               <DialogTitle>Add New Menu Item</DialogTitle>
-              <DialogDescription>Fill in the details for your new menu item.</DialogDescription>
+              <DialogDescription>
+                Fill in the details for your new menu item.
+              </DialogDescription>
             </DialogHeader>
             <div className="space-y-4">
               <div>
@@ -127,7 +148,9 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
                   id="name"
                   placeholder="Enter item name"
                   value={newMenuItem.name}
-                  onChange={(e) => setNewMenuItem((prev) => ({ ...prev, name: e.target.value }))}
+                  onChange={(e) =>
+                    setNewMenuItem((prev) => ({ ...prev, name: e.target.value }))
+                  }
                 />
               </div>
               <div>
@@ -136,7 +159,12 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
                   id="description"
                   placeholder="Enter item description"
                   value={newMenuItem.description}
-                  onChange={(e) => setNewMenuItem((prev) => ({ ...prev, description: e.target.value }))}
+                  onChange={(e) =>
+                    setNewMenuItem((prev) => ({
+                      ...prev,
+                      description: e.target.value,
+                    }))
+                  }
                 />
               </div>
               <div>
@@ -145,7 +173,12 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
                   id="category"
                   placeholder="Enter category (e.g., Pizza, Burgers, Salads)"
                   value={newMenuItem.category}
-                  onChange={(e) => setNewMenuItem((prev) => ({ ...prev, category: e.target.value }))}
+                  onChange={(e) =>
+                    setNewMenuItem((prev) => ({
+                      ...prev,
+                      category: e.target.value,
+                    }))
+                  }
                 />
               </div>
               <div>
@@ -155,7 +188,12 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
                   type="number"
                   placeholder="0.00"
                   value={newMenuItem.price}
-                  onChange={(e) => setNewMenuItem((prev) => ({ ...prev, price: e.target.value }))}
+                  onChange={(e) =>
+                    setNewMenuItem((prev) => ({
+                      ...prev,
+                      price: e.target.value,
+                    }))
+                  }
                 />
               </div>
               <div>
@@ -183,11 +221,16 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
                 <Switch
                   id="available"
                   checked={newMenuItem.available}
-                  onCheckedChange={(checked) => setNewMenuItem((prev) => ({ ...prev, available: checked }))}
+                  onCheckedChange={(checked) =>
+                    setNewMenuItem((prev) => ({ ...prev, available: checked }))
+                  }
                 />
                 <Label htmlFor="available">Available</Label>
               </div>
-              <Button className="w-full bg-orange-600 hover:bg-orange-700" onClick={handleAddMenuItem}>
+              <Button
+                className="w-full bg-orange-600 hover:bg-orange-700"
+                onClick={handleAddMenuItem}
+              >
                 Add Item
               </Button>
             </div>
@@ -195,6 +238,7 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
         </Dialog>
       </div>
 
+      {/* Search */}
       <div className="flex items-center space-x-4">
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
@@ -217,18 +261,31 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
         )}
       </div>
 
+      {/* Table */}
       <Card className="border-orange-200 bg-white">
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="border-b border-orange-200">
                 <tr>
-                  <th className="text-left p-4 font-medium text-orange-800">Photo</th>
-                  <th className="text-left p-4 font-medium text-orange-800">Name</th>
-                  <th className="text-left p-4 font-medium text-orange-800">Category</th>
-                  <th className="text-left p-4 font-medium text-orange-800">Price</th>
-                  <th className="text-left p-4 font-medium text-orange-800">Available</th>
-                  <th className="text-left p-4 font-medium text-orange-800">Actions</th>
+                  <th className="text-left p-4 font-medium text-orange-800">
+                    Photo
+                  </th>
+                  <th className="text-left p-4 font-medium text-orange-800">
+                    Name
+                  </th>
+                  <th className="text-left p-4 font-medium text-orange-800">
+                    Category
+                  </th>
+                  <th className="text-left p-4 font-medium text-orange-800">
+                    Price
+                  </th>
+                  <th className="text-left p-4 font-medium text-orange-800">
+                    Available
+                  </th>
+                  <th className="text-left p-4 font-medium text-orange-800">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -242,18 +299,38 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
                           className="w-12 h-12 rounded-lg object-cover"
                         />
                       </td>
-                      <td className="p-4 font-medium text-orange-800">{item.name}</td>
+                      <td className="p-4 font-medium text-orange-800">
+                        {item.name}
+                      </td>
                       <td className="p-4 text-amber-600">{item.category}</td>
-                      <td className="p-4 font-medium text-orange-800">${item.price}</td>
+                      <td className="p-4 font-medium text-orange-800">
+                        ${item.price}
+                      </td>
                       <td className="p-4">
-                        <Switch checked={item.available} onCheckedChange={() => toggleMenuItemAvailability(item.id)} />
+                        <Switch
+                          checked={item.available}
+                          onCheckedChange={() =>
+                            toggleMenuItemAvailability(item.id)
+                          }
+                        />
                       </td>
                       <td className="p-4">
                         <div className="flex space-x-2">
-                          <Button size="sm" variant="outline">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleEdit(item)}
+                          >
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button size="sm" variant="destructive">
+                          <Button
+                            size="sm"
+                            variant="destructive"
+                            onClick={() => {
+                              setSelectedItem(item)     // store the item to delete
+                              setIsDeleteOpen(true)  // open the delete modal
+                            }}
+                          >
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
@@ -262,8 +339,13 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={6} className="p-8 text-center text-gray-500">
-                      {menuSearchQuery ? "No menu items found matching your search." : "No menu items available."}
+                    <td
+                      colSpan={6}
+                      className="p-8 text-center text-gray-500"
+                    >
+                      {menuSearchQuery
+                        ? "No menu items found matching your search."
+                        : "No menu items available."}
                     </td>
                   </tr>
                 )}
@@ -272,6 +354,25 @@ export function MenuManagementSection({ menuItems, setMenuItems }: MenuManagemen
           </div>
         </CardContent>
       </Card>
+
+      {/* ✅ Edit Modal */}
+      {selectedItem && (
+        <EditModal
+          open={isEditOpen}
+          onClose={() => setIsEditOpen(false)}
+          item={selectedItem}
+          onSave={handleSave}
+        />
+      )}
+
+      {selectedItem && (
+        <DeleteModal
+          open={isDeleteOpen}
+          onClose={() => setIsDeleteOpen(false)}
+          item={selectedItem}
+          onDelete={handleDelete}
+        />
+      )}
     </div>
   )
 }

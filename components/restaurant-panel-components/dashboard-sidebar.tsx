@@ -1,74 +1,98 @@
 "use client"
 
-import { usePathname, useRouter } from "next/navigation"
-import type React from "react"
-import { ChefHat, Home, ShoppingCart, CreditCard, Star, HelpCircle } from "lucide-react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { cn } from "@/lib/utils"
+import {
+  ChefHat,
+  Home,
+  ShoppingCart,
+  CreditCard,
+  Star,
+  HelpCircle,
+} from "lucide-react"
 
-interface SidebarItem {
-  id: string
-  label: string
-  icon: React.ComponentType<{ className?: string }>
-  path: string
-}
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle
+} from "@/components/ui/sheet"
 
-interface DashboardSidebarProps {
-  sidebarCollapsed: boolean
-}
+const navigation = [
+  { href: "/restaurant-dashboard", name: "Overview", icon: Home },
+  { href: "/restaurant-dashboard/orders", name: "Orders", icon: ShoppingCart },
+  { href: "/restaurant-dashboard/menu-management", name: "Menu Management", icon: ChefHat },
+  { href: "/restaurant-dashboard/earning-payment", name: "Earnings & Payments", icon: CreditCard },
+  { href: "/restaurant-dashboard/review-rating", name: "Reviews & Ratings", icon: Star },
+  { href: "/restaurant-dashboard/support", name: "Support", icon: HelpCircle },
+]
 
-export function DashboardSidebar({ sidebarCollapsed }: DashboardSidebarProps) {
+ export function DashboardSidebar({ collapsed, setCollapsed }: { collapsed: boolean, setCollapsed: (v: boolean) => void }) {
   const pathname = usePathname()
-  const router = useRouter()
 
-  const sidebarItems: SidebarItem[] = [
-    { id: "overview", label: "Overview", icon: Home, path: "/restaurant/overview" },
-    { id: "orders", label: "Orders", icon: ShoppingCart, path: "/restaurant/orders" },
-    { id: "menu", label: "Menu Management", icon: ChefHat, path: "/restaurant/menu" },
-    { id: "earnings", label: "Earnings & Payments", icon: CreditCard, path: "/restaurant/earnings" },
-    { id: "reviews", label: "Reviews & Ratings", icon: Star, path: "/restaurant/reviews" },
-    { id: "support", label: "Support", icon: HelpCircle, path: "/restaurant/support" },
-  ]
+  const NavItems = () => (
+    <nav className="flex-1 p-3 overflow-y-auto">
+      {navigation.map((item) => {
+        const isActive = pathname.startsWith(item.href)
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={cn(
+              "flex items-center px-2 py-2 text-sm font-medium rounded-lg transition-colors",
+              isActive
+                ? "bg-orange-100 text-orange-800 border border-orange-200"
+                : "text-amber-700 hover:bg-orange-50 hover:text-orange-800"
+            )}
+          >
+            <item.icon className="h-5 w-5 flex-shrink-0" />
+            {!collapsed && <span className="ml-3">{item.name}</span>}
+          </Link>
+        )
+      })}
+    </nav>
+  )
 
   return (
-    <div
-      className={`bg-sidebar border-r border-sidebar-border transition-all duration-300 ${
-        sidebarCollapsed ? "w-16" : "w-64"
-      } flex flex-col`}
-    >
-      <div className="p-4 border-b border-sidebar-border">
-        <div className="flex items-center space-x-2">
-          <div className="bg-[#dd6636] p-2 rounded-lg">
-            <ChefHat className="h-6 w-6 text-white" />
-          </div>
-          {!sidebarCollapsed && (
-            <div>
-              <h1 className="font-bold text-lg text-orange-900">Restaurant Panel</h1>
-              <p className="text-xs text-amber-700">Dashboard</p>
+    <>
+      {/* Desktop Sidebar */}
+      <div
+        className={cn(
+          "hidden xl:flex lg:flex-col min-h-screen top-0 left-0 z-50 h-full bg-white border-r border-orange-200 transition-all duration-300",
+          collapsed ? "w-16" : "w-64"
+        )}
+      >
+        <div className="flex h-full flex-col">
+          <div className="flex h-16 items-center justify-between px-4 border-b border-orange-200">
+            <div className="flex items-center space-x-2">
+              <ChefHat className="h-8 w-8 text-orange-500" />
+              {!collapsed && (
+                <div className="flex flex-col">
+                  <span className="text-lg font-bold text-orange-800">ChopNow</span>
+                  <span className="text-xs text-amber-700">Restaurant Panel</span>
+                </div>
+              )}
             </div>
-          )}
+          </div>
+          <NavItems />
         </div>
       </div>
 
-      <nav className="flex-1 p-4 space-y-2">
-        {sidebarItems.map((item) => {
-          const Icon = item.icon
-          const isActive = pathname === item.path
-
-          return (
-            <button
-              key={item.id}
-              onClick={() => router.push(item.path)}
-              className={`w-full flex items-center space-x-3 text-amber-700 px-3 py-2 rounded-lg transition-colors ${
-                isActive
-                  ? "bg-orange-100 text-amber-700 border border-orange-200"
-                  : "hover:bg-orange-50 hover:text-orange-800"
-              }`}
-            >
-              <Icon className="h-5 w-5 flex-shrink-0" />
-              {!sidebarCollapsed && <span className="text-sm font-medium">{item.label}</span>}
-            </button>
-          )
-        })}
-      </nav>
-    </div>
+      {/* Mobile Sidebar */}
+      <Sheet>
+        <SheetContent side="left" className="p-0 w-64">
+          <SheetHeader className="border-b border-orange-200 p-4">
+            <SheetTitle className="flex items-center space-x-2">
+              <ChefHat className="h-6 w-6 text-orange-500" />
+              <span className="text-lg font-bold text-orange-800">ChopNow Admin</span>
+            </SheetTitle>
+          </SheetHeader>
+          <div className="flex flex-col h-full">
+            <NavItems />
+          </div>
+        </SheetContent>
+      </Sheet>
+    </>
   )
 }

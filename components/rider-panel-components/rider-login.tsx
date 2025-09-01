@@ -33,18 +33,20 @@ export function RiderLogin() {
 
       if (!res.ok) throw new Error(data.message || "Login failed")
 
-      if (data.token) {
-        localStorage.setItem("token", data.token)
-
-        toast({
-          title: "Login Successful!",
-          duration: 3000,
-        })
-
-        setTimeout(() => {
-          router.push("/rider-dashboard") // change to your dashboard route
-        }, 3000)
-      }
+        if (data.token && data.user) {
+          // Save token and user data to localStorage
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user)); // Save user data
+    
+          toast({
+            title: "User Login Successful!",
+            duration: 3000,
+          });
+    
+          setTimeout(() => {
+            router.push("/rider-dashboard"); // Redirect to dashboard
+          }, 3000);
+        }
     } catch (err: any) {
       toast({
         title: "Login Failed",

@@ -1,6 +1,7 @@
 "use client"
 import { DashboardHeader } from "@/components/restaurant-panel-components/dashboard-header"
 import { DashboardSidebar } from "@/components/restaurant-panel-components/dashboard-sidebar"
+
 import { useState } from "react"
 
 type NotificationStatus = "unread" | "read"
@@ -13,9 +14,9 @@ interface Notification {
   status: NotificationStatus
 }
 
-export default function AdminDashboardLayout({ children }: { children: React.ReactNode }) {
+export default function RestaurantDashboardLayout({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false)
-  const [activeSection, setActiveSection] = useState("overview")
+
 
   const [notifications] = useState<Notification[]>([
     {
@@ -50,19 +51,17 @@ export default function AdminDashboardLayout({ children }: { children: React.Rea
     <div className="fixed h-screen w-full flex">
       {/* Sidebar */}
       <DashboardSidebar
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-        sidebarCollapsed={collapsed}
+        collapsed={collapsed}
+        setCollapsed={setCollapsed}
       />
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-y-auto">
         {/* Header */}
         <DashboardHeader
-          sidebarCollapsed={collapsed}
-          setSidebarCollapsed={setCollapsed}
-          notifications={notifications}
-          setActiveSection={setActiveSection}
+           collapsed={collapsed}
+           notifications={notifications}
+           setCollapsed={setCollapsed}
           onSignOut={handleSignOut}
         />
 

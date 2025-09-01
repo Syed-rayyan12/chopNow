@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
@@ -29,6 +29,8 @@ import {
   ShoppingBag,
   Wallet,
 } from "lucide-react"
+import { toast } from "../ui/use-toast"
+
 
 const MenuNavigation = [
   { href: "/rider-dashboard", name: "Dashboard", icon: LayoutDashboard },
@@ -36,15 +38,45 @@ const MenuNavigation = [
   { href: "/rider-dashboard/earnings", name: "Earnings", icon: Wallet },
 ]
 
+type RiderUser = {
+  id?: number;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  role?: string;
+};
+
 export function RiderHeader({ collapsed, setCollapsed }: any) {
   const router = useRouter()
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false) // ✅ fixed state
+  const [user, setUser] = useState<RiderUser | null>(null);
+  const [mounted, setMounted] = useState(false); // avoid hydration mismatch
+
+  // Read API user saved after signup/login
+  useEffect(() => {
+    setMounted(true); // Ensure the component is mounted
+    try {
+      const raw = localStorage.getItem("user");
+      if (raw) {
+        const parsedUser = JSON.parse(raw);
+        setUser(parsedUser); // Set the user state
+      } else {
+        console.warn("No user data found in localStorage.");
+      }
+    } catch (error) {
+      console.error("Failed to parse user data from localStorage:", error);
+    }
+  }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("token")
-    router.push("/rider-signIn")
-  }
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    toast({ title: "You have successfully logged out.", duration: 3000 });
+    router.push("/rider-signIn");
+  };
+
+
 
   return (
     <header className="bg-white border-b border-orange-200 px-4 h-16 lg:px-6 py-4">
@@ -142,9 +174,10 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 rounded-full">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src="/admin-profile.png" alt="Admin" />
                   <AvatarFallback className="bg-orange-100 text-orange-800">
-                    AD
+                    {user
+                      ? `${user.firstName?.charAt(0) || ""}${user.lastName?.charAt(0) || ""}`.toUpperCase()
+                      : "G"}
                   </AvatarFallback>
                 </Avatar>
               </Button>
@@ -154,7 +187,7 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium leading-none">Admin User</p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    admin@chopnow.com
+                    {user?.email || "No email available"}
                   </p>
                 </div>
               </DropdownMenuLabel>

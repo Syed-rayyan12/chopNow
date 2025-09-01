@@ -6,7 +6,7 @@ import { Header } from "@/components/customer-panel-components/header";
 import { HeroSection } from "@/components/customer-panel-components/hero-section";
 import { PopularCuisines } from "@/components/customer-panel-components/popular-cuisines";
 
-export default function HomePage() {
+export default function Page() {
   return (
     <div className="min-h-screen bg-background">
       <RestaurantRiderNavbar/>

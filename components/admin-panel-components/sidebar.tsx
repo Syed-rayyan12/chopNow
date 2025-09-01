@@ -18,12 +18,12 @@ import {
 } from "@/components/ui/sheet"
 
 const navigation = [
-  { href: "/restaurant/overview", name: "Overview", icon: Home },
-  { href: "/restaurant/orders", name: "Orders", icon: ShoppingCart },
-  { href: "/restaurant/menu", name: "Menu Management", icon: ChefHat },
-  { href: "/restaurant/earnings", name: "Earnings & Payments", icon: CreditCard },
-  { href: "/restaurant/reviews", name: "Reviews & Ratings", icon: Star },
-  { href: "/restaurant/support", name: "Support", icon: HelpCircle },
+  { href: "/admin-dashboard", name: "Overview", icon: Home },
+  { href: "/admin-dashboard/orders", name: "Orders", icon: ShoppingCart },
+  { href: "/admin-dashboard/users", name: "User Management", icon: ChefHat },
+  { href: "/admin-dashboard/restaurants", name: "Restaurant Management", icon: CreditCard },
+  { href: "/admin-dashboard/analytics", name: "Analytics", icon: Star },
+  { href: "/admin-dashboard/delivery-tracking", name: "Delivery Tracking", icon: HelpCircle },
 ]
 
 

@@ -54,7 +54,7 @@ export async function request<T>(endpoint: string, options: RequestInit = {}): P
 
 // ✅ User Signup
 export async function registerUser(userData: SignupPayload): Promise<AuthResponse> {
-  return request<AuthResponse>("/auth/signup", {
+  return request<AuthResponse>("/user/signup", {
     method: "POST",
     body: JSON.stringify(userData),
   });
@@ -86,7 +86,7 @@ export async function registerAdmin(userData: SignupPayload): Promise<AuthRespon
 
 // ✅ Login (for user by default)
 export async function loginUser(credentials: LoginPayload): Promise<AuthResponse> {
-  return request<AuthResponse>("/auth/login", {
+  return request<AuthResponse>("/user/login", {
     method: "POST",
     body: JSON.stringify(credentials),
   });
