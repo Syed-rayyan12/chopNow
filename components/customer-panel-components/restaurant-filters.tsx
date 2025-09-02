@@ -100,7 +100,7 @@ export function RestaurantFilters({
       )}
 
       {/* Cuisine Filter */}
-      <Card>
+      <Card className="border-secondary/70">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Cuisine Type</CardTitle>
         </CardHeader>
@@ -108,6 +108,7 @@ export function RestaurantFilters({
           {cuisineOptions.map((cuisine) => (
             <div key={cuisine} className="flex items-center space-x-2">
               <Checkbox
+              className="border-black"
                 id={cuisine}
                 checked={selectedCuisines.includes(cuisine)}
                 onCheckedChange={(checked) => handleCuisineChange(cuisine, checked as boolean)}
@@ -124,7 +125,7 @@ export function RestaurantFilters({
       </Card>
 
       {/* Price Range Filter */}
-      <Card>
+      <Card className="border-secondary/70">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Price Range</CardTitle>
         </CardHeader>
@@ -132,6 +133,7 @@ export function RestaurantFilters({
           {priceRangeOptions.map((option) => (
             <div key={option.value} className="flex items-center space-x-2">
               <Checkbox
+               className="border-black"
                 id={option.value}
                 checked={selectedPriceRanges.includes(option.value)}
                 onCheckedChange={(checked) => handlePriceRangeChange(option.value, checked as boolean)}
@@ -148,7 +150,7 @@ export function RestaurantFilters({
       </Card>
 
       {/* Delivery Time Filter */}
-      <Card>
+      <Card className="border-secondary/70">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Max Delivery Time</CardTitle>
         </CardHeader>
@@ -172,19 +174,20 @@ export function RestaurantFilters({
       </Card>
 
       {/* Rating Filter */}
-      <Card>
+      <Card className="border-secondary/70">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Minimum Rating</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             <Slider
+            
               value={[minRating]}
               onValueChange={(value) => onMinRatingChange(value[0])}
               max={5}
               min={0}
               step={0.5}
-              className="w-full"
+              className="w-full border-secondary"
             />
             <div className="flex justify-between text-sm text-muted-foreground">
               <span>Any</span>

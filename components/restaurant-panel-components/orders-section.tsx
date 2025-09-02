@@ -47,17 +47,17 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
   return (
     <div className="space-y-6">
       <Tabs value={activeOrderTab} onValueChange={setActiveOrderTab}>
-        <TabsList className="grid w-full grid-cols-4 bg-orange-100 border border-orange-200">
-          <TabsTrigger value="new" className="data-[state=active]:bg-white data-[state=active]:text-orange-700">
+        <TabsList className="grid w-full grid-cols-4 bg-secondary border-secondary rounded-lg">
+          <TabsTrigger value="new" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">
             New Orders
           </TabsTrigger>
-          <TabsTrigger value="progress" className="data-[state=active]:bg-white data-[state=active]:text-orange-700">
+          <TabsTrigger value="progress" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">
             In Progress
           </TabsTrigger>
-          <TabsTrigger value="completed" className="data-[state=active]:bg-white data-[state=active]:text-orange-700">
+          <TabsTrigger value="completed" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">
             Completed
           </TabsTrigger>
-          <TabsTrigger value="cancelled" className="data-[state=active]:bg-white data-[state=active]:text-orange-700">
+          <TabsTrigger value="cancelled" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">
             Cancelled
           </TabsTrigger>
         </TabsList>

@@ -1,8 +1,8 @@
 "use client"
-
 import { useState } from "react"
 import { Sidebar } from "@/components/admin-panel-components/sidebar"
 import { Header } from "@/components/admin-panel-components/header"
+
 
 type NotificationStatus = "unread" | "read"
 
@@ -57,7 +57,7 @@ export default function AdminDashboardLayout({ children }: { children: React.Rea
                 />
 
                 {/* Dynamic Page Content */}
-                <main className="flex-1 overflow-y-auto bg-amber-50  py-6 px-6">
+                <main className="flex-1 overflow-y-auto bg-background py-6 px-6">
                     {children}
                 </main>
             </div>

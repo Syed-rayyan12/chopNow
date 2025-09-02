@@ -20,13 +20,13 @@ interface ReviewsSectionProps {
 export function ReviewsSection({ reviews }: ReviewsSectionProps) {
   return (
     <div className="space-y-6">
-      <Card className="border-orange-200">
+      <Card className="border-secondary/70 bg-white">
         <CardHeader>
-          <CardTitle className="text-orange-700">Average Rating</CardTitle>
+          <CardTitle className="text-secondary">Average Rating</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex items-center space-x-2">
-            <div className="text-3xl font-bold text-orange-800">4.5</div>
+            <div className="text-3xl font-bold text-secondary">4.5</div>
             <div className="flex">
               {[1, 2, 3, 4, 5].map((star) => (
                 <Star
@@ -35,7 +35,7 @@ export function ReviewsSection({ reviews }: ReviewsSectionProps) {
                 />
               ))}
             </div>
-            <span className="text-gray-600">(24 reviews)</span>
+            <span className="text-foreground">(24 reviews)</span>
           </div>
         </CardContent>
       </Card>

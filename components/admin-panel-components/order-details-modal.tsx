@@ -60,13 +60,13 @@ export function OrderDetailsModal({ order, isOpen, onClose }: OrderDetailsModalP
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="w-[50%] max-lg:w-[80%] max-sm:w-[100%] mx-auto max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl text-orange-800">Order Details - {order.id}</DialogTitle>
+          <DialogTitle className="text-2xl text-secondary">Order Details - {order.id}</DialogTitle>
           <DialogDescription className="text-amber-600">Complete information about this order</DialogDescription>
         </DialogHeader>
 
         <div className="grid grid-cols-2 max-xl:grid-cols-1 gap-6 mt-6">
           {/* Customer Information */}
-          <Card className="border-orange-200 w-full">
+          <Card className="border-secondary/80 w-full">
             <CardHeader>
               <CardTitle className="flex items-center text-orange-800">
                 <User className="w-5 h-5 mr-2" />
@@ -103,7 +103,7 @@ export function OrderDetailsModal({ order, isOpen, onClose }: OrderDetailsModalP
           </Card>
 
           {/* Order Information */}
-          <Card className="border-orange-200  w-full">
+          <Card className="border-secondary/80  w-full">
             <CardHeader>
               <CardTitle className="flex items-center text-orange-800">
                 <Store className="w-5 h-5 mr-2" />
@@ -164,14 +164,14 @@ export function OrderDetailsModal({ order, isOpen, onClose }: OrderDetailsModalP
 
 
           {/* Order Items */}
-          <Card className="border-orange-200  w-full">
+          <Card className="border-secondary/80  w-full">
             <CardHeader>
               <CardTitle className="text-orange-800">Order Items</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 {order.items.map((item, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-white shadow border border-orange-200 rounded-lg">
+                  <div key={index} className="flex items-center justify-between p-3 bg-white border border-secondary/80 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
                         <span className="text-sm font-medium text-orange-600">{index + 1}</span>
@@ -187,13 +187,13 @@ export function OrderDetailsModal({ order, isOpen, onClose }: OrderDetailsModalP
 
               <div className="flex justify-between items-center">
                 <span className="text-lg font-bold text-orange-800">Total Amount</span>
-                <span className="text-2xl font-bold text-orange-800">£{order.amount.toFixed(2)}</span>
+                <span className="text-2xl font-bold text-secondary">£{order.amount.toFixed(2)}</span>
               </div>
             </CardContent>
           </Card>
 
           {/* Status Management */}
-          <Card className="border-orange-200  w-full">
+          <Card className="border-secondary/80  w-full">
             <CardHeader>
               <CardTitle className="flex items-center text-orange-800">
                 {getStatusIcon(currentStatus)}

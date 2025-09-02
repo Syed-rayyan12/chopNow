@@ -164,18 +164,18 @@ export function DashboardHome() {
   return (
     <div className="flex flex-col gap-6">
       {/* Welcome Section */}
-      <div className="flex bg-gradient-to-r from-orange-400 to-amber-400 p-6 flex-col sm:flex-row sm:items-center sm:justify-between rounded-lg sm:space-y-0">
+      <div className="flex bg-gradient-to-r from-secondary to-secondary/80 p-6 flex-col sm:flex-row sm:items-center sm:justify-between rounded-lg sm:space-y-0">
         <div>
           <h2 className="text-2xl font-bold mb-2 text-white">Good Morning, John!</h2>
-          <p className="text-orange-100">Ready to start earning today?</p>
+          <p className="text-white">Ready to start earning today?</p>
         </div>
         <div className="flex items-center space-x-3">
           <Switch
             checked={isOnline}
             onCheckedChange={setIsOnline}
-            className={isOnline ? "data-[state=checked]:bg-green-500" : "data-[state=unchecked]:bg-orange-500"}
+            className={isOnline ? "data-[state=checked]:bg-green-500" : "data-[state=unchecked]:bg-secondary"}
           />
-          <Label className={isOnline ? "text-green-700 font-medium" : "text-orange-700 font-medium"}>
+          <Label className={isOnline ? "text-green-700 font-medium" : "text-secondary font-medium"}>
             {isOnline ? "Online" : "Offline"}
           </Label>
         </div>
@@ -184,15 +184,15 @@ export function DashboardHome() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {mappedStats.map((stat: any) => (
-          <Card key={stat.title} className="border-orange-200 bg-white">
+          <Card key={stat.title} className="border-secondary/70 bg-white">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-amber-700">{stat.title}</CardTitle>
+              <CardTitle className="text-sm font-medium text-foreground">{stat.title}</CardTitle>
               <div className={`p-2 rounded-full ${stat.bgColor}`}>
                 <stat.icon className={`h-4 w-4 ${stat.iconColor}`} />
               </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-orange-800">{stat.value}</div>
+              <div className="text-2xl font-bold text-secondary">{stat.value}</div>
               <div className="flex items-center text-xs text-green-600">
                 <TrendingUp className="h-3 w-3 mr-1" />
                 {stat.change}
@@ -205,37 +205,37 @@ export function DashboardHome() {
       {/* Active Orders & Recent Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Active Orders */}
-        <Card className="bg-white border-orange-200 shadow-sm">
+        <Card className="bg-white border-secondary/70">
           <CardHeader>
-            <CardTitle className="flex items-center space-x-2 text-orange-800">
-              <Package className="h-5 w-5 text-orange-600" />
-              <span className="text-orange-800">Active Orders</span>
-              <Badge className="bg-white text-orange-800">{activeOrders.length}</Badge>
+            <CardTitle className="flex items-center space-x-2 text-secondary">
+              <Package className="h-5 w-5 text-secondary" />
+              <span className="text-secondary">Active Orders</span>
+              <Badge className="bg-white text-secondary">{activeOrders.length}</Badge>
             </CardTitle>
           </CardHeader>
 
           <CardContent className="space-y-4">
             {activeOrders.map((order) => (
-              <div key={order.id} className="p-4 border border-orange-200 shadow bg-white rounded-lg">
+              <div key={order.id} className="p-4 border border-secondary/70 bg-white rounded-lg">
                 <div className="flex items-center justify-between mb-3">
                   <div>
-                    <p className="font-semibold text-orange-800">{order.id}</p>
-                    <p className="text-sm text-amber-600">{order.restaurant} • {order.items} items</p>
+                    <p className="font-semibold text-secondary">{order.id}</p>
+                    <p className="text-sm text-secondary/90">{order.restaurant} • {order.items} items</p>
                   </div>
                   {getStatusBadge(order.status)}
                 </div>
 
-                <div className="flex items-center space-x-2 text-sm text-orange-700 mb-3">
+                <div className="flex items-center space-x-2 text-sm text-secondary mb-3">
                   <MapPin className="h-4 w-4" />
                   <span>{order.address}</span>
                 </div>
 
                 <div className="flex space-x-2">
-                  <Button size="sm" className="flex-1 bg-orange-500 hover:bg-orange-600 text-white">
+                  <Button size="sm" className="flex-1 bg-secondary hover:bg-[#0F3D2E] text-white">
                     <Navigation className="h-4 w-4 mr-2" />
                     Navigate
                   </Button>
-                  <Button size="sm" variant="outline" className="flex-1 bg-white border-orange-200 text-orange-800 hover:bg-orange-400">
+                  <Button size="sm" variant="outline" className="flex-1 bg-white border-secondary/70 text-secondary hover:bg-secondary">
                     <Phone className="h-4 w-4 mr-2" />
                     Call
                   </Button>
@@ -246,33 +246,33 @@ export function DashboardHome() {
         </Card>
 
         {/* Recent Activity */}
-        <Card className="bg-white border-orange-200 shadow-sm">
+        <Card className="bg-white border-secondary/70">
           <CardHeader>
-            <CardTitle className="flex items-center space-x-2 text-orange-900">
-              <TrendingUp className="h-5 w-5 text-orange-600" />
-              <span className="text-orange-800">Recent Activity</span>
+            <CardTitle className="flex items-center space-x-2 text-secondary">
+              <TrendingUp className="h-5 w-5 text-secondary" />
+              <span className="text-secondary">Recent Activity</span>
             </CardTitle>
           </CardHeader>
 
           <CardContent className="space-y-4">
             {orders.map((order, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-white rounded-lg border border-orange-200 shadow">
+              <div key={index} className="flex items-center justify-between p-3 bg-white rounded-lg border border-secondary/70">
                 <div className="flex items-center space-x-3">
                   <div className={`p-2 ${order.iconBg} rounded-full`}>{order.icon}</div>
                   <div>
-                    <p className="font-medium text-orange-800 flex items-center gap-2">
+                    <p className="font-medium text-secondary flex items-center gap-2">
                       ORD-{String(order.id).padStart(3, "0")}
                       <Badge variant="secondary" className="bg-green-100 text-green-600 font-medium flex items-center gap-1">
                         <CheckCircle className="h-3 w-3" />
                         {order.status}
                       </Badge>
                     </p>
-                    <p className="text-sm text-amber-600">{order.merchant} • {order.items}</p>
+                    <p className="text-sm text-secondary/90">{order.merchant} • {order.items}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="font-semibold text-orange-800">{order.amount}</p>
-                  <p className="text-xs text-orange-600">{order.time}</p>
+                  <p className="font-semibold text-secondary">{order.amount}</p>
+                  <p className="text-xs text-secondary/60">{order.time}</p>
                 </div>
               </div>
             ))}

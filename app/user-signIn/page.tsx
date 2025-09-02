@@ -63,12 +63,14 @@ export default function Page() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-orange-100">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md border border-secondary">
         <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-16 h-16 bg-[#dd6636] rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-xl">CN</span>
-          </div>
-          <CardTitle className="text-2xl font-bold text-gray-800">ChopNow User</CardTitle>
+          <img
+            src="/chopNow.png"
+            alt="ChopNow Logo"
+            className="mx-auto w-32 object-cover"
+          />
+       
           <p className="text-gray-600">Login to your User account</p>
         </CardHeader>
 
@@ -84,7 +86,7 @@ export default function Page() {
                 placeholder="john@example.com"
                 value={formData.email}
                 onChange={handleChange}
-                className="pl-10 border border-orange-200"
+                className="pl-10 border border-secondary/50"
                 required
               />
             </div>
@@ -98,7 +100,7 @@ export default function Page() {
                 placeholder="Enter your password"
                 value={formData.password}
                 onChange={handleChange}
-                className="pr-10 border border-orange-200"
+                className="pr-10 border border-secondary/50"
                 required
               />
               <button

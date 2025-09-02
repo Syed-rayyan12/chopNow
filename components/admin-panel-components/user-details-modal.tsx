@@ -130,7 +130,7 @@ export function UserDetailsModal({ user, isOpen, onClose }: UserDetailsModalProp
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl text-orange-800 flex items-center">
+          <DialogTitle className="text-2xl text-secondary flex items-center">
             <Avatar className="h-8 w-8 mr-3">
               <AvatarImage src={user.avatar || "/placeholder.svg"} alt={user.name} />
               <AvatarFallback className="bg-orange-100 text-orange-800">
@@ -178,7 +178,7 @@ export function UserDetailsModal({ user, isOpen, onClose }: UserDetailsModalProp
           <TabsContent value="profile" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Personal Information */}
-              <Card className="border-orange-200">
+              <Card className="border-secondary/80">
                 <CardHeader>
                   <CardTitle className="flex items-center text-orange-800">
                     <Avatar className="w-5 h-5 mr-2">
@@ -201,7 +201,7 @@ export function UserDetailsModal({ user, isOpen, onClose }: UserDetailsModalProp
                     </Avatar>
                     <div>
                       <h3 className="text-lg font-bold text-orange-800">{user.name}</h3>
-                      <p className="text-sm text-amber-600">{user.id}</p>
+                      <p className="text-sm text-secondary">{user.id}</p>
                     </div>
                   </div>
 
@@ -227,7 +227,7 @@ export function UserDetailsModal({ user, isOpen, onClose }: UserDetailsModalProp
               </Card>
 
               {/* Account Statistics */}
-              <Card className="border-orange-200">
+              <Card className="border-secondary/80">
                 <CardHeader>
                   <CardTitle className="flex items-center text-orange-800">
                     <ShoppingBag className="w-5 h-5 mr-2" />
@@ -241,11 +241,11 @@ export function UserDetailsModal({ user, isOpen, onClose }: UserDetailsModalProp
                       <div className="text-sm text-amber-600">Total Orders</div>
                     </div>
                     <div className="text-center p-4 bg-amber-50 rounded-lg">
-                      <div className="text-2xl font-bold text-orange-800">£{user.totalSpent.toFixed(2)}</div>
+                      <div className="text-2xl font-bold text-secondary">£{user.totalSpent.toFixed(2)}</div>
                       <div className="text-sm text-amber-600">Total Spent</div>
                     </div>
                     <div className="text-center p-4 bg-amber-50 rounded-lg">
-                      <div className="text-2xl font-bold text-orange-800">£{user.averageOrder.toFixed(2)}</div>
+                      <div className="text-2xl font-bold text-secondary">£{user.averageOrder.toFixed(2)}</div>
                       <div className="text-sm text-amber-600">Avg Order</div>
                     </div>
                     <div className="text-center p-4 bg-amber-50 rounded-lg">
@@ -286,7 +286,7 @@ export function UserDetailsModal({ user, isOpen, onClose }: UserDetailsModalProp
           </TabsContent>
 
           <TabsContent value="orders" className="space-y-6">
-            <Card className="border-orange-200">
+            <Card className="border-secondary/80">
               <CardHeader>
                 <CardTitle className="text-orange-800">Recent Orders</CardTitle>
               </CardHeader>
@@ -299,13 +299,13 @@ export function UserDetailsModal({ user, isOpen, onClose }: UserDetailsModalProp
                           <Store className="w-5 h-5 text-orange-600" />
                         </div>
                         <div>
-                          <p className="font-medium text-orange-800">{order.id}</p>
+                          <p className="font-medium text-secondary">{order.id}</p>
                           <p className="text-sm text-amber-600">{order.restaurant}</p>
                           <p className="text-xs text-amber-500">{order.items.join(", ")}</p>
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="font-bold text-orange-800">£{order.amount.toFixed(2)}</p>
+                        <p className="font-bold text-secondary">£{order.amount.toFixed(2)}</p>
                         <p className="text-xs text-amber-600">
                           {order.date} at {order.time}
                         </p>
@@ -320,7 +320,7 @@ export function UserDetailsModal({ user, isOpen, onClose }: UserDetailsModalProp
 
           <TabsContent value="analytics" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="border-orange-200">
+              <Card className="border-secondary/80">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -331,18 +331,18 @@ export function UserDetailsModal({ user, isOpen, onClose }: UserDetailsModalProp
                   </div>
                 </CardContent>
               </Card>
-              <Card className="border-orange-200">
+              <Card className="border-secondary/80">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-amber-600">This Month Spent</p>
-                      <p className="text-2xl font-bold text-orange-800">£324</p>
+                      <p className="text-2xl font-bold text-secondary">£324</p>
                     </div>
                     <DollarSign className="w-8 h-8 text-orange-500" />
                   </div>
                 </CardContent>
               </Card>
-              <Card className="border-orange-200">
+              <Card className="border-secondary/80">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -357,7 +357,7 @@ export function UserDetailsModal({ user, isOpen, onClose }: UserDetailsModalProp
           </TabsContent>
 
           <TabsContent value="settings" className="space-y-6">
-            <Card className="border-orange-200">
+            <Card className="border-secondary/80">
               <CardHeader>
                 <CardTitle className="flex items-center text-orange-800">
                   {getStatusIcon(currentStatus)}
@@ -381,7 +381,7 @@ export function UserDetailsModal({ user, isOpen, onClose }: UserDetailsModalProp
               </CardContent>
             </Card>
 
-            <Card className="border-orange-200">
+            <Card className="border-secondary/80">
               <CardHeader>
                 <CardTitle className="text-orange-800">Account Actions</CardTitle>
               </CardHeader>

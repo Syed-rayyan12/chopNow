@@ -51,7 +51,12 @@ export function FeaturedRestaurants() {
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">Featured Restaurants</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+            Featured{" "}
+            <span className="text-secondary animate-pulse">
+              Restaurants
+            </span>
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Discover the most popular restaurants in your area, handpicked for quality and taste.
           </p>
@@ -61,7 +66,7 @@ export function FeaturedRestaurants() {
           {featuredRestaurants.map((restaurant) => (
             <Card
               key={restaurant.id}
-              className="group cursor-pointer hover:shadow-lg transition-all duration-300 border-border"
+              className="group cursor-pointer  transition-all duration-300 border-secondary/50"
             >
               <div className="relative overflow-hidden rounded-t-lg">
                 <img
@@ -74,8 +79,8 @@ export function FeaturedRestaurants() {
                 )}
               </div>
               <CardContent className="p-4">
-                <h3 className="font-heading font-semibold text-lg text-foreground mb-2">{restaurant.name}</h3>
-                <p className="text-muted-foreground text-sm mb-3">{restaurant.cuisine}</p>
+                <h3 className="font-heading font-semibold text-lg text-secondary mb-2">{restaurant.name}</h3>
+                <p className=" text-sm mb-3 ">{restaurant.cuisine}</p>
 
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center space-x-1">
@@ -87,8 +92,8 @@ export function FeaturedRestaurants() {
                     <span>{restaurant.deliveryTime}</span>
                   </div>
                   <div className="flex items-center space-x-1 text-muted-foreground">
-                    <Truck className="w-4 h-4" />
-                    <span>{restaurant.deliveryFee}</span>
+                    <Truck className="w-4 h-4 text-secondary" />
+                    <span className="text-secondary font-bold">{restaurant.deliveryFee}</span>
                   </div>
                 </div>
               </CardContent>

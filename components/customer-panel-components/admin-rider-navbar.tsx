@@ -21,13 +21,13 @@ export function RestaurantRiderNavbar() {
   }
 
   return (
-    <nav className="bg-orange-100 border-b border-border px-4 py-3">
+    <nav className="bg-[#ff7A00] border-border px-4 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo / Brand */}
         <div className="flex items-center space-x-2">
-          <PanelBottom className="w-6 h-6 text-orange-600" />
-          <span className="text-md font-normal text-muted-foreground">
-          Click below to go to Rider or Restaurant Panel
+          <PanelBottom className="w-6 h-6 text-white" />
+          <span className="text-md font-normal text-white">
+          select the desired panel you want to connect with
           </span>
         </div>
 
@@ -37,7 +37,7 @@ export function RestaurantRiderNavbar() {
           <DropdownMenuTrigger asChild>
             <div className="relative flex items-center">
               <Button
-                className="bg-orange-500 px-4 hover:bg-orange-500 text-white flex items-center justify-between gap-2"
+                className="bg-[#FDFBEA] px-4 flex border-none hover:bg-primary items-center justify-between gap-2"
                 variant="outline"
               >
                 Select Panel

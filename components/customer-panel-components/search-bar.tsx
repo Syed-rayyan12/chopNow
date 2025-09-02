@@ -71,7 +71,7 @@ export function SearchBar({ value, onChange, placeholder = "Search..." }: Search
           onChange={(e) => onChange(e.target.value)}
           onFocus={() => value.length > 0 && setShowSuggestions(filteredSuggestions.length > 0)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-          className="pl-10 pr-10 h-12 text-lg border-2 focus-visible:ring-2"
+          className="pl-10 pr-10 h-12 text-lg  border border-secondary"
         />
         {value && (
           <Button

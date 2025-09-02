@@ -42,8 +42,8 @@ const navigation = [
             className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-lg transition-colors",
               isActive
-                ? "bg-orange-100 text-orange-800 border border-orange-200"
-                : "text-amber-700 hover:bg-orange-50 hover:text-orange-800"
+               ? "bg-background text-secondary border border-secondary/65"
+                : "text-secondary "
             )}
           >
             <item.icon className="h-5 w-5 flex-shrink-0" />
@@ -59,7 +59,7 @@ const navigation = [
       {/* Desktop Sidebar */}
       <div
         className={cn(
-          "hidden xl:flex lg:flex-col min-h-screen top-0 left-0 z-50 h-full bg-white border-r border-orange-200 transition-all duration-300",
+          "hidden xl:flex lg:flex-col min-h-screen top-0 left-0 z-50 h-full bg-background border-r border-orange-200 transition-all duration-300",
           collapsed ? "w-16" : "w-64"
         )}
       >
@@ -69,8 +69,8 @@ const navigation = [
               <ChefHat className="h-8 w-8 text-orange-500" />
               {!collapsed && (
                 <div className="flex flex-col">
-                  <span className="text-lg font-bold text-orange-800">ChopNow</span>
-                  <span className="text-xs text-amber-700">Restaurant Panel</span>
+                  <span className="text-lg font-bold text-secondary">ChopNow</span>
+                  <span className="text-xs text-secondary/80">Restaurant Panel</span>
                 </div>
               )}
             </div>

@@ -55,7 +55,8 @@ const data = [
 
 export function Overview() {
   return (
-    <ResponsiveContainer width="100%" height={350}>
+    <div className="bg-secondary">
+      <ResponsiveContainer width="100%" height={350}>
       <BarChart data={data}>
         <XAxis dataKey="name" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
         <YAxis
@@ -68,5 +69,6 @@ export function Overview() {
         <Bar dataKey="total" fill="#f59e0b" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
+    </div>
   )
 }

@@ -120,7 +120,7 @@ export function MenuManagementSection() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-orange-800">Menu Management</h2>
+        <h2 className="text-2xl font-bold text-secondary">Menu Management</h2>
         <Dialog
           open={showAddMenuItem}
           onOpenChange={(open) => {
@@ -129,7 +129,7 @@ export function MenuManagementSection() {
           }}
         >
           <DialogTrigger asChild>
-            <Button className="bg-orange-500 hover:bg-orange-600">
+            <Button className="bg-secondary hover:bg-[#0F3D2E] text-white">
               <Plus className="h-4 w-4 mr-2" />
               Add New Item
             </Button>
@@ -151,6 +151,7 @@ export function MenuManagementSection() {
                   onChange={(e) =>
                     setNewMenuItem((prev) => ({ ...prev, name: e.target.value }))
                   }
+                  className=" "
                 />
               </div>
               <div>
@@ -241,12 +242,12 @@ export function MenuManagementSection() {
       {/* Search */}
       <div className="flex items-center space-x-4">
         <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+          <Search className="absolute left-3 top-1/2 transform  -translate-y-1/2 text-secondary h-4 w-4" />
           <Input
             placeholder="Search menu items..."
             value={menuSearchQuery}
             onChange={(e) => setMenuSearchQuery(e.target.value)}
-            className="pl-10 border-orange-200 focus:border-orange-400"
+            className="pl-10 border-secondary/50"
           />
         </div>
         {menuSearchQuery && (
@@ -266,24 +267,24 @@ export function MenuManagementSection() {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="border-b border-orange-200">
+              <thead className="border-b border-secondary">
                 <tr>
-                  <th className="text-left p-4 font-medium text-orange-800">
+                  <th className="text-left p-4 font-medium text-secondary">
                     Photo
                   </th>
-                  <th className="text-left p-4 font-medium text-orange-800">
+                  <th className="text-left p-4 font-medium text-secondary">
                     Name
                   </th>
-                  <th className="text-left p-4 font-medium text-orange-800">
+                  <th className="text-left p-4 font-medium text-secondary">
                     Category
                   </th>
-                  <th className="text-left p-4 font-medium text-orange-800">
+                  <th className="text-left p-4 font-medium text-secondary">
                     Price
                   </th>
-                  <th className="text-left p-4 font-medium text-orange-800">
+                  <th className="text-left p-4 font-medium text-secondary">
                     Available
                   </th>
-                  <th className="text-left p-4 font-medium text-orange-800">
+                  <th className="text-left p-4 font-medium text-secondary">
                     Actions
                   </th>
                 </tr>
@@ -299,11 +300,11 @@ export function MenuManagementSection() {
                           className="w-12 h-12 rounded-lg object-cover"
                         />
                       </td>
-                      <td className="p-4 font-medium text-orange-800">
+                      <td className="p-4 font-bold text-secondary">
                         {item.name}
                       </td>
-                      <td className="p-4 text-amber-600">{item.category}</td>
-                      <td className="p-4 font-medium text-orange-800">
+                      <td className="p-4 text-secondary">{item.category}</td>
+                      <td className="p-4 font-bold text-secondary">
                         ${item.price}
                       </td>
                       <td className="p-4">

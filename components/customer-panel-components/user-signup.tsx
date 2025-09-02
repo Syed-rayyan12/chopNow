@@ -70,12 +70,14 @@ export default function RiderSignup() {
       {/* ✅ Render Toaster */}
       <Toaster />
 
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md border border-secondary">
         <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-16 h-16 bg-[#dd6636] rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-xl">CN</span>
-          </div>
-          <CardTitle className="text-2xl font-bold text-gray-800">ChopNow User</CardTitle>
+          <img
+            src="/chopNow.png"
+            alt="ChopNow Logo"
+            className="mx-auto w-32 object-cover"
+          />
+         
           <p className="text-gray-600">Sign up to start buying from you fav restaurants</p>
         </CardHeader>
         <CardContent>
@@ -90,7 +92,7 @@ export default function RiderSignup() {
                 placeholder="First Name"
                 value={formData.firstName}
                 onChange={handleChange}
-                className="pl-10 border border-orange-200"
+                className="pl-10 border border-secondary/50"
                 required
               />
             </div>
@@ -105,7 +107,7 @@ export default function RiderSignup() {
                 placeholder="Last Name"
                 value={formData.lastName}
                 onChange={handleChange}
-                className="pl-10 border border-orange-200"
+                className="pl-10 border border-secondary/50"
                 required
               />
             </div>
@@ -120,7 +122,7 @@ export default function RiderSignup() {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
-                className="pl-10 border border-orange-200"
+                className="pl-10 border border-secondary/50"
                 required
               />
             </div>
@@ -135,7 +137,7 @@ export default function RiderSignup() {
                 placeholder="+44 7123 456789"
                 value={formData.phone}
                 onChange={handleChange}
-                className="pl-10 border border-orange-200"
+                className="pl-10 border border-secondary/50"
                 required
               />
             </div>
@@ -149,7 +151,7 @@ export default function RiderSignup() {
                 placeholder="Enter your password"
                 value={formData.password}
                 onChange={handleChange}
-                className="pr-10 border border-orange-200"
+                className="pr-10 border border-secondary/50"
                 required
               />
               <button

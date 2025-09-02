@@ -61,22 +61,22 @@ export function OrdersSection() {
   return (
     <div className="p-4">
       <div className="mb-6 ">
-        <h1 className="text-2xl font-bold text-orange-800">Orders</h1>
-        <p className="text-amber-600">Manage your deliveries</p>
+        <h1 className="text-2xl font-bold text-secondary">Orders</h1>
+        <p className="text-secondary/70">Manage your deliveries</p>
       </div>
 
       <Tabs defaultValue="active" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-2 bg-orange-200/30 border border-orange-200">
-          <TabsTrigger value="active" className="text-black">Active Orders</TabsTrigger>
-          <TabsTrigger value="completed" className="text-black">Completed</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 bg-secondary border-secondary">
+          <TabsTrigger value="active" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Active Orders</TabsTrigger>
+          <TabsTrigger value="completed" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Completed</TabsTrigger>
         </TabsList>
 
         <TabsContent value="active" className="space-y-4">
           {activeOrders.map((order) => (
-            <Card key={order.id} className="border border-orange-200 bg-white">
+            <Card key={order.id} className="border border-secondary/70 bg-white">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg text-orange-800">{order.id}</CardTitle>
+                  <CardTitle className="text-lg text-secondary">{order.id}</CardTitle>
                   <Badge
                     className={
                       order.status === "picked_up" ? "bg-blue-100 text-blue-800" : "bg-yellow-100 text-yellow-800"
@@ -86,35 +86,35 @@ export function OrdersSection() {
                   </Badge>
                 </div>
                 <div className="flex items-center space-x-4 text-sm text-gray-600">
-                  <span className="font-medium text-amber-600">{order.restaurant}</span>
+                  <span className="font-medium text-secondary/90">{order.restaurant}</span>
                   <span>•</span>
-                  <span className="text-amber-600">{order.items} items</span>
+                  <span className="text-secondary/90">{order.items} items</span>
                   <span>•</span>
-                  <span className="font-semibold text-orange-800">{order.total}</span>
+                  <span className="font-semibold text-secondary">{order.total}</span>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
-                    <MapPin className="h-4 w-4 text-orange-800" />
-                    <span className="text-sm text-orange-700">{order.address}</span>
+                    <MapPin className="h-4 w-4 text-secondary" />
+                    <span className="text-sm text-secondary">{order.address}</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Phone className="h-4 w-4 text-orange-800" />
-                    <span className="text-sm text-orange-700">{order.phone}</span>
+                    <Phone className="h-4 w-4 text-secondary" />
+                    <span className="text-sm text-secondary">{order.phone}</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Timer className="h-4 w-4 text-orange-800" />
-                    <span className="text-sm text-orange-700">ETA: {order.estimatedTime}</span>
+                    <Timer className="h-4 w-4 text-secondary" />
+                    <span className="text-sm text-secondary">ETA: {order.estimatedTime}</span>
                   </div>
                 </div>
 
                 <div className="flex space-x-2">
-                  <Button size="sm" variant="outline" className="flex-1 bg-transparent border border-orange-200 hover:bg-orange-400">
+                  <Button size="sm" variant="outline" className="flex-1 bg-white border-secondary/70 text-secondary hover:bg-secondary">
                     <Phone className="h-4 w-4 mr-2" />
                     Call Customer
                   </Button>
-                  <Button size="sm" className="flex-1 bg-orange-500 hover:bg-orange-600">
+                  <Button size="sm" className="flex-1 bg-secondary hover:bg-[#0F3D2E] text-white">
                     <Navigation className="h-4 w-4 mr-2" />
                     Navigate
                   </Button>
@@ -133,24 +133,24 @@ export function OrdersSection() {
 
         <TabsContent value="completed" className="space-y-4 ">
           {completedOrders.map((order) => (
-            <Card key={order.id} className="border border-orange-200 bg-white">
+            <Card key={order.id} className="border border-secondary/70 bg-white">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-3">
                   <div>
-                    <h3 className="font-semibold text-orange-800">{order.id}</h3>
-                    <p className="text-sm text-amber-600">{order.restaurant}</p>
+                    <h3 className="font-semibold text-secondary">{order.id}</h3>
+                    <p className="text-sm text-secondary/90">{order.restaurant}</p>
                   </div>
                   <div className="text-right">
-                    <p className="font-semibold text-orange-800">+{order.earnings}</p>
-                    <p className="text-xs text-gray-500">{order.completedAt}</p>
+                    <p className="font-semibold text-secondary">+{order.earnings}</p>
+                    <p className="text-xs text-secondary/80">{order.completedAt}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <Package className="h-4 w-4 text-amber-400" />
-                    <span className="text-sm text-amber-600">
-                      {order.items} items • <span className="text-orange-700">{order.total}</span> 
+                    <Package className="h-4 w-4 text-secondary/80" />
+                    <span className="text-sm text-secondary/90">
+                      {order.items} items • <span className="text-secondary">{order.total}</span>
                     </span>
                   </div>
                   <div className="flex items-center space-x-1">

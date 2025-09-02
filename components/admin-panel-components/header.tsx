@@ -51,7 +51,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
   const unreadCount = notifications.filter((n) => n.status === "unread").length
 
   return (
-    <header className="bg-white border-b border-orange-200 px-6 py-4 h-16">
+    <header className="bg-background border-b border-secondary/65 px-6 py-4 h-16">
       <div className="flex items-center justify-between">
         {/* Left side with toggle & title */}
         <div className="flex items-center space-x-4">
@@ -119,7 +119,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
             </div>
           </div>
 
-          <h1 className="text-2xl font-bold text-orange-800">Dashboard</h1>
+          <h1 className="text-2xl font-bold text-secondary">Dashboard</h1>
         </div>
 
         {/* Right side with search, notifications & profile */}
@@ -128,7 +128,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 transform text-amber-500 h-4 w-4" />
             <Input
               placeholder="Search orders, restaurants, users..."
-              className="pl-10 w-full border-orange-200 focus:border-orange-400 focus:ring-orange-400"
+              className="pl-10 w-full border-secondary/70"
             />
           </div>
 
@@ -136,7 +136,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="relative">
+              <Button variant="ghost" size="sm" className="relative text-secondary/60 hover:text-secondary hover:bg-secondary/10">
                 <Bell className="h-5 w-5" />
                 {unreadCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
@@ -168,7 +168,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                 <Avatar className="h-8 w-8">
                   <AvatarImage src="/admin-profile.png" alt="Admin" />
-                  <AvatarFallback className="bg-orange-100 text-orange-800">
+                  <AvatarFallback className="bg-orange-100 text-secondary">
                     AD
                   </AvatarFallback>
                 </Avatar>

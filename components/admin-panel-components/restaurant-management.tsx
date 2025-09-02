@@ -186,8 +186,8 @@ export function RestaurantManagement() {
       {/* Header */}
       <div className="">
         <div>
-          <h1 className="text-3xl font-bold text-orange-800">Restaurant Management</h1>
-          <p className="text-amber-600">Manage partner restaurants and their performance</p>
+          <h1 className="text-3xl font-bold text-secondary">Restaurant Management</h1>
+          <p className="text-secondary/70">Manage partner restaurants and their performance</p>
         </div>
         {/* <div className="flex items-center space-x-3">
           <Button onClick={() => setShowAddModal(true)} className="bg-orange-500 hover:bg-orange-600 text-white">
@@ -199,46 +199,46 @@ export function RestaurantManagement() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/80 bg-white">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-orange-800">{restaurantStats.total}</div>
-            <div className="text-sm text-amber-600">Total Restaurants</div>
+            <div className="text-2xl font-bold text-secondary">{restaurantStats.total}</div>
+            <div className="text-sm text-foreground">Total Restaurants</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/80 bg-white">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-green-700">{restaurantStats.active}</div>
-            <div className="text-sm text-amber-600">Active</div>
+            <div className="text-2xl font-bold text-secondary">{restaurantStats.active}</div>
+            <div className="text-sm text-foreground">Active</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/80 bg-white">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-amber-700">{restaurantStats.pending}</div>
-            <div className="text-sm text-amber-600">Pending</div>
+            <div className="text-2xl font-bold text-secondary">{restaurantStats.pending}</div>
+            <div className="text-sm text-foreground">Pending</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/80 bg-white">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-red-700">{restaurantStats.inactive}</div>
-            <div className="text-sm text-amber-600">Inactive</div>
+            <div className="text-2xl font-bold text-secondary">{restaurantStats.inactive}</div>
+            <div className="text-sm text-foreground">Inactive</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/80 bg-white">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-orange-800">£{restaurantStats.totalRevenue.toLocaleString()}</div>
-            <div className="text-sm text-amber-600">Total Revenue</div>
+            <div className="text-2xl font-bold text-secondary">£{restaurantStats.totalRevenue.toLocaleString()}</div>
+            <div className="text-sm text-foreground">Total Revenue</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/80 bg-white">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-orange-800">{restaurantStats.avgRating.toFixed(1)}</div>
-            <div className="text-sm text-amber-600">Avg Rating</div>
+            <div className="text-2xl font-bold text-secondary">{restaurantStats.avgRating.toFixed(1)}</div>
+            <div className="text-sm text-foreground">Avg Rating</div>
           </CardContent>
         </Card>
       </div>
 
       {/* Filters and Search */}
-      <Card className="border-orange-200 bg-white">
+      <Card className="border-secondary/80 bg-white">
         <CardHeader>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
             <div className="flex items-center max-md:flex-col max-md:items-center max-md:gap-3 space-x-4">
@@ -248,13 +248,13 @@ export function RestaurantManagement() {
                   placeholder="Search restaurants, cuisine, location..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-80 max-sm:w-full border-orange-200 focus:border-orange-400 focus:ring-orange-400"
+                  className="pl-10 w-80 max-sm:w-full border-secondary/50  "
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-40 border-orange-200">
+                <SelectTrigger className="w-40 border-secondary/50">
                   <Filter className="w-4 h-4 mr-2" />
-                  <SelectValue placeholder="Status" />
+                  <SelectValue placeholder="Status" className="" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Status</SelectItem>
@@ -264,7 +264,7 @@ export function RestaurantManagement() {
                 </SelectContent>
               </Select>
               <Select value={cuisineFilter} onValueChange={setCuisineFilter}>
-                <SelectTrigger className="w-40 border-orange-200">
+                <SelectTrigger className="w-40 border-secondary/50">
                   <SelectValue placeholder="Cuisine" />
                 </SelectTrigger>
                 <SelectContent>
@@ -280,28 +280,28 @@ export function RestaurantManagement() {
         </CardHeader>
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="lg:grid hidden w-full  grid-cols-4 bg-amber-50">
+            <TabsList className="lg:grid hidden w-full  grid-cols-4 bg-secondary rounded-xl">
               <TabsTrigger
                 value="all"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
+                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
               >
                 All
               </TabsTrigger>
               <TabsTrigger
                 value="active"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
+                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
               >
                 Active
               </TabsTrigger>
               <TabsTrigger
                 value="pending"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
+                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
               >
                 Pending
               </TabsTrigger>
               <TabsTrigger
                 value="inactive"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
+                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
               >
                 Inactive
               </TabsTrigger>
@@ -311,14 +311,14 @@ export function RestaurantManagement() {
               <Table>
                 <TableHeader>
                   <TableRow className="border-orange-200">
-                    <TableHead className="text-orange-800">Restaurant</TableHead>
-                    <TableHead className="text-orange-800">Cuisine</TableHead>
-                    <TableHead className="text-orange-800">Location</TableHead>
-                    <TableHead className="text-orange-800">Rating</TableHead>
-                    <TableHead className="text-orange-800">Orders</TableHead>
-                    <TableHead className="text-orange-800">Revenue</TableHead>
-                    <TableHead className="text-orange-800">Status</TableHead>
-                    <TableHead className="text-orange-800">Actions</TableHead>
+                    <TableHead className="text-secondary">Restaurant</TableHead>
+                    <TableHead className="text-secondary">Cuisine</TableHead>
+                    <TableHead className="text-secondary">Location</TableHead>
+                    <TableHead className="text-secondary">Rating</TableHead>
+                    <TableHead className="text-secondary">Orders</TableHead>
+                    <TableHead className="text-secondary">Revenue</TableHead>
+                    <TableHead className="text-secondary">Status</TableHead>
+                    <TableHead className="text-secondary">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -332,30 +332,30 @@ export function RestaurantManagement() {
                             className="w-10 h-10 rounded-full object-cover"
                           />
                           <div>
-                            <div className="font-medium text-orange-800">{restaurant.name}</div>
-                            <div className="text-sm text-amber-600">{restaurant.id}</div>
+                            <div className="font-bold text-secondary ">{restaurant.name}</div>
+                            <div className="text-sm text-secondary">{restaurant.id}</div>
                           </div>
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge variant="outline" className="border-orange-200 text-orange-700">
+                        <Badge variant="outline" className="border-secondary/60">
                           {restaurant.cuisine}
                         </Badge>
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center text-amber-600">
-                          <MapPin className="w-4 h-4 mr-1" />
-                          <span className="text-sm">{restaurant.address.split(",")[0]}</span>
+                          <MapPin className="w-4 h-4 mr-1 text-secondary" />
+                          <span className="text-sm text-secondary">{restaurant.address.split(",")[0]}</span>
                         </div>
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center">
-                          <Star className="w-4 h-4 text-yellow-500 mr-1" />
-                          <span className="font-medium text-orange-800">{restaurant.rating}</span>
+                          <Star className="w-4 h-4 text-secondary mr-1" />
+                          <span className="font-medium text-secondary">{restaurant.rating}</span>
                         </div>
                       </TableCell>
-                      <TableCell className="font-medium text-orange-800">{restaurant.totalOrders}</TableCell>
-                      <TableCell className="font-bold text-orange-800">
+                      <TableCell className="font-medium text-secondary">{restaurant.totalOrders}</TableCell>
+                      <TableCell className="font-bold text-secondary">
                         £{restaurant.revenue.toLocaleString()}
                       </TableCell>
                       <TableCell>{getStatusBadge(restaurant.status)}</TableCell>

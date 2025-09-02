@@ -47,35 +47,36 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
+    <header className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+          <Link href="/" >
+            {/* <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-primary-foreground font-heading font-bold text-lg">C</span>
             </div>
-            <span className="font-heading font-bold text-xl text-foreground">Chop Now</span>
+            <span className="font-heading font-bold text-xl text-foreground">Chop Now</span> */}
+            <img className="w-32  px-2 object-cover" src="/chopNow.png" alt="" />
           </Link>
 
           {/* Location */}
-          <div className="hidden md:flex items-center space-x-2 text-muted-foreground">
-            <MapPin className="w-4 h-4" />
-            <span className="text-sm">Deliver to</span>
-            <Button variant="ghost" size="sm" className="text-foreground font-medium">
+          <div className="hidden md:flex items-center space-x-2 text-foreground">
+            <MapPin className="w-4 h-4 " />
+            <span className="text-sm ">Deliver to</span>
+            <Button variant="ghost" size="sm" className=" font-medium">
               Current Location
             </Button>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/restaurants" className="text-foreground hover:text-primary transition-colors">
+            <Link href="/restaurants" className=" hover:text-secondary transition-colors ">
               Restaurants
             </Link>
-            <Link href="/cuisines" className="text-foreground hover:text-primary transition-colors">
+            {/* <Link href="/cuisines" className=" hover:text-secondary transition-colors ">
               Cuisines
-            </Link>
-            <Link href="/offers" className="text-foreground hover:text-primary transition-colors">
+            </Link> */}
+            <Link href="/offers" className=" hover:text-secondary transition-colors ">
               Offers
             </Link>
           </nav>
@@ -84,7 +85,7 @@ export function Header() {
           <div className="flex items-center space-x-2">
             <Button variant="ghost" size="sm" className="relative" asChild>
               <Link href="/cart">
-                <ShoppingCart className="w-5 h-5" />
+                <ShoppingCart className="w-5 h-5 " />
                 {cartCount > 0 && (
                   <Badge className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center p-0">
                     {cartCount > 99 ? "99+" : cartCount}
@@ -97,7 +98,7 @@ export function Header() {
             <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="sm" className="flex items-center gap-2">
-            <User className="w-5 h-5" />
+            <User className="w-5 h-5 " />
             <span className="hidden sm:inline"></span>
           </Button>
         </DropdownMenuTrigger>
@@ -155,9 +156,9 @@ export function Header() {
               <Link href="/restaurants" className="text-foreground hover:text-primary transition-colors">
                 Restaurants
               </Link>
-              <Link href="/cuisines" className="text-foreground hover:text-primary transition-colors">
+              {/* <Link href="/cuisines" className="text-foreground hover:text-primary transition-colors">
                 Cuisines
-              </Link>
+              </Link> */}
               <Link href="/offers" className="text-foreground hover:text-primary transition-colors">
                 Offers
               </Link>

@@ -197,11 +197,11 @@ export function OrdersManagement() {
       {/* Header */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between space-y-3 md:space-y-0">
         <div>
-          <h1 className="text-2xl font-bold text-orange-800">Orders Management</h1>
+          <h1 className="text-2xl font-bold text-secondary">Orders Management</h1>
           <p className="text-amber-600">Manage and track all customer orders</p>
         </div>
         <div className="flex items-center space-x-3">
-          <Button variant="outline" className="border-orange-200 text-orange-700 hover:bg-orange-50 bg-transparent">
+          <Button variant="outline" className="border-secondary/65 text-secondary hover:bg-secondary bg-transparent">
             <Download className="w-4 h-4 mr-2" />
             Export Orders
           </Button>
@@ -211,17 +211,17 @@ export function OrdersManagement() {
       {/* Stats Cards */}
       <div className="grid grid-cols-6 gap-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
         {Object.entries(orderStats).map(([key, value]) => (
-          <Card key={key} className="border-orange-200 bg-white">
+          <Card key={key} className="border-secondary/65 bg-white shadow-none">
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-orange-800">{value}</div>
-              <div className="text-sm text-amber-600">{key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</div>
+              <div className="text-2xl font-bold text-secondary">{value}</div>
+              <div className="text-sm text-foreground">{key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</div>
             </CardContent>
           </Card>
         ))}
       </div>
 
       {/* Filters and Search */}
-      <Card className="border-orange-200 bg-white w-full mx-auto">
+      <Card className="border-secondary/65 bg-white shadow-none w-full mx-auto">
         <CardHeader>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0">
@@ -231,11 +231,11 @@ export function OrdersManagement() {
                   placeholder="Search orders, customers, restaurants..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-full sm:w-80 border-orange-200 focus:border-orange-400 focus:ring-orange-400"
+                  className="pl-10 w-full sm:w-80 border-secondary/65 focus:border-orange-400 focus:ring-orange-400"
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-full sm:w-40 border-orange-200 flex items-center">
+                <SelectTrigger className="w-full sm:w-40 border-secondary/65 flex items-center">
                   <Filter className="w-4 h-4 mr-2" />
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
@@ -253,12 +253,12 @@ export function OrdersManagement() {
         </CardHeader>
         <CardContent className="w-full overflow-x-auto">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className=" gap-2 hidden overflow-x-auto lg:grid lg:grid-cols-6 w-full bg-amber-50">
+            <TabsList className=" gap-2 hidden overflow-x-auto lg:grid lg:grid-cols-6 w-full bg-secondary text-white">
               {tabs.map((tab) => (
                 <TabsTrigger
                   key={tab.value}
                   value={tab.value}
-                  className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800 min-w-[120px]"
+                  className="text-background  data-[state=active]:rounded-lg data-[state=active]:border-secondary/65 data-[state=active]:border-b-2 data-[state=active]:text-black min-w-[120px]"
                 >
                   {tab.label}
                 </TabsTrigger>
@@ -268,32 +268,32 @@ export function OrdersManagement() {
             <TabsContent value={activeTab} className="mt-6">
               <Table className="min-w-[700px] md:min-w-full">
                 <TableHeader>
-                  <TableRow className="border-orange-200">
-                    <TableHead className="text-orange-800">Order ID</TableHead>
-                    <TableHead className="text-orange-800">Customer</TableHead>
-                    <TableHead className="text-orange-800">Restaurant</TableHead>
-                    <TableHead className="text-orange-800">Amount</TableHead>
-                    <TableHead className="text-orange-800">Status</TableHead>
-                    <TableHead className="text-orange-800">Payment</TableHead>
-                    <TableHead className="text-orange-800">Order Time</TableHead>
-                    <TableHead className="text-orange-800">Actions</TableHead>
+                  <TableRow className="border-secondary/65">
+                    <TableHead className="text-secondary">Order ID</TableHead>
+                    <TableHead className="text-secondary">Customer</TableHead>
+                    <TableHead className="text-secondary">Restaurant</TableHead>
+                    <TableHead className="text-secondary">Amount</TableHead>
+                    <TableHead className="text-secondary">Status</TableHead>
+                    <TableHead className="text-secondary">Payment</TableHead>
+                    <TableHead className="text-secondary">Order Time</TableHead>
+                    <TableHead className="text-secondary">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {filteredOrders.map((order) => (
-                    <TableRow key={order.id} className="border-orange-100 hover:bg-amber-50">
-                      <TableCell className="font-medium text-orange-800">{order.id}</TableCell>
+                    <TableRow key={order.id} className="border-secondary/65 hover:bg-amber-50">
+                      <TableCell className="font-medium text-secondary">{order.id}</TableCell>
                       <TableCell>
                         <div>
-                          <div className="font-medium text-orange-700">{order.customer}</div>
-                          <div className="text-sm text-amber-600">{order.customerEmail}</div>
+                          <div className="font-bold text-secondary/80">{order.customer}</div>
+                          <div className="text-sm text-secondary/80">{order.customerEmail}</div>
                         </div>
                       </TableCell>
-                      <TableCell className="text-orange-700">{order.restaurant}</TableCell>
-                      <TableCell className="font-bold text-orange-800">£{order.amount.toFixed(2)}</TableCell>
+                      <TableCell className="text-secondary/80">{order.restaurant}</TableCell>
+                      <TableCell className="font-bold text-secondary">£{order.amount.toFixed(2)}</TableCell>
                       <TableCell>{getStatusBadge(order.status)}</TableCell>
                       <TableCell>{getPaymentStatusBadge(order.paymentStatus)}</TableCell>
-                      <TableCell className="text-amber-600">{order.orderTime}</TableCell>
+                      <TableCell className="text-secondary">{order.orderTime}</TableCell>
                       <TableCell>
                         <div className="flex items-center space-x-2">
                           <Button

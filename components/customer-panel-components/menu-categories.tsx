@@ -11,14 +11,14 @@ interface MenuCategoriesProps {
 
 export function MenuCategories({ categories, selectedCategory, onCategoryChange }: MenuCategoriesProps) {
   return (
-    <Card className="sticky top-24">
+    <Card className="sticky top-24 border border-secondary">
       <CardContent className="p-4">
-        <h2 className="font-heading font-semibold text-lg mb-4">Menu Categories</h2>
+        <h2 className="font-heading font-semibold text-lg  text-secondary mb-4">Menu Categories</h2>
         <div className="space-y-2">
           {categories.map((category) => (
             <Button
               key={category.id}
-              variant={selectedCategory === category.id ? "default" : "ghost"}
+              variant={selectedCategory === category.id ? "secondary" : "white"}
               className="w-full justify-between"
               onClick={() => onCategoryChange(category.id)}
             >

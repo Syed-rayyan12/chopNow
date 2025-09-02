@@ -113,7 +113,7 @@ export function DashboardOverview() {
   return (
     <div className="flex flex-col gap-6">
       {/* Welcome Section */}
-      <div className="bg-gradient-to-r from-orange-400 to-amber-400 rounded-lg p-6 text-white">
+      <div className="bg-secondary rounded-lg p-6 text-white">
         <h2 className="text-2xl font-bold mb-2">Welcome back, Admin!</h2>
         <p className="text-orange-100">Here's what's happening with ChopNow today.</p>
       </div>
@@ -121,15 +121,15 @@ export function DashboardOverview() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
-          <Card key={stat.title} className="border-orange-200 bg-white">
+          <Card key={stat.title} className="border-secondary/65 bg-white shadow-none">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-amber-700">{stat.title}</CardTitle>
+              <CardTitle className="text-sm font-medium ">{stat.title}</CardTitle>
               <div className={`p-2 rounded-full ${stat.bgColor}`}>
                 <stat.icon className={`h-4 w-4 ${stat.color}`} />
               </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-orange-800">{stat.value}</div>
+              <div className="text-2xl font-bold text-secondary/70">{stat.value}</div>
               <div className="flex items-center text-xs text-green-600">
                 <TrendingUp className="h-3 w-3 mr-1" />
                 {stat.change} from last month
@@ -140,14 +140,14 @@ export function DashboardOverview() {
       </div>
 
       {/* Recent Orders */}
-      <Card className="border-orange-200 bg-white">
+      <Card className="border-secondary/65 bg-white shadow-none">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-orange-800">Recent Orders</CardTitle>
-              <CardDescription className="text-amber-600">Latest orders from your platform</CardDescription>
+              <CardTitle className="text-secondary">Recent Orders</CardTitle>
+              <CardDescription className="text-secondary/80">Latest orders from your platform</CardDescription>
             </div>
-            <Button variant="outline" className="border-orange-200 text-orange-700 hover:bg-orange-50 bg-transparent">
+            <Button variant="outline" className="border-secondary/65 text-secondary hover:bg-secondary bg-transparent">
               View All Orders
             </Button>
           </div>
@@ -157,20 +157,20 @@ export function DashboardOverview() {
             {recentOrders.map((order) => (
               <div
                 key={order.id}
-                className="flex items-center justify-between p-4 bg-white rounded-lg border shadow border-orange-200"
+                className="flex items-center justify-between p-4 bg-white rounded-lg border border-secondary/65"
               >
                 <div className="flex max-sm:flex-col items-center space-x-4">
                   <div>
-                    <p className="font-medium text-orange-800">{order.id}</p>
-                    <p className="text-sm text-amber-600">{order.customer}</p>
+                    <p className="font-medium text-secondary">{order.id}</p>
+                    <p className="text-sm text-secondary/80">{order.customer}</p>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-orange-700">{order.restaurant}</p>
+                    <p className="text-sm font-medium text-black/80">{order.restaurant}</p>
                     <p className="text-xs text-amber-600">{order.time}</p>
                   </div>
                 </div>
                 <div className="flex max-sm:flex-col items-center space-x-4">
-                  <span className="font-bold text-orange-800">{order.amount}</span>
+                  <span className="font-bold text-secondary">{order.amount}</span>
                   {getStatusBadge(order.status)}
                 </div>
               </div>

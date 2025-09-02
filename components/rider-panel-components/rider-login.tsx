@@ -64,12 +64,14 @@ export function RiderLogin() {
       {/* ✅ Toaster */}
       <Toaster />
 
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md border-secondary/50">
         <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-16 h-16 bg-[#dd6636] rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-xl">CN</span>
-          </div>
-          <CardTitle className="text-2xl font-bold text-gray-800">ChopNow Rider</CardTitle>
+          <img
+            src="/chopNow.png"
+            alt="ChopNow Logo"
+            className="mx-auto w-32 object-cover"
+          />
+         
           <p className="text-gray-600">Sign in to start delivering</p>
         </CardHeader>
         <CardContent>
@@ -84,7 +86,7 @@ export function RiderLogin() {
                   placeholder="Enter Your Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 border border-secondary/50"
                   required
                 />
               </div>
@@ -100,7 +102,7 @@ export function RiderLogin() {
                   placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10 pr-10"
+                  className="pl-10 pr-10 border-secondary/50"
                   required
                 />
                 <button

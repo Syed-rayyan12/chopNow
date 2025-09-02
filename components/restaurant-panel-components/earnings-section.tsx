@@ -21,41 +21,41 @@ export function EarningsSection({ transactions }: EarningsSectionProps) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/70 bg-white">
           <CardHeader>
-            <CardTitle className="text-orange-800">Today</CardTitle>
+            <CardTitle className="text-foreground">Today</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-orange-800">$342.50</div>
+            <div className="text-2xl font-bold text-secondary">$342.50</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/70 bg-white">
           <CardHeader>
-            <CardTitle className="text-orange-800">This Week</CardTitle>
+            <CardTitle className="text-foreground">This Week</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-amber-800">$1,250.00</div>
+            <div className="text-2xl font-bold text-secondary">$1,250.00</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/70 bg-white">
           <CardHeader>
-            <CardTitle className="text-orange-800">This Month</CardTitle>
+            <CardTitle className="text-foreground">This Month</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-orange-800">$4,890.00</div>
+            <div className="text-2xl font-bold text-secondary">$4,890.00</div>
           </CardContent>
         </Card>
       </div>
 
-      <Card className="border-orange-200 bg-white">
+      <Card className="border-secondary/70 bg-white">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-orange-800">Transaction History</CardTitle>
+          <CardTitle className="text-secondary">Transaction History</CardTitle>
           <div className="flex space-x-2">
-            <Button size="sm" variant="outline">
+            <Button size="sm" variant="outline" className="border-secondary/65 text-secondary hover:bg-secondary bg-transparent">
               <Download className="h-4 w-4 mr-2" />
               Export CSV
             </Button>
-            <Button size="sm" variant="outline">
+            <Button size="sm" variant="outline" className="border-secondary/65 text-secondary hover:bg-secondary bg-transparent">
               <Download className="h-4 w-4 mr-2" />
               Export PDF
             </Button>
@@ -66,15 +66,15 @@ export function EarningsSection({ transactions }: EarningsSectionProps) {
             <table className="w-full">
               <thead className="border-b border-orange-200">
                 <tr>
-                  <th className="text-left p-3 font-medium text-orange-800">Order ID</th>
-                  <th className="text-left p-3 font-medium text-orange-800">Date</th>
-                  <th className="text-left p-3 font-medium text-orange-800">Amount</th>
-                  <th className="text-left p-3 font-medium text-orange-800">Status</th>
+                  <th className="text-left p-3 font-medium text-secondary">Order ID</th>
+                  <th className="text-left p-3 font-medium text-secondary">Date</th>
+                  <th className="text-left p-3 font-medium text-secondary">Amount</th>
+                  <th className="text-left p-3 font-medium text-secondary">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {transactions.map((transaction) => (
-                  <tr key={transaction.id} className="border-b hover:bg-orange-50 border-orange-100">
+                  <tr key={transaction.id} className="border-b hover:bg-orange-50 border-secondary/50">
                     <td className="p-3 font-medium text-orange-800">#{transaction.orderId}</td>
                     <td className="p-3 text-orange-700">{transaction.date}</td>
                     <td className="p-3 font-medium text-orange-800">${transaction.amount}</td>

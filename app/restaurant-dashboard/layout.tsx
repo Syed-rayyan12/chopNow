@@ -66,7 +66,7 @@ export default function RestaurantDashboardLayout({ children }: { children: Reac
         />
 
         {/* Dynamic Page Content */}
-        <main className="flex-1 overflow-y-auto bg-amber-50 py-6 px-6">{children}</main>
+        <main className="flex-1 overflow-y-auto bg-background py-6 px-6">{children}</main>
       </div>
     </div>
   )

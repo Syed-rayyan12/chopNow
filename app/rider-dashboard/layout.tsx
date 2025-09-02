@@ -20,7 +20,7 @@ export default function AdminDashboardLayout({ children }: { children: React.Rea
         <RiderHeader collapsed={collapsed} setCollapsed={setCollapsed} />
 
         {/* Dynamic Page Content */}
-        <main className="flex-1 overflow-y-auto bg-amber-50  py-6 px-6">
+        <main className="flex-1 overflow-y-auto bg-background  py-6 px-6">
           {children}
         </main>
       </div>

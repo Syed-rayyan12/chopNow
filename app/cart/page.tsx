@@ -88,17 +88,17 @@ export default function CartPage() {
               Back
             </Button>
             <div>
-              <h1 className="font-heading font-bold text-3xl text-foreground">Your Cart</h1>
-              <p className="text-muted-foreground">From {restaurant.restaurantName}</p>
+              <h1 className="font-heading font-bold text-3xl text-secondary">Your Cart</h1>
+              <p className="text-foreground">From {restaurant.restaurantName}</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
-              <Card>
+              <Card className="border border-secondary">
                 <CardHeader className="flex flex-row items-center justify-between">
-                  <CardTitle>Order Items ({items.length})</CardTitle>
+                  <CardTitle className="text-secondary">Order Items ({items.length})</CardTitle>
                   <Button variant="ghost" size="sm" onClick={clearCart} className="text-destructive">
                     <Trash2 className="w-4 h-4 mr-2" />
                     Clear Cart
@@ -106,22 +106,28 @@ export default function CartPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {items.map((item) => (
-                    <div key={item.id} className="flex gap-4 p-4 border border-border rounded-lg">
+                    <div key={item.id} className="flex gap-4 p-4 border border-secondary rounded-lg">
                       <img
                         src={item.menuItem.image || "/placeholder.svg"}
                         alt={item.menuItem.name}
                         className="w-20 h-20 object-cover rounded-md flex-shrink-0"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          if (target.src !== "/placeholder.svg") {
+                            target.src = "/placeholder.svg";
+                          }
+                        }}
                       />
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-heading font-semibold text-foreground mb-1">{item.menuItem.name}</h3>
-                        <p className="text-sm text-muted-foreground mb-2 line-clamp-2">{item.menuItem.description}</p>
+                        <h3 className="font-heading font-semibold text-secondary mb-1">{item.menuItem.name}</h3>
+                        <p className="text-sm text-foreground mb-2 line-clamp-2">{item.menuItem.description}</p>
 
                         {/* Customizations */}
                         {Object.entries(item.customizations).map(([key, value]: [string, any]) => (
                           <div key={key} className="text-xs text-muted-foreground mb-1">
                             {Array.isArray(value)
-                              ? value.length > 0 && <span>{value.map((v: any) => v.name).join(", ")}</span>
-                              : value && <span>{value.name}</span>}
+                              ? value.length > 0 && <span className="">{value.map((v: any) => v.name).join(", ")}</span>
+                              : value && <span className="text-secondary">{value.name}</span>}
                           </div>
                         ))}
 
@@ -146,14 +152,14 @@ export default function CartPage() {
                             </Button>
                           </div>
                           <div className="flex items-center space-x-3">
-                            <span className="font-heading font-semibold text-lg">${item.totalPrice.toFixed(2)}</span>
+                            <span className="font-heading font-semibold text-lg text-secondary">${item.totalPrice.toFixed(2)}</span>
                             <Button
                               variant="ghost"
                               size="sm"
                               onClick={() => removeItem(item.id)}
-                              className="text-destructive hover:text-destructive p-1"
+                              className="text-destructive hover:text-white p-1"
                             >
-                              <Trash2 className="w-4 h-4" />
+                              <Trash2 className="w-4 h-4 " />
                             </Button>
                           </div>
                         </div>
@@ -167,9 +173,9 @@ export default function CartPage() {
             {/* Order Summary */}
             <div className="space-y-6">
               {/* Promo Code */}
-              <Card>
+              <Card className="border border-secondary">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-secondary">
                     <Tag className="w-5 h-5" />
                     Promo Code
                   </CardTitle>
@@ -194,6 +200,7 @@ export default function CartPage() {
                       <div className="flex gap-2">
                         <Input
                           placeholder="Enter promo code"
+                          className="border border-foreground/40"
                           value={promoInput}
                           onChange={(e) => {
                             setPromoInput(e.target.value)
@@ -215,14 +222,14 @@ export default function CartPage() {
               </Card>
 
               {/* Order Summary */}
-              <Card>
+              <Card className="border border-secondary">
                 <CardHeader>
-                  <CardTitle>Order Summary</CardTitle>
+                  <CardTitle className="text-secondary">Order Summary</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex justify-between text-sm">
                     <span>Subtotal ({items.reduce((sum, item) => sum + item.quantity, 0)} items)</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span className="text-secondary">${subtotal.toFixed(2)}</span>
                   </div>
 
                   {appliedPromo && discountAmount > 0 && (
@@ -235,14 +242,14 @@ export default function CartPage() {
                   <Separator />
                   <div className="flex justify-between font-semibold text-lg">
                     <span>Total</span>
-                    <span>${finalTotal.toFixed(2)}</span>
+                    <span className="text-secondary">${finalTotal.toFixed(2)}</span>
                   </div>
 
                   <Button onClick={handleProceedToCheckout} className="w-full" size="lg">
                     Proceed to Checkout
                   </Button>
 
-                  <Button variant="outline" asChild className="w-full bg-transparent">
+                  <Button variant="outline" asChild className="w-full bg-transparent hover:border-none">
                     <Link href={`/restaurant/${restaurant.restaurantId}`}>Add More Items</Link>
                   </Button>
                 </CardContent>

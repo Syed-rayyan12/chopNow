@@ -27,7 +27,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
       <div className="space-y-4">
         {restaurants.map((restaurant) => (
           <Link key={restaurant.id} href={`/restaurant/${restaurant.id}`}>
-            <Card className="group cursor-pointer hover:shadow-lg transition-all duration-300 border-border">
+            <Card className="group cursor-pointer  transition-all duration-300 border border-secondary">
               <CardContent className="p-0">
                 <div className="flex">
                   <div className="relative w-48 h-32 flex-shrink-0">
@@ -43,7 +43,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
                   <div className="flex-1 p-4">
                     <div className="flex justify-between items-start mb-2">
                       <div>
-                        <h3 className="font-heading font-semibold text-lg text-foreground mb-1">{restaurant.name}</h3>
+                        <h3 className="font-heading font-semibold text-lg text-secondary mb-1">{restaurant.name}</h3>
                         <p className="text-muted-foreground text-sm">{restaurant.cuisine}</p>
                       </div>
                       <div className="text-right">
@@ -63,8 +63,8 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
                           <span>{restaurant.deliveryTime}</span>
                         </div>
                         <div className="flex items-center space-x-1 text-muted-foreground">
-                          <Truck className="w-4 h-4" />
-                          <span>{restaurant.deliveryFee === 0 ? "Free" : `$${restaurant.deliveryFee}`}</span>
+                          <Truck className="w-4 h-4 text-secondary" />
+                          <span className="text-secondary">{restaurant.deliveryFee === 0 ? "Free" : `$${restaurant.deliveryFee}`}</span>
                         </div>
                         <div className="flex items-center space-x-1 text-muted-foreground">
                           <MapPin className="w-4 h-4" />
@@ -93,7 +93,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {restaurants.map((restaurant) => (
         <Link key={restaurant.id} href={`/restaurant/${restaurant.id}`}>
-          <Card className="group cursor-pointer hover:shadow-lg transition-all duration-300 border-border">
+          <Card className="group cursor-pointer border-secondary  transition-all duration-300 border">
             <div className="relative overflow-hidden rounded-t-lg">
               <img
                 src={restaurant.image || "/placeholder.svg"}
@@ -107,7 +107,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
             <CardContent className="p-4">
               <div className="flex justify-between items-start mb-2">
                 <div>
-                  <h3 className="font-heading font-semibold text-lg text-foreground mb-1">{restaurant.name}</h3>
+                  <h3 className="font-heading font-bold text-lg text-secondary mb-1">{restaurant.name}</h3>
                   <p className="text-muted-foreground text-sm">{restaurant.cuisine}</p>
                 </div>
                 <div className="text-right">
@@ -125,8 +125,8 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
                   <span>{restaurant.deliveryTime}</span>
                 </div>
                 <div className="flex items-center space-x-1 text-muted-foreground">
-                  <Truck className="w-4 h-4" />
-                  <span>{restaurant.deliveryFee === 0 ? "Free" : `$${restaurant.deliveryFee}`}</span>
+                  <Truck className="w-4 h-4 text-secondary" />
+                  <span className="text-secondary">{restaurant.deliveryFee === 0 ? "Free" : `$${restaurant.deliveryFee}`}</span>
                 </div>
                 <div className="flex items-center space-x-1 text-muted-foreground">
                   <MapPin className="w-4 h-4" />

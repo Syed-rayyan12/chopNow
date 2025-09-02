@@ -57,7 +57,12 @@ export function PopularCuisines() {
     <section className="py-16 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">Popular Cuisines</h2>
+        <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+            Popular{" "}
+            <span className="text-secondary animate-pulse">
+             Cuisines
+            </span>
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore a world of flavors from your favorite cuisines, all available for delivery.
           </p>
@@ -67,7 +72,7 @@ export function PopularCuisines() {
           {popularCuisines.map((cuisine) => (
             <Card
               key={cuisine.id}
-              className="group cursor-pointer hover:shadow-md transition-all duration-300 border-border"
+              className="group cursor-pointer transition-all duration-300 border-secondary/50"
             >
               <CardContent className="p-4 text-center">
                 <div className="relative overflow-hidden rounded-lg mb-3">

@@ -34,8 +34,8 @@ export function RiderSidebar({ collapsed, setCollapsed }: { collapsed: boolean, 
             className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-lg transition-colors",
               isActive
-                ? "bg-orange-100 text-orange-800 border border-orange-200"
-                : "text-amber-700 hover:bg-orange-50 hover:text-orange-800"
+               ? "bg-background text-secondary border border-secondary/65"
+                : "text-secondary "
             )}
           >
             <item.icon className="h-5 w-5 flex-shrink-0" />
@@ -63,19 +63,19 @@ export function RiderSidebar({ collapsed, setCollapsed }: { collapsed: boolean, 
       {/* Desktop Sidebar */}
       <div
         className={cn(
-          "hidden lg:flex lg:flex-col min-h-screen top-0 left-0 z-50 h-full bg-white border-r border-orange-200 transition-all duration-300",
+          "hidden lg:flex lg:flex-col min-h-screen top-0 left-0 z-50 h-full bg-background border-r border-secondary/70 transition-all duration-300",
           collapsed ? "w-16" : "w-64"
         )}
       >
         <div className="flex h-full flex-col">
-          <div className="flex h-16 items-center justify-between px-4 border-b border-orange-200">
+          <div className="flex h-16 items-center justify-between px-4 border-b border-secondary/70">
               <div className="flex items-center space-x-2">
-                <ChefHat className="h-8 w-8 text-orange-500" />
+                <ChefHat className="h-8 w-8 text-secondary" />
                 {!collapsed && (
                   <>
                   <div className="flex flex-col ">
-                <span className="text-lg font-bold text-orange-800">ChopNow</span>
-                <span className="text-xs text-amber-700">Rider Panel</span>
+                <span className="text-lg font-bold text-secondary">ChopNow</span>
+                <span className="text-xs text-secondary/80">Rider Panel</span>
                   </div>
                 </>
               )}
@@ -98,10 +98,10 @@ export function RiderSidebar({ collapsed, setCollapsed }: { collapsed: boolean, 
       {/* Mobile Sidebar */}
       <Sheet>
         <SheetContent side="left" className="p-0 w-64">
-          <SheetHeader className="border-b border-orange-200 p-4">
+          <SheetHeader className="border-b border-secondary/70 p-4">
             <SheetTitle className="flex items-center space-x-2">
-              <ChefHat className="h-6 w-6 text-orange-500" />
-              <span className="text-lg font-bold text-orange-800">ChopNow Admin</span>
+              <ChefHat className="h-6 w-6 text-secondary" />
+              <span className="text-lg font-bold text-secondary">ChopNow Rider</span>
             </SheetTitle>
           </SheetHeader>
           <div className="flex flex-col h-full">

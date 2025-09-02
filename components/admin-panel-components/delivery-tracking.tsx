@@ -199,72 +199,72 @@ export function DeliveryTracking() {
     <div className="space-y-4">
       {/* Header Stats */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="border border-orange-200">
+        <Card className="border border-secondary/80">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-amber-800">Active Deliveries</CardTitle>
-            <Truck className="h-4 w-4 text-amber-600" />
+            <CardTitle className="text-sm font-medium text-foreground">Active Deliveries</CardTitle>
+            <Truck className="h-4 w-4 text-secondary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-amber-900">23</div>
-            <p className="text-xs text-amber-700">+2 from last hour</p>
+            <div className="text-2xl font-bold text-secondary">23</div>
+            <p className="text-xs text-green-600">+2 from last hour</p>
           </CardContent>
         </Card>
-        <Card className="border border-orange-200">
+        <Card className="border border-secondary/80">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-amber-800">Available Drivers</CardTitle>
-            <MapPin className="h-4 w-4 text-amber-600" />
+            <CardTitle className="text-sm font-medium text-foreground">Available Drivers</CardTitle>
+            <MapPin className="h-4 w-4 text-secondary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-amber-900">8</div>
-            <p className="text-xs text-amber-700">3 drivers online</p>
+            <div className="text-2xl font-bold text-secondary">8</div>
+            <p className="text-xs text-green-600">3 drivers online</p>
           </CardContent>
         </Card>
-        <Card className="border border-orange-200">
+        <Card className="border border-secondary/80">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-amber-800">Avg. Delivery Time</CardTitle>
-            <Clock className="h-4 w-4 text-amber-600" />
+            <CardTitle className="text-sm font-medium text-foreground">Avg. Delivery Time</CardTitle>
+            <Clock className="h-4 w-4 text-secondary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-amber-900">18m</div>
+            <div className="text-2xl font-bold text-secondary">18m</div>
             <p className="text-xs text-green-600">-2m from yesterday</p>
           </CardContent>
         </Card>
-        <Card className="border border-orange-200">
+        <Card className="border border-secondary/80">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-amber-800">Success Rate</CardTitle>
-            <CheckCircle className="h-4 w-4 text-amber-600" />
+            <CardTitle className="text-sm font-medium text-foreground">Success Rate</CardTitle>
+            <CheckCircle className="h-4 w-4 text-secondary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-amber-900">98.5%</div>
+            <div className="text-2xl font-bold text-secondary">98.5%</div>
             <p className="text-xs text-green-600">+0.3% from yesterday</p>
           </CardContent>
         </Card>
       </div>
 
       <Tabs defaultValue="deliveries" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="deliveries">Active Deliveries</TabsTrigger>
-          <TabsTrigger value="drivers">Drivers</TabsTrigger>
-          <TabsTrigger value="map">Live Map</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-3 bg-secondary rounded-xl">
+          <TabsTrigger value="deliveries" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Active Deliveries</TabsTrigger>
+          <TabsTrigger value="drivers" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Drivers</TabsTrigger>
+          <TabsTrigger value="map" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Live Map</TabsTrigger>
         </TabsList>
 
         <TabsContent value="deliveries" className="space-y-4">
           {/* Search and Filter */}
           <div className="flex items-center space-x-2">
             <div className="relative flex-1">
-              <Search className="absolute left-2 top-2.5 h-4 w-4 text-amber-500" />
+              <Search className="absolute left-2 top-2.5 h-4 w-4 text-secondary" />
               <Input
                 placeholder="Search deliveries..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-8 border border-orange-200"
+                className="pl-8 border border-secondary/50"
               />
             </div>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue className="border border-orange-200" placeholder="Filter by status" />
+              <SelectTrigger className="w-[180px] border-secondary/50">
+                <SelectValue className="" placeholder="Filter by status" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="border-secondary/50">
                 <SelectItem value="all">All Status</SelectItem>
                 <SelectItem value="preparing">Preparing</SelectItem>
                 <SelectItem value="picked_up">Picked Up</SelectItem>
@@ -272,7 +272,7 @@ export function DeliveryTracking() {
                 <SelectItem value="delivered">Delivered</SelectItem>
               </SelectContent>
             </Select>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="border-secondary/50">
               <Filter className="mr-2 h-4 w-4" />
               More Filters
             </Button>
@@ -281,16 +281,16 @@ export function DeliveryTracking() {
           {/* Delivery Cards */}
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {filteredDeliveries.map((delivery) => (
-              <Card key={delivery.id} className="hover:shadow-md transition-shadow">
+              <Card key={delivery.id} className="border-secondary/80">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-amber-900">{delivery.orderId}</CardTitle>
+                    <CardTitle className="text-lg text-secondary">{delivery.orderId}</CardTitle>
                     <Badge className={getStatusColor(delivery.status)}>
                       {getStatusIcon(delivery.status)}
                       <span className="ml-1 capitalize">{delivery.status.replace("_", " ")}</span>
                     </Badge>
                   </div>
-                  <CardDescription className="text-amber-700">
+                  <CardDescription className="text-secondary opacity-80">
                     {delivery.restaurant} → {delivery.customer}
                   </CardDescription>
                 </CardHeader>
@@ -307,8 +307,8 @@ export function DeliveryTracking() {
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex-1">
-                      <p className="font-medium text-amber-900">{delivery.driver.name}</p>
-                      <div className="flex items-center space-x-2 text-sm text-amber-700">
+                      <p className="font-medium text-secondary">{delivery.driver.name}</p>
+                      <div className="flex items-center space-x-2 text-sm text-secondary opacity-80">
                         <Star className="h-3 w-3 fill-current" />
                         <span>{delivery.driver.rating}</span>
                         <span>•</span>
@@ -323,23 +323,23 @@ export function DeliveryTracking() {
                   {/* Delivery Details */}
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-amber-700">Items:</span>
-                      <span className="text-amber-900">{delivery.items.join(", ")}</span>
+                      <span className="text-secondary opacity-90">Items:</span>
+                      <span className="text-secondary">{delivery.items.join(", ")}</span>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-amber-700">Distance:</span>
-                      <span className="text-amber-900">{delivery.distance}</span>
+                      <span className="text-secondary opacity-90">Distance:</span>
+                      <span className="text-secondary">{delivery.distance}</span>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-amber-700">ETA:</span>
-                      <span className="font-medium text-amber-900">{delivery.estimatedTime}</span>
+                      <span className="text-secondary opacity-90">ETA:</span>
+                      <span className="font-medium text-secondary">{delivery.estimatedTime}</span>
                     </div>
                   </div>
 
                   {/* Address */}
                   <div className="flex items-start space-x-2 text-sm">
-                    <MapPin className="h-4 w-4 text-amber-600 mt-0.5" />
-                    <span className="text-amber-700">{delivery.address}</span>
+                    <MapPin className="h-4 w-4 text-secondary mt-0.5" />
+                    <span className="text-secondary opacity-90">{delivery.address}</span>
                   </div>
 
                   {/* Actions */}
@@ -370,7 +370,7 @@ export function DeliveryTracking() {
         <TabsContent value="drivers" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {drivers.map((driver) => (
-              <Card key={driver.id} className="hover:shadow-md transition-shadow">
+              <Card key={driver.id} className="border-secondary/80">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
@@ -384,8 +384,8 @@ export function DeliveryTracking() {
                         </AvatarFallback>
                       </Avatar>
                       <div>
-                        <CardTitle className="text-lg text-amber-900">{driver.name}</CardTitle>
-                        <div className="flex items-center space-x-2 text-sm text-amber-700">
+                        <CardTitle className="text-lg text-secondary">{driver.name}</CardTitle>
+                        <div className="flex items-center space-x-2 text-sm text-secondary opacity-90">
                           <Star className="h-3 w-3 fill-current" />
                           <span>{driver.rating}</span>
                           <span>•</span>
@@ -399,20 +399,20 @@ export function DeliveryTracking() {
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <p className="text-amber-700">Current Orders</p>
-                      <p className="font-semibold text-amber-900">{driver.currentDeliveries}</p>
+                      <p className="text-secondary opacity-90">Current Orders</p>
+                      <p className="font-semibold text-secondary">{driver.currentDeliveries}</p>
                     </div>
                     <div>
-                      <p className="text-amber-700">Today's Orders</p>
-                      <p className="font-semibold text-amber-900">{driver.todayDeliveries}</p>
+                      <p className="text-secondary opacity-90">Today's Orders</p>
+                      <p className="font-semibold text-secondary">{driver.todayDeliveries}</p>
                     </div>
                     <div>
-                      <p className="text-amber-700">Today's Earnings</p>
-                      <p className="font-semibold text-amber-900">£{driver.earnings}</p>
+                      <p className="text-secondary opacity-90">Today's Earnings</p>
+                      <p className="font-semibold text-secondary">£{driver.earnings}</p>
                     </div>
                     <div>
-                      <p className="text-amber-700">Location</p>
-                      <p className="font-semibold text-amber-900">{driver.location}</p>
+                      <p className="text-secondary opacity-90">Location</p>
+                      <p className="font-semibold text-secondary">{driver.location}</p>
                     </div>
                   </div>
 
@@ -448,15 +448,15 @@ export function DeliveryTracking() {
         <TabsContent value="map" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle className="text-amber-900">Live Delivery Map</CardTitle>
-              <CardDescription>Real-time tracking of all active deliveries</CardDescription>
+              <CardTitle className="text-secondary">Live Delivery Map</CardTitle>
+              <CardDescription className="text-secondary opacity-90">Real-time tracking of all active deliveries</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="h-[600px] bg-amber-50 rounded-lg border-2 border-dashed border-amber-200 flex items-center justify-center">
                 <div className="text-center space-y-2">
-                  <MapPin className="h-12 w-12 text-amber-400 mx-auto" />
-                  <p className="text-amber-700 font-medium">Interactive Map View</p>
-                  <p className="text-sm text-amber-600">
+                  <MapPin className="h-12 w-12 text-secondary mx-auto" />
+                  <p className="text-secondary opacity-90 font-medium">Interactive Map View</p>
+                  <p className="text-sm text-secondary opacity-90">
                     Real-time delivery tracking with driver locations,
                     <br />
                     route optimization, and delivery status updates
@@ -464,15 +464,15 @@ export function DeliveryTracking() {
                   <div className="flex items-center justify-center space-x-4 pt-4">
                     <div className="flex items-center space-x-2">
                       <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                      <span className="text-sm text-amber-700">Active Drivers</span>
+                      <span className="text-sm text-secondary opacity-90">Active Drivers</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                      <span className="text-sm text-amber-700">En Route</span>
+                      <span className="text-sm text-secondary opacity-90">En Route</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                      <span className="text-sm text-amber-700">Pickup Points</span>
+                      <span className="text-sm text-secondary opacity-90">Pickup Points</span>
                     </div>
                   </div>
                 </div>

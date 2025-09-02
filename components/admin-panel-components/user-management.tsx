@@ -180,11 +180,11 @@ export function UserManagement() {
       {/* Header */}
       <div className="flex max-sm:flex-col max-sm:gap-4 max-sm:items-start items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-orange-800">User Management</h1>
-          <p className="text-amber-600">Manage customer accounts and user activity</p>
+          <h1 className="text-3xl font-bold text-secondary">User Management</h1>
+          <p className="text-secondary/70">Manage customer accounts and user activity</p>
         </div>
         <div className="flex items-center space-x-3">
-          <Button variant="outline" className="border-orange-200 text-orange-700 hover:bg-orange-50 bg-transparent">
+          <Button variant="outline" className="border-secondary/65 text-secondary hover:bg-secondary bg-transparent">
             <Download className="w-4 h-4 mr-2" />
             Export Users
           </Button>
@@ -197,46 +197,46 @@ export function UserManagement() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/80 bg-white shadow-none">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-orange-800">{userStats.total}</div>
-            <div className="text-sm text-amber-600">Total Users</div>
+            <div className="text-2xl font-bold text-secondary">{userStats.total}</div>
+            <div className="text-sm text-foreground">Total Users</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/80 bg-white shadow-none">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-green-700">{userStats.active}</div>
-            <div className="text-sm text-amber-600">Active</div>
+            <div className="text-2xl font-bold  text-secondary">{userStats.active}</div>
+            <div className="text-sm text-foreground">Active</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/80 bg-white shadow-none">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-amber-700">{userStats.inactive}</div>
-            <div className="text-sm text-amber-600">Inactive</div>
+            <div className="text-2xl font-bold  text-secondary">{userStats.inactive}</div>
+            <div className="text-sm text-foreground">Inactive</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/80 bg-white shadow-none">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-red-700">{userStats.banned}</div>
-            <div className="text-sm text-amber-600">Banned</div>
+            <div className="text-2xl font-bold text-secondary">{userStats.banned}</div>
+            <div className="text-sm text-foreground">Banned</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/80 bg-white shadow-none">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-orange-800">£{userStats.totalRevenue.toLocaleString()}</div>
-            <div className="text-sm text-amber-600">Total Revenue</div>
+            <div className="text-2xl font-bold text-secondary">£{userStats.totalRevenue.toLocaleString()}</div>
+            <div className="text-sm text-foreground">Total Revenue</div>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 bg-white">
+        <Card className="border-secondary/80 bg-white shadow-none">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-orange-800">£{userStats.avgOrderValue.toFixed(2)}</div>
-            <div className="text-sm text-amber-600">Avg Order Value</div>
+            <div className="text-2xl font-bold text-secondary">£{userStats.avgOrderValue.toFixed(2)}</div>
+            <div className="text-sm text-foreground">Avg Order Value</div>
           </CardContent>
         </Card>
       </div>
 
       {/* Filters and Search */}
-      <Card className="border-orange-200">
+      <Card className="border-secondary/80 bg-white shadow-none">
         <CardHeader>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
             <div className="flex max-sm:flex-col max-sm:gap-3 items-center space-x-4">
@@ -246,15 +246,15 @@ export function UserManagement() {
                   placeholder="Search users by name, email, phone, or ID..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-80 max-sm:w-full border-orange-200 focus:border-orange-400 focus:ring-orange-400"
+                  className="pl-10 w-80 max-sm:w-full border-secondary/50"
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-40 border-orange-200">
+                <SelectTrigger className="w-40 border-secondary/50">
                   <Filter className="w-4 h-4 mr-2" />
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="border-secondary/50">
                   <SelectItem value="all">All Status</SelectItem>
                   <SelectItem value="active">Active</SelectItem>
                   <SelectItem value="inactive">Inactive</SelectItem>
@@ -266,28 +266,28 @@ export function UserManagement() {
         </CardHeader>
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="lg:grid hidden w-full grid-cols-4 bg-amber-50">
+            <TabsList className="lg:grid hidden w-full grid-cols-4 border-secondary bg-secondary rounded-xl">
               <TabsTrigger
                 value="all"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
+                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
               >
                 All Users
               </TabsTrigger>
               <TabsTrigger
                 value="active"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
+                className="data-[state=active]:background data-[state=active]:text-foreground rounded-lg text-background"
               >
                 Active
               </TabsTrigger>
               <TabsTrigger
                 value="inactive"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
+                className="data-[state=active]:background data-[state=active]:text-foreground rounded-lg text-background"
               >
                 Inactive
               </TabsTrigger>
               <TabsTrigger
                 value="banned"
-                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800"
+                className="data-[state=active]:background data-[state=active]:text-foreground rounded-lg text-background"
               >
                 Banned
               </TabsTrigger>
@@ -296,15 +296,15 @@ export function UserManagement() {
             <TabsContent value={activeTab} className="mt-6">
               <Table>
                 <TableHeader>
-                  <TableRow className="border-orange-200">
-                    <TableHead className="text-orange-800">User</TableHead>
-                    <TableHead className="text-orange-800">Contact</TableHead>
-                    <TableHead className="text-orange-800">Orders</TableHead>
-                    <TableHead className="text-orange-800">Total Spent</TableHead>
-                    <TableHead className="text-orange-800">Avg Order</TableHead>
-                    <TableHead className="text-orange-800">Last Order</TableHead>
-                    <TableHead className="text-orange-800">Status</TableHead>
-                    <TableHead className="text-orange-800">Actions</TableHead>
+                  <TableRow className="border-secondary/65">
+                    <TableHead className="text-secondary">User</TableHead>
+                    <TableHead className="text-secondary">Contact</TableHead>
+                    <TableHead className="text-secondary">Orders</TableHead>
+                    <TableHead className="text-secondary">Total Spent</TableHead>
+                    <TableHead className="text-secondary">Avg Order</TableHead>
+                    <TableHead className="text-secondary">Last Order</TableHead>
+                    <TableHead className="text-secondary">Status</TableHead>
+                    <TableHead className="text-secondary">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -322,27 +322,27 @@ export function UserManagement() {
                             </AvatarFallback>
                           </Avatar>
                           <div>
-                            <div className="font-medium text-orange-800">{user.name}</div>
-                            <div className="text-sm text-amber-600">{user.id}</div>
+                            <div className="font-bold text-secondary">{user.name}</div>
+                            <div className="text-sm text-secondary">{user.id}</div>
                           </div>
                         </div>
                       </TableCell>
                       <TableCell>
                         <div className="space-y-1">
-                          <div className="flex items-center text-sm text-amber-700">
+                          <div className="flex items-center text-sm text-secondary/80">
                             <Mail className="w-3 h-3 mr-1" />
                             {user.email}
                           </div>
-                          <div className="flex items-center text-sm text-amber-700">
+                          <div className="flex items-center text-sm text-secondary/70">
                             <Phone className="w-3 h-3 mr-1" />
                             {user.phone}
                           </div>
                         </div>
                       </TableCell>
-                      <TableCell className="font-medium text-orange-800">{user.totalOrders}</TableCell>
-                      <TableCell className="font-bold text-orange-800">£{user.totalSpent.toFixed(2)}</TableCell>
-                      <TableCell className="text-orange-700">£{user.averageOrder.toFixed(2)}</TableCell>
-                      <TableCell className="text-amber-600">{user.lastOrder}</TableCell>
+                      <TableCell className="font-medium text-secondary">{user.totalOrders}</TableCell>
+                      <TableCell className="font-bold text-secondary">£{user.totalSpent.toFixed(2)}</TableCell>
+                      <TableCell className="text-secondary">£{user.averageOrder.toFixed(2)}</TableCell>
+                      <TableCell className="text-secondary">{user.lastOrder}</TableCell>
                       <TableCell>{getStatusBadge(user.status)}</TableCell>
                       <TableCell>
                         <div className="flex items-center space-x-2">

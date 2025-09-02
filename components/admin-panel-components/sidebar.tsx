@@ -31,7 +31,7 @@ export function Sidebar({ collapsed, setCollapsed }: { collapsed: boolean, setCo
   const pathname = usePathname()
 
   const NavItems = () => (
-    <nav className="flex-1 p-3 overflow-y-auto">
+    <nav className="flex-1 p-3 overflow-y-auto bg-background">
       {navigation.map((item) => {
         const isActive = pathname === item.href
         return (
@@ -41,8 +41,8 @@ export function Sidebar({ collapsed, setCollapsed }: { collapsed: boolean, setCo
             className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-lg transition-colors",
               isActive
-                ? "bg-orange-100 text-orange-800 border border-orange-200"
-                : "text-amber-700 hover:bg-orange-50 hover:text-orange-800"
+                ? "bg-background text-secondary border border-secondary/65"
+                : "text-secondary "
             )}
           >
             <item.icon className="h-5 w-5 flex-shrink-0" />
@@ -70,19 +70,23 @@ export function Sidebar({ collapsed, setCollapsed }: { collapsed: boolean, setCo
       {/* Desktop Sidebar */}
       <div
         className={cn(
-          "hidden xl:flex lg:flex-col min-h-screen top-0 left-0 z-50 h-full bg-white border-r border-orange-200 transition-all duration-300",
+          "hidden xl:flex lg:flex-col min-h-screen top-0 left-0 z-50 h-full bg-background  border-r border-secondary/65 transition-all duration-300",
           collapsed ? "w-16" : "w-64"
         )}
       >
         <div className="flex h-full flex-col">
-          <div className="flex h-16 items-center justify-between px-4 border-b border-orange-200">
+          <div className="flex h-16 items-center justify-between px-4 border-b border-secondary/65 bg-background">
          
-              <div className="flex items-center space-x-2">
-                <ChefHat className="h-8 w-8 text-orange-500" />
+              <div className="">
+             
                 {!collapsed && (
                 <div className="flex flex-col">
-                <span className="text-lg font-bold text-orange-800">ChopNow</span>
-                <span className="text-xs text-amber-700">Admin Panel</span>
+                <img
+                        src="/chopnow-logo.png"
+                        alt="ChopNow Logo"
+                        className="mx-auto w-42 h-full px-2 object-cover"
+                    />
+                <span className="text-xs text-secondary/70">Admin Panel</span>
                 </div>
               )}
               </div>

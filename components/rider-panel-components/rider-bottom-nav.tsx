@@ -26,7 +26,7 @@ export function RiderBottomNav({ activeTab, onTabChange }: RiderBottomNavProps) 
               key={tab.id}
               onClick={() => onTabChange(tab.id)}
               className={`flex flex-col items-center py-2 px-3 rounded-lg transition-colors ${
-                isActive ? "text-orange-600 bg-orange-50" : "text-gray-500 hover:text-gray-700"
+                isActive ? "text-secondary bg-secondary/10" : "text-gray-500 hover:text-gray-700"
               }`}
             >
               <Icon className="h-5 w-5 mb-1" />

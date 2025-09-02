@@ -4,41 +4,59 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color tokens to match Chop Now food delivery theme */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.295 0 0);
-  --card: oklch(0.996 0.008 85.09);
-  --card-foreground: oklch(0.295 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.295 0 0);
-  --primary: oklch(0.647 0.162 41.116);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.708 0.222 41.116);
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.992 0.013 85.09);
-  --muted-foreground: oklch(0.295 0 0);
-  --accent: oklch(0.708 0.222 41.116);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.922 0.008 85.09);
-  --input: oklch(0.976 0.005 85.09);
-  --ring: oklch(0.647 0.162 41.116 / 0.5);
-  --chart-1: oklch(0.708 0.222 41.116);
-  --chart-2: oklch(0.647 0.162 41.116);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.696 0.17 62.48);
-  --chart-5: oklch(0.828 0.189 84.429);
+  /* Chop Now food delivery theme colors */
+  --background: #FDFBEA;
+  --foreground: #222222;
+
+  --card: #FDFBEA;
+  --card-foreground: #222222;
+
+  --popover: #FDFBEA;
+  --popover-foreground: #222222;
+
+  --primary: #0F3D2E;
+  --primary-foreground: #FDFBEA;
+
+  --secondary: #FF7A00;
+  --secondary-foreground: #FDFBEA;
+
+  --muted: #FDFBEA;
+  --muted-foreground: #222222;
+
+  --accent: #FF7A00;
+  --accent-foreground: #FDFBEA;
+
+  --destructive: #FF7A00;
+  --destructive-foreground: #FDFBEA;
+
+  --border: #222222;
+  --input: #FDFBEA;
+  --ring: #0F3D2E;
+
+  /* Optional chart palette using same 4 colors */
+  --chart-1: #0F3D2E;
+  --chart-2: #FF7A00;
+  --chart-3: #FDFBEA;
+  --chart-4: #222222;
+  --chart-5: #FF7A00;
+
+  /* Layout tokens */
   --radius: 0.5rem;
-  --sidebar: oklch(1 0 0);
-  --sidebar-foreground: oklch(0.295 0 0);
-  --sidebar-primary: oklch(0.647 0.162 41.116);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.708 0.222 41.116);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.922 0.008 85.09);
-  --sidebar-ring: oklch(0.647 0.162 41.116 / 0.5);
+
+  --sidebar: #FDFBEA;
+  --sidebar-foreground: #222222;
+  --sidebar-primary: #0F3D2E;
+  --sidebar-primary-foreground: #FDFBEA;
+  --sidebar-accent: #FF7A00;
+  --sidebar-accent-foreground: #FDFBEA;
+  --sidebar-border: #222222;
+  --sidebar-ring: #0F3D2E;
 }
+
+
+
+
+
 
 .dark {
   --background: oklch(0.145 0 0);

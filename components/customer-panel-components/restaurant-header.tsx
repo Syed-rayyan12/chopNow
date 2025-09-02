@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge"
 import { Star, Clock, Truck, MapPin, Phone, Info } from "lucide-react"
+import Image from "next/image"
 
 interface RestaurantHeaderProps {
   restaurant: {
@@ -24,20 +25,22 @@ interface RestaurantHeaderProps {
 
 export function RestaurantHeader({ restaurant }: RestaurantHeaderProps) {
   return (
-    <div className="relative">
+    <div className="relative ">
       {/* Cover Image */}
       <div className="h-64 md:h-80 relative overflow-hidden">
-        <img
-          src={restaurant.coverImage || restaurant.image || "/placeholder.svg"}
+        <Image
+          src={restaurant.coverImage || restaurant.image || "/italian-restaurant-food.png"}
           alt={restaurant.name}
-          className="w-full h-full object-cover"
+          fill
+          priority
+          className="object-cover w-full"
         />
         <div className="absolute inset-0 bg-black/20"></div>
       </div>
 
       {/* Restaurant Info */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative -mt-16 bg-background rounded-lg shadow-lg border border-border p-6">
+      <div className="container  mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative -mt-16 bg-background rounded-lg  border border-secondary p-6">
           <div className="flex flex-col md:flex-row gap-6">
             {/* Restaurant Logo */}
             <div className="flex-shrink-0">
@@ -52,7 +55,7 @@ export function RestaurantHeader({ restaurant }: RestaurantHeaderProps) {
             <div className="flex-1">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
-                  <h1 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-2">
+                  <h1 className="font-heading font-bold text-2xl md:text-3xl text-secondary mb-2">
                     {restaurant.name}
                   </h1>
                   <div className="flex items-center gap-4 mb-3">
@@ -69,7 +72,7 @@ export function RestaurantHeader({ restaurant }: RestaurantHeaderProps) {
 
                 {/* Delivery Info */}
                 <div className="bg-muted/50 rounded-lg p-4 min-w-64">
-                  <h3 className="font-heading font-semibold text-foreground mb-3">Delivery Info</h3>
+                  <h3 className="font-heading font-semibold text-secondary mb-3">Delivery Info</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
@@ -108,22 +111,22 @@ export function RestaurantHeader({ restaurant }: RestaurantHeaderProps) {
               {/* Contact Info */}
               <div className="flex flex-col sm:flex-row gap-4 mt-4 pt-4 border-t border-border">
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <MapPin className="w-4 h-4" />
-                  <span>{restaurant.address}</span>
+                  <MapPin className="w-4 h-4 text-secondary" />
+                  <span className="text-secondary">{restaurant.address}</span>
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <Phone className="w-4 h-4" />
-                  <span>{restaurant.phone}</span>
+                  <Phone className="w-4 h-4 text-secondary" />
+                  <span className="text-secondary">{restaurant.phone}</span>
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <Clock className="w-4 h-4" />
-                  <span>{restaurant.openingHours}</span>
+                  <Clock className="w-4 h-4 text-secondary" />
+                  <span className="text-secondary">{restaurant.openingHours}</span>
                 </div>
               </div>
 
               {restaurant.minimumOrder > 0 && (
-                <div className="mt-3 p-3 bg-primary/10 rounded-lg">
-                  <p className="text-sm text-primary font-medium">Minimum order: ${restaurant.minimumOrder}</p>
+                <div className="mt-3 p-3 bg-secondary rounded-lg">
+                  <p className="text-sm text-background font-medium">Minimum order: ${restaurant.minimumOrder}</p>
                 </div>
               )}
             </div>

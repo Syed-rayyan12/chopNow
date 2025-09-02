@@ -73,7 +73,7 @@ export function MenuItemModal({ item, isOpen, onClose, onAddToCart }: MenuItemMo
           {/* Item Info */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <h2 className="font-heading font-bold text-2xl text-foreground">{item.name}</h2>
+              <h2 className="font-heading font-bold text-2xl text-secondary">{item.name}</h2>
               {item.popular && (
                 <Badge className="bg-primary text-primary-foreground">
                   <Star className="w-3 h-3 mr-1" />
@@ -82,7 +82,7 @@ export function MenuItemModal({ item, isOpen, onClose, onAddToCart }: MenuItemMo
               )}
             </div>
             <p className="text-muted-foreground mb-4">{item.description}</p>
-            <p className="font-heading font-bold text-xl text-primary">${item.price.toFixed(2)}</p>
+            <p className="font-heading font-bold text-xl text-secondary">${item.price.toFixed(2)}</p>
           </div>
 
           {/* Customizations */}
@@ -164,7 +164,7 @@ export function MenuItemModal({ item, isOpen, onClose, onAddToCart }: MenuItemMo
               </Button>
             </div>
 
-            <Button onClick={handleAddToCart} size="lg" className="font-medium">
+            <Button onClick={handleAddToCart} size="lg" className="font-medium bg-transparent hover:bg-secondary hover:text-white border border-secondary text-foreground">
               Add to Cart • ${calculateTotalPrice().toFixed(2)}
             </Button>
           </div>
