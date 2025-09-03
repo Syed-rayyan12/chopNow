@@ -64,7 +64,7 @@ export function RiderLogin() {
       {/* ✅ Toaster */}
       <Toaster />
 
-      <Card className="w-full max-w-md border-secondary/50">
+      <Card className="w-full max-w-md  border-secondary/50">
         <CardHeader className="text-center ">
           <img
             src="/chopNow.png"

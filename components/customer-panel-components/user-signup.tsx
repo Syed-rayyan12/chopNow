@@ -70,7 +70,7 @@ export default function RiderSignup() {
       {/* ✅ Render Toaster */}
       <Toaster />
 
-      <Card className="w-full max-w-md border border-secondary">
+      <Card className="w-full max-w-md max-sm:mx-4 border border-secondary">
         <CardHeader className="text-center space-y-4">
           <img
             src="/chopNow.png"
