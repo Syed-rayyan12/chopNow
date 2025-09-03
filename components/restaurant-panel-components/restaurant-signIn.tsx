@@ -24,8 +24,8 @@ export function RestaurantSignIn({ onLogin }: RiderLoginProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md border border-secondary">
+    <div className="min-h-screen bg-orange-100 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md border  border-secondary">
         <CardHeader className="text-center space-y-4">
         <img
             src="/chopNow.png"

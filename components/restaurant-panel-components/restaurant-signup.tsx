@@ -66,7 +66,7 @@ export default function RestaurantSignup() {
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-orange-100">
-            <Card className="w-full max-w-md bg-background border border-secondary">
+            <Card className="w-full max-w-md bg-background max-sm:mx-4 border border-secondary">
                 <CardHeader className="text-center space-y-4">
                     <img
                         src="/chopNow.png"

@@ -60,11 +60,11 @@ export function RiderLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center p-4 relative">
+    <div className="min-h-screen bg-orange-100 flex items-center justify-center p-4 relative">
       {/* ✅ Toaster */}
       <Toaster />
 
-      <Card className="w-full max-w-md  border-secondary/50">
+      <Card className="w-full max-w-md  border-secondary">
         <CardHeader className="text-center ">
           <img
             src="/chopNow.png"

@@ -149,9 +149,9 @@ export function OffersPage() {
 
         {/* Filters and Sorting */}
         <div className=" p-4 rounded-xl">
-        <div className=" flex flex- items-center gap-4 md:flex-row md:items-center md:justify-between">
+        <div className=" flex  max-sm:flex-col items-center gap-4 md:flex-row md:items-center md:justify-between">
           {/* Filter Buttons */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap max-sm:justify-center gap-2">
             {filterOptions.map((filter) => (
               <Button
                 key={filter}
@@ -171,7 +171,7 @@ export function OffersPage() {
             placeholder="Search restaurants or cuisines..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 w-96 bg-card border border-foreground"
+            className="pl-10 w-96 bg-card border border-foreground max-sm:w-full"
           />
         </div>
 
@@ -250,7 +250,7 @@ export function OffersPage() {
                 <CardContent className="pt-8 pb-4">
                   <div className="mb-2">
                     <h3 className="font-semibold text-lg text-card-foreground mb-1">{offer.name}</h3>
-                    <div className="flex flex-wrap gap-1 mb-2">
+                    <div className="flex  flex-wrap gap-1 mb-2">
                       {offer.cuisine.map((type) => (
                         <span key={type} className="text-xs text-muted-foreground">
                           {type}

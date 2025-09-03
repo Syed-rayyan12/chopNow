@@ -3,6 +3,7 @@ import { RestaurantRiderNavbar } from "@/components/customer-panel-components/ad
 import { FeaturedRestaurants } from "@/components/customer-panel-components/featured-restaurants";
 import { Footer } from "@/components/customer-panel-components/footer";
 import { Header } from "@/components/customer-panel-components/header";
+
 import { HeroSection } from "@/components/customer-panel-components/hero-section";
 import { PopularCuisines } from "@/components/customer-panel-components/popular-cuisines";
 
