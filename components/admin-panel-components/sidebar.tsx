@@ -75,19 +75,29 @@ export function Sidebar({ collapsed, setCollapsed }: { collapsed: boolean, setCo
         )}
       >
         <div className="flex h-full flex-col">
-          <div className="flex h-16 items-center justify-between px-4 border-b border-secondary/65 bg-background">
-         
+          <div className="flex h-16 items-center justify-center  px-4 py-3 border-b border-secondary/65 bg-background">
+          {/* <ChefHat className="text-secondary rounded-lg"/> */}
               <div className="">
              
                 {!collapsed && (
-                <div className="flex flex-col">
+                <div className="flex flex-col justify-center">
                 <img
-                        src="/chopnow-logo.png"
+                        src="/chopNow.png"
                         alt="ChopNow Logo"
-                        className="mx-auto w-42 h-full px-2 object-cover"
+                        className="mx-auto w-36 h-full px-2 object-cover"
                     />
-                <span className="text-xs text-secondary/70">Admin Panel</span>
+                {/* <span className="text-secondary text-lg font-bold">ChopNow</span>
+                <span className="text-xs text-secondary/70">Admin Panel</span> */}
                 </div>
+              )}
+
+              
+{collapsed && (
+                <>
+                  <div className="flex flex-col ">
+                  <ChefHat className="text-secondary"/>
+                  </div>
+                </>
               )}
               </div>
         

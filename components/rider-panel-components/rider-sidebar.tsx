@@ -34,7 +34,7 @@ export function RiderSidebar({ collapsed, setCollapsed }: { collapsed: boolean, 
             className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-lg transition-colors",
               isActive
-               ? "bg-background text-secondary border border-secondary/65"
+                ? "bg-background text-secondary border border-secondary/65"
                 : "text-secondary "
             )}
           >
@@ -68,19 +68,30 @@ export function RiderSidebar({ collapsed, setCollapsed }: { collapsed: boolean, 
         )}
       >
         <div className="flex h-full flex-col">
-          <div className="flex h-16 items-center justify-between px-4 border-b border-secondary/70">
-              <div className="flex items-center space-x-2">
-                <ChefHat className="h-8 w-8 text-secondary" />
-                {!collapsed && (
-                  <>
+          <div className="flex h-16 items-center justify-center px-4 border-b border-secondary/70">
+            <div className="flex items-center space-x-2">
+
+              {!collapsed && (
+                <>
                   <div className="flex flex-col ">
-                <span className="text-lg font-bold text-secondary">ChopNow</span>
-                <span className="text-xs text-secondary/80">Rider Panel</span>
+                    <img
+                      src="/chopNow.png"
+                      alt="ChopNow Logo"
+                      className="mx-auto w-36 h-full px-2 object-cover"
+                    />
                   </div>
                 </>
               )}
-              </div>
-        
+
+              {collapsed && (
+                <>
+                  <div className="flex flex-col ">
+                  <ChefHat className="text-secondary"/>
+                  </div>
+                </>
+              )}
+            </div>
+
             {/* <Button
               variant="ghost"
               size="sm"

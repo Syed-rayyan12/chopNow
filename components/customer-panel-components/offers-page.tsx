@@ -138,24 +138,7 @@ export function OffersPage() {
   return (
     <div className="min-h-screen bg-background px-4">
       {/* Sticky Header */}
-      <header className="sticky top-0 z-50 bg-[#222222] shadow-lg">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <h1 className="text-2xl font-bold text-white md:text-3xl">Exclusive Offers Near You</h1>
-
-            {/* Search Bar */}
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder="Search restaurants or cuisines..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 bg-card"
-              />
-            </div>
-          </div>
-        </div>
-      </header>
+   
 
       <div className="container mx-auto px-4 py-6">
         {/* Promotional Banner */}
@@ -165,7 +148,8 @@ export function OffersPage() {
         </div>
 
         {/* Filters and Sorting */}
-        <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className=" p-4 rounded-xl">
+        <div className=" flex flex- items-center gap-4 md:flex-row md:items-center md:justify-between">
           {/* Filter Buttons */}
           <div className="flex flex-wrap gap-2">
             {filterOptions.map((filter) => (
@@ -180,6 +164,16 @@ export function OffersPage() {
               </Button>
             ))}
           </div>
+
+          <div className="relative">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            placeholder="Search restaurants or cuisines..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10 w-96 bg-card border border-foreground"
+          />
+        </div>
 
           {/* Sort and Nearby Toggle */}
           <div className="flex items-center gap-4">
@@ -198,6 +192,8 @@ export function OffersPage() {
               </DropdownMenuContent>
             </DropdownMenu>
 
+            
+
             <Button
               variant={nearbyOnly ? "default" : "outline"}
               size="sm"
@@ -208,8 +204,10 @@ export function OffersPage() {
               Nearby Only
             </Button>
           </div>
-        </div>
 
+         
+        </div>
+        </div>
         {/* Results count */}
         <div className="mb-4">
           <p className="text-sm text-muted-foreground">

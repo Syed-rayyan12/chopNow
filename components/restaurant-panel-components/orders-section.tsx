@@ -173,7 +173,42 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
         </TabsContent>
 
         <TabsContent value="cancelled" className="space-y-4">
-          <div className="text-center py-8 text-gray-500">No cancelled orders today</div>
+          {getOrdersByStatus("cancelled").length > 0 ? (
+            getOrdersByStatus("cancelled").map((order) => (
+              <Card key={order.id} className="border-orange-200 bg-white">
+                <CardContent className="p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <span className="font-semibold text-orange-800">#{order.id}</span>
+                        <Badge className={getStatusColor(order.status)}>{order.status}</Badge>
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        <p className="text-orange-600">
+                          <strong className="text-orange-700">Customer:</strong> {order.customerName}
+                        </p>
+                        <p className="text-orange-600">
+                          <strong className="text-orange-700">Items:</strong> {order.items.join(", ")}
+                        </p>
+                        <p className="text-orange-600">
+                          <strong className="text-orange-700">Total:</strong> ${order.totalPrice}
+                        </p>
+                        <p className="text-orange-600">
+                          <strong className="text-orange-700">Time:</strong> {order.time}
+                        </p>
+                      </div>
+                    </div>
+                    <Button size="sm" variant="outline">
+                      <Eye className="h-4 w-4 mr-1" />
+                      View Details
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          ) : (
+            <div className="text-center py-8 text-gray-500">No cancelled orders today</div>
+          )}
         </TabsContent>
       </Tabs>
     </div>

@@ -34,7 +34,7 @@ const navigation = [
   const NavItems = () => (
     <nav className="flex-1 p-3 overflow-y-auto">
       {navigation.map((item) => {
-        const isActive = pathname.startsWith(item.href)
+        const isActive = pathname === item.href
         return (
           <Link
             key={item.href}
@@ -43,7 +43,7 @@ const navigation = [
               "flex items-center px-2 py-2 text-sm font-medium rounded-lg transition-colors",
               isActive
                ? "bg-background text-secondary border border-secondary/65"
-                : "text-secondary "
+                : "text-secondary"
             )}
           >
             <item.icon className="h-5 w-5 flex-shrink-0" />
@@ -64,14 +64,28 @@ const navigation = [
         )}
       >
         <div className="flex h-full flex-col">
-          <div className="flex h-16 items-center justify-between px-4 border-b border-orange-200">
+          <div className="flex h-16 items-center justify-center px-4 border-b border-orange-200">
             <div className="flex items-center space-x-2">
-              <ChefHat className="h-8 w-8 text-orange-500" />
+          
               {!collapsed && (
+
+                
                 <div className="flex flex-col">
-                  <span className="text-lg font-bold text-secondary">ChopNow</span>
-                  <span className="text-xs text-secondary/80">Restaurant Panel</span>
+                   <img
+                        src="/chopNow.png"
+                        alt="ChopNow Logo"
+                        className="mx-auto w-36 h-full px-2 object-cover"
+                    />
                 </div>
+              )}
+
+              
+{collapsed && (
+                <>
+                  <div className="flex flex-col ">
+                  <ChefHat className="text-secondary"/>
+                  </div>
+                </>
               )}
             </div>
           </div>

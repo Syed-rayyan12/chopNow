@@ -71,7 +71,7 @@ export default function RiderSignup() {
       <Toaster />
 
       <Card className="w-full max-w-md border-secondary/50">
-        <CardHeader className="text-center space-y-4">
+        <CardHeader className="text-center">
           <img
             src="/chopNow.png"
             alt="ChopNow Logo"

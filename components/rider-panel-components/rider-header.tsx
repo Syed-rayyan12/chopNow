@@ -79,7 +79,7 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
 
 
   return (
-    <header className="bg-background border-b border-secondary/70 px-4 h-16 lg:px-6 py-4">
+    <header className="bg-background border-b border-secondary/70 px-4 h-16  py-[13px]">
       <div className="flex items-center justify-between">
         {/* Left Side */}
         <div className="flex items-center space-x-4">

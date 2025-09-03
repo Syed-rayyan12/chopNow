@@ -51,7 +51,7 @@ export function DashboardHeader({ collapsed, setCollapsed, onSignOut,notificatio
   const unreadCount = notifications.filter((n) => n.status === "unread").length
 
   return (
-    <header className="bg-background border-b border-orange-200 px-6 py-4 h-16">
+    <header className="bg-background border-b border-orange-200 px-6 py-[13px]  h-16">
       <div className="flex items-center justify-between">
         {/* Left side with toggle & title */}
         <div className="flex items-center space-x-4">
@@ -142,7 +142,7 @@ export function DashboardHeader({ collapsed, setCollapsed, onSignOut,notificatio
                 )}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-80">
+            <DropdownMenuContent align="end" className="w-80 border border-secondary">
               {notifications.length === 0 ? (
                 <DropdownMenuItem className="p-3 text-sm text-gray-500">
                   No new notifications

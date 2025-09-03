@@ -85,7 +85,7 @@ export function OverviewSection({ orders, menuItems }: OverviewSectionProps) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card className="border-secondary/70 bg-white">
           <CardHeader>
-            <CardTitle className="text-orange-800">Today's Earnings</CardTitle>
+            <CardTitle className="text-secondary">Today's Earnings</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold  text-secondary mb-2">$342.50</div>

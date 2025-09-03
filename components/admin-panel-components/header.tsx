@@ -51,7 +51,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
   const unreadCount = notifications.filter((n) => n.status === "unread").length
 
   return (
-    <header className="bg-background border-b border-secondary/65 px-6 py-4 h-16">
+    <header className="bg-background border-b border-secondary/65 px-6 py-[13px] h-16">
       <div className="flex items-center justify-between">
         {/* Left side with toggle & title */}
         <div className="flex items-center space-x-4">
@@ -145,7 +145,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
                 )}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-80">
+            <DropdownMenuContent align="end" className="w-80 border border-secondary">
               {notifications.length === 0 ? (
                 <DropdownMenuItem className="p-3 text-sm text-gray-500">
                   No new notifications
@@ -174,7 +174,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end" forceMount>
+            <DropdownMenuContent className="w-56 border border-secondary" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium leading-none">Admin User</p>
@@ -183,7 +183,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
                   </p>
                 </div>
               </DropdownMenuLabel>
-              <DropdownMenuSeparator />
+              <DropdownMenuSeparator className="border border-secondary" />
               <DropdownMenuItem>
                 <User className="h-4 w-4" />
                 <span>Profile</span>
@@ -192,7 +192,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
                 <Settings className="h-4 w-4" />
                 <span>Settings</span>
               </DropdownMenuItem>
-              <DropdownMenuSeparator />
+              <DropdownMenuSeparator className="border border-secondary" />
               <DropdownMenuItem>
                 <LogOut className="h-4 w-4" />
                 <span>Log out</span>
