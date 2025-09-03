@@ -2,6 +2,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Star, Clock, Truck } from "lucide-react"
+import Link from "next/link"
 
 const featuredRestaurants = [
   {
@@ -64,40 +65,44 @@ export function FeaturedRestaurants() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {featuredRestaurants.map((restaurant) => (
-            <Card
-              key={restaurant.id}
-              className="group cursor-pointer  transition-all duration-300 border-secondary/50"
-            >
-              <div className="relative overflow-hidden rounded-t-lg">
-                <img
-                  src={restaurant.image || "/placeholder.svg"}
-                  alt={restaurant.name}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                {restaurant.featured && (
-                  <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground">Featured</Badge>
-                )}
-              </div>
-              <CardContent className="p-4">
-                <h3 className="font-heading font-semibold text-lg text-secondary mb-2">{restaurant.name}</h3>
-                <p className=" text-sm mb-3 ">{restaurant.cuisine}</p>
-
-                <div className="flex items-center justify-between text-sm">
-                  <div className="flex items-center space-x-1">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    <span className="font-medium">{restaurant.rating}</span>
-                  </div>
-                  <div className="flex items-center space-x-1 text-muted-foreground">
-                    <Clock className="w-4 h-4" />
-                    <span>{restaurant.deliveryTime}</span>
-                  </div>
-                  <div className="flex items-center space-x-1 text-muted-foreground">
-                    <Truck className="w-4 h-4 text-secondary" />
-                    <span className="text-secondary font-bold">{restaurant.deliveryFee}</span>
-                  </div>
+          
+          <Link key={restaurant.id} href="/restaurants" passHref>
+          <Card className="group cursor-pointer transition-all duration-300 border-secondary/50">
+            <div className="relative overflow-hidden rounded-t-lg">
+              <img
+                src={restaurant.image || "/placeholder.svg"}
+                alt={restaurant.name}
+                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              {restaurant.featured && (
+                <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground">
+                  Featured
+                </Badge>
+              )}
+            </div>
+            <CardContent className="p-4">
+              <h3 className="font-heading font-semibold text-lg text-secondary mb-2">
+                {restaurant.name}
+              </h3>
+              <p className="text-sm mb-3">{restaurant.cuisine}</p>
+    
+              <div className="flex items-center justify-between text-sm">
+                <div className="flex items-center space-x-1">
+                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <span className="font-medium">{restaurant.rating}</span>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="flex items-center space-x-1 text-muted-foreground">
+                  <Clock className="w-4 h-4" />
+                  <span>{restaurant.deliveryTime}</span>
+                </div>
+                <div className="flex items-center space-x-1 text-muted-foreground">
+                  <Truck className="w-4 h-4 text-secondary" />
+                  <span className="text-secondary font-bold">{restaurant.deliveryFee}</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
           ))}
         </div>
       </div>

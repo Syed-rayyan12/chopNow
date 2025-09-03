@@ -1,5 +1,6 @@
 "use client"
 import { Card, CardContent } from "@/components/ui/card"
+import Link from "next/link"
 
 const popularCuisines = [
   {
@@ -70,10 +71,8 @@ export function PopularCuisines() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
           {popularCuisines.map((cuisine) => (
-            <Card
-              key={cuisine.id}
-              className="group cursor-pointer transition-all duration-300 border-secondary/50"
-            >
+            <Link key={cuisine.id} href="/restaurants" passHref>
+            <Card className="group cursor-pointer transition-all duration-300 border-secondary/50">
               <CardContent className="p-4 text-center">
                 <div className="relative overflow-hidden rounded-lg mb-3">
                   <img
@@ -82,10 +81,15 @@ export function PopularCuisines() {
                     className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="font-heading font-semibold text-sm text-foreground mb-1">{cuisine.name}</h3>
-                <p className="text-xs text-muted-foreground">{cuisine.restaurantCount} restaurants</p>
+                <h3 className="font-heading font-semibold text-sm text-foreground mb-1">
+                  {cuisine.name}
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  {cuisine.restaurantCount} restaurants
+                </p>
               </CardContent>
             </Card>
+          </Link>
           ))}
         </div>
       </div>

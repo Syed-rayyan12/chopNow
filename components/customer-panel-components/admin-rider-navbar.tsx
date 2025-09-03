@@ -26,7 +26,7 @@ export function RestaurantRiderNavbar() {
         {/* Logo / Brand */}
         <div className="flex items-center space-x-2">
           <PanelBottom className="w-6 h-6 text-white max-sm:hidden" />
-          <span className="text-md font-normal text-white max-sm:text-center">
+          <span className="text-md max-sm:text-xs font-normal text-white max-sm:text-center">
           select the desired panel you want to connect with
           </span>
         </div>
