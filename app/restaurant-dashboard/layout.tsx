@@ -48,7 +48,7 @@ export default function RestaurantDashboardLayout({ children }: { children: Reac
   }
 
   return (
-    <div className="fixed h-screen w-full flex">
+    <div className="fixed min-h-screen  w-full flex">
       {/* Sidebar */}
       <DashboardSidebar
         collapsed={collapsed}

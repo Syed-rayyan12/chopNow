@@ -48,7 +48,7 @@ export function EarningsSection({ transactions }: EarningsSectionProps) {
       </div>
 
       <Card className="border-secondary/70 bg-white">
-        <CardHeader className="flex flex-row items-center justify-between">
+        <CardHeader className="flex max-sm:flex-col max-sm:items-start max-sm:gap-3 flex-row items-center justify-between">
           <CardTitle className="text-secondary">Transaction History</CardTitle>
           <div className="flex space-x-2">
             <Button size="sm" variant="outline" className="border-secondary/65 text-secondary hover:bg-secondary bg-transparent">

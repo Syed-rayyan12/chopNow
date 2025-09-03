@@ -28,7 +28,7 @@ const navigation = [
   { href: "/restaurant-dashboard/support", name: "Support", icon: HelpCircle },
 ]
 
- export function DashboardSidebar({ collapsed, setCollapsed }: { collapsed: boolean, setCollapsed: (v: boolean) => void }) {
+export function DashboardSidebar({ collapsed, setCollapsed }: { collapsed: boolean, setCollapsed: (v: boolean) => void }) {
   const pathname = usePathname()
 
   const NavItems = () => (
@@ -42,7 +42,7 @@ const navigation = [
             className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-lg transition-colors",
               isActive
-               ? "bg-background text-secondary border border-secondary/65"
+                ? "bg-background text-secondary border border-secondary/65"
                 : "text-secondary"
             )}
           >
@@ -66,24 +66,24 @@ const navigation = [
         <div className="flex h-full flex-col">
           <div className="flex h-16 items-center justify-center px-4 border-b border-orange-200">
             <div className="flex items-center space-x-2">
-          
+
               {!collapsed && (
 
-                
+
                 <div className="flex flex-col">
-                   <img
-                        src="/chopNow.png"
-                        alt="ChopNow Logo"
-                        className="mx-auto w-36 h-full px-2 object-cover"
-                    />
+                  <img
+                    src="/chopNow.png"
+                    alt="ChopNow Logo"
+                    className="mx-auto w-36 h-full px-2 object-cover"
+                  />
                 </div>
               )}
 
-              
-{collapsed && (
+
+              {collapsed && (
                 <>
                   <div className="flex flex-col ">
-                  <ChefHat className="text-secondary"/>
+                    <ChefHat className="text-secondary" />
                   </div>
                 </>
               )}

@@ -46,8 +46,8 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
 
   return (
     <div className="space-y-6">
-      <Tabs value={activeOrderTab} onValueChange={setActiveOrderTab}>
-        <TabsList className="grid w-full grid-cols-4 bg-secondary border-secondary rounded-lg">
+      <Tabs value={activeOrderTab} onValueChange={setActiveOrderTab} className="">
+        <TabsList className="grid w-full grid-cols-4 max-sm:overflow-y-auto max-sm:overflow-hidden bg-secondary border-secondary rounded-lg">
           <TabsTrigger value="new" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">
             New Orders
           </TabsTrigger>
@@ -66,7 +66,7 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
           {getOrdersByStatus("pending").map((order) => (
             <Card key={order.id} className="border-orange-200 bg-white">
               <CardContent className="p-4">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center max-sm:flex-col gap-2 max-sm:items-start justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <span className="font-semibold text-orange-800">#{order.id}</span>
@@ -88,7 +88,7 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
                     </div>
                   </div>
                   <div className="flex space-x-2">
-                    <Button size="sm" className="bg-green-600 hover:bg-green-700">
+                    <Button size="sm" className="bg-green-600 max-sm:items-center hover:bg-green-700">
                       <Check className="h-4 w-4 mr-1" />
                       Accept
                     </Button>
@@ -107,7 +107,7 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
           {getOrdersByStatus("in-progress").map((order) => (
             <Card key={order.id} className="border-orange-200 bg-white">
               <CardContent className="p-4">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center max-sm:flex-col max-sm:gap-2 max-sm:items-start justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <span className="font-semibold text-orange-800">#{order.id}</span>
@@ -141,7 +141,7 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
           {getOrdersByStatus("completed").map((order) => (
             <Card key={order.id} className="border-orange-200">
               <CardContent className="p-4">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center max-sm:flex-col max-sm:gap-2 max-sm:items-start justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <span className="font-semibold text-orange-700">#{order.id}</span>
@@ -177,7 +177,7 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
             getOrdersByStatus("cancelled").map((order) => (
               <Card key={order.id} className="border-orange-200 bg-white">
                 <CardContent className="p-4">
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center max-sm:flex-col max-sm:gap-2 max-sm:items-start justify-between">
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
                         <span className="font-semibold text-orange-800">#{order.id}</span>
