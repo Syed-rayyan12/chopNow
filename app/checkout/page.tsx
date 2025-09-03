@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
@@ -99,15 +99,22 @@ export default function CheckoutPage() {
     name: "",
   })
 
-  if (items.length === 0) {
-    router.push("/cart")
-    return null
-  }
+  // Redirect to cart if no items
+  useEffect(() => {
+    if (items.length === 0) {
+      router.push("/cart")
+    }
+  }, [items, router])
 
   const restaurant = items[0] // All items from same restaurant
+
+  // Prevent rendering if no restaurant (for prerendering safety)
+  if (!restaurant) {
+    return null
+  }
   const subtotal = getCartTotal()
   const discountAmount = getDiscountAmount()
-  const deliveryFee = restaurant.restaurantId === 1 ? 0 : 2.99 // Mock delivery fee
+  const deliveryFee = restaurant?.restaurantId === 1 ? 0 : 2.99 // Mock delivery fee
   const serviceFee = 2.99
   const finalTotal = getFinalTotal() + deliveryFee + serviceFee
 
@@ -136,8 +143,8 @@ export default function CheckoutPage() {
       id: `order-${Date.now()}`,
       items,
       restaurant: {
-        id: restaurant.restaurantId,
-        name: restaurant.restaurantName,
+        id: restaurant?.restaurantId,
+        name: restaurant?.restaurantName,
       },
       address: mockAddresses.find((addr) => addr.id === selectedAddress),
       paymentMethod: paymentMethods.find((pm) => pm.id === selectedPayment),
@@ -180,7 +187,7 @@ export default function CheckoutPage() {
             </Button>
             <div>
               <h1 className="font-heading font-bold text-3xl text-foreground">Checkout</h1>
-              <p className="text-muted-foreground">Complete your order from {restaurant.restaurantName}</p>
+              <p className="text-muted-foreground">Complete your order from {restaurant?.restaurantName}</p>
             </div>
           </div>
 
