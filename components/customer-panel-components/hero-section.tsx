@@ -57,7 +57,7 @@ export function HeroSection() {
                 className="pl-10 border-0 focus-visible:ring-0 bg-transparent"
               />
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center max-sm:justify-center gap-2">
               <Button variant="outline" size="sm" className="whitespace-nowrap bg-transparent">
                 <MapPin className="w-4 h-4 mr-2" />
                 Current Location

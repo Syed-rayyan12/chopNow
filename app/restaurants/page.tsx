@@ -226,7 +226,7 @@ export default function RestaurantsPage() {
           {/* Main Content */}
           <div className="flex-1">
             {/* Controls */}
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center max-sm:flex-col max-sm:items-end max-sm:gap-4 justify-between mb-6">
               <div className="flex items-center gap-4">
                 <Button variant="outline" size="sm" onClick={() => setShowFilters(!showFilters)} className="lg:hidden">
                   <SlidersHorizontal className="w-4 h-4 mr-2" />
@@ -249,7 +249,7 @@ export default function RestaurantsPage() {
                 </select>
 
                 {/* View Mode Toggle */}
-                <div className="flex border border-border rounded-md">
+                <div className="flex max-sm:items-end border border-border rounded-md">
                   <Button
                     variant={viewMode === "grid" ? "default" : "ghost"}
                     size="sm"

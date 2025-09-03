@@ -106,7 +106,7 @@ export default function CartPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {items.map((item) => (
-                    <div key={item.id} className="flex gap-4 p-4 border border-secondary rounded-lg">
+                    <div key={item.id} className="flex max-sm:flex-col gap-4 p-4 border border-secondary rounded-lg">
                       <img
                         src={item.menuItem.image || "/placeholder.svg"}
                         alt={item.menuItem.name}

@@ -64,7 +64,7 @@ export function MenuItemModal({ item, isOpen, onClose, onAddToCart }: MenuItemMo
           <DialogTitle className="sr-only">Menu Item Details</DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-6">
+        <div className="space-y-6 mt-4">
           {/* Item Image */}
           <div className="relative h-64 rounded-lg overflow-hidden">
             <img src={item.image || "/placeholder.svg"} alt={item.name} className="w-full h-full object-cover" />
@@ -148,7 +148,7 @@ export function MenuItemModal({ item, isOpen, onClose, onAddToCart }: MenuItemMo
           ))}
 
           {/* Quantity and Add to Cart */}
-          <div className="flex items-center justify-between pt-4 border-t border-border">
+          <div className="flex items-center max-sm:gap-4 justify-between pt-4 border-t border-border">
             <div className="flex items-center space-x-3">
               <Button
                 variant="outline"

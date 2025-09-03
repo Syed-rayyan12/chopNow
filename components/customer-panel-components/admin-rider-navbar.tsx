@@ -22,11 +22,11 @@ export function RestaurantRiderNavbar() {
 
   return (
     <nav className="bg-[#ff7A00] border-border px-4 py-3">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="max-w-7xl max-sm:flex-col max-sm:gap-3 max-sm:items-center mx-auto flex items-center justify-between">
         {/* Logo / Brand */}
         <div className="flex items-center space-x-2">
-          <PanelBottom className="w-6 h-6 text-white" />
-          <span className="text-md font-normal text-white">
+          <PanelBottom className="w-6 h-6 text-white max-sm:hidden" />
+          <span className="text-md font-normal text-white max-sm:text-center">
           select the desired panel you want to connect with
           </span>
         </div>
