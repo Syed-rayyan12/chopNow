@@ -47,57 +47,57 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
   return (
     <div className="space-y-6">
       <Tabs value={activeOrderTab} onValueChange={setActiveOrderTab} className="">
-      <TabsList className="grid w-full max-sm:h-full grid-cols-4 max-sm:flex max-sm:flex-col bg-secondary border-secondary rounded-lg">
-  <TabsTrigger
-    value="new"
-    className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
-  >
-    New Orders
-  </TabsTrigger>
-  <TabsTrigger
-    value="progress"
-    className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
-  >
-    In Progress
-  </TabsTrigger>
-  <TabsTrigger
-    value="completed"
-    className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
-  >
-    Completed
-  </TabsTrigger>
-  <TabsTrigger
-    value="cancelled"
-    className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
-  >
-    Cancelled
-  </TabsTrigger>
-</TabsList>
+        <TabsList className="grid w-full max-sm:h-full grid-cols-4 max-sm:flex max-sm:flex-col bg-secondary border-secondary rounded-lg">
+          <TabsTrigger
+            value="new"
+            className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+          >
+            New Orders
+          </TabsTrigger>
+          <TabsTrigger
+            value="progress"
+            className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+          >
+            In Progress
+          </TabsTrigger>
+          <TabsTrigger
+            value="completed"
+            className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+          >
+            Completed
+          </TabsTrigger>
+          <TabsTrigger
+            value="cancelled"
+            className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+          >
+            Cancelled
+          </TabsTrigger>
+        </TabsList>
 
 
 
         <TabsContent value="new" className="space-y-4">
           {getOrdersByStatus("pending").map((order) => (
-            <Card key={order.id} className="border-orange-200 bg-white">
+            <Card key={order.id} className="border-secondary/70 bg-white">
               <CardContent className="p-4">
                 <div className="flex items-center max-sm:flex-col gap-2 max-sm:items-start justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
-                      <span className="font-semibold text-orange-800">#{order.id}</span>
+                      <span className="font-bold text-secondary">#{order.id}</span>
                       <Badge className={getStatusColor(order.status)}>{order.status}</Badge>
                     </div>
                     <div className="text-sm text-gray-600">
-                      <p className="text-orange-600">
-                        <strong className="text-orange-700">Customer:</strong> {order.customerName}
+                      <p className="text-secondary">
+                        <strong className="text-secondary">Customer:</strong> {order.customerName}
                       </p>
-                      <p className="text-orange-600">
-                        <strong className="text-orange-700">Items:</strong> {order.items.join(", ")}
+                      <p className="text-secondary">
+                        <strong className="text-secondary">Items:</strong> {order.items.join(", ")}
                       </p>
-                      <p className="text-orange-600">
-                        <strong className="text-orange-700">Total:</strong> ${order.totalPrice}
+                      <p className="text-secondary">
+                        <strong className="text-secondary">Total:</strong> ${order.totalPrice}
                       </p>
-                      <p className="text-orange-600">
-                        <strong className="text-orange-700">Time:</strong> {order.time}
+                      <p className="text-secondary">
+                        <strong className="text-secondary">Time:</strong> {order.time}
                       </p>
                     </div>
                   </div>
@@ -119,30 +119,30 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
 
         <TabsContent value="progress" className="space-y-4">
           {getOrdersByStatus("in-progress").map((order) => (
-            <Card key={order.id} className="border-orange-200 bg-white">
+            <Card key={order.id} className="border-secondary/70 bg-white">
               <CardContent className="p-4">
                 <div className="flex items-center max-sm:flex-col max-sm:gap-2 max-sm:items-start justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
-                      <span className="font-semibold text-orange-800">#{order.id}</span>
+                      <span className="font-bold text-secondary">#{order.id}</span>
                       <Badge className={getStatusColor(order.status)}>{order.status}</Badge>
                     </div>
                     <div className="text-sm text-gray-600">
-                      <p className="text-orange-600">
-                        <strong className="text-orange-700">Customer:</strong> {order.customerName}
+                      <p className="text-secondary">
+                        <strong className="text-secondary">Customer:</strong> {order.customerName}
                       </p>
-                      <p className="text-orange-600">
-                        <strong className="text-orange-700">Items:</strong> {order.items.join(", ")}
+                      <p className="text-secondary">
+                        <strong className="text-secondary">Items:</strong> {order.items.join(", ")}
                       </p>
-                      <p className="text-orange-600">
-                        <strong className="text-orange-700">Total:</strong> ${order.totalPrice}
+                      <p className="text-secondary">
+                        <strong className="text-secondary">Total:</strong> ${order.totalPrice}
                       </p>
-                      <p className="text-orange-600">
-                        <strong className="text-orange-700">Time:</strong> {order.time}
+                      <p className="text-secondary">
+                        <strong className="text-secondary">Time:</strong> {order.time}
                       </p>
                     </div>
                   </div>
-                  <Button size="sm" className="bg-orange-600 hover:bg-orange-700">
+                  <Button size="sm" className="bg-secondary">
                     Mark Ready
                   </Button>
                 </div>
@@ -153,30 +153,30 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
 
         <TabsContent value="completed" className="space-y-4 bg-white">
           {getOrdersByStatus("completed").map((order) => (
-            <Card key={order.id} className="border-orange-200">
+            <Card key={order.id} className="border-secondary/70 bg-white">
               <CardContent className="p-4">
                 <div className="flex items-center max-sm:flex-col max-sm:gap-2 max-sm:items-start justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
-                      <span className="font-semibold text-orange-700">#{order.id}</span>
+                      <span className="font-bold text-secondary">#{order.id}</span>
                       <Badge className={getStatusColor(order.status)}>{order.status}</Badge>
                     </div>
                     <div className="text-sm text-gray-600">
-                      <p className="text-orange-600">
-                        <strong className="text-orange-700">Customer:</strong> {order.customerName}
+                      <p className="text-secondary">
+                        <strong className="text-secondary">Customer:</strong> {order.customerName}
                       </p>
-                      <p className="text-orange-600">
-                        <strong className="text-orange-700">Items:</strong> {order.items.join(", ")}
+                      <p className="text-secondary">
+                        <strong className="text-secondary">Items:</strong> {order.items.join(", ")}
                       </p>
-                      <p className="text-orange-600">
-                        <strong className="text-orange-700">Total:</strong> ${order.totalPrice}
+                      <p className="text-secondary">
+                        <strong className="text-secondary">Total:</strong> ${order.totalPrice}
                       </p>
-                      <p className="text-orange-600">
-                        <strong className="text-orange-700">Time:</strong> {order.time}
+                      <p className="text-secondary">
+                        <strong className="text-secondary">Time:</strong> {order.time}
                       </p>
                     </div>
                   </div>
-                  <Button size="sm" variant="outline">
+                  <Button size="sm" variant="outline" className="hover:bg-secondary hover:text-white hover:border-none">
                     <Eye className="h-4 w-4 mr-1" />
                     View Details
                   </Button>
@@ -189,30 +189,30 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
         <TabsContent value="cancelled" className="space-y-4">
           {getOrdersByStatus("cancelled").length > 0 ? (
             getOrdersByStatus("cancelled").map((order) => (
-              <Card key={order.id} className="border-orange-200 bg-white">
+              <Card key={order.id} className="border-secondary/70 bg-white">
                 <CardContent className="p-4">
                   <div className="flex items-center max-sm:flex-col max-sm:gap-2 max-sm:items-start justify-between">
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
-                        <span className="font-semibold text-orange-800">#{order.id}</span>
+                        <span className="font-bold text-secondary">#{order.id}</span>
                         <Badge className={getStatusColor(order.status)}>{order.status}</Badge>
                       </div>
                       <div className="text-sm text-gray-600">
-                        <p className="text-orange-600">
-                          <strong className="text-orange-700">Customer:</strong> {order.customerName}
+                        <p className="text-secondary">
+                          <strong className="text-secondary">Customer:</strong> {order.customerName}
                         </p>
-                        <p className="text-orange-600">
-                          <strong className="text-orange-700">Items:</strong> {order.items.join(", ")}
+                        <p className="text-secondary">
+                          <strong className="text-secondary">Items:</strong> {order.items.join(", ")}
                         </p>
-                        <p className="text-orange-600">
-                          <strong className="text-orange-700">Total:</strong> ${order.totalPrice}
+                        <p className="text-secondary">
+                          <strong className="text-secondary">Total:</strong> ${order.totalPrice}
                         </p>
-                        <p className="text-orange-600">
-                          <strong className="text-orange-700">Time:</strong> {order.time}
+                        <p className="text-secondary">
+                          <strong className="text-secondary">Time:</strong> {order.time}
                         </p>
                       </div>
                     </div>
-                    <Button size="sm" variant="outline">
+                    <Button size="sm" variant="outline" className="hover:bg-secondary hover:text-white hover:border-none">
                       <Eye className="h-4 w-4 mr-1" />
                       View Details
                     </Button>

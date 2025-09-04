@@ -62,12 +62,13 @@ export function RestaurantFilters({
     selectedCuisines.length > 0 || selectedPriceRanges.length > 0 || maxDeliveryTime < 60 || minRating > 0
 
   return (
-    <div className="space-y-6">
+    <div className="">
+    <div className="flex flex-col gap-32">
       {/* Filter Header */}
-      <div className="flex items-center justify-between">
-        <h2 className="font-heading font-semibold text-lg">Filters</h2>
+      <div className="flex items-start justify-between">
+        <h2 className="font-heading font-semibold text-lg mb-7">Filters</h2>
         {hasActiveFilters && (
-          <button onClick={clearAllFilters} className="text-sm text-primary hover:text-primary/80 transition-colors">
+          <button onClick={clearAllFilters} className="text-sm  hover:text-primary/80 transition-colors bg-secondary rounded-md text-white p-2">
             Clear all
           </button>
         )}
@@ -108,7 +109,7 @@ export function RestaurantFilters({
           {cuisineOptions.map((cuisine) => (
             <div key={cuisine} className="flex items-center space-x-2">
               <Checkbox
-              className="border-black"
+              className="border-black transition-all duration-300"
                 id={cuisine}
                 checked={selectedCuisines.includes(cuisine)}
                 onCheckedChange={(checked) => handleCuisineChange(cuisine, checked as boolean)}
@@ -200,6 +201,7 @@ export function RestaurantFilters({
           </div>
         </CardContent>
       </Card>
+    </div>
     </div>
   )
 }

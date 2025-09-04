@@ -164,18 +164,18 @@ export function DashboardHome() {
   return (
     <div className="flex flex-col gap-6">
       {/* Welcome Section */}
-      <div className="flex bg-gradient-to-r from-secondary to-secondary/80 p-6 flex-col sm:flex-row sm:items-center sm:justify-between rounded-lg sm:space-y-0">
+      <div className="flex bg-gradient-to-r justify-between max-sm:gap-3 from-secondary to-secondary/80 p-6 max-sm:flex-col rounded-lg">
         <div>
           <h2 className="text-2xl font-bold mb-2 text-white">Good Morning, John!</h2>
           <p className="text-white">Ready to start earning today?</p>
         </div>
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-4">
           <Switch
             checked={isOnline}
             onCheckedChange={setIsOnline}
-            className={isOnline ? "data-[state=checked]:bg-green-500" : "data-[state=unchecked]:bg-secondary"}
+            className={isOnline ? "data-[state=checked]:bg-green-500" : "data-[state=unchecked]:bg-white/10"}
           />
-          <Label className={isOnline ? "text-green-700 font-medium" : "text-secondary font-medium"}>
+          <Label className={isOnline ? "text-green-700 font-medium" : "text-white font-medium"}>
             {isOnline ? "Online" : "Offline"}
           </Label>
         </div>
@@ -256,7 +256,7 @@ export function DashboardHome() {
 
           <CardContent className="space-y-4">
             {orders.map((order, index) => (
-              <div key={index} className="flex items-center max-sm:flex-col max-sm:items-start justify-between p-3 bg-white rounded-lg border border-secondary/70">
+              <div key={index} className="flex items-center  justify-between p-3 bg-white rounded-lg border border-secondary/70">
                 <div className="flex items-center max-sm:flex-col max-sm:items-start space-x-3">
                   <div className={`p-2  ${order.iconBg} rounded-full`}>{order.icon}</div>
                   <div>
