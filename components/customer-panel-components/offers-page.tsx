@@ -223,7 +223,7 @@ export function OffersPage() {
             filteredAndSortedOffers.map((offer) => (
               <Card
                 key={offer.id}
-                className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                className="group overflow-hidden border border-secondary transition-all duration-300  hover:-translate-y-1"
               >
                 <div className="relative">
                   <img

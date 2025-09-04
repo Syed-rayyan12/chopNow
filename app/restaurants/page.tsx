@@ -9,6 +9,7 @@ import { SearchBar } from "@/components/customer-panel-components/search-bar"
 import { RestaurantFilters } from "@/components/customer-panel-components/restaurant-filters"
 import { RestaurantGrid } from "@/components/customer-panel-components/restaurant-grid"
 import { Footer } from "@/components/customer-panel-components/footer"
+import { RestaurantRiderNavbar } from "@/components/customer-panel-components/admin-rider-navbar"
 
 // Mock restaurant data
 const mockRestaurants = [
@@ -196,6 +197,7 @@ export default function RestaurantsPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <RestaurantRiderNavbar/>
       <Header />
 
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
