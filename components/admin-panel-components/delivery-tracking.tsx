@@ -250,18 +250,18 @@ export function DeliveryTracking() {
 
         <TabsContent value="deliveries" className="space-y-4">
           {/* Search and Filter */}
-          <div className="flex items-center space-x-2">
-            <div className="relative flex-1">
+          <div className="flex items-center max-sm:flex-col max-sm:gap-4">
+            <div className="relative flex-1 max-sm:w-full">
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-secondary" />
               <Input
                 placeholder="Search deliveries..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-8 border border-secondary/50"
+                className="pl-8 border border-secondary/50 "
               />
             </div>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-[180px] border-secondary/50">
+              <SelectTrigger className="w-[180px] max-sm:w-full border-secondary/50">
                 <SelectValue className="" placeholder="Filter by status" />
               </SelectTrigger>
               <SelectContent className="border-secondary/50">
@@ -272,8 +272,8 @@ export function DeliveryTracking() {
                 <SelectItem value="delivered">Delivered</SelectItem>
               </SelectContent>
             </Select>
-            <Button variant="outline" size="sm" className="border-secondary/50">
-              <Filter className="mr-2 h-4 w-4" />
+            <Button variant="outline" size="sm" className="border-secondary/50 max-sm:w-full">
+              <Filter className="mr-2 h-4 w-4 " />
               More Filters
             </Button>
           </div>

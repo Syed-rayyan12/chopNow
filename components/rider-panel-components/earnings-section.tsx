@@ -51,7 +51,7 @@ export function EarningsSection() {
   ]
 
   return (
-    <div className="p-4 space-y-6">
+    <div className=" space-y-6">
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-secondary">Earnings</h1>
         <p className="text-secondary/70">Track your income and performance</p>

@@ -224,7 +224,7 @@ export function OrdersManagement() {
       <Card className="border-secondary/65 bg-white shadow-none w-full mx-auto">
         <CardHeader>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 max-sm:gap-3">
               <div className="relative w-full sm:w-auto">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-amber-500 h-4 w-4" />
                 <Input

@@ -298,7 +298,6 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
                     Menu
                   </h2>
 
-                  {/* Search bar inside sheet */}
                   <div className="relative mb-4">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 transform text-amber-500 h-4 w-4" />
                     <Input
@@ -313,18 +312,18 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
                       const isActive = pathname === item.href
 
                       return (
-                        <Link key={item.href} href={item.href}>
+                        <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>
                           <Button
                             variant="ghost"
                             className={cn(
                               "w-full justify-start",
-                              isActive && "bg-orange-100 text-orange-700"
+                              isActive && "bg-orange-100 text-secondary"
                             )}
                           >
                             <Icon className="mr-2 h-4 w-4" />
                             {item.name}
                           </Button>
-                          {idx < MenuNav.length - 1 && <Separator />}
+                          {idx < MenuNav.length - 1}
                         </Link>
                       )
                     })}
@@ -349,8 +348,16 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
           <h1 className="text-2xl font-bold text-secondary">Dashboard</h1>
         </div>
 
-        {/* Right side with notifications & profile */}
+        {/* Right side with search, notifications & profile */}
         <div className="flex items-center space-x-4">
+          {/* Search bar on desktop only */}
+          <div className="hidden lg:block relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 transform text-amber-500 h-4 w-4" />
+            <Input
+              placeholder="Search orders, restaurants, users..."
+              className="pl-10 w-64 border-secondary/70"
+            />
+          </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="sm" className="relative text-secondary/60 hover:text-secondary hover:bg-secondary/10">

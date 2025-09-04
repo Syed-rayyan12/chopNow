@@ -47,20 +47,34 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
   return (
     <div className="space-y-6">
       <Tabs value={activeOrderTab} onValueChange={setActiveOrderTab} className="">
-        <TabsList className="grid w-full grid-cols-4 max-sm:overflow-y-auto max-sm:overflow-hidden bg-secondary border-secondary rounded-lg">
-          <TabsTrigger value="new" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">
-            New Orders
-          </TabsTrigger>
-          <TabsTrigger value="progress" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">
-            In Progress
-          </TabsTrigger>
-          <TabsTrigger value="completed" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">
-            Completed
-          </TabsTrigger>
-          <TabsTrigger value="cancelled" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">
-            Cancelled
-          </TabsTrigger>
-        </TabsList>
+      <TabsList className="grid w-full max-sm:h-full grid-cols-4 max-sm:flex max-sm:flex-col bg-secondary border-secondary rounded-lg">
+  <TabsTrigger
+    value="new"
+    className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+  >
+    New Orders
+  </TabsTrigger>
+  <TabsTrigger
+    value="progress"
+    className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+  >
+    In Progress
+  </TabsTrigger>
+  <TabsTrigger
+    value="completed"
+    className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+  >
+    Completed
+  </TabsTrigger>
+  <TabsTrigger
+    value="cancelled"
+    className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+  >
+    Cancelled
+  </TabsTrigger>
+</TabsList>
+
+
 
         <TabsContent value="new" className="space-y-4">
           {getOrdersByStatus("pending").map((order) => (

@@ -256,9 +256,9 @@ export function DashboardHome() {
 
           <CardContent className="space-y-4">
             {orders.map((order, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-white rounded-lg border border-secondary/70">
-                <div className="flex items-center space-x-3">
-                  <div className={`p-2 ${order.iconBg} rounded-full`}>{order.icon}</div>
+              <div key={index} className="flex items-center max-sm:flex-col max-sm:items-start justify-between p-3 bg-white rounded-lg border border-secondary/70">
+                <div className="flex items-center max-sm:flex-col max-sm:items-start space-x-3">
+                  <div className={`p-2  ${order.iconBg} rounded-full`}>{order.icon}</div>
                   <div>
                     <p className="font-medium text-secondary flex items-center gap-2">
                       ORD-{String(order.id).padStart(3, "0")}

@@ -297,7 +297,8 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
                     variant="ghost"
                     size="sm"
                     className="text-secondary hover:text-secondary cursor-pointer hover:bg-secondary/10"
-                  >
+                  
+                 >
                     <MenuIcon className="h-4 w-4" />
                   </Button>
                 </SheetTrigger>
@@ -326,7 +327,7 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
                       const isActive = pathname === item.href
 
                       return (
-                        <Link key={item.href} href={item.href}>
+                        <Link key={item.href} href={item.href}  onClick={() => setMobileOpen(false)}>
                           <Button
                             variant="ghost"
                             className={cn(
@@ -363,6 +364,14 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
 
         {/* Right Side */}
         <div className="flex items-center space-x-3">
+          {/* Search */}
+          <div className="relative hidden sm:block">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary/60 h-4 w-4" />
+            <Input
+              placeholder="Search orders..."
+              className="pl-10 w-80 border-secondary/70 focus:border-secondary focus:ring-secondary"
+            />
+          </div>
           {/* Notifications */}
           <Button
             variant="ghost"
@@ -372,10 +381,12 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
             <Bell className="h-5 w-5" />
           </Button>
 
+          
+
           {/* Profile Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 rounded-full">
+              <Button variant="ghost" className="h-8 w-8 rounded-full hover:bg-transparent">
                 <Avatar className="h-8 w-8">
                   <AvatarFallback className="bg-secondary/10 text-secondary">
                     {user
@@ -385,7 +396,7 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end" forceMount>
+            <DropdownMenuContent className="w-56 border border-secondary" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium leading-none">Rider User</p>
@@ -394,17 +405,17 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
                   </p>
                 </div>
               </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuSeparator className="border border-secondary" />
+              <DropdownMenuItem className="hover:bg-secondary hover:text-white">
                 <User className="h-4 w-4" />
                 <span>Profile</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem className="hover:bg-secondary hover:text-white">
                 <Settings className="h-4 w-4" />
                 <span>Settings</span>
               </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={handleLogout}>
+              <DropdownMenuSeparator className="border border-secondary"/>
+              <DropdownMenuItem className="hover:bg-secondary hover:text-white" onClick={handleLogout}>
                 <LogOut className="h-4 w-4" />
                 <span>Log out</span>
               </DropdownMenuItem>

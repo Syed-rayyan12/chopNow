@@ -236,7 +236,7 @@ const MenuNav = [
   { href: "/restaurant-dashboard/orders", name: "Orders", icon: ShoppingCart },
   { href: "/restaurant-dashboard/menu-management", name: "Menu Management", icon: ChefHat },
   { href: "/restaurant-dashboard/earning-payment", name: "Earnings & Payments", icon: CreditCard },
-  { href: "/restaurant-dashboard/reviews-rating", name: "Reviews & Ratings", icon: Star },
+  { href: "/restaurant-dashboard/review-rating", name: "Reviews & Ratings", icon: Star },
   { href: "/restaurant-dashboard/support", name: "Support", icon: HelpCircle },
 ]
 
@@ -302,18 +302,18 @@ export function DashboardHeader({ collapsed, setCollapsed, onSignOut, notificati
                       const isActive = pathname === item.href
 
                       return (
-                        <Link key={item.href} href={item.href}>
+                        <Link key={item.href} href={item.href} onClick={()=> setMobileOpen(false)}>
                           <Button
                             variant="ghost"
                             className={cn(
                               "w-full justify-start",
-                              isActive && "bg-orange-100 text-orange-700"
+                              isActive && "bg-orange-100 text-secondary"
                             )}
                           >
                             <Icon className="mr-2 h-4 w-4" />
                             {item.name}
                           </Button>
-                          {idx < MenuNav.length - 1 && <Separator />}
+                          {idx < MenuNav.length - 1 }
                         </Link>
                       )
                     })}
@@ -389,7 +389,7 @@ export function DashboardHeader({ collapsed, setCollapsed, onSignOut, notificati
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end" forceMount>
+            <DropdownMenuContent className="w-56 border border-secondary" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium leading-none">Admin User</p>
@@ -398,17 +398,17 @@ export function DashboardHeader({ collapsed, setCollapsed, onSignOut, notificati
                   </p>
                 </div>
               </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuSeparator className="border border-secondary" />
+              <DropdownMenuItem className="hover:bg-secondary hover:text-white">
                 <User className="h-4 w-4" />
                 <span>Profile</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem className="hover:bg-secondary hover:text-white">
                 <Settings className="h-4 w-4" />
                 <span>Settings</span>
               </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={onSignOut}>
+              <DropdownMenuSeparator className="border border-secondary" />
+              <DropdownMenuItem className="hover:bg-secondary hover:text-white" onClick={onSignOut}>
                 <LogOut className="h-4 w-4" />
                 <span>Log out</span>
               </DropdownMenuItem>

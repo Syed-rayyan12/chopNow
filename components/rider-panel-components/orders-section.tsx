@@ -59,7 +59,7 @@ export function OrdersSection() {
   ])
 
   return (
-    <div className="p-4">
+    <div className="">
       <div className="mb-6 ">
         <h1 className="text-2xl font-bold text-secondary">Orders</h1>
         <p className="text-secondary/70">Manage your deliveries</p>

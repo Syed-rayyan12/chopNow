@@ -241,8 +241,8 @@ export function RestaurantManagement() {
       <Card className="border-secondary/80 bg-white">
         <CardHeader>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-            <div className="flex items-center max-md:flex-col max-md:items-center max-md:gap-3 space-x-4">
-              <div className="relative">
+            <div className="flex items-center max-md:flex-col max-md:items-center max-md:gap-3">
+              <div className="relative max-sm:w-full">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-amber-500 h-4 w-4" />
                 <Input
                   placeholder="Search restaurants, cuisine, location..."
@@ -252,7 +252,7 @@ export function RestaurantManagement() {
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-40 border-secondary/50">
+                <SelectTrigger className="w-40 max-sm:w-full border-secondary/50">
                   <Filter className="w-4 h-4 mr-2" />
                   <SelectValue placeholder="Status" className="" />
                 </SelectTrigger>
@@ -264,7 +264,7 @@ export function RestaurantManagement() {
                 </SelectContent>
               </Select>
               <Select value={cuisineFilter} onValueChange={setCuisineFilter}>
-                <SelectTrigger className="w-40 border-secondary/50">
+                <SelectTrigger className="w-40 max-sm:w-full border-secondary/50">
                   <SelectValue placeholder="Cuisine" />
                 </SelectTrigger>
                 <SelectContent>

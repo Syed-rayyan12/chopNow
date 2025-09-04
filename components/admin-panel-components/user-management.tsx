@@ -239,8 +239,8 @@ export function UserManagement() {
       <Card className="border-secondary/80 bg-white shadow-none">
         <CardHeader>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-            <div className="flex max-sm:flex-col max-sm:gap-3 items-center space-x-4">
-              <div className="relative">
+            <div className="flex max-sm:flex-col max-sm:gap-3 items-center">
+              <div className="relative max-sm:w-full">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-amber-500 h-4 w-4" />
                 <Input
                   placeholder="Search users by name, email, phone, or ID..."
@@ -250,7 +250,7 @@ export function UserManagement() {
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-40 border-secondary/50">
+                <SelectTrigger className="w-40 max-sm:w-full border-secondary/50">
                   <Filter className="w-4 h-4 mr-2" />
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
