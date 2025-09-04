@@ -62,8 +62,8 @@ export function RestaurantFilters({
     selectedCuisines.length > 0 || selectedPriceRanges.length > 0 || maxDeliveryTime < 60 || minRating > 0
 
   return (
-    <div className="">
-    <div className="flex flex-col gap-32">
+    <div className="mt-1">
+    <div className="flex flex-col ">
       {/* Filter Header */}
       <div className="flex items-start justify-between">
         <h2 className="font-heading font-semibold text-lg mb-7">Filters</h2>
@@ -101,7 +101,7 @@ export function RestaurantFilters({
       )}
 
       {/* Cuisine Filter */}
-      <Card className="border-secondary/70">
+      <Card className="border-secondary/70 mb-4">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Cuisine Type</CardTitle>
         </CardHeader>
@@ -126,7 +126,7 @@ export function RestaurantFilters({
       </Card>
 
       {/* Price Range Filter */}
-      <Card className="border-secondary/70">
+      <Card className="border-secondary/70 mb-4">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Price Range</CardTitle>
         </CardHeader>
@@ -151,7 +151,7 @@ export function RestaurantFilters({
       </Card>
 
       {/* Delivery Time Filter */}
-      <Card className="border-secondary/70">
+      {/* <Card className="border-secondary/70">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Max Delivery Time</CardTitle>
         </CardHeader>
@@ -172,10 +172,10 @@ export function RestaurantFilters({
             </div>
           </div>
         </CardContent>
-      </Card>
+      </Card> */}
 
       {/* Rating Filter */}
-      <Card className="border-secondary/70">
+      <Card className="border-secondary/70 mb-4">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Minimum Rating</CardTitle>
         </CardHeader>
