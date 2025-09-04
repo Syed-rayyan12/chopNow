@@ -76,7 +76,7 @@ export function RestaurantFilters({
 
       {/* Active Filters */}
       {hasActiveFilters && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mb-4">
           {selectedCuisines.map((cuisine) => (
             <Badge
               key={cuisine}
