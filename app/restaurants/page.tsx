@@ -71,7 +71,7 @@ const mockRestaurants = [
   {
     id: 5,
     name: "Taco Fiesta",
-    image: "/placeholder-bl6g8.png",
+    image: "/taco.png",
     rating: 4.4,
     reviewCount: 167,
     deliveryTime: "15-25 min",
@@ -226,16 +226,16 @@ export default function RestaurantsPage() {
           {/* Main Content */}
           <div className="flex-1">
             {/* Controls */}
-            <div className="flex items-center max-sm:flex-col max-sm:items-end max-sm:gap-4 justify-between mb-6">
-              <div className="flex items-center gap-4">
-                <Button variant="outline" size="sm" onClick={() => setShowFilters(!showFilters)} className="lg:hidden">
+            <div className="flex items-center max-sm:flex-col max-sm:items-start max-sm:gap-4 justify-between mb-6">
+              <div className="flex max-sm:flex-col max-sm:items-start items-center gap-4">
+                <Button variant="outline" size="sm" onClick={() => setShowFilters(!showFilters)} className="lg:hidden max-sm:w-[100%]">
                   <SlidersHorizontal className="w-4 h-4 mr-2" />
                   Filters
                 </Button>
                 <p className="text-[#0F3D2E]">{filteredAndSortedRestaurants.length} restaurants found</p>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center  gap-2">
                 {/* Sort Dropdown */}
                 <select
                   value={sortBy}
@@ -249,7 +249,7 @@ export default function RestaurantsPage() {
                 </select>
 
                 {/* View Mode Toggle */}
-                <div className="flex max-sm:items-end border border-border rounded-md">
+                <div className="flex max-sm:hidden border border-border rounded-md">
                   <Button
                     variant={viewMode === "grid" ? "default" : "ghost"}
                     size="sm"
