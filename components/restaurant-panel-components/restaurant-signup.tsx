@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Phone, EyeOff, Eye, User } from "lucide-react"
 import { Button } from "react-day-picker"
+import Link from "next/link"
 
 export default function RestaurantSignup() {
     const router = useRouter()
@@ -68,12 +69,13 @@ export default function RestaurantSignup() {
         <div className="flex justify-center items-center min-h-screen bg-orange-100">
             <Card className="w-full max-w-md bg-background max-sm:mx-4 border border-secondary">
                 <CardHeader className="text-center space-y-4">
+                    <Link href="/">  
                     <img
                         src="/chopNow.png"
                         alt="ChopNow Logo"
                         className="mx-auto w-32  object-cover"
                     />
-                   
+                   </Link>
                     <p className="text-gray-600">Sign up to start restaurants</p>
                 </CardHeader>
                 <CardContent>

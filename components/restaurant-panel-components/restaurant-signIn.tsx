@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Eye, EyeOff, Phone, Lock, Mail } from "lucide-react"
+import Link from "next/link"
 
 interface RiderLoginProps {
   onLogin: () => void
@@ -27,12 +28,13 @@ export function RestaurantSignIn({ onLogin }: RiderLoginProps) {
     <div className="min-h-screen bg-orange-100 flex items-center justify-center p-4">
       <Card className="w-full max-w-md border  border-secondary">
         <CardHeader className="text-center space-y-4">
+          <Link href="/">
         <img
             src="/chopNow.png"
             alt="ChopNow Logo"
             className="mx-auto w-32 object-cover"
         />
-      
+         </Link>
           <p className="text-gray-600">Sign in to start restraurants</p>
         </CardHeader>
         <CardContent>
