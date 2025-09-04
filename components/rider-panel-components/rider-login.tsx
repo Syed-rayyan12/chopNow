@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Eye, EyeOff, Lock, Mail } from "lucide-react"
 import Toaster from "@/components/ui/toaster"
 import { useToast } from "@/hooks/use-toast"
+import Link from "next/link"
 
 export function RiderLogin() {
   const router = useRouter()
@@ -66,11 +67,13 @@ export function RiderLogin() {
 
       <Card className="w-full max-w-md  border-secondary">
         <CardHeader className="text-center ">
+        <Link href="/">
           <img
             src="/chopNow.png"
             alt="ChopNow Logo"
             className="mx-auto w-32 object-cover"
           />
+          </Link>
          
           <p className="text-gray-600">Sign in to start delivering</p>
         </CardHeader>

@@ -8,6 +8,7 @@ import { Phone, EyeOff, Eye, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Toaster from "@/components/ui/toaster"
 import { useToast } from "@/hooks/use-toast"
+import Link from "next/link"
 
 export default function RiderSignup() {
   const router = useRouter()
@@ -72,11 +73,14 @@ export default function RiderSignup() {
 
       <Card className="w-full max-w-md max-sm:mx-4 border-secondary">
         <CardHeader className="text-center">
+          <Link href="/">
+          
           <img
             src="/chopNow.png"
             alt="ChopNow Logo"
             className="mx-auto w-32  object-cover"
           />
+          </Link>
         
           <p className="text-gray-600">Sign up to start delivering</p>
         </CardHeader>
