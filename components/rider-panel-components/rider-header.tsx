@@ -406,7 +406,7 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator className="border border-secondary" />
-              <DropdownMenuItem className="hover:bg-secondary hover:text-white">
+              <DropdownMenuItem onClick={() => router.push("rider-dashboard/profile")} className="hover:bg-secondary hover:text-white">
                 <User className="h-4 w-4" />
                 <span>Profile</span>
               </DropdownMenuItem>

@@ -74,11 +74,14 @@ export function RiderSidebar({ collapsed, setCollapsed }: { collapsed: boolean, 
               {!collapsed && (
                 <>
                   <div className="flex flex-col ">
-                    <img
-                      src="/chopNow.png"
-                      alt="ChopNow Logo"
-                      className="mx-auto w-36 h-full px-2 object-cover"
-                    />
+                    <Link href="/rider-dashboard">
+                      <img
+                        src="/chopNow.png"
+                        alt="ChopNow Logo"
+                        className="mx-auto w-36 h-full px-2 object-cover"
+                      />
+                    </Link>
+
                   </div>
                 </>
               )}
@@ -86,7 +89,7 @@ export function RiderSidebar({ collapsed, setCollapsed }: { collapsed: boolean, 
               {collapsed && (
                 <>
                   <div className="flex flex-col ">
-                  <ChefHat className="text-secondary"/>
+                    <ChefHat className="text-secondary" />
                   </div>
                 </>
               )}

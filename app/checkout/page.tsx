@@ -135,42 +135,58 @@ export default function CheckoutPage() {
   const handlePlaceOrder = async () => {
     setIsProcessing(true)
 
-    // Simulate payment processing
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
-    // Create order object
-    const order = {
-      id: `order-${Date.now()}`,
-      items,
-      restaurant: {
-        id: restaurant?.restaurantId,
-        name: restaurant?.restaurantName,
-      },
-      address: mockAddresses.find((addr) => addr.id === selectedAddress),
-      paymentMethod: paymentMethods.find((pm) => pm.id === selectedPayment),
-      deliveryInstructions,
-      pricing: {
-        subtotal,
-        discount: discountAmount,
-        deliveryFee,
-        serviceFee,
-        total: finalTotal,
-      },
-      appliedPromo,
-      status: "confirmed",
-      estimatedDelivery: new Date(Date.now() + 35 * 60 * 1000), // 35 minutes from now
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Please login to place an order");
+      setIsProcessing(false);
+      return;
     }
 
-    // Store order in localStorage (in real app, send to backend)
-    const existingOrders = JSON.parse(localStorage.getItem("chop-now-orders") || "[]")
-    existingOrders.unshift(order)
-    localStorage.setItem("chop-now-orders", JSON.stringify(existingOrders))
+    try {
+      // Create order via API
+      const orderData = {
+        restaurantId: restaurant?.restaurantId || 1,
+        items: items.map(item => ({
+          menuItemId: item.menuItem.id,
+          quantity: item.quantity,
+          unitPrice: item.menuItem.price,
+          totalPrice: item.totalPrice,
+          name: item.menuItem.name,
+          customizations: item.customizations
+        })),
+        addressId: selectedAddress,
+        paymentMethod: selectedPayment,
+        deliveryInstructions,
+        promoCode: appliedPromo?.code
+      };
 
-    // Clear cart
-    clearCart()
+      const response = await fetch("http://localhost:4000/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(orderData)
+      });
 
-    // Redirect to confirmation
-    router.push(`/order-confirmation/${order.id}`)
+      if (response.ok) {
+        const order = await response.json();
+
+        // Clear cart
+        clearCart();
+
+        // Redirect to confirmation
+        router.push(`/order-confirmation/${order.id}`);
+      } else {
+        const error = await response.json();
+        alert(`Failed to place order: ${error.message}`);
+      }
+    } catch (error) {
+      console.error("Error placing order:", error);
+      alert("Failed to place order. Please try again.");
+    } finally {
+      setIsProcessing(false);
+    }
   }
 
   return (

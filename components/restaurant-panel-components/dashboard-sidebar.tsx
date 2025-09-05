@@ -59,23 +59,25 @@ export function DashboardSidebar({ collapsed, setCollapsed }: { collapsed: boole
       {/* Desktop Sidebar */}
       <div
         className={cn(
-          "hidden xl:flex lg:flex-col min-h-screen top-0 left-0 z-50 h-full bg-background border-r border-orange-200 transition-all duration-300",
+          "hidden lg:flex lg:flex-col min-h-screen top-0 left-0 z-50 h-full bg-background border-r border-secondary/70 transition-all duration-300",
           collapsed ? "w-16" : "w-64"
         )}
       >
         <div className="flex h-full flex-col">
-          <div className="flex h-16 items-center justify-center px-4 border-b border-orange-200">
+          <div className="flex h-16 items-center justify-center px-4 border-b border-secondary/70">
             <div className="flex items-center space-x-2">
 
               {!collapsed && (
 
 
                 <div className="flex flex-col">
-                  <img
-                    src="/chopNow.png"
-                    alt="ChopNow Logo"
-                    className="mx-auto w-36 h-full px-2 object-cover"
-                  />
+                  <Link href="/restaurant-dashboard">
+                      <img
+                        src="/chopNow.png"
+                        alt="ChopNow Logo"
+                        className="mx-auto w-36 h-full px-2 object-cover"
+                      />
+                    </Link>
                 </div>
               )}
 
@@ -96,10 +98,10 @@ export function DashboardSidebar({ collapsed, setCollapsed }: { collapsed: boole
       {/* Mobile Sidebar */}
       <Sheet>
         <SheetContent side="left" className="p-0 w-64">
-          <SheetHeader className="border-b border-orange-200 p-4">
+          <SheetHeader className="border-b border-secondary/70 p-4">
             <SheetTitle className="flex items-center space-x-2">
-              <ChefHat className="h-6 w-6 text-orange-500" />
-              <span className="text-lg font-bold text-orange-800">ChopNow Admin</span>
+              <ChefHat className="h-6 w-6 text-secondary" />
+              <span className="text-lg font-bold text-secondary">ChopNow Admin</span>
             </SheetTitle>
           </SheetHeader>
           <div className="flex flex-col h-full">

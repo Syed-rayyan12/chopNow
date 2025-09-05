@@ -81,10 +81,10 @@ const onlineMs = sessions.reduce((sum: number, s: typeof sessions[number]): numb
 }, 0);
 
   res.json({
-    todayEarnings: earningsAgg._sum.riderPayout ?? 0,
-    ordersCompletedToday: completedCount,
-    avgRating: ratingAgg._avg.score ?? 0,
-    onlineTimeMinutesToday: Math.round(onlineMs / 60000),
+    earnings: Number(earningsAgg._sum.riderPayout ?? 0),
+    completedOrders: completedCount,
+    rating: Number(ratingAgg._avg.score ?? 0),
+    onlineTime: `${Math.round(onlineMs / 60000)} min`,
   });
 });
 
@@ -312,6 +312,63 @@ router.post("/status/offline", async (req: AuthRequest, res) => {
     data: { endedAt: new Date() },
   });
   res.json(closed);
+});
+
+/**
+ * Update order status
+ * POST /rider/orders/:orderId/status
+ * Body: { status: "PICKED_UP" | "DELIVERED" }
+ */
+router.post("/orders/:orderId/status", async (req: AuthRequest, res) => {
+  const riderId = req.user!.id as number;
+  const orderId = parseInt(req.params.orderId);
+  const { status } = req.body;
+
+  if (!["PICKED_UP", "DELIVERED"].includes(status)) {
+    return res.status(400).json({ message: "Invalid status" });
+  }
+
+  try {
+    // Find the order and ensure it belongs to this rider
+    const order = await prisma.order.findFirst({
+      where: { id: orderId, riderId },
+    });
+
+    if (!order) {
+      return res.status(404).json({ message: "Order not found or not assigned to you" });
+    }
+
+    // Validate status transitions
+    if (status === "PICKED_UP" && order.status !== "ASSIGNED") {
+      return res.status(400).json({ message: "Order must be ASSIGNED to pick up" });
+    }
+
+    if (status === "DELIVERED" && order.status !== "PICKED_UP") {
+      return res.status(400).json({ message: "Order must be PICKED_UP to deliver" });
+    }
+
+    // Update the order
+    const updateData: any = { status };
+    if (status === "PICKED_UP") {
+      updateData.pickedUpAt = new Date();
+    } else if (status === "DELIVERED") {
+      updateData.deliveredAt = new Date();
+    }
+
+    const updatedOrder = await prisma.order.update({
+      where: { id: orderId },
+      data: updateData,
+      include: {
+        restaurant: true,
+        items: true,
+      },
+    });
+
+    res.json(updatedOrder);
+  } catch (err: any) {
+    console.error("Status update error:", err);
+    res.status(500).json({ message: "Failed to update order status", error: err.message });
+  }
 });
 
 export default router;

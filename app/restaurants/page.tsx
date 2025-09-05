@@ -11,123 +11,24 @@ import { RestaurantGrid } from "@/components/customer-panel-components/restauran
 import { Footer } from "@/components/customer-panel-components/footer"
 import { RestaurantRiderNavbar } from "@/components/customer-panel-components/admin-rider-navbar"
 
-// Mock restaurant data
-const mockRestaurants = [
-  {
-    id: 1,
-    name: "Mario's Italian Kitchen",
-    image: "/italian-restaurant-food.png",
-    rating: 4.8,
-    reviewCount: 324,
-    deliveryTime: "25-35 min",
-    deliveryFee: 0,
-    cuisine: "Italian",
-    priceRange: "$$",
-    distance: 1.2,
-    featured: true,
-    tags: ["Pizza", "Pasta", "Italian"],
-  },
-  {
-    id: 2,
-    name: "Spice Garden",
-    image: "/indian-restaurant-curry.png",
-    rating: 4.6,
-    reviewCount: 256,
-    deliveryTime: "30-40 min",
-    deliveryFee: 2.99,
-    cuisine: "Indian",
-    priceRange: "$$",
-    distance: 2.1,
-    featured: true,
-    tags: ["Curry", "Biryani", "Indian"],
-  },
-  {
-    id: 3,
-    name: "Burger Palace",
-    image: "/gourmet-burger-restaurant.png",
-    rating: 4.7,
-    reviewCount: 189,
-    deliveryTime: "20-30 min",
-    deliveryFee: 0,
-    cuisine: "American",
-    priceRange: "$",
-    distance: 0.8,
-    featured: true,
-    tags: ["Burgers", "Fries", "American"],
-  },
-  {
-    id: 4,
-    name: "Sushi Zen",
-    image: "/japanese-sushi-restaurant.png",
-    rating: 4.9,
-    reviewCount: 412,
-    deliveryTime: "35-45 min",
-    deliveryFee: 3.99,
-    cuisine: "Japanese",
-    priceRange: "$$$",
-    distance: 3.2,
-    featured: true,
-    tags: ["Sushi", "Ramen", "Japanese"],
-  },
-  {
-    id: 5,
-    name: "Taco Fiesta",
-    image: "/taco.png",
-    rating: 4.4,
-    reviewCount: 167,
-    deliveryTime: "15-25 min",
-    deliveryFee: 1.99,
-    cuisine: "Mexican",
-    priceRange: "$",
-    distance: 1.5,
-    featured: false,
-    tags: ["Tacos", "Burritos", "Mexican"],
-  },
-  {
-    id: 6,
-    name: "Dragon Wok",
-    image: "/chinese-food-noodles.png",
-    rating: 4.5,
-    reviewCount: 298,
-    deliveryTime: "25-35 min",
-    deliveryFee: 2.49,
-    cuisine: "Chinese",
-    priceRange: "$$",
-    distance: 2.8,
-    featured: false,
-    tags: ["Noodles", "Fried Rice", "Chinese"],
-  },
-  {
-    id: 7,
-    name: "Mediterranean Delight",
-    image: "/mediterranean-hummus.png",
-    rating: 4.3,
-    reviewCount: 134,
-    deliveryTime: "30-40 min",
-    deliveryFee: 2.99,
-    cuisine: "Mediterranean",
-    priceRange: "$$",
-    distance: 2.3,
-    featured: false,
-    tags: ["Hummus", "Falafel", "Mediterranean"],
-  },
-  {
-    id: 8,
-    name: "Thai Basil",
-    image: "/thai-pad-thai.png",
-    rating: 4.6,
-    reviewCount: 221,
-    deliveryTime: "25-35 min",
-    deliveryFee: 2.49,
-    cuisine: "Thai",
-    priceRange: "$$",
-    distance: 1.9,
-    featured: false,
-    tags: ["Pad Thai", "Curry", "Thai"],
-  },
-]
+export type Restaurant = {
+  id: number
+  name: string
+  phone: string
+  address: string
+  createdAt: string
+  // Extended fields that will be available after migration
+  image?: string
+  cuisine?: string
+  rating?: number
+  deliveryTime?: string
+  deliveryFee?: number
+  priceRange?: string
+  distance?: number
+  featured?: boolean
+  tags?: string[]
+}
 
-export type Restaurant = (typeof mockRestaurants)[0]
 export type SortOption = "recommended" | "rating" | "delivery-time" | "distance"
 export type ViewMode = "grid" | "list"
 
@@ -140,34 +41,166 @@ export default function RestaurantsPage() {
   const [sortBy, setSortBy] = useState<SortOption>("recommended")
   const [viewMode, setViewMode] = useState<ViewMode>("grid")
   const [showFilters, setShowFilters] = useState(false)
+  const restaurants = [
+    {
+      id: 1,
+      name: "Mario's Italian Kitchen",
+      phone: "+1 (555) 123-4567",
+      address: "123 Main Street, Downtown",
+      createdAt: "2024-01-15T10:00:00Z",
+      image: "/italian-restaurant-food.png",
+      cuisine: "Italian",
+      rating: 4.8,
+      deliveryTime: "25-35 min",
+      deliveryFee: 0,
+      priceRange: "$$",
+      distance: 1.5,
+      featured: true,
+      tags: ["Italian", "Pizza", "Pasta"]
+    },
+    {
+      id: 2,
+      name: "Spice Garden",
+      phone: "+1 (555) 234-5678",
+      address: "456 Curry Lane, Spice District",
+      createdAt: "2024-01-20T14:30:00Z",
+      image: "/indian-restaurant-curry.png",
+      cuisine: "Indian",
+      rating: 4.6,
+      deliveryTime: "30-40 min",
+      deliveryFee: 2.99,
+      priceRange: "$$",
+      distance: 2.3,
+      featured: true,
+      tags: ["Indian", "Curry", "Spicy"]
+    },
+    {
+      id: 3,
+      name: "Burger Palace",
+      phone: "+1 (555) 345-6789",
+      address: "789 Burger Blvd, Fast Food Corner",
+      createdAt: "2024-01-25T12:15:00Z",
+      image: "/gourmet-burger-restaurant.png",
+      cuisine: "American",
+      rating: 4.7,
+      deliveryTime: "20-30 min",
+      deliveryFee: 0,
+      priceRange: "$",
+      distance: 0.8,
+      featured: true,
+      tags: ["American", "Burgers", "Fast Food"]
+    },
+    {
+      id: 4,
+      name: "Sushi Zen",
+      phone: "+1 (555) 456-7890",
+      address: "321 Sushi Street, Asian Quarter",
+      createdAt: "2024-02-01T16:45:00Z",
+      image: "/japanese-sushi-restaurant.png",
+      cuisine: "Japanese",
+      rating: 4.9,
+      deliveryTime: "35-45 min",
+      deliveryFee: 3.99,
+      priceRange: "$$$",
+      distance: 3.1,
+      featured: true,
+      tags: ["Japanese", "Sushi", "Asian"]
+    },
+    {
+      id: 5,
+      name: "Taco Fiesta",
+      phone: "+1 (555) 567-8901",
+      address: "654 Fiesta Ave, Mexican District",
+      createdAt: "2024-02-05T11:20:00Z",
+      image: "/mexican-cuisine.png",
+      cuisine: "Mexican",
+      rating: 4.4,
+      deliveryTime: "25-35 min",
+      deliveryFee: 1.99,
+      priceRange: "$",
+      distance: 1.9,
+      featured: false,
+      tags: ["Mexican", "Tacos", "Burritos"]
+    },
+    {
+      id: 6,
+      name: "Dragon Palace",
+      phone: "+1 (555) 678-9012",
+      address: "987 Dragon Road, Chinatown",
+      createdAt: "2024-02-10T13:30:00Z",
+      image: "/chinese-food-noodles.png",
+      cuisine: "Chinese",
+      rating: 4.5,
+      deliveryTime: "30-40 min",
+      deliveryFee: 2.49,
+      priceRange: "$$",
+      distance: 2.7,
+      featured: false,
+      tags: ["Chinese", "Noodles", "Dumplings"]
+    },
+    {
+      id: 7,
+      name: "Mediterranean Delight",
+      phone: "+1 (555) 789-0123",
+      address: "147 Olive Grove, Mediterranean Quarter",
+      createdAt: "2024-02-15T15:00:00Z",
+      image: "/mediterranean-hummus.png",
+      cuisine: "Mediterranean",
+      rating: 4.6,
+      deliveryTime: "35-45 min",
+      deliveryFee: 3.49,
+      priceRange: "$$",
+      distance: 3.5,
+      featured: false,
+      tags: ["Mediterranean", "Hummus", "Falafel"]
+    },
+    {
+      id: 8,
+      name: "Thai Spice House",
+      phone: "+1 (555) 890-1234",
+      address: "258 Spice Lane, Thai District",
+      createdAt: "2024-02-20T17:15:00Z",
+      image: "/thai-pad-thai.png",
+      cuisine: "Thai",
+      rating: 4.7,
+      deliveryTime: "40-50 min",
+      deliveryFee: 4.99,
+      priceRange: "$$",
+      distance: 4.2,
+      featured: false,
+      tags: ["Thai", "Pad Thai", "Curry"]
+    }
+  ]
 
   const filteredAndSortedRestaurants = useMemo(() => {
-    const filtered = mockRestaurants.filter((restaurant) => {
+    const filtered = restaurants.filter((restaurant) => {
       // Search query filter
       if (searchQuery) {
         const query = searchQuery.toLowerCase()
         const matchesName = restaurant.name.toLowerCase().includes(query)
-        const matchesCuisine = restaurant.cuisine.toLowerCase().includes(query)
-        const matchesTags = restaurant.tags.some((tag) => tag.toLowerCase().includes(query))
+        const matchesCuisine = (restaurant.cuisine || "").toLowerCase().includes(query)
+        const matchesTags = (restaurant.tags || []).some((tag) => tag.toLowerCase().includes(query))
         if (!matchesName && !matchesCuisine && !matchesTags) return false
       }
 
       // Cuisine filter
-      if (selectedCuisines.length > 0 && !selectedCuisines.includes(restaurant.cuisine)) {
+      if (selectedCuisines.length > 0 && !selectedCuisines.includes(restaurant.cuisine || "")) {
         return false
       }
 
       // Price range filter
-      if (selectedPriceRanges.length > 0 && !selectedPriceRanges.includes(restaurant.priceRange)) {
+      if (selectedPriceRanges.length > 0 && !selectedPriceRanges.includes(restaurant.priceRange || "")) {
         return false
       }
 
       // Delivery time filter
-      const maxTime = Number.parseInt(restaurant.deliveryTime.split("-")[1])
-      if (maxTime > maxDeliveryTime) return false
+      if (restaurant.deliveryTime) {
+        const maxTime = Number.parseInt(restaurant.deliveryTime.split("-")[1])
+        if (maxTime > maxDeliveryTime) return false
+      }
 
       // Rating filter
-      if (restaurant.rating < minRating) return false
+      if ((restaurant.rating || 0) < minRating) return false
 
       return true
     })
@@ -176,24 +209,28 @@ export default function RestaurantsPage() {
     filtered.sort((a, b) => {
       switch (sortBy) {
         case "rating":
-          return b.rating - a.rating
+          return (b.rating || 0) - (a.rating || 0)
         case "delivery-time":
-          const aTime = Number.parseInt(a.deliveryTime.split("-")[0])
-          const bTime = Number.parseInt(b.deliveryTime.split("-")[0])
-          return aTime - bTime
+          if (a.deliveryTime && b.deliveryTime) {
+            const aTime = Number.parseInt(a.deliveryTime.split("-")[0])
+            const bTime = Number.parseInt(b.deliveryTime.split("-")[0])
+            return aTime - bTime
+          }
+          return 0
         case "distance":
-          return a.distance - b.distance
+          return (a.distance || 0) - (b.distance || 0)
         case "recommended":
         default:
           // Featured first, then by rating
-          if (a.featured && !b.featured) return -1
-          if (!a.featured && b.featured) return 1
-          return b.rating - a.rating
+          if ((a.featured && !b.featured) || (!a.featured && b.featured)) {
+            return a.featured ? -1 : 1
+          }
+          return (b.rating || 0) - (a.rating || 0)
       }
     })
 
     return filtered
-  }, [searchQuery, selectedCuisines, selectedPriceRanges, maxDeliveryTime, minRating, sortBy])
+  }, [searchQuery, selectedCuisines, selectedPriceRanges, maxDeliveryTime, minRating, sortBy, restaurants])
 
   return (
     <div className="min-h-screen bg-background">
