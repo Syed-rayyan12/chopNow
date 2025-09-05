@@ -242,10 +242,10 @@ export function DeliveryTracking() {
       </div>
 
       <Tabs defaultValue="deliveries" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-3 bg-secondary rounded-xl">
-          <TabsTrigger value="deliveries" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Active Deliveries</TabsTrigger>
-          <TabsTrigger value="drivers" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Drivers</TabsTrigger>
-          <TabsTrigger value="map" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Live Map</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-3 max-sm:grid-cols-1 h-full bg-secondary rounded-xl">
+          <TabsTrigger value="deliveries" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Active Deliveries</TabsTrigger>
+          <TabsTrigger value="drivers" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Drivers</TabsTrigger>
+          <TabsTrigger value="map" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Live Map</TabsTrigger>
         </TabsList>
 
         <TabsContent value="deliveries" className="space-y-4">

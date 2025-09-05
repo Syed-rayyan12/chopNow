@@ -144,7 +144,7 @@ export function DashboardOverview() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-secondary">Recent Orders</CardTitle>
+              <CardTitle className="text-secondary pb-1">Recent Orders</CardTitle>
               <CardDescription className="text-secondary/80">Latest orders from your platform</CardDescription>
             </div>
             <Button variant="outline" className="border-secondary/65 text-secondary hover:bg-secondary bg-transparent">

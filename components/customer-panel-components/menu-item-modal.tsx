@@ -103,7 +103,7 @@ export function MenuItemModal({ item, isOpen, onClose, onAddToCart }: MenuItemMo
                 >
                   {customization.options.map((option) => (
                     <div key={option.id} className="flex items-center space-x-2">
-                      <RadioGroupItem value={option.id} id={option.id} />
+                      <RadioGroupItem value={option.id} id={option.id} className="border border-foreground" />
                       <Label htmlFor={option.id} className="flex-1 cursor-pointer">
                         <div className="flex justify-between">
                           <span>{option.name}</span>
@@ -118,6 +118,7 @@ export function MenuItemModal({ item, isOpen, onClose, onAddToCart }: MenuItemMo
                   {customization.options.map((option) => (
                     <div key={option.id} className="flex items-center space-x-2">
                       <Checkbox
+                      className="border-border-foreground"
                         id={option.id}
                         checked={
                           customizations[customization.id]?.some((selected: any) => selected.id === option.id) || false
