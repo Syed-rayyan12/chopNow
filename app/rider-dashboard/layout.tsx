@@ -41,9 +41,44 @@ import { RiderHeader } from "@/components/rider-panel-components/rider-header"
 import { RiderSidebar } from "@/components/rider-panel-components/rider-sidebar"
 import { useState } from "react"
 
+
+type NotificationStatus = "unread" | "read"
+
+interface Notification {
+  id: string
+  type: "order" | "stock" | "payout"
+  message: string
+  time: string
+  status: NotificationStatus
+}
+
 export default function RiderDashboardLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [collapsed, setCollapsed] = useState(false)
+
+  const [notifications] = useState<Notification[]>([
+    {
+      id: "1",
+      type: "order",
+      message: "New order received from John Doe",
+      time: "2 minutes ago",
+      status: "unread",
+    },
+    {
+      id: "2",
+      type: "stock",
+      message: "Low stock alert: Chicken Wings",
+      time: "15 minutes ago",
+      status: "unread",
+    },
+    {
+      id: "3",
+      type: "payout",
+      message: "Weekly payout processed",
+      time: "1 hour ago",
+      status: "read",
+    },
+  ])
 
   return (
     <div className="flex min-h-screen w-full bg-background">
@@ -60,7 +95,7 @@ export default function RiderDashboardLayout({ children }: { children: React.Rea
       >
         {/* Header */}
         <header className="sticky top-0 z-30 bg-background ">
-          <RiderHeader collapsed={collapsed} setCollapsed={setCollapsed} />
+          <RiderHeader collapsed={collapsed} setCollapsed={setCollapsed} notifications={notifications} />
         </header>
 
         {/* Scrollable Page Content */}

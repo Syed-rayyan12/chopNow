@@ -261,11 +261,28 @@ type RiderUser = {
   role?: string
 }
 
-export function RiderHeader({ collapsed, setCollapsed }: any) {
+
+interface Notification {
+  id: string
+  message: string
+  time: string
+  status: "read" | "unread"
+}
+
+type DashboardHeaderProps = {
+  collapsed: boolean
+  setCollapsed: (collapsed: boolean) => void
+  notifications: Notification[]
+
+}
+
+
+export function RiderHeader({ collapsed, setCollapsed,notifications }: DashboardHeaderProps) {
   const router = useRouter()
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [user, setUser] = useState<RiderUser | null>(null)
+  const unreadCount = notifications.filter((n) => n.status === "unread").length
 
   useEffect(() => {
     try {
@@ -308,9 +325,13 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
                   side="left"
                   className="w-72 max-w-[85vw] bg-white p-4 border-r z-50"
                 >
-                  <h2 className="text-lg font-semibold text-secondary mb-4">
-                    Menu
-                  </h2>
+                   <Link href="/rider-dashboard">
+                      <img
+                        src="/chopNow.png"
+                        alt="ChopNow Logo"
+                        className="mx-auto w-36 h-full px-2 object-cover"
+                      />
+                    </Link>
 
                   {/* ✅ Search moved here */}
                   <div className="relative mb-4">
@@ -373,15 +394,34 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
             />
           </div>
           {/* Notifications */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-secondary/60 hover:text-secondary hover:bg-secondary/10"
-          >
-            <Bell className="h-5 w-5" />
-          </Button>
-
-          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="relative text-secondary/60 hover:text-secondary hover:bg-secondary/10">
+                <Bell className="h-5 w-5" />
+                {unreadCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {unreadCount}
+                  </span>
+                )}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-80 border border-secondary">
+              {notifications.length === 0 ? (
+                <DropdownMenuItem className="p-3 text-sm text-gray-500">
+                  No new notifications
+                </DropdownMenuItem>
+              ) : (
+                notifications.slice(0, 3).map((notification) => (
+                  <DropdownMenuItem key={notification.id} className="p-3 hover:bg-secondary hover:text-background">
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium">{notification.message}</p>
+                      <p className="text-xs ">{notification.time}</p>
+                    </div>
+                  </DropdownMenuItem>
+                ))
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           {/* Profile Dropdown */}
           <DropdownMenu>
@@ -405,7 +445,7 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
                   </p>
                 </div>
               </DropdownMenuLabel>
-              <DropdownMenuSeparator className="border border-secondary" />
+              {/* <DropdownMenuSeparator className="border border-secondary" />
               <DropdownMenuItem onClick={() => router.push("rider-dashboard/profile")} className="hover:bg-secondary hover:text-white">
                 <User className="h-4 w-4" />
                 <span>Profile</span>
@@ -413,7 +453,7 @@ export function RiderHeader({ collapsed, setCollapsed }: any) {
               <DropdownMenuItem className="hover:bg-secondary hover:text-white">
                 <Settings className="h-4 w-4" />
                 <span>Settings</span>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
               <DropdownMenuSeparator className="border border-secondary"/>
               <DropdownMenuItem className="hover:bg-secondary hover:text-white" onClick={handleLogout}>
                 <LogOut className="h-4 w-4" />

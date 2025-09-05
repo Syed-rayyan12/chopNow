@@ -283,9 +283,13 @@ export function DashboardHeader({ collapsed, setCollapsed, onSignOut, notificati
                   side="left"
                   className="w-72 max-w-[85vw] bg-white p-4 border-r z-50"
                 >
-                  <h2 className="text-lg font-semibold text-orange-800 mb-4">
-                    Menu
-                  </h2>
+                  <Link href="/restaurant-dashboard">
+                      <img
+                        src="/chopNow.png"
+                        alt="ChopNow Logo"
+                        className="mx-auto w-36 h-full px-2 object-cover"
+                      />
+                    </Link>
 
                   {/* Search only in mobile menu */}
                   <div className="relative mb-4 sm:hidden">
@@ -367,10 +371,10 @@ export function DashboardHeader({ collapsed, setCollapsed, onSignOut, notificati
                 </DropdownMenuItem>
               ) : (
                 notifications.slice(0, 3).map((notification) => (
-                  <DropdownMenuItem key={notification.id} className="p-3">
+                  <DropdownMenuItem key={notification.id} className="p-3 hover:bg-secondary hover:text-background">
                     <div className="space-y-1">
                       <p className="text-sm font-medium">{notification.message}</p>
-                      <p className="text-xs text-gray-500">{notification.time}</p>
+                      <p className="text-xs ">{notification.time}</p>
                     </div>
                   </DropdownMenuItem>
                 ))
@@ -398,15 +402,15 @@ export function DashboardHeader({ collapsed, setCollapsed, onSignOut, notificati
                   </p>
                 </div>
               </DropdownMenuLabel>
-              <DropdownMenuSeparator className="border border-secondary" />
-              <DropdownMenuItem className="hover:bg-secondary hover:text-white">
+              {/* <DropdownMenuSeparator className="border border-secondary" /> */}
+              {/* <DropdownMenuItem className="hover:bg-secondary hover:text-white">
                 <User className="h-4 w-4" />
                 <span>Profile</span>
               </DropdownMenuItem>
               <DropdownMenuItem className="hover:bg-secondary hover:text-white">
                 <Settings className="h-4 w-4" />
                 <span>Settings</span>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
               <DropdownMenuSeparator className="border border-secondary" />
               <DropdownMenuItem className="hover:bg-secondary hover:text-white" onClick={onSignOut}>
                 <LogOut className="h-4 w-4" />
