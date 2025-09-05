@@ -81,11 +81,13 @@ export function Sidebar({ collapsed, setCollapsed }: { collapsed: boolean, setCo
 
               {!collapsed && (
                 <div className="flex flex-col justify-center">
+                  <Link href="/admin-dashboard">
                   <img
                     src="/chopNow.png"
                     alt="ChopNow Logo"
                     className="mx-auto w-36 h-full px-2 object-cover"
                   />
+                  </Link>
                   {/* <span className="text-secondary text-lg font-bold">ChopNow</span>
                 <span className="text-xs text-secondary/70">Admin Panel</span> */}
                 </div>
