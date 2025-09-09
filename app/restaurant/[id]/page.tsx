@@ -453,7 +453,7 @@ export default function RestaurantPage() {
       {cartItemCount > 0 && (
         <Button
           onClick={() => setIsCartOpen(true)}
-          className="fixed bottom-6 right-6 h-14 px-6 rounded-full shadow-lg z-40"
+          className="fixed bottom-6 right-6 h-14 px-6 rounded-full shadow-lg z-40 bg-secondary hover:bg-none"
           size="lg"
         >
           <ShoppingCart className="w-5 h-5 mr-2" />

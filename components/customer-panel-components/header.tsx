@@ -213,29 +213,29 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-background border-b border-border">
+    <header className="sticky top-0 z-50  py-2 bg-[#0F3D2E] border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-12">
           {/* Logo */}
           <Link href="/" >
-            <img className="w-32 px-2 object-cover" src="/chopNow.png" alt="" />
+            <img className="w-42 px-2 object-cover" src="/chopnow-logo.png" alt="" />
           </Link>
 
           {/* Location */}
           <div className="hidden md:flex items-center space-x-2 text-foreground">
-            <MapPin className="w-4 h-4 " />
-            <span className="text-sm ">Deliver to</span>
-            <Button variant="ghost" size="sm" className=" font-medium">
+            <MapPin className="w-4 h-4 text-white" />
+            <span className="text-sm text-white">Deliver to</span>
+            <Button variant="ghost" size="sm" className=" font-medium bg-white">
               Current Location
             </Button>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/restaurants" className=" hover:text-secondary transition-colors ">
+            <Link href="/restaurants" className="text-white hover:text-secondary transition-colors ">
               Restaurants
             </Link>
-            <Link href="/offers" className=" hover:text-secondary transition-colors ">
+            <Link href="/offers" className="text-white hover:text-secondary transition-colors ">
               Offers
             </Link>
           </nav>
@@ -244,9 +244,9 @@ export function Header() {
           <div className="flex items-center space-x-2">
             <Button variant="ghost" size="sm" className="relative" asChild>
               <Link href="/cart">
-                <ShoppingCart className="w-5 h-5 " />
+                <ShoppingCart className="w-5 h-5 text-white" />
                 {cartCount > 0 && (
-                  <Badge className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center p-0">
+                  <Badge className="absolute bg-white -top-1 -right-1 text-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center p-0">
                     {cartCount > 99 ? "99+" : cartCount}
                   </Badge>
                 )}
@@ -256,7 +256,7 @@ export function Header() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="flex items-center gap-2">
-                  <User className="w-5 h-5 " />
+                  <User className="w-5 h-5 text-white" />
                 </Button>
               </DropdownMenuTrigger>
 

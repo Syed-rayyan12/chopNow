@@ -211,11 +211,12 @@ export default function CheckoutPage() {
             {/* Checkout Form */}
             <div className="lg:col-span-2 space-y-6">
               {/* Delivery Address */}
-              <Card>
+              <Card className="border border-secondary">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <MapPin className="w-5 h-5" />
-                    Delivery Address
+                    <MapPin className="w-5 h-5 text-secondary" />
+                    <span className="text-secondary">Delivery Address</span>
+                    
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -226,7 +227,7 @@ export default function CheckoutPage() {
                         <Label htmlFor={address.id} className="flex-1 cursor-pointer">
                           <div className="flex items-center gap-2 mb-1">
                             <span className="font-medium">{address.label}</span>
-                            {address.isDefault && <Badge variant="outline">Default</Badge>}
+                            {address.isDefault && <Badge variant="outline" className=" bg-secondary border-none text-white">Default</Badge>}
                           </div>
                           <p className="text-sm text-muted-foreground">{address.address}</p>
                           {address.details && <p className="text-xs text-muted-foreground mt-1">{address.details}</p>}
@@ -239,46 +240,49 @@ export default function CheckoutPage() {
                     <Button
                       variant="outline"
                       onClick={() => setShowNewAddressForm(true)}
-                      className="w-full bg-transparent"
+                      className="w-full border-none text-white bg-secondary"
                     >
                       Add New Address
                     </Button>
                   ) : (
-                    <div className="space-y-3 p-4 border border-border rounded-lg">
+                    <div className="space-y-3 p-4 border border-secondary rounded-lg">
                       <div className="grid grid-cols-2 gap-3">
                         <div>
-                          <Label htmlFor="label">Address Label</Label>
+                          <Label htmlFor="label" className="mb-2">Address Label</Label>
                           <Input
                             id="label"
                             placeholder="e.g., Home, Work"
                             value={newAddress.label}
                             onChange={(e) => setNewAddress({ ...newAddress, label: e.target.value })}
+                            className="border border-foreground/30 "
                           />
                         </div>
                       </div>
                       <div>
-                        <Label htmlFor="address">Full Address</Label>
+                        <Label htmlFor="address" className="mb-2">Full Address</Label>
                         <Input
                           id="address"
                           placeholder="Street address, apartment, city"
                           value={newAddress.address}
                           onChange={(e) => setNewAddress({ ...newAddress, address: e.target.value })}
+                          className="border border-foreground/30 "
                         />
                       </div>
                       <div>
-                        <Label htmlFor="details">Delivery Instructions (Optional)</Label>
+                        <Label htmlFor="details" className="mb-2">Delivery Instructions (Optional)</Label>
                         <Input
                           id="details"
                           placeholder="e.g., Ring doorbell, Leave at door"
                           value={newAddress.details}
                           onChange={(e) => setNewAddress({ ...newAddress, details: e.target.value })}
+                          className="border border-foreground/30 "
                         />
                       </div>
                       <div className="flex gap-2">
                         <Button onClick={handleAddNewAddress} size="sm">
                           Add Address
                         </Button>
-                        <Button variant="outline" onClick={() => setShowNewAddressForm(false)} size="sm">
+                        <Button variant="outline" onClick={() => setShowNewAddressForm(false)} size="sm" className="bg-secondary border-none text-white">
                           Cancel
                         </Button>
                       </div>
@@ -288,18 +292,19 @@ export default function CheckoutPage() {
               </Card>
 
               {/* Payment Method */}
-              <Card>
+              <Card className="border border-secondary">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <CreditCard className="w-5 h-5" />
-                    Payment Method
+                    <CreditCard className="w-5 h-5 text-secondary" />
+
+                    <span className="text-secondary">Payment Method</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <RadioGroup value={selectedPayment} onValueChange={setSelectedPayment}>
                     {paymentMethods.map((method) => (
                       <div key={method.id} className="flex items-start space-x-2">
-                        <RadioGroupItem value={method.id} id={method.id} className="mt-1" />
+                        <RadioGroupItem value={method.id} id={method.id} className="mt-1 bg-secondary" />
                         <Label htmlFor={method.id} className="flex-1 cursor-pointer">
                           <div className="flex items-center gap-2 mb-1">
                             {method.icon}
@@ -313,44 +318,48 @@ export default function CheckoutPage() {
 
                   {/* Card Details Form (shown when card is selected) */}
                   {selectedPayment === "card" && (
-                    <div className="space-y-3 p-4 border border-border rounded-lg">
+                    <div className="space-y-3 p-4 border border-secondary rounded-lg">
                       <div className="grid grid-cols-2 gap-3">
                         <div>
-                          <Label htmlFor="cardName">Cardholder Name</Label>
+                          <Label htmlFor="cardName" className="mb-2">Cardholder Name</Label>
                           <Input
                             id="cardName"
                             placeholder="John Doe"
                             value={cardDetails.name}
                             onChange={(e) => setCardDetails({ ...cardDetails, name: e.target.value })}
+                            className="border border-foreground/30"
                           />
                         </div>
                         <div>
-                          <Label htmlFor="cardNumber">Card Number</Label>
+                          <Label htmlFor="cardNumber" className="mb-2">Card Number</Label>
                           <Input
                             id="cardNumber"
                             placeholder="1234 5678 9012 3456"
                             value={cardDetails.number}
                             onChange={(e) => setCardDetails({ ...cardDetails, number: e.target.value })}
+                            className="border border-foreground/30"
                           />
                         </div>
                       </div>
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className="grid grid-cols-2 gap-3 ">
                         <div>
-                          <Label htmlFor="expiry">Expiry Date</Label>
+                          <Label htmlFor="expiry" className="mb-2">Expiry Date</Label>
                           <Input
                             id="expiry"
                             placeholder="MM/YY"
                             value={cardDetails.expiry}
                             onChange={(e) => setCardDetails({ ...cardDetails, expiry: e.target.value })}
+                            className="border border-foreground/30"
                           />
                         </div>
                         <div>
-                          <Label htmlFor="cvv">CVV</Label>
+                          <Label htmlFor="cvv" className="mb-2">CVV</Label>
                           <Input
                             id="cvv"
                             placeholder="123"
                             value={cardDetails.cvv}
                             onChange={(e) => setCardDetails({ ...cardDetails, cvv: e.target.value })}
+                            className="border border-foreground/30"
                           />
                         </div>
                       </div>
@@ -360,11 +369,12 @@ export default function CheckoutPage() {
               </Card>
 
               {/* Delivery Instructions */}
-              <Card>
+              <Card className="border border-secondary">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Truck className="w-5 h-5" />
-                    Delivery Instructions
+                    <Truck className="w-5 h-5 text-center text-secondary"  />
+                    <span className="text-secondary">Delivery Instructions</span>
+                    
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -373,6 +383,7 @@ export default function CheckoutPage() {
                     value={deliveryInstructions}
                     onChange={(e) => setDeliveryInstructions(e.target.value)}
                     rows={3}
+                    className="border border-foreground/30"
                   />
                 </CardContent>
               </Card>
@@ -380,9 +391,9 @@ export default function CheckoutPage() {
 
             {/* Order Summary */}
             <div className="space-y-6">
-              <Card>
+              <Card className="border border-secondary">
                 <CardHeader>
-                  <CardTitle>Order Summary</CardTitle>
+                  <CardTitle className="text-secondary">Order Summary</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {/* Items */}

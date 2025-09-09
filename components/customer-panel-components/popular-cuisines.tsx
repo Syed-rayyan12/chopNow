@@ -81,7 +81,7 @@ export function PopularCuisines() {
                     className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="font-heading font-semibold text-sm text-foreground mb-1">
+                <h3 className="font-heading font-semibold text-sm text-[#0F3D2E] mb-1">
                   {cuisine.name}
                 </h3>
                 <p className="text-xs text-muted-foreground">

@@ -165,7 +165,7 @@ export function MenuItemModal({ item, isOpen, onClose, onAddToCart }: MenuItemMo
               </Button>
             </div>
 
-            <Button onClick={handleAddToCart} size="lg" className="font-medium bg-transparent hover:bg-secondary hover:text-white border border-secondary text-foreground">
+            <Button onClick={handleAddToCart} size="lg" className="font-medium  hover:bg-[#0F3D2E] hover:border-[#0F3D2E] hover:text-white bg-secondary text-white">
               Add to Cart • ${calculateTotalPrice().toFixed(2)}
             </Button>
           </div>

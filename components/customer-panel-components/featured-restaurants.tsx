@@ -49,16 +49,16 @@ const featuredRestaurants = [
 
 export function FeaturedRestaurants() {
   return (
-    <section className="py-16 bg-background">
+    <section className="py-16 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-[#0F3D2E] mb-4">
             Featured{" "}
-            <span className="text-secondary animate-pulse">
+            <span className="text-white animate-pulse">
               Restaurants
             </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Discover the most popular restaurants in your area, handpicked for quality and taste.
           </p>
         </div>
@@ -81,7 +81,7 @@ export function FeaturedRestaurants() {
               )}
             </div>
             <CardContent className="p-4">
-              <h3 className="font-heading font-semibold text-lg text-secondary mb-2">
+              <h3 className="font-heading font-semibold text-lg text-[#0F3D2E] mb-2">
                 {restaurant.name}
               </h3>
               <p className="text-sm mb-3">{restaurant.cuisine}</p>

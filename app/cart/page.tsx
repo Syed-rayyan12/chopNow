@@ -249,7 +249,7 @@ export default function CartPage() {
                     Proceed to Checkout
                   </Button>
 
-                  <Button variant="outline" asChild className="w-full bg-transparent hover:border-none">
+                  <Button variant="outline" asChild className="w-full bg-secondary border-none text-white hover:border-none">
                     <Link href={`/restaurant/${restaurant.restaurantId}`}>Add More Items</Link>
                   </Button>
                 </CardContent>

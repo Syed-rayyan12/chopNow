@@ -34,7 +34,7 @@ export function MenuItems({ items, categoryName, onAddToCart }: MenuItemsProps) 
         {items.map((item) => (
           <Card
             key={item.id}
-            className="group cursor-pointer  transition-all duration-300 border-secondary"
+            className="group cursor-pointer  transition-all duration-300 bg-[#0F3D2E]"
             onClick={() => setSelectedItem(item)}
           >
             <CardContent className="p-0">
@@ -43,21 +43,21 @@ export function MenuItems({ items, categoryName, onAddToCart }: MenuItemsProps) 
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <h3 className="font-heading font-semibold text-lg text-secondary">{item.name}</h3>
+                        <h3 className="font-heading font-semibold text-lg text-white">{item.name}</h3>
                         {item.popular && (
-                          <Badge className="bg-primary text-primary-foreground">
+                          <Badge className="bg-primary border border-white p-[6px]">
                             <Star className="w-3 h-3 mr-1" />
                             Popular
                           </Badge>
                         )}
                       </div>
-                      <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{item.description}</p>
-                      <p className="font-heading font-bold text-lg text-secondary">${item.price.toFixed(2)}</p>
+                      <p className="text-white text-sm mb-3 line-clamp-2">{item.description}</p>
+                      <p className="font-heading font-bold text-lg text-white">${item.price.toFixed(2)}</p>
                     </div>
                   </div>
 
                   {item.customizations.length > 0 && (
-                    <p className="text-xs text-muted-foreground mb-3">Customization available</p>
+                    <p className="text-xs text-white mb-3">Customization available</p>
                   )}
 
                   <Button
@@ -70,7 +70,7 @@ export function MenuItems({ items, categoryName, onAddToCart }: MenuItemsProps) 
                         onAddToCart(item, {}, 1)
                       }
                     }}
-                    className="bg-transparent border border-secondary  hover:bg-secondary hover:text-white text-foreground"
+                    className=" bg-white hover:bg-secondary hover:text-white text-foreground"
                   >
                     <Plus className="w-4 h-4 mr-2" />
                     Add to Cart

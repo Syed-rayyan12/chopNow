@@ -142,9 +142,9 @@ export function OffersPage() {
 
       <div className="container mx-auto px-4 py-6">
         {/* Promotional Banner */}
-        <div className="mb-8 rounded-lg bg-gradient-to-r from-accent/20 to-accent/10 p-6 text-center">
-          <h2 className="text-2xl font-bold text-foreground mb-2">Weekend Special Deals</h2>
-          <p className="text-muted-foreground">Get up to 50% off on your favorite restaurants this weekend!</p>
+        <div className="mb-8 rounded-lg bg-secondary from-accent/20 to-accent/10 p-6 text-center">
+          <h2 className="text-2xl font-bold text-white mb-2">Weekend Special Deals</h2>
+          <p className="text-white">Get up to 50% off on your favorite restaurants this weekend!</p>
         </div>
 
         {/* Filters and Sorting */}
@@ -158,7 +158,7 @@ export function OffersPage() {
                 variant={activeFilter === filter ? "default" : "outline"}
                 size="sm"
                 onClick={() => setActiveFilter(filter)}
-                className={activeFilter === filter ? "bg-[#FF7A00] hover:bg-[#FF7A00]/90 text-white" : ""}
+                className={activeFilter === filter ? "bg-[#FF7A00] border border-secondary hover:bg-[#FF7A00]/90 text-white" : ""}
               >
                 {filter}
               </Button>
@@ -233,7 +233,7 @@ export function OffersPage() {
                   />
 
                   {/* Discount Badge */}
-                  <Badge className="absolute top-3 left-3 bg-accent hover:bg-accent text-accent-foreground font-semibold">
+                  <Badge className="absolute top-3 left-3 bg-[#0F3D2E]  text-accent-foreground font-semibold">
                     {offer.discount}
                   </Badge>
 
@@ -249,7 +249,7 @@ export function OffersPage() {
 
                 <CardContent className="pt-8 pb-4">
                   <div className="mb-2">
-                    <h3 className="font-semibold text-lg text-card-foreground mb-1">{offer.name}</h3>
+                    <h3 className="font-semibold text-lg text-[#0F3D2E] mb-1">{offer.name}</h3>
                     <div className="flex  flex-wrap gap-1 mb-2">
                       {offer.cuisine.map((type) => (
                         <span key={type} className="text-xs text-muted-foreground">
@@ -291,7 +291,7 @@ export function OffersPage() {
         {/* Load More Button */}
         {filteredAndSortedOffers.length > 0 && (
           <div className="mt-8 text-center">
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" className="hover:bg-secondary hover:border-none">
               Load More Offers
             </Button>
           </div>

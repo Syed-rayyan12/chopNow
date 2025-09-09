@@ -53,7 +53,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
                 <CardContent className="p-4">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h3 className="font-heading font-bold text-lg text-secondary mb-1">
+                      <h3 className="font-heading font-bold text-lg text-[#0F3D2E] mb-1">
                         {restaurant.name}
                       </h3>
                       <p className="text-muted-foreground text-sm">{restaurant.cuisine}</p>
@@ -73,8 +73,8 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
                       <span>{restaurant.deliveryTime}</span>
                     </div>
                     <div className="flex items-center space-x-1 text-muted-foreground">
-                      <Truck className="w-4 h-4 text-secondary" />
-                      <span className="text-secondary">
+                      <Truck className="w-4 h-4 text-[#0F3D2E]" />
+                      <span className="text-[#0F3D2E]">
                         {restaurant.deliveryFee === 0 ? "Free" : `$${restaurant.deliveryFee}`}
                       </span>
                     </div>
@@ -86,7 +86,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
 
                   <div className="flex gap-1">
                     {restaurant.tags.slice(0, 3).map((tag) => (
-                      <Badge key={tag} variant="outline" className="text-xs">
+                      <Badge key={tag} variant="outline" className="text-xs bg-[#0F3D2E] text-white hover:bg-secondary">
                         {tag}
                       </Badge>
                     ))}
@@ -130,7 +130,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
                 <CardContent className="p-4">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h3 className="font-heading font-bold text-lg text-secondary mb-1">
+                      <h3 className="font-heading font-bold text-lg text-[#0F3D2E] mb-1">
                         {restaurant.name}
                       </h3>
                       <p className="text-muted-foreground text-sm">{restaurant.cuisine}</p>
@@ -150,8 +150,8 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
                       <span>{restaurant.deliveryTime}</span>
                     </div>
                     <div className="flex items-center space-x-1 text-muted-foreground">
-                      <Truck className="w-4 h-4 text-secondary" />
-                      <span className="text-secondary">
+                      <Truck className="w-4 h-4 text-[#0F3D2E]" />
+                      <span className="text-[#0F3D2E]">
                         {restaurant.deliveryFee === 0 ? "Free" : `$${restaurant.deliveryFee}`}
                       </span>
                     </div>
@@ -163,7 +163,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
 
                   <div className="flex gap-1">
                     {restaurant.tags.slice(0, 3).map((tag) => (
-                      <Badge key={tag} variant="outline" className="text-xs">
+                      <Badge key={tag} variant="outline" className="text-xs bg-[#0F3D2E] text-white hover:bg-secondary">
                         {tag}
                       </Badge>
                     ))}
