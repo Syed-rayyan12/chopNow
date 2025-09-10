@@ -58,11 +58,11 @@ export function HeroSection() {
               />
             </div>
             <div className="flex items-center max-sm:justify-center gap-2">
-              <Button variant="outline" size="sm" className="whitespace-nowrap bg-transparent">
+              <Button variant="outline" size="sm" className="whitespace-nowrap bg-transparent hover:border-none hover:bg-secondary/80">
                 <MapPin className="w-4 h-4 mr-2" />
                 Current Location
               </Button>
-              <Button size="sm" className="whitespace-nowrap" onClick={handleSearch}>
+              <Button size="sm" className="whitespace-nowrap bg-secondary hover:bg-secondary/80 text-white  cursor-pointer" onClick={handleSearch}>
                 Search
               </Button>
             </div>
@@ -70,7 +70,7 @@ export function HeroSection() {
         </div>
   
         {/* CTA */}
-        <Button size="lg" className="font-medium" onClick={() => router.push("/restaurants")}>
+        <Button size="lg" className="font-medium bg-secondary  text-white cursor-pointer" onClick={() => router.push("/restaurants")}>
           Order Now
         </Button>
       </div>

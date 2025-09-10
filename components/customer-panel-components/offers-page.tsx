@@ -171,19 +171,19 @@ export function OffersPage() {
             placeholder="Search restaurants or cuisines..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 w-96 bg-card border border-foreground max-sm:w-full"
+            className="pl-10 w-96  border border-secondary/50 bg-white max-sm:w-full"
           />
         </div>
 
           {/* Sort and Nearby Toggle */}
           <div className="flex items-center gap-4">
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm">
+              <DropdownMenuTrigger className="border-secondary/50 border hover:bg-none bg-white text-foreground " asChild>
+                <Button className="hover:bg-none border-secondary/50 text-foreground" size="sm">
                   Sort by: {sortBy} <ChevronDown className="ml-2 h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
+              <DropdownMenuContent className="bg-white border-none">
                 {sortOptions.map((option) => (
                   <DropdownMenuItem key={option} onClick={() => setSortBy(option)}>
                     {option}
@@ -194,15 +194,15 @@ export function OffersPage() {
 
             
 
-            <Button
+            {/* <Button
               variant={nearbyOnly ? "default" : "outline"}
               size="sm"
               onClick={() => setNearbyOnly(!nearbyOnly)}
-              className={nearbyOnly ? "bg-[#FF7A00] hover:bg-[#FF7A00]/90 text-white" : ""}
+              className={nearbyOnly ? "bg-white hover:secondary/40 text-white" : ""}
             >
-              <MapPin className="mr-2 h-4 w-4" />
+              <MapPin className="mr-2 h-4 w-4 text-white" />
               Nearby Only
-            </Button>
+            </Button> */}
           </div>
 
          
@@ -223,7 +223,7 @@ export function OffersPage() {
             filteredAndSortedOffers.map((offer) => (
               <Card
                 key={offer.id}
-                className="group overflow-hidden border border-secondary transition-all duration-300  hover:-translate-y-1"
+                className="group overflow-hidden border border-secondary/50 bg-white transition-all duration-300  hover:-translate-y-1"
               >
                 <div className="relative">
                   <img
@@ -291,7 +291,7 @@ export function OffersPage() {
         {/* Load More Button */}
         {filteredAndSortedOffers.length > 0 && (
           <div className="mt-8 text-center">
-            <Button variant="outline" size="lg" className="hover:bg-secondary hover:border-none">
+            <Button variant="outline" size="lg" className="bg-secondary text-white border-none hover:bg-secondary/80">
               Load More Offers
             </Button>
           </div>

@@ -11,9 +11,9 @@ interface MenuCategoriesProps {
 
 export function MenuCategories({ categories, selectedCategory, onCategoryChange }: MenuCategoriesProps) {
   return (
-    <Card className="sticky top-24 border border-secondary">
+    <Card className="sticky top-24 border border-secondary/50 bg-white">
       <CardContent className="p-4">
-        <h2 className="font-heading font-semibold text-lg  text-secondary mb-4">Menu Categories</h2>
+        <h2 className="font-heading font-semibold text-lg  text-foreground mb-4">Menu Categories</h2>
         <div className="space-y-2">
           {categories.map((category) => (
             <Button
@@ -22,8 +22,8 @@ export function MenuCategories({ categories, selectedCategory, onCategoryChange 
               className="w-full justify-between"
               onClick={() => onCategoryChange(category.id)}
             >
-              <span>{category.name}</span>
-              <span className="text-xs opacity-70">({category.itemCount})</span>
+              <span className={selectedCategory === category.id ? "text-white" : "opacity/70"}>{category.name}</span>
+              <span className={`text-xs ${selectedCategory === category.id ? "text-white" : "opacity/70"}`}>({category.itemCount})</span>
             </Button>
           ))}
         </div>

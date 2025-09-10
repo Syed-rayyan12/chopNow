@@ -68,7 +68,7 @@ export function RestaurantFilters({
       <div className="flex items-start justify-between">
         <h2 className="font-heading font-semibold text-lg mb-7">Filters</h2>
         {hasActiveFilters && (
-          <button onClick={clearAllFilters} className="text-sm  hover:text-primary/80 transition-colors bg-secondary rounded-md text-white p-2">
+          <button onClick={clearAllFilters} className="text-sm  hover:text-white cursor-pointer transition-colors bg-secondary rounded-md text-white p-2">
             Clear all
           </button>
         )}
@@ -101,7 +101,7 @@ export function RestaurantFilters({
       )}
 
       {/* Cuisine Filter */}
-      <Card className="border-secondary/70 mb-4">
+      <Card className="border-secondary/50 bg-white mb-4">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Cuisine Type</CardTitle>
         </CardHeader>
@@ -126,7 +126,7 @@ export function RestaurantFilters({
       </Card>
 
       {/* Price Range Filter */}
-      <Card className="border-secondary/70 mb-4">
+      <Card className="border-secondary/50 bg-white mb-4">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Price Range</CardTitle>
         </CardHeader>
@@ -175,7 +175,7 @@ export function RestaurantFilters({
       </Card> */}
 
       {/* Rating Filter */}
-      <Card className="border-secondary/70 mb-4">
+      <Card className="border-secondary/50 bg-white mb-4">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Minimum Rating</CardTitle>
         </CardHeader>

@@ -59,7 +59,7 @@ export function CartSidebar({ isOpen, onClose, restaurant }: CartSidebarProps) {
         <div className="flex-1 overflow-y-auto py-4 px-6">
           <div className="space-y-4">
             {items.map((item) => (
-              <div key={item.id} className="flex gap-3 p-3 border border-secondary  rounded-lg">
+              <div key={item.id} className="flex gap-3 p-3 border border-secondary/50 bg-white rounded-lg">
                 <img
                   src={item.menuItem.image || "/italian-restaurant-food.png"}
                   alt={item.menuItem.name}
@@ -67,7 +67,7 @@ export function CartSidebar({ isOpen, onClose, restaurant }: CartSidebarProps) {
                   onError={(e) => { (e.target as HTMLImageElement).src = "/italian-restaurant-food.png"; }}
                 />
                 <div className="flex-1 min-w-0">
-                  <h4 className="font-medium text-secondary truncate">{item.menuItem.name}</h4>
+                  <h4 className="font-medium text-foreground truncate">{item.menuItem.name}</h4>
 
                   {/* Customizations */}
                   {Object.entries(item.customizations).map(([key, value]: [string, any]) => (
@@ -99,7 +99,7 @@ export function CartSidebar({ isOpen, onClose, restaurant }: CartSidebarProps) {
                       </Button>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <span className="font-medium text-secondary">${item.totalPrice.toFixed(2)}</span>
+                      <span className="font-medium text-foreground">${item.totalPrice.toFixed(2)}</span>
                       <Button
                         variant="ghost"
                         size="sm"
@@ -117,7 +117,7 @@ export function CartSidebar({ isOpen, onClose, restaurant }: CartSidebarProps) {
         </div>
 
         {/* Order Summary */}
-        <div className="border-t border-border p-6 space-y-3">
+        <div className="border-t border-secondary/50 p-6 space-y-3">
           <div className="flex justify-between text-sm">
             <span>Subtotal</span>
             <span className="text-secondary">${subtotal.toFixed(2)}</span>
@@ -130,7 +130,7 @@ export function CartSidebar({ isOpen, onClose, restaurant }: CartSidebarProps) {
             <span className="text-foreground">Service fee</span>
             <span className="text-secondary">${serviceFee.toFixed(2)}</span>
           </div>
-          <Separator />
+          <Separator className="bg-secondary/50" />
           <div className="flex justify-between font-semibold">
             <span className="text-foreground">Total</span>
             <span className="text-secondary">${total.toFixed(2)}</span>
@@ -146,12 +146,12 @@ export function CartSidebar({ isOpen, onClose, restaurant }: CartSidebarProps) {
           )}
 
           <div className="space-y-2">
-            <Button className="w-full" size="lg" disabled={!isMinimumMet} asChild>
+            <Button className="w-full bg-secondary hover:bg-secondary/80" size="lg" disabled={!isMinimumMet} asChild>
               <Link href="/cart" onClick={onClose}>
                 View Cart & Checkout
               </Link>
             </Button>
-            <Button variant="outline" className="w-full bg-transparent border borde-secondary hover:border-none" onClick={onClose}>
+            <Button  className="w-full bg-secondary/80 border-none hover:bg-secondary cursor-pointer border borde-secondary hover:border-none" onClick={onClose}>
               Continue Shopping
             </Button>
           </div>

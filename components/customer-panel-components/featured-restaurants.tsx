@@ -49,16 +49,16 @@ const featuredRestaurants = [
 
 export function FeaturedRestaurants() {
   return (
-    <section className="py-16 bg-secondary">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-[#0F3D2E] mb-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
             Featured{" "}
-            <span className="text-white animate-pulse">
+            <span className="text-secondary animate-pulse">
               Restaurants
             </span>
           </h2>
-          <p className="text-lg text-white max-w-2xl mx-auto">
+          <p className="text-lg text-foreground max-w-2xl mx-auto">
             Discover the most popular restaurants in your area, handpicked for quality and taste.
           </p>
         </div>
@@ -67,7 +67,7 @@ export function FeaturedRestaurants() {
           {featuredRestaurants.map((restaurant) => (
           
           <Link key={restaurant.id} href="/restaurants" passHref>
-          <Card className="group cursor-pointer transition-all duration-300 border-secondary/50">
+          <Card className="group cursor-pointer transition-all duration-300 bg-white border-secondary/50">
             <div className="relative overflow-hidden rounded-t-lg">
               <img
                 src={restaurant.image || "/placeholder.svg"}
@@ -75,13 +75,13 @@ export function FeaturedRestaurants() {
                 className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
               {restaurant.featured && (
-                <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground">
+                <Badge className="absolute top-3 left-3 bg-secondary text-primary-foreground">
                   Featured
                 </Badge>
               )}
             </div>
             <CardContent className="p-4">
-              <h3 className="font-heading font-semibold text-lg text-[#0F3D2E] mb-2">
+              <h3 className="font-heading font-semibold text-lg text-foreground mb-2">
                 {restaurant.name}
               </h3>
               <p className="text-sm mb-3">{restaurant.cuisine}</p>

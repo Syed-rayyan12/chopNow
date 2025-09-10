@@ -39,8 +39,8 @@ export function RestaurantHeader({ restaurant }: RestaurantHeaderProps) {
       </div>
 
       {/* Restaurant Info */}
-      <div className="container  mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative -mt-16 bg-background rounded-lg  border border-secondary p-6">
+      <div className="container   mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative -mt-16 bg-white rounded-lg  border border-secondary/50 p-6">
           <div className="flex flex-col md:flex-row gap-6">
             {/* Restaurant Logo */}
             <div className="flex-shrink-0">
@@ -55,7 +55,7 @@ export function RestaurantHeader({ restaurant }: RestaurantHeaderProps) {
             <div className="flex-1">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
-                  <h1 className="font-heading font-bold text-2xl md:text-3xl text-secondary mb-2">
+                  <h1 className="font-heading font-semibold text-2xl md:text-3xl text-foreground mb-2">
                     {restaurant.name}
                   </h1>
                   <div className="flex items-center gap-4 mb-3">
@@ -71,7 +71,7 @@ export function RestaurantHeader({ restaurant }: RestaurantHeaderProps) {
                 </div>
 
                 {/* Delivery Info */}
-                <div className="bg-muted/50 rounded-lg p-4 min-w-64">
+                <div className="bg-background rounded-lg p-4 min-w-64">
                   <h3 className="font-heading font-semibold text-secondary mb-3">Delivery Info</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center justify-between">

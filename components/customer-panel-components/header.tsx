@@ -213,7 +213,7 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50  py-2 bg-[#0F3D2E] border-b border-border">
+    <header className="sticky top-0 z-50  py-2 bg-white border-b border-secondary/40  ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-12">
           {/* Logo */}
@@ -223,8 +223,8 @@ export function Header() {
 
           {/* Location */}
           <div className="hidden md:flex items-center space-x-2 text-foreground">
-            <MapPin className="w-4 h-4 text-white" />
-            <span className="text-sm text-white">Deliver to</span>
+            <MapPin className="w-4 h-4 text-foreground" />
+            <span className="text-sm text-foreground">Deliver to</span>
             <Button variant="ghost" size="sm" className=" font-medium bg-white">
               Current Location
             </Button>
@@ -232,21 +232,21 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/restaurants" className="text-white hover:text-secondary transition-colors ">
+            <Link href="/restaurants" className="text-foreground hover:text-secondary transition-colors ">
               Restaurants
             </Link>
-            <Link href="/offers" className="text-white hover:text-secondary transition-colors ">
+            <Link href="/offers" className="text-foreground hover:text-secondary transition-colors ">
               Offers
             </Link>
           </nav>
 
           {/* Actions */}
           <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="sm" className="relative" asChild>
+            <Button variant="tertiary" size="sm" className="relative" asChild>
               <Link href="/cart">
-                <ShoppingCart className="w-5 h-5 text-white" />
+                <ShoppingCart className="w-5 h-5 text-foreground" />
                 {cartCount > 0 && (
-                  <Badge className="absolute bg-white -top-1 -right-1 text-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center p-0">
+                  <Badge className="absolute bg-secondary -top-1 -right-1 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center p-0">
                     {cartCount > 99 ? "99+" : cartCount}
                   </Badge>
                 )}
@@ -255,37 +255,37 @@ export function Header() {
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="flex items-center gap-2">
-                  <User className="w-5 h-5 text-white" />
+                <Button variant="tertiary" size="sm" className="flex items-center gap-2 cursor-pointer">
+                  <User className="w-5 h-5 text-foreground" />
                 </Button>
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuContent align="end" className="w-56 bg-white border-none">
                 {user ? (
                   <>
                     <DropdownMenuItem asChild>
-                      <Link href="/profile" className="flex items-center">
+                      <Link href="/profile" className="flex items-center cursor-pointer">
                         <Settings className="w-4 h-4 mr-2" />
                         Profile
                       </Link>
                     </DropdownMenuItem>
 
-                    <DropdownMenuSeparator />
+                    <DropdownMenuSeparator className="text-foreground bg-foreground" />
 
-                    <DropdownMenuItem onClick={handleLogout} className="text-destructive">
+                    <DropdownMenuItem onClick={handleLogout} className="text-destructive cursor-pointer">
                       <LogOut className="w-4 h-4 mr-2" />
                       Logout
                     </DropdownMenuItem>
                   </>
                 ) : (
                   <>
-                    <DropdownMenuItem onClick={handleLogin}>
-                      <LogIn className="w-4 h-4 mr-2" />
+                    <DropdownMenuItem onClick={handleLogin} className="cursor-pointer hover:bg-secondary hover:text-white">
+                      <LogIn className="w-4 h-4 mr-2  hover:text-white" />
                       Sign In
                     </DropdownMenuItem>
-
-                    <DropdownMenuItem onClick={handleSignup}>
-                      <UserPlus className="w-4 h-4 mr-2" />
+                   
+                    <DropdownMenuItem onClick={handleSignup} className="cursor-pointer  hover:bg-secondary hover:text-white">
+                      <UserPlus className="w-4 h-4 mr-2 hover:text-white" />
                       Sign Up
                     </DropdownMenuItem>
                   </>

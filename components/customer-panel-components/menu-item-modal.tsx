@@ -59,7 +59,7 @@ export function MenuItemModal({ item, isOpen, onClose, onAddToCart }: MenuItemMo
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-white">
         <DialogHeader>
           <DialogTitle className="sr-only">Menu Item Details</DialogTitle>
         </DialogHeader>
@@ -73,16 +73,16 @@ export function MenuItemModal({ item, isOpen, onClose, onAddToCart }: MenuItemMo
           {/* Item Info */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <h2 className="font-heading font-bold text-2xl text-secondary">{item.name}</h2>
+              <h2 className="font-heading font-semibold text-2xl text-foreground">{item.name}</h2>
               {item.popular && (
-                <Badge className="bg-primary text-primary-foreground">
+                <Badge className="bg-secondary text-primary-foreground">
                   <Star className="w-3 h-3 mr-1" />
                   Popular
                 </Badge>
               )}
             </div>
             <p className="text-muted-foreground mb-4">{item.description}</p>
-            <p className="font-heading font-bold text-xl text-secondary">${item.price.toFixed(2)}</p>
+            <p className="font-heading font-semibold text-xl text-foreground">${item.price.toFixed(2)}</p>
           </div>
 
           {/* Customizations */}
@@ -165,7 +165,7 @@ export function MenuItemModal({ item, isOpen, onClose, onAddToCart }: MenuItemMo
               </Button>
             </div>
 
-            <Button onClick={handleAddToCart} size="lg" className="font-medium  hover:bg-[#0F3D2E] hover:border-[#0F3D2E] hover:text-white bg-secondary text-white">
+            <Button onClick={handleAddToCart} size="lg" className="font-medium    hover:text-white bg-secondary hover:bg-secondary/80 text-white">
               Add to Cart • ${calculateTotalPrice().toFixed(2)}
             </Button>
           </div>

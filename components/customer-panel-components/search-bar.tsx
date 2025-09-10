@@ -61,7 +61,7 @@ export function SearchBar({ value, onChange, placeholder = "Search..." }: Search
 
   return (
     <div className="relative max-w-2xl mx-auto">
-      <div className="relative">
+      <div className="relative bg-white">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
         <Input
           ref={inputRef}
@@ -71,7 +71,7 @@ export function SearchBar({ value, onChange, placeholder = "Search..." }: Search
           onChange={(e) => onChange(e.target.value)}
           onFocus={() => value.length > 0 && setShowSuggestions(filteredSuggestions.length > 0)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-          className="pl-10 pr-10 h-12 text-lg  border border-secondary"
+          className="pl-10 pr-10 h-12 text-lg  border border-secondary/40"
         />
         {value && (
           <Button

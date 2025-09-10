@@ -37,7 +37,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
             transition={{ duration: 0.3 }}
           >
             <Link href={`/restaurant/${restaurant.id}`}>
-              <Card className="group cursor-pointer border-secondary transition-all duration-300 border">
+              <Card className="group cursor-pointer  transition-all duration-300 border-secondary/50">
                 <div className="relative overflow-hidden rounded-t-lg">
                   <img
                     src={restaurant.image || "/placeholder.svg"}
@@ -53,7 +53,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
                 <CardContent className="p-4">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h3 className="font-heading font-bold text-lg text-[#0F3D2E] mb-1">
+                      <h3 className="font-heading font-bold text-lg text-foreground mb-1">
                         {restaurant.name}
                       </h3>
                       <p className="text-muted-foreground text-sm">{restaurant.cuisine}</p>
@@ -114,7 +114,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
             transition={{ duration: 0.3 }}
           >
             <Link href={`/restaurant/${restaurant.id}`}>
-              <Card className="group cursor-pointer border-secondary transition-all duration-300 border">
+              <Card className="group cursor-pointer border-secondary/50 transition-all duration-300 bg-white">
                 <div className="relative overflow-hidden rounded-t-lg">
                   <img
                     src={restaurant.image || "/placeholder.svg"}
@@ -122,7 +122,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   {restaurant.featured && (
-                    <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground">
+                    <Badge className="absolute top-3 left-3 bg-secondary text-primary-foreground">
                       Featured
                     </Badge>
                   )}
@@ -130,7 +130,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
                 <CardContent className="p-4">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h3 className="font-heading font-bold text-lg text-[#0F3D2E] mb-1">
+                      <h3 className="font-heading font-semibold text-lg foreground mb-1">
                         {restaurant.name}
                       </h3>
                       <p className="text-muted-foreground text-sm">{restaurant.cuisine}</p>
@@ -150,8 +150,8 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
                       <span>{restaurant.deliveryTime}</span>
                     </div>
                     <div className="flex items-center space-x-1 text-muted-foreground">
-                      <Truck className="w-4 h-4 text-[#0F3D2E]" />
-                      <span className="text-[#0F3D2E]">
+                      <Truck className="w-4 h-4 text-secondary" />
+                      <span className="text-secondary">
                         {restaurant.deliveryFee === 0 ? "Free" : `$${restaurant.deliveryFee}`}
                       </span>
                     </div>
@@ -163,7 +163,7 @@ export function RestaurantGrid({ restaurants, viewMode }: RestaurantGridProps) {
 
                   <div className="flex gap-1">
                     {restaurant.tags.slice(0, 3).map((tag) => (
-                      <Badge key={tag} variant="outline" className="text-xs bg-[#0F3D2E] text-white hover:bg-secondary">
+                      <Badge key={tag} variant="outline" className="text-xs bg-secondary border-none text-white hover:bg-secondary">
                         {tag}
                       </Badge>
                     ))}

@@ -96,17 +96,17 @@ export default function CartPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
-              <Card className="border border-secondary">
+              <Card className="border border-secondary/50 bg-white">
                 <CardHeader className="flex flex-row items-center justify-between">
-                  <CardTitle className="text-secondary">Order Items ({items.length})</CardTitle>
-                  <Button variant="ghost" size="sm" onClick={clearCart} className="text-destructive">
+                  <CardTitle className="text-foreground">Order Items ({items.length})</CardTitle>
+                  <Button variant="ghost" size="sm" onClick={clearCart} className=" bg-secondary text-white cursor-pointer">
                     <Trash2 className="w-4 h-4 mr-2" />
                     Clear Cart
                   </Button>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 ">
                   {items.map((item) => (
-                    <div key={item.id} className="flex max-sm:flex-col gap-4 p-4 border border-secondary rounded-lg">
+                    <div key={item.id} className="flex max-sm:flex-col gap-4 p-4 border border-secondary/50 rounded-lg">
                       <img
                         src={item.menuItem.image || "/placeholder.svg"}
                         alt={item.menuItem.name}
@@ -119,15 +119,15 @@ export default function CartPage() {
                         }}
                       />
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-heading font-semibold text-secondary mb-1">{item.menuItem.name}</h3>
+                        <h3 className="font-heading font-semibold text-foreground mb-1">{item.menuItem.name}</h3>
                         <p className="text-sm text-foreground mb-2 line-clamp-2">{item.menuItem.description}</p>
 
                         {/* Customizations */}
                         {Object.entries(item.customizations).map(([key, value]: [string, any]) => (
                           <div key={key} className="text-xs text-muted-foreground mb-1">
                             {Array.isArray(value)
-                              ? value.length > 0 && <span className="">{value.map((v: any) => v.name).join(", ")}</span>
-                              : value && <span className="text-secondary">{value.name}</span>}
+                              ? value.length > 0 && <span className="text-foreground">{value.map((v: any) => v.name).join(", ")}</span>
+                              : value && <span className="text-foreground">{value.name}</span>}
                           </div>
                         ))}
 
@@ -152,7 +152,7 @@ export default function CartPage() {
                             </Button>
                           </div>
                           <div className="flex items-center space-x-3">
-                            <span className="font-heading font-semibold text-lg text-secondary">${item.totalPrice.toFixed(2)}</span>
+                            <span className="font-heading font-semibold text-lg text-foreground">${item.totalPrice.toFixed(2)}</span>
                             <Button
                               variant="ghost"
                               size="sm"
@@ -173,9 +173,9 @@ export default function CartPage() {
             {/* Order Summary */}
             <div className="space-y-6">
               {/* Promo Code */}
-              <Card className="border border-secondary">
+              <Card className="border border-secondary/50 bg-white">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-secondary">
+                  <CardTitle className="flex items-center gap-2 font-semibold text-foreground">
                     <Tag className="w-5 h-5" />
                     Promo Code
                   </CardTitle>
@@ -222,9 +222,9 @@ export default function CartPage() {
               </Card>
 
               {/* Order Summary */}
-              <Card className="border border-secondary">
+              <Card className="border border-secondary/50 bg-white">
                 <CardHeader>
-                  <CardTitle className="text-secondary">Order Summary</CardTitle>
+                  <CardTitle className="font-semibold text-foreground">Order Summary</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex justify-between text-sm">
@@ -245,11 +245,11 @@ export default function CartPage() {
                     <span className="text-secondary">${finalTotal.toFixed(2)}</span>
                   </div>
 
-                  <Button onClick={handleProceedToCheckout} className="w-full" size="lg">
+                  <Button onClick={handleProceedToCheckout} className="w-full bg-secondary/80 hover:bg-secondary cursor-pointer" size="lg">
                     Proceed to Checkout
                   </Button>
 
-                  <Button variant="outline" asChild className="w-full bg-secondary border-none text-white hover:border-none">
+                  <Button variant="outline" asChild className="w-full bg-secondary hover:bg-secondary/80 border-none text-white hover:border-none">
                     <Link href={`/restaurant/${restaurant.restaurantId}`}>Add More Items</Link>
                   </Button>
                 </CardContent>

@@ -202,7 +202,7 @@ export default function CheckoutPage() {
               Back to Cart
             </Button>
             <div>
-              <h1 className="font-heading font-bold text-3xl text-foreground">Checkout</h1>
+              <h1 className="font-heading font-bold text-3xl text-secondary">Checkout</h1>
               <p className="text-muted-foreground">Complete your order from {restaurant?.restaurantName}</p>
             </div>
           </div>
@@ -211,11 +211,11 @@ export default function CheckoutPage() {
             {/* Checkout Form */}
             <div className="lg:col-span-2 space-y-6">
               {/* Delivery Address */}
-              <Card className="border border-secondary">
+              <Card className="border border-secondary/50 bg-white">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-secondary" />
-                    <span className="text-secondary">Delivery Address</span>
+                    <MapPin className="w-5 h-5 text-foreground" />
+                    <span className="text-foreground">Delivery Address</span>
                     
                   </CardTitle>
                 </CardHeader>
@@ -223,7 +223,7 @@ export default function CheckoutPage() {
                   <RadioGroup value={selectedAddress} onValueChange={setSelectedAddress}>
                     {mockAddresses.map((address) => (
                       <div key={address.id} className="flex items-start space-x-2">
-                        <RadioGroupItem value={address.id} id={address.id} className="mt-1" />
+                        <RadioGroupItem value={address.id} id={address.id} className="mt-1 bg-secondary text-white" />
                         <Label htmlFor={address.id} className="flex-1 cursor-pointer">
                           <div className="flex items-center gap-2 mb-1">
                             <span className="font-medium">{address.label}</span>
@@ -240,12 +240,12 @@ export default function CheckoutPage() {
                     <Button
                       variant="outline"
                       onClick={() => setShowNewAddressForm(true)}
-                      className="w-full border-none text-white bg-secondary"
+                      className="w-full border-none text-white bg-secondary cursor-pointer"
                     >
                       Add New Address
                     </Button>
                   ) : (
-                    <div className="space-y-3 p-4 border border-secondary rounded-lg">
+                    <div className="space-y-3 p-4 border border-secondary/50 rounded-lg">
                       <div className="grid grid-cols-2 gap-3">
                         <div>
                           <Label htmlFor="label" className="mb-2">Address Label</Label>
@@ -254,7 +254,7 @@ export default function CheckoutPage() {
                             placeholder="e.g., Home, Work"
                             value={newAddress.label}
                             onChange={(e) => setNewAddress({ ...newAddress, label: e.target.value })}
-                            className="border border-foreground/30 "
+                            className="border border-secondary/50"
                           />
                         </div>
                       </div>
@@ -265,7 +265,7 @@ export default function CheckoutPage() {
                           placeholder="Street address, apartment, city"
                           value={newAddress.address}
                           onChange={(e) => setNewAddress({ ...newAddress, address: e.target.value })}
-                          className="border border-foreground/30 "
+                          className="border border-secondary/50 "
                         />
                       </div>
                       <div>
@@ -275,14 +275,14 @@ export default function CheckoutPage() {
                           placeholder="e.g., Ring doorbell, Leave at door"
                           value={newAddress.details}
                           onChange={(e) => setNewAddress({ ...newAddress, details: e.target.value })}
-                          className="border border-foreground/30 "
+                          className="border border-secondary/50 "
                         />
                       </div>
                       <div className="flex gap-2">
-                        <Button onClick={handleAddNewAddress} size="sm">
+                        <Button onClick={handleAddNewAddress} variant="secondary" size="sm" className="bg-secondary hover:bg-none cursor-pointer">
                           Add Address
                         </Button>
-                        <Button variant="outline" onClick={() => setShowNewAddressForm(false)} size="sm" className="bg-secondary border-none text-white">
+                        <Button variant="outline" onClick={() => setShowNewAddressForm(false)} size="sm" className="bg-secondary/80 border-none cursor-pointer text-white">
                           Cancel
                         </Button>
                       </div>
@@ -292,12 +292,12 @@ export default function CheckoutPage() {
               </Card>
 
               {/* Payment Method */}
-              <Card className="border border-secondary">
+              <Card className="border border-secondary/50 bg-white">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <CreditCard className="w-5 h-5 text-secondary" />
+                    <CreditCard className="w-5 h-5 text-foreground" />
 
-                    <span className="text-secondary">Payment Method</span>
+                    <span className="text-foreground">Payment Method</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -318,7 +318,7 @@ export default function CheckoutPage() {
 
                   {/* Card Details Form (shown when card is selected) */}
                   {selectedPayment === "card" && (
-                    <div className="space-y-3 p-4 border border-secondary rounded-lg">
+                    <div className="space-y-3 p-4 border border-secondary/50 rounded-lg">
                       <div className="grid grid-cols-2 gap-3">
                         <div>
                           <Label htmlFor="cardName" className="mb-2">Cardholder Name</Label>
@@ -327,7 +327,7 @@ export default function CheckoutPage() {
                             placeholder="John Doe"
                             value={cardDetails.name}
                             onChange={(e) => setCardDetails({ ...cardDetails, name: e.target.value })}
-                            className="border border-foreground/30"
+                            className="border border-secondary/50"
                           />
                         </div>
                         <div>
@@ -337,7 +337,7 @@ export default function CheckoutPage() {
                             placeholder="1234 5678 9012 3456"
                             value={cardDetails.number}
                             onChange={(e) => setCardDetails({ ...cardDetails, number: e.target.value })}
-                            className="border border-foreground/30"
+                            className="border border-secondary/50"
                           />
                         </div>
                       </div>
@@ -349,7 +349,7 @@ export default function CheckoutPage() {
                             placeholder="MM/YY"
                             value={cardDetails.expiry}
                             onChange={(e) => setCardDetails({ ...cardDetails, expiry: e.target.value })}
-                            className="border border-foreground/30"
+                            className="border border-secondary/50"
                           />
                         </div>
                         <div>
@@ -359,7 +359,7 @@ export default function CheckoutPage() {
                             placeholder="123"
                             value={cardDetails.cvv}
                             onChange={(e) => setCardDetails({ ...cardDetails, cvv: e.target.value })}
-                            className="border border-foreground/30"
+                            className="border border-secondary/50"
                           />
                         </div>
                       </div>
@@ -369,11 +369,11 @@ export default function CheckoutPage() {
               </Card>
 
               {/* Delivery Instructions */}
-              <Card className="border border-secondary">
+              <Card className="border border-secondary/50 bg-white">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Truck className="w-5 h-5 text-center text-secondary"  />
-                    <span className="text-secondary">Delivery Instructions</span>
+                    <Truck className="w-5 h-5 text-center text-foreground"  />
+                    <span className="text-foreground">Delivery Instructions</span>
                     
                   </CardTitle>
                 </CardHeader>
@@ -383,7 +383,7 @@ export default function CheckoutPage() {
                     value={deliveryInstructions}
                     onChange={(e) => setDeliveryInstructions(e.target.value)}
                     rows={3}
-                    className="border border-foreground/30"
+                    className="border border-secondary/50"
                   />
                 </CardContent>
               </Card>
@@ -391,9 +391,9 @@ export default function CheckoutPage() {
 
             {/* Order Summary */}
             <div className="space-y-6">
-              <Card className="border border-secondary">
+              <Card className="border border-secondary/50 bg-white">
                 <CardHeader>
-                  <CardTitle className="text-secondary">Order Summary</CardTitle>
+                  <CardTitle className="text-foreground">Order Summary</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {/* Items */}
