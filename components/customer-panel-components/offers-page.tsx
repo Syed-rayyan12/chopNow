@@ -179,7 +179,7 @@ export function OffersPage() {
           <div className="flex items-center gap-4">
             <DropdownMenu>
               <DropdownMenuTrigger className="border-secondary/50 border hover:bg-none bg-white text-foreground " asChild>
-                <Button className="hover:bg-none border-secondary/50 text-foreground" size="sm">
+                <Button className="hover:bg-none border-secondary/50 text-foreground cursor-pointer" variant="my" size="sm">
                   Sort by: {sortBy} <ChevronDown className="ml-2 h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -233,7 +233,7 @@ export function OffersPage() {
                   />
 
                   {/* Discount Badge */}
-                  <Badge className="absolute top-3 left-3 bg-[#0F3D2E]  text-accent-foreground font-semibold">
+                  <Badge className="absolute top-3 left-3 bg-secondary  text-accent-foreground font-semibold">
                     {offer.discount}
                   </Badge>
 
@@ -249,7 +249,7 @@ export function OffersPage() {
 
                 <CardContent className="pt-8 pb-4">
                   <div className="mb-2">
-                    <h3 className="font-semibold text-lg text-[#0F3D2E] mb-1">{offer.name}</h3>
+                    <h3 className="font-semibold text-lg text-foreground mb-1">{offer.name}</h3>
                     <div className="flex  flex-wrap gap-1 mb-2">
                       {offer.cuisine.map((type) => (
                         <span key={type} className="text-xs text-muted-foreground">

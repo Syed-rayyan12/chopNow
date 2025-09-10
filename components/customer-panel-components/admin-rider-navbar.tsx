@@ -37,8 +37,8 @@ export function RestaurantRiderNavbar() {
           <DropdownMenuTrigger asChild>
             <div className="relative flex items-center">
               <Button
-                className="bg-[#FDFBEA] px-4 flex border-none hover:bg-primary items-center justify-between gap-2"
-                variant="outline"
+                className="bg-background text-foreground px-4 flex border-none hover:bg-none cursor-pointer items-center justify-between gap-2"
+                variant="my"
               >
                 Select Panel
                 <ChevronDown
