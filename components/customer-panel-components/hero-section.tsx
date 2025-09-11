@@ -29,7 +29,7 @@ export function HeroSection() {
   return (
     <section
     className="relative py-16 md:py-24 bg-cover bg-center"
-    style={{ backgroundImage: "url('/hero-banner.jpg')" }}
+    style={{ backgroundImage: "url('/boo.jpeg')" }}
   >
     <div className="absolute inset-0 bg-black/30 z-0" /> {/* overlay for readability */}
   
