@@ -87,12 +87,12 @@ export function AnalyticsDashboard() {
       {/* Header Controls */}
       <div className="flex items-center max-sm:flex-col max-sm:items-start max-sm:gap-3 justify-between">
         <div className="flex max-sm:flex-col max-sm:items-start max-sm:gap-3 gap-3 items-center">
-          <CalendarDateRangePicker className="cursor-pointer" />
+          <CalendarDateRangePicker className="cursor-pointer " />
           <Select value={dateRange} onValueChange={setDateRange}>
             <SelectTrigger className="w-[180px] max-sm:w-full border-secondary/50 bg-white cursor-pointer">
               <SelectValue className="" placeholder="Select period" />
             </SelectTrigger>
-            <SelectContent className="border-secondary/50">
+            <SelectContent className="border-secondary/50 bg-white">
               <SelectItem value="7d">Last 7 days</SelectItem>
               <SelectItem value="30d">Last 30 days</SelectItem>
               <SelectItem value="90d">Last 90 days</SelectItem>
@@ -105,7 +105,7 @@ export function AnalyticsDashboard() {
             <Filter className="mr-2 h-4 w-4 " />
             Filter
           </Button>
-          <Button className="border border-secondary/50" variant="outline" size="sm">
+          <Button className="border border-secondary/50 cursour-pointer" variant="outline" size="sm">
             <Download className="mr-2 h-4 w-4 " />
             Export
           </Button>
@@ -114,7 +114,7 @@ export function AnalyticsDashboard() {
 
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="border border-secondary/80  bg-white">
+        <Card className="border border-secondary/50  bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-secondary">Total Revenue</CardTitle>
             <DollarSign className="h-4 w-4 text-amber-600" />
@@ -127,7 +127,7 @@ export function AnalyticsDashboard() {
             </div>
           </CardContent>
         </Card>
-        <Card className="border border-secondary/80  bg-white">
+        <Card className="border border-secondary/50  bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-secondary">Total Orders</CardTitle>
             <ShoppingCart className="h-4 w-4 text-amber-600" />
@@ -140,7 +140,7 @@ export function AnalyticsDashboard() {
             </div>
           </CardContent>
         </Card>
-        <Card className="border border-secondary/80 bg-white">
+        <Card className="border border-secondary/50 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-secondary">Active Users</CardTitle>
             <Users className="h-4 w-4 text-amber-600" />
@@ -153,7 +153,7 @@ export function AnalyticsDashboard() {
             </div>
           </CardContent>
         </Card>
-        <Card className="border border-secondary/80 bg-white">
+        <Card className="border border-secondary/50 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-secondary">Avg. Order Value</CardTitle>
             <DollarSign className="h-4 w-4 text-amber-600" />
@@ -171,16 +171,16 @@ export function AnalyticsDashboard() {
       {/* Charts and Analytics */}
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList className="grid w-full max-sm:h-full max-sm:flex max-sm:flex-col grid-cols-5 bg-secondary rounded-xl">
-          <TabsTrigger value="overview" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Overview</TabsTrigger>
-          <TabsTrigger value="revenue" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Revenue</TabsTrigger>
-          <TabsTrigger value="orders" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Orders</TabsTrigger>
-          <TabsTrigger value="restaurants" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Restaurants</TabsTrigger>
-          <TabsTrigger value="users" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Users</TabsTrigger>
+          <TabsTrigger value="overview" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer">Overview</TabsTrigger>
+          <TabsTrigger value="revenue" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer">Revenue</TabsTrigger>
+          <TabsTrigger value="orders" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer">Orders</TabsTrigger>
+          <TabsTrigger value="restaurants" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer">Restaurants</TabsTrigger>
+          <TabsTrigger value="users" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer">Users</TabsTrigger>
         </TabsList>
 
         <TabsContent value="overview" className="space-y-4">
           <div className="flex justify-between gap-4 max-sm:flex-col">
-            <Card className="w-full bg-white border border-secondary/80">
+            <Card className="w-full bg-white border border-secondary/50">
               <CardHeader>
                 <CardTitle className="text-secondary">Revenue Overview</CardTitle>
                 <CardDescription className="text-foreground">Monthly revenue and order trends</CardDescription>
@@ -218,7 +218,7 @@ export function AnalyticsDashboard() {
                 </ChartContainer>
               </CardContent>
             </Card>
-            <Card className="w-full bg-white border border-secondary/80">
+            <Card className="w-full bg-white border border-secondary/50">
               <CardHeader className="text-center">
                 <CardTitle className="text-secondary">Order Categories</CardTitle>
                 <CardDescription className="text-foreground">Distribution by cuisine type</CardDescription>
@@ -265,7 +265,7 @@ export function AnalyticsDashboard() {
           </div>
 
           <div className="flex gap-4 justify-between max-sm:flex-col">
-            <Card className=" w-full bg-white border border-secondary/80">
+            <Card className=" w-full bg-white border border-secondary/50">
               <CardHeader>
                 <CardTitle className="text-secondary">Hourly Order Pattern</CardTitle>
                 <CardDescription className="text-foreground">Orders throughout the day</CardDescription>
@@ -293,7 +293,7 @@ export function AnalyticsDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="w-full border-secondary/80 bg-white">
+            <Card className="w-full border-secondary/50 bg-white">
               <CardHeader>
                 <CardTitle className="text-secondary">Recent Activity</CardTitle>
                 <CardDescription className="text-foreground">Latest orders and transactions</CardDescription>
@@ -306,7 +306,7 @@ export function AnalyticsDashboard() {
         </TabsContent>
 
         <TabsContent value="revenue" className="space-y-4">
-          <Card className="border-secondary/80 bg-white">
+          <Card className="border-secondary/50 bg-white">
             <CardHeader>
               <CardTitle className="text-secondary">Revenue Analytics</CardTitle>
               <CardDescription className="text-foreground">Detailed revenue breakdown and trends</CardDescription>
@@ -342,7 +342,7 @@ export function AnalyticsDashboard() {
         </TabsContent>
 
         <TabsContent value="orders" className="space-y-4">
-          <Card className="border-secondary/80 bg-white">
+          <Card className="border-secondary/50 bg-white">
             <CardHeader>
               <CardTitle className="text-secondary">Order Analytics</CardTitle>
               <CardDescription className="text-foreground">Order volume and patterns</CardDescription>
@@ -372,7 +372,7 @@ export function AnalyticsDashboard() {
         </TabsContent>
 
         <TabsContent value="restaurants" className="space-y-4">
-          <Card className="border-secondary/80 bg-white">
+          <Card className="border-secondary/50 bg-white">
             <CardHeader>
               <CardTitle className="text-secondary">Restaurant Performance</CardTitle>
               <CardDescription className="text-foreground">Top performing restaurants</CardDescription>
@@ -408,7 +408,7 @@ export function AnalyticsDashboard() {
         </TabsContent>
 
         <TabsContent value="users" className="space-y-4">
-          <Card className="border-secondary/80 bg-white">
+          <Card className="border-secondary/50 bg-white">
             <CardHeader>
               <CardTitle className="text-secondary">User Growth</CardTitle>
               <CardDescription className="text-foreground">User acquisition and retention</CardDescription>

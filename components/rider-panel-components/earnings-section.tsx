@@ -84,8 +84,8 @@ export function EarningsSection() {
       {/* Detailed Breakdown */}
       <Tabs defaultValue="today" className="space-y-4 rounded-lg">
         <TabsList className="grid w-full grid-cols-2  bg-secondary border-secondary rounded-xl ">
-          <TabsTrigger className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg" value="today">Today</TabsTrigger>
-          <TabsTrigger className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg" value="week">This Week</TabsTrigger>
+          <TabsTrigger className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer" value="today">Today</TabsTrigger>
+          <TabsTrigger className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer" value="week">This Week</TabsTrigger>
         </TabsList>
 
         <TabsContent value="today" className="space-y-4 ">

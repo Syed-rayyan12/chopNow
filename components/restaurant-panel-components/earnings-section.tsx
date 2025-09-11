@@ -21,7 +21,7 @@ export function EarningsSection({ transactions }: EarningsSectionProps) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="border-secondary/70 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardHeader>
             <CardTitle className="text-foreground">Today</CardTitle>
           </CardHeader>
@@ -29,7 +29,7 @@ export function EarningsSection({ transactions }: EarningsSectionProps) {
             <div className="text-2xl font-bold text-secondary">$342.50</div>
           </CardContent>
         </Card>
-        <Card className="border-secondary/70 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardHeader>
             <CardTitle className="text-foreground">This Week</CardTitle>
           </CardHeader>
@@ -37,7 +37,7 @@ export function EarningsSection({ transactions }: EarningsSectionProps) {
             <div className="text-2xl font-bold text-secondary">$1,250.00</div>
           </CardContent>
         </Card>
-        <Card className="border-secondary/70 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardHeader>
             <CardTitle className="text-foreground">This Month</CardTitle>
           </CardHeader>
@@ -47,15 +47,15 @@ export function EarningsSection({ transactions }: EarningsSectionProps) {
         </Card>
       </div>
 
-      <Card className="border-secondary/70 bg-white">
+      <Card className="border-secondary/50 bg-white">
         <CardHeader className="flex max-sm:flex-col max-sm:items-start max-sm:gap-3 flex-row items-center justify-between">
           <CardTitle className="text-secondary">Transaction History</CardTitle>
           <div className="flex space-x-2">
-            <Button size="sm" variant="outline" className="border-secondary/65 text-secondary hover:bg-secondary bg-transparent">
+            <Button size="sm" variant="outline" className="border-secondary/50 cursor-pointer text-secondary hover:bg-secondary bg-transparent">
               <Download className="h-4 w-4 mr-2" />
               Export CSV
             </Button>
-            <Button size="sm" variant="outline" className="border-secondary/65 text-secondary hover:bg-secondary bg-transparent">
+            <Button size="sm" variant="outline" className="border-secondary/50 cursor-pointer text-white hover:bg-secondary bg-secondary">
               <Download className="h-4 w-4 mr-2" />
               Export PDF
             </Button>

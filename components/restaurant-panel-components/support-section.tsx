@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 export function SupportSection() {
   return (
     <div className="space-y-6">
-      <Card className="border-secondary/70 bg-white">
+      <Card className="border-secondary/50 bg-white">
         <CardHeader>
           <CardTitle className="text-secondary">Contact Admin</CardTitle>
         </CardHeader>
@@ -18,20 +18,20 @@ export function SupportSection() {
             <Label htmlFor="subject" className="pb-2 text-foreground">
               Subject
             </Label>
-            <Input className="border-orange-200" id="subject" placeholder="Enter subject" />
+            <Input className="border-secondary/50" id="subject" placeholder="Enter subject" />
           </div>
           <div>
             <Label htmlFor="message" className="pb-2 text-foreground">
               Message
             </Label>
             <Textarea
-              className="border-orange-200"
+              className="border-secondary/50"
               id="message"
               placeholder="Describe your issue or question"
               rows={4}
             />
           </div>
-          <Button className="bg-orange-500 hover:bg-[#0F3D2E]">Send Message</Button>
+          <Button className="bg-orange-500 cursor-pointer hover:bg-secondary/80">Send Message</Button>
         </CardContent>
       </Card>
 

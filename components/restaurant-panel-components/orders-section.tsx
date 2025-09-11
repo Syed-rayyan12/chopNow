@@ -50,25 +50,25 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
         <TabsList className="grid w-full max-sm:h-full grid-cols-4 max-sm:flex max-sm:flex-col bg-secondary border-secondary rounded-lg">
           <TabsTrigger
             value="new"
-            className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+            className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer"
           >
             New Orders
           </TabsTrigger>
           <TabsTrigger
             value="progress"
-            className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+            className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer"
           >
             In Progress
           </TabsTrigger>
           <TabsTrigger
             value="completed"
-            className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+            className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer"
           >
             Completed
           </TabsTrigger>
           <TabsTrigger
             value="cancelled"
-            className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+            className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer"
           >
             Cancelled
           </TabsTrigger>
@@ -78,7 +78,7 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
 
         <TabsContent value="new" className="space-y-4">
           {getOrdersByStatus("pending").map((order) => (
-            <Card key={order.id} className="border-secondary/70 bg-white">
+            <Card key={order.id} className="border-secondary/50 bg-white">
               <CardContent className="p-4">
                 <div className="flex items-center max-sm:flex-col gap-2 max-sm:items-start justify-between">
                   <div className="space-y-2">
@@ -102,11 +102,11 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
                     </div>
                   </div>
                   <div className="flex space-x-2">
-                    <Button size="sm" className="bg-green-600 max-sm:items-center hover:bg-green-700">
+                    <Button size="sm" className="bg-green-600 max-sm:items-center cursor-pointer hover:bg-green-700">
                       <Check className="h-4 w-4 mr-1" />
                       Accept
                     </Button>
-                    <Button size="sm" variant="destructive">
+                    <Button size="sm" variant="destructive" className="cursor-pointer">
                       <X className="h-4 w-4 mr-1" />
                       Reject
                     </Button>
@@ -119,7 +119,7 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
 
         <TabsContent value="progress" className="space-y-4">
           {getOrdersByStatus("in-progress").map((order) => (
-            <Card key={order.id} className="border-secondary/70 bg-white">
+            <Card key={order.id} className="border-secondary/50 bg-white">
               <CardContent className="p-4">
                 <div className="flex items-center max-sm:flex-col max-sm:gap-2 max-sm:items-start justify-between">
                   <div className="space-y-2">
@@ -142,7 +142,7 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
                       </p>
                     </div>
                   </div>
-                  <Button size="sm" className="bg-secondary">
+                  <Button size="sm" className="bg-secondary cursor-pointer">
                     Mark Ready
                   </Button>
                 </div>
@@ -153,7 +153,7 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
 
         <TabsContent value="completed" className="space-y-4 bg-white">
           {getOrdersByStatus("completed").map((order) => (
-            <Card key={order.id} className="border-secondary/70 bg-white">
+            <Card key={order.id} className="border-secondary/50 bg-white">
               <CardContent className="p-4">
                 <div className="flex items-center max-sm:flex-col max-sm:gap-2 max-sm:items-start justify-between">
                   <div className="space-y-2">
@@ -176,7 +176,7 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
                       </p>
                     </div>
                   </div>
-                  <Button size="sm" variant="outline" className="hover:bg-secondary hover:text-white hover:border-none">
+                  <Button size="sm" variant="outline" className="hover:bg-secondary cursor-pointer hover:text-white hover:border-none">
                     <Eye className="h-4 w-4 mr-1" />
                     View Details
                   </Button>
@@ -189,7 +189,7 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
         <TabsContent value="cancelled" className="space-y-4">
           {getOrdersByStatus("cancelled").length > 0 ? (
             getOrdersByStatus("cancelled").map((order) => (
-              <Card key={order.id} className="border-secondary/70 bg-white">
+              <Card key={order.id} className="border-secondary/50 bg-white">
                 <CardContent className="p-4">
                   <div className="flex items-center max-sm:flex-col max-sm:gap-2 max-sm:items-start justify-between">
                     <div className="space-y-2">
@@ -212,7 +212,7 @@ export function OrdersSection({ orders }: OrdersSectionProps) {
                         </p>
                       </div>
                     </div>
-                    <Button size="sm" variant="outline" className="hover:bg-secondary hover:text-white hover:border-none">
+                    <Button size="sm" variant="outline" className="hover:bg-secondary cursor-pointer hover:text-white hover:border-none">
                       <Eye className="h-4 w-4 mr-1" />
                       View Details
                     </Button>

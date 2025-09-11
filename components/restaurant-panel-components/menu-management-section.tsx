@@ -247,7 +247,7 @@ export function MenuManagementSection() {
             placeholder="Search menu items..."
             value={menuSearchQuery}
             onChange={(e) => setMenuSearchQuery(e.target.value)}
-            className="pl-10 border-secondary/50"
+            className="pl-10 border-secondary/50 bg-white"
           />
         </div>
         {menuSearchQuery && (

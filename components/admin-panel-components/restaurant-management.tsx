@@ -199,37 +199,37 @@ export function RestaurantManagement() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-        <Card className="border-secondary/80 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-secondary">{restaurantStats.total}</div>
             <div className="text-sm text-foreground">Total Restaurants</div>
           </CardContent>
         </Card>
-        <Card className="border-secondary/80 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-secondary">{restaurantStats.active}</div>
             <div className="text-sm text-foreground">Active</div>
           </CardContent>
         </Card>
-        <Card className="border-secondary/80 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-secondary">{restaurantStats.pending}</div>
             <div className="text-sm text-foreground">Pending</div>
           </CardContent>
         </Card>
-        <Card className="border-secondary/80 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-secondary">{restaurantStats.inactive}</div>
             <div className="text-sm text-foreground">Inactive</div>
           </CardContent>
         </Card>
-        <Card className="border-secondary/80 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-secondary">£{restaurantStats.totalRevenue.toLocaleString()}</div>
             <div className="text-sm text-foreground">Total Revenue</div>
           </CardContent>
         </Card>
-        <Card className="border-secondary/80 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-secondary">{restaurantStats.avgRating.toFixed(1)}</div>
             <div className="text-sm text-foreground">Avg Rating</div>
@@ -238,25 +238,25 @@ export function RestaurantManagement() {
       </div>
 
       {/* Filters and Search */}
-      <Card className="border-secondary/80 bg-white">
+      <Card className="border-secondary/50 bg-white">
         <CardHeader>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-            <div className="flex items-center max-md:flex-col max-md:items-center max-md:gap-3">
+            <div className="flex items-center max-md:flex-col gap-3 max-md:items-center max-md:gap-3">
               <div className="relative max-sm:w-full">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-amber-500 h-4 w-4" />
                 <Input
                   placeholder="Search restaurants, cuisine, location..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-80 max-sm:w-full border-secondary/50  "
+                  className="pl-10 w-80 max-sm:w-full border-secondary/50  bg-white"
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-40 max-sm:w-full border-secondary/50">
+                <SelectTrigger className="w-40 max-sm:w-full cursor-pointer bg-white border-secondary/50">
                   <Filter className="w-4 h-4 mr-2" />
                   <SelectValue placeholder="Status" className="" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="border border-secondary/50 bg-white">
                   <SelectItem value="all">All Status</SelectItem>
                   <SelectItem value="active">Active</SelectItem>
                   <SelectItem value="pending">Pending</SelectItem>
@@ -264,10 +264,10 @@ export function RestaurantManagement() {
                 </SelectContent>
               </Select>
               <Select value={cuisineFilter} onValueChange={setCuisineFilter}>
-                <SelectTrigger className="w-40 max-sm:w-full border-secondary/50">
+                <SelectTrigger className="w-40 cursor-pointer max-sm:w-full border-secondary/50 bg-white">
                   <SelectValue placeholder="Cuisine" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="border border-secondary/50 bg-white">
                   <SelectItem value="all">All Cuisines</SelectItem>
                   <SelectItem value="Indian">Indian</SelectItem>
                   <SelectItem value="African">African</SelectItem>
@@ -283,25 +283,25 @@ export function RestaurantManagement() {
             <TabsList className="lg:grid hidden w-full  grid-cols-4 bg-secondary rounded-xl">
               <TabsTrigger
                 value="all"
-                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer"
               >
                 All
               </TabsTrigger>
               <TabsTrigger
                 value="active"
-                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer"
               >
                 Active
               </TabsTrigger>
               <TabsTrigger
                 value="pending"
-                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer"
               >
                 Pending
               </TabsTrigger>
               <TabsTrigger
                 value="inactive"
-                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer"
               >
                 Inactive
               </TabsTrigger>
@@ -338,7 +338,7 @@ export function RestaurantManagement() {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge variant="outline" className="border-secondary/60">
+                        <Badge variant="outline" className="border-secondary/50">
                           {restaurant.cuisine}
                         </Badge>
                       </TableCell>

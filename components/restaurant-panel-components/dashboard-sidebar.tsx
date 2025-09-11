@@ -42,7 +42,7 @@ export function DashboardSidebar({ collapsed, setCollapsed }: { collapsed: boole
             className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-lg transition-colors",
               isActive
-                ? "bg-background text-secondary border border-secondary/65"
+                ? "bg-white text-secondary border border-secondary/65"
                 : "text-secondary"
             )}
           >

@@ -184,11 +184,11 @@ export function UserManagement() {
           <p className="text-secondary/70">Manage customer accounts and user activity</p>
         </div>
         <div className="flex items-center space-x-3">
-          <Button variant="outline" className="border-secondary/65 text-secondary hover:bg-secondary bg-transparent">
+          <Button variant="outline" className="border-secondary/50 bg-white text-secondary hover:bg-secondary cursor-pointer">
             <Download className="w-4 h-4 mr-2" />
             Export Users
           </Button>
-          <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+          <Button className="bg-secondary hover:bg-secondary/80  text-white cursor-pointer">
             <UserPlus className="w-4 h-4 mr-2" />
             Add User
           </Button>
@@ -239,22 +239,22 @@ export function UserManagement() {
       <Card className="border-secondary/80 bg-white shadow-none">
         <CardHeader>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-            <div className="flex max-sm:flex-col max-sm:gap-3 items-center">
+            <div className="flex max-sm:flex-col max-sm:gap-3 gap-3 items-center">
               <div className="relative max-sm:w-full">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-amber-500 h-4 w-4" />
                 <Input
                   placeholder="Search users by name, email, phone, or ID..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-80 max-sm:w-full border-secondary/50"
+                  className="pl-10 w-80 max-sm:w-full border-secondary/50 bg-white cursor-pointer"
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-40 max-sm:w-full border-secondary/50">
+                <SelectTrigger className="w-40 max-sm:w-full border-secondary/50 cursor-pointer">
                   <Filter className="w-4 h-4 mr-2" />
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
-                <SelectContent className="border-secondary/50">
+                <SelectContent className="border-secondary/50 bg-white">
                   <SelectItem value="all">All Status</SelectItem>
                   <SelectItem value="active">Active</SelectItem>
                   <SelectItem value="inactive">Inactive</SelectItem>
@@ -269,25 +269,25 @@ export function UserManagement() {
             <TabsList className="lg:grid hidden w-full grid-cols-4 border-secondary bg-secondary rounded-xl">
               <TabsTrigger
                 value="all"
-                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg"
+                className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer"
               >
                 All Users
               </TabsTrigger>
               <TabsTrigger
                 value="active"
-                className="data-[state=active]:background data-[state=active]:text-foreground rounded-lg text-background"
+                className="data-[state=active]:background data-[state=active]:text-foreground rounded-lg text-background cursor-pointer"
               >
                 Active
               </TabsTrigger>
               <TabsTrigger
                 value="inactive"
-                className="data-[state=active]:background data-[state=active]:text-foreground rounded-lg text-background"
+                className="data-[state=active]:background data-[state=active]:text-foreground rounded-lg text-background cursor-pointer"
               >
                 Inactive
               </TabsTrigger>
               <TabsTrigger
                 value="banned"
-                className="data-[state=active]:background data-[state=active]:text-foreground rounded-lg text-background"
+                className="data-[state=active]:background data-[state=active]:text-foreground rounded-lg text-background cursor-pointer"
               >
                 Banned
               </TabsTrigger>

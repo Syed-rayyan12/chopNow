@@ -364,7 +364,7 @@ export function DashboardHeader({ collapsed, setCollapsed, onSignOut, notificati
                 )}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-80 border border-secondary">
+            <DropdownMenuContent align="end" className="w-80 border border-secondary/50 bg-white">
               {notifications.length === 0 ? (
                 <DropdownMenuItem className="p-3 text-sm text-gray-500">
                   No new notifications

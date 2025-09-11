@@ -380,7 +380,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
                 </DropdownMenuItem>
               ) : (
                 notifications.slice(0, 3).map((notification) => (
-                  <DropdownMenuItem key={notification.id} className="p-3 hover:bg-secondary hover:text-background">
+                  <DropdownMenuItem key={notification.id} className="p-3 hover:bg-secondary hover:text-background bg-white">
                     <div className="space-y-1">
                       <p className="text-sm font-medium">{notification.message}</p>
                       <p className="text-xs">{notification.time}</p>

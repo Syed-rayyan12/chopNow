@@ -301,7 +301,7 @@ export function RiderHeader({ collapsed, setCollapsed,notifications }: Dashboard
   }
 
   return (
-    <header className="bg-background border-b border-secondary/70 px-4 h-16 py-[13px]">
+    <header className="bg-background border-b border-secondary/50 px-4 h-16 py-[13px]">
       <div className="flex items-center justify-between">
         {/* Left Side */}
         <div className="flex items-center space-x-4">
@@ -338,7 +338,7 @@ export function RiderHeader({ collapsed, setCollapsed,notifications }: Dashboard
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary/60 h-4 w-4" />
                     <Input
                       placeholder="Search orders..."
-                      className="pl-10 w-full border-secondary/70 focus:border-secondary focus:ring-secondary"
+                      className="pl-10 w-full border-secondary/50 focus:border-secondary focus:ring-secondary"
                     />
                   </div>
 
@@ -390,7 +390,7 @@ export function RiderHeader({ collapsed, setCollapsed,notifications }: Dashboard
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary/60 h-4 w-4" />
             <Input
               placeholder="Search orders..."
-              className="pl-10 w-80 border-secondary/70 focus:border-secondary focus:ring-secondary"
+              className="pl-10 w-80 border-secondary/50 focus:border-secondary focus:ring-secondary"
             />
           </div>
           {/* Notifications */}

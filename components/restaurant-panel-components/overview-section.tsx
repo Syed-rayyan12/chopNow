@@ -36,7 +36,7 @@ export function OverviewSection({ orders, menuItems }: OverviewSectionProps) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="border-secondary/70 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-foreground">Pending Orders</CardTitle>
             <div className="bg-orange-100 p-2 rounded-full">
@@ -47,7 +47,7 @@ export function OverviewSection({ orders, menuItems }: OverviewSectionProps) {
             <div className="text-2xl font-bold text-secondary">{getOrdersByStatus("pending").length}</div>
           </CardContent>
         </Card>
-        <Card className="border-secondary/70 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-foreground">In Progress</CardTitle>
             <div className="bg-amber-100 rounded-full p-2">
@@ -58,7 +58,7 @@ export function OverviewSection({ orders, menuItems }: OverviewSectionProps) {
             <div className="text-2xl font-bold text-secondary">{getOrdersByStatus("in-progress").length}</div>
           </CardContent>
         </Card>
-        <Card className="border-secondary/70 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-foreground">Completed</CardTitle>
             <div className="bg-green-100 p-2 rounded-full">
@@ -69,7 +69,7 @@ export function OverviewSection({ orders, menuItems }: OverviewSectionProps) {
             <div className="text-2xl font-bold  text-secondary">{getOrdersByStatus("completed").length}</div>
           </CardContent>
         </Card>
-        <Card className="border-secondary/70 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-foreground">Cancelled</CardTitle>
             <div className="rounded-full bg-orange-100 p-2">
@@ -83,7 +83,7 @@ export function OverviewSection({ orders, menuItems }: OverviewSectionProps) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="border-secondary/70 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardHeader>
             <CardTitle className="text-secondary">Today's Earnings</CardTitle>
           </CardHeader>
@@ -96,7 +96,7 @@ export function OverviewSection({ orders, menuItems }: OverviewSectionProps) {
           </CardContent>
         </Card>
 
-        <Card className="border-secondary/70 bg-white">
+        <Card className="border-secondary/50 bg-white">
           <CardHeader>
             <CardTitle className="text-secondary">Weekly Earnings</CardTitle>
           </CardHeader>
@@ -110,7 +110,7 @@ export function OverviewSection({ orders, menuItems }: OverviewSectionProps) {
         </Card>
       </div>
 
-      <Card className="border-secondary/70 bg-white">
+      <Card className="border-secondary/50 bg-white">
         <CardHeader>
           <CardTitle className="text-secondary">Top Selling Dishes</CardTitle>
         </CardHeader>

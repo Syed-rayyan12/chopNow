@@ -199,7 +199,7 @@ export function DeliveryTracking() {
     <div className="space-y-4">
       {/* Header Stats */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="border border-secondary/80">
+        <Card className="border border-secondary/50 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-foreground">Active Deliveries</CardTitle>
             <Truck className="h-4 w-4 text-secondary" />
@@ -209,7 +209,7 @@ export function DeliveryTracking() {
             <p className="text-xs text-green-600">+2 from last hour</p>
           </CardContent>
         </Card>
-        <Card className="border border-secondary/80">
+        <Card className="border border-secondary/50 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-foreground">Available Drivers</CardTitle>
             <MapPin className="h-4 w-4 text-secondary" />
@@ -219,7 +219,7 @@ export function DeliveryTracking() {
             <p className="text-xs text-green-600">3 drivers online</p>
           </CardContent>
         </Card>
-        <Card className="border border-secondary/80">
+        <Card className="border border-secondary/50 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-foreground">Avg. Delivery Time</CardTitle>
             <Clock className="h-4 w-4 text-secondary" />
@@ -229,7 +229,7 @@ export function DeliveryTracking() {
             <p className="text-xs text-green-600">-2m from yesterday</p>
           </CardContent>
         </Card>
-        <Card className="border border-secondary/80">
+        <Card className="border border-secondary/50 bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-foreground">Success Rate</CardTitle>
             <CheckCircle className="h-4 w-4 text-secondary" />
@@ -242,34 +242,34 @@ export function DeliveryTracking() {
       </div>
 
       <Tabs defaultValue="deliveries" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-3 max-sm:grid-cols-1 h-full bg-secondary rounded-xl">
-          <TabsTrigger value="deliveries" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Active Deliveries</TabsTrigger>
-          <TabsTrigger value="drivers" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Drivers</TabsTrigger>
-          <TabsTrigger value="map" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Live Map</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-3 max-sm:grid-cols-1 h-12 bg-secondary cusor-pointer rounded-xl">
+          <TabsTrigger value="deliveries" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg  cursor-pointer">Active Deliveries</TabsTrigger>
+          <TabsTrigger value="drivers" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer">Drivers</TabsTrigger>
+          <TabsTrigger value="map" className="w-full data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer">Live Map</TabsTrigger>
         </TabsList>
 
         <TabsContent value="deliveries" className="space-y-4">
           {/* Search and Filter */}
-          <div className="flex items-center max-sm:flex-col max-sm:gap-4">
+          <div className="flex items-center max-sm:flex-col gap-4 max-sm:gap-4">
             <div className="relative flex-1 max-sm:w-full">
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-secondary" />
               <Input
                 placeholder="Search deliveries..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-8 border border-secondary/50 "
+                className="pl-8 w-full border border-secondary/50 bg-white cursor-pointer"
               />
             </div>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-[180px] max-sm:w-full border-secondary/50">
+              <SelectTrigger className="w-[180px] max-sm:w-full cursor-pointer bg-white border-secondary/50">
                 <SelectValue className="" placeholder="Filter by status" />
               </SelectTrigger>
-              <SelectContent className="border-secondary/50">
-                <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="preparing">Preparing</SelectItem>
-                <SelectItem value="picked_up">Picked Up</SelectItem>
-                <SelectItem value="en_route">En Route</SelectItem>
-                <SelectItem value="delivered">Delivered</SelectItem>
+              <SelectContent className="border-secondary/50 bg-white">
+                <SelectItem value="all" className="cursor-pointer">All Status</SelectItem>
+                <SelectItem value="preparing" className="cursor-pointer">Preparing</SelectItem>
+                <SelectItem value="picked_up" className="cursor-pointer">Picked Up</SelectItem>
+                <SelectItem value="en_route" className="cursor-pointer">En Route</SelectItem>
+                <SelectItem value="delivered" className="cursor-pointer">Delivered</SelectItem>
               </SelectContent>
             </Select>
             <Button variant="outline" size="sm" className="border-secondary/50 max-sm:w-full">
@@ -281,7 +281,7 @@ export function DeliveryTracking() {
           {/* Delivery Cards */}
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {filteredDeliveries.map((delivery) => (
-              <Card key={delivery.id} className="border-secondary/80">
+              <Card key={delivery.id} className="border-secondary/50 bg-white">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-lg text-secondary">{delivery.orderId}</CardTitle>
@@ -370,7 +370,7 @@ export function DeliveryTracking() {
         <TabsContent value="drivers" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {drivers.map((driver) => (
-              <Card key={driver.id} className="border-secondary/80">
+              <Card key={driver.id} className="border-secondary/50 bg-white">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
@@ -445,8 +445,8 @@ export function DeliveryTracking() {
           </div>
         </TabsContent>
 
-        <TabsContent value="map" className="space-y-4">
-          <Card>
+        <TabsContent value="map" className="space-y-4 bg-white">
+          <Card className="bg-white border border-secondary/50">
             <CardHeader>
               <CardTitle className="text-secondary">Live Delivery Map</CardTitle>
               <CardDescription className="text-secondary opacity-90">Real-time tracking of all active deliveries</CardDescription>

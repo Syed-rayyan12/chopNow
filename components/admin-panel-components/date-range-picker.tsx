@@ -23,7 +23,7 @@ export function CalendarDateRangePicker({ className }: React.HTMLAttributes<HTML
           <Button
             id="date"
             variant={"outline"}
-            className={cn("w-[300px] justify-start border-secondary/50 text-left font-normal", !date && "text-muted-foreground")}
+            className={cn("w-[300px] justify-start border-secondary/50  text-left font-normal", !date && "text-muted-foreground")}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
             {date?.from ? (
@@ -39,7 +39,7 @@ export function CalendarDateRangePicker({ className }: React.HTMLAttributes<HTML
             )}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0 border-secondary/50" align="start">
+        <PopoverContent className="w-auto p-0 border-secondary/50 bg-white" align="start">
           <Calendar
             initialFocus
             mode="range"

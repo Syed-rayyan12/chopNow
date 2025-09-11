@@ -184,7 +184,7 @@ export function DashboardHome() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {mappedStats.map((stat: any) => (
-          <Card key={stat.title} className="border-secondary/70 bg-white">
+          <Card key={stat.title} className="border-secondary/50 bg-white">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-foreground">{stat.title}</CardTitle>
               <div className={`p-2 rounded-full ${stat.bgColor}`}>
@@ -205,7 +205,7 @@ export function DashboardHome() {
       {/* Active Orders & Recent Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Active Orders */}
-        <Card className="bg-white border-secondary/70">
+        <Card className="bg-white border-secondary/50">
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 text-secondary">
               <Package className="h-5 w-5 text-secondary" />
@@ -216,7 +216,7 @@ export function DashboardHome() {
 
           <CardContent className="space-y-4">
             {activeOrders.map((order) => (
-              <div key={order.id} className="p-4 border border-secondary/70 bg-white rounded-lg">
+              <div key={order.id} className="p-4 border border-secondary/50 bg-white rounded-lg">
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <p className="font-semibold text-secondary">{order.id}</p>
@@ -231,11 +231,11 @@ export function DashboardHome() {
                 </div>
 
                 <div className="flex space-x-2">
-                  <Button size="sm" className="flex-1 bg-secondary hover:bg-[#0F3D2E] text-white">
+                  <Button size="sm" className="flex-1 bg-secondary cursor-pointer hover:bg-secondary/80 text-white">
                     <Navigation className="h-4 w-4 mr-2" />
                     Navigate
                   </Button>
-                  <Button size="sm" variant="outline" className="flex-1 bg-white border-secondary/70 text-secondary hover:bg-secondary">
+                  <Button size="sm" variant="outline" className="flex-1 bg-white cursor-pointer border-secondary/50 text-secondary hover:bg-secondary">
                     <Phone className="h-4 w-4 mr-2" />
                     Call
                   </Button>
@@ -246,7 +246,7 @@ export function DashboardHome() {
         </Card>
 
         {/* Recent Activity */}
-        <Card className="bg-white border-secondary/70">
+        <Card className="bg-white border-secondary/50">
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 text-secondary">
               <TrendingUp className="h-5 w-5 text-secondary" />
@@ -256,7 +256,7 @@ export function DashboardHome() {
 
           <CardContent className="space-y-4">
             {orders.map((order, index) => (
-              <div key={index} className="flex items-center  justify-between p-3 bg-white rounded-lg border border-secondary/70">
+              <div key={index} className="flex items-center  justify-between p-3 bg-white rounded-lg border border-secondary/50">
                 <div className="flex items-center max-sm:flex-col max-sm:items-start space-x-3">
                   <div className={`p-2  ${order.iconBg} rounded-full`}>{order.icon}</div>
                   <div>

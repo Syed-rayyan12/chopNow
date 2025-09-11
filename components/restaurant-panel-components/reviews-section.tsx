@@ -20,7 +20,7 @@ interface ReviewsSectionProps {
 export function ReviewsSection({ reviews }: ReviewsSectionProps) {
   return (
     <div className="space-y-6">
-      <Card className="border-secondary/70 bg-white">
+      <Card className="border-secondary/50 bg-white">
         <CardHeader>
           <CardTitle className="text-secondary">Average Rating</CardTitle>
         </CardHeader>
@@ -42,7 +42,7 @@ export function ReviewsSection({ reviews }: ReviewsSectionProps) {
 
       <div className="space-y-4">
         {reviews.map((review) => (
-          <Card key={review.id} className="border-orange-200">
+          <Card key={review.id} className="border-secondary/50">
             <CardContent className="p-4">
               <div className="flex items-start justify-between">
                 <div className="space-y-2">

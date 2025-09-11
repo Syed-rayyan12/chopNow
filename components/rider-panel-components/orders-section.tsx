@@ -67,13 +67,13 @@ export function OrdersSection() {
 
       <Tabs defaultValue="active" className="space-y-4">
         <TabsList className="grid w-full grid-cols-2 bg-secondary border-secondary">
-          <TabsTrigger value="active" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Active Orders</TabsTrigger>
-          <TabsTrigger value="completed" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg">Completed</TabsTrigger>
+          <TabsTrigger value="active" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer">Active Orders</TabsTrigger>
+          <TabsTrigger value="completed" className="data-[state=active]:bg-background data-[state=active]:text-foreground text-background rounded-lg cursor-pointer">Completed</TabsTrigger>
         </TabsList>
 
         <TabsContent value="active" className="space-y-4">
           {activeOrders.map((order) => (
-            <Card key={order.id} className="border border-secondary/70 bg-white">
+            <Card key={order.id} className="border border-secondary/50 bg-white">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-lg text-secondary">{order.id}</CardTitle>
@@ -110,18 +110,18 @@ export function OrdersSection() {
                 </div>
 
                 <div className="flex space-x-2">
-                  <Button size="sm" variant="outline" className="flex-1 bg-white border-secondary/70 text-secondary hover:bg-secondary">
+                  <Button size="sm" variant="outline" className="flex-1 bg-white cursor-pointer border-secondary/50 text-secondary hover:bg-secondary">
                     <Phone className="h-4 w-4 mr-2" />
                     Call Customer
                   </Button>
-                  <Button size="sm" className="flex-1 bg-secondary hover:bg-[#0F3D2E] text-white">
+                  <Button size="sm" className="flex-1 bg-secondary cursor-pointer hover:bg-secondary/80 text-white">
                     <Navigation className="h-4 w-4 mr-2" />
                     Navigate
                   </Button>
                 </div>
 
                 {order.status === "picked_up" && (
-                  <Button className="w-full bg-green-600 hover:bg-green-700">
+                  <Button className="w-full bg-green-600 cursor-pointer hover:bg-green-700">
                     <CheckCircle className="h-4 w-4 mr-2" />
                     Mark as Delivered
                   </Button>
@@ -133,7 +133,7 @@ export function OrdersSection() {
 
         <TabsContent value="completed" className="space-y-4 ">
           {completedOrders.map((order) => (
-            <Card key={order.id} className="border border-secondary/70 bg-white">
+            <Card key={order.id} className="border border-secondary/50 bg-white">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-3">
                   <div>

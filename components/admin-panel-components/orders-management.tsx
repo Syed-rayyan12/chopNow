@@ -201,7 +201,7 @@ export function OrdersManagement() {
           <p className="text-amber-600">Manage and track all customer orders</p>
         </div>
         <div className="flex items-center space-x-3">
-          <Button variant="outline" className="border-secondary/65 text-secondary hover:bg-secondary bg-transparent">
+          <Button variant="outline" className="border-secondary/50 text-secondary cursor-pointer hover:bg-secondary bg-white">
             <Download className="w-4 h-4 mr-2" />
             Export Orders
           </Button>
@@ -211,7 +211,7 @@ export function OrdersManagement() {
       {/* Stats Cards */}
       <div className="grid grid-cols-6 gap-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
         {Object.entries(orderStats).map(([key, value]) => (
-          <Card key={key} className="border-secondary/65 bg-white shadow-none">
+          <Card key={key} className="border-secondary/50 bg-white shadow-none">
             <CardContent className="p-4">
               <div className="text-2xl font-bold text-secondary">{value}</div>
               <div className="text-sm text-foreground">{key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</div>
@@ -221,7 +221,7 @@ export function OrdersManagement() {
       </div>
 
       {/* Filters and Search */}
-      <Card className="border-secondary/65 bg-white shadow-none w-full mx-auto">
+      <Card className="border-secondary/50 bg-white shadow-none w-full mx-auto">
         <CardHeader>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 max-sm:gap-3">
@@ -231,15 +231,15 @@ export function OrdersManagement() {
                   placeholder="Search orders, customers, restaurants..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-full sm:w-80 border-secondary/65 focus:border-orange-400 focus:ring-orange-400"
+                  className="pl-10 w-full sm:w-80 border-secondary/50 focus:border-orange-400 focus:ring-orange-400 cursor-pointer"
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-full sm:w-40 border-secondary/65 flex items-center">
+                <SelectTrigger className="w-full sm:w-40 border-secondary/50 cursor-pointer flex items-center">
                   <Filter className="w-4 h-4 mr-2" />
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white boder border-secondary/50">
                   <SelectItem value="all">All Status</SelectItem>
                   <SelectItem value="pending">Pending</SelectItem>
                   <SelectItem value="preparing">Preparing</SelectItem>
@@ -258,7 +258,7 @@ export function OrdersManagement() {
                 <TabsTrigger
                   key={tab.value}
                   value={tab.value}
-                  className="text-background  data-[state=active]:rounded-lg data-[state=active]:border-secondary/65 data-[state=active]:border-b-2 data-[state=active]:text-black min-w-[120px]"
+                  className="text-background data-[state=active]:rounded-lg data-[state=active]:border-secondary/50 data-[state=active]:border-b-2 cursor-pointer data-[state=active]:text-black min-w-[120px]"
                 >
                   {tab.label}
                 </TabsTrigger>
@@ -268,7 +268,7 @@ export function OrdersManagement() {
             <TabsContent value={activeTab} className="mt-6">
               <Table className="min-w-[700px] md:min-w-full">
                 <TableHeader>
-                  <TableRow className="border-secondary/65">
+                  <TableRow className="border-secondary/50">
                     <TableHead className="text-secondary">Order ID</TableHead>
                     <TableHead className="text-secondary">Customer</TableHead>
                     <TableHead className="text-secondary">Restaurant</TableHead>
@@ -281,7 +281,7 @@ export function OrdersManagement() {
                 </TableHeader>
                 <TableBody>
                   {filteredOrders.map((order) => (
-                    <TableRow key={order.id} className="border-secondary/65 hover:bg-amber-50">
+                    <TableRow key={order.id} className="border-secondary/50 hover:bg-amber-50">
                       <TableCell className="font-medium text-secondary">{order.id}</TableCell>
                       <TableCell>
                         <div>

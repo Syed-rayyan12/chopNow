@@ -218,7 +218,7 @@ export function Header() {
         <div className="flex items-center justify-between h-12">
           {/* Logo */}
           <Link href="/" >
-            <img className="w-42 px-2 object-cover" src="/chopnow-logo.png" alt="" />
+            <img className="w-36 px-2 object-cover" src="/chopNow.png" alt="" />
           </Link>
 
           {/* Location */}

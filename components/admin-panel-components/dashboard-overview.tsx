@@ -147,7 +147,7 @@ export function DashboardOverview() {
               <CardTitle className="text-secondary pb-1">Recent Orders</CardTitle>
               <CardDescription className="text-secondary/80">Latest orders from your platform</CardDescription>
             </div>
-            <Button variant="outline" className="border-secondary/65 text-secondary hover:bg-secondary bg-transparent">
+            <Button variant="outline" className="border-secondary/50 text-secondary hover:bg-secondary cursor-pointer bg-white">
               View All Orders
             </Button>
           </div>
