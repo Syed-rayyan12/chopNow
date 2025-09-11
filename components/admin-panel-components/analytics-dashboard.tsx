@@ -86,10 +86,10 @@ export function AnalyticsDashboard() {
     <div className="space-y-4">
       {/* Header Controls */}
       <div className="flex items-center max-sm:flex-col max-sm:items-start max-sm:gap-3 justify-between">
-        <div className="flex max-sm:flex-col max-sm:items-start max-sm:gap-3 items-center">
-          <CalendarDateRangePicker />
+        <div className="flex max-sm:flex-col max-sm:items-start max-sm:gap-3 gap-3 items-center">
+          <CalendarDateRangePicker className="cursor-pointer" />
           <Select value={dateRange} onValueChange={setDateRange}>
-            <SelectTrigger className="w-[180px] max-sm:w-full border-secondary/50">
+            <SelectTrigger className="w-[180px] max-sm:w-full border-secondary/50 bg-white cursor-pointer">
               <SelectValue className="" placeholder="Select period" />
             </SelectTrigger>
             <SelectContent className="border-secondary/50">
