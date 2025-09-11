@@ -271,7 +271,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
   const unreadCount = notifications.filter((n) => n.status === "unread").length
 
   return (
-    <header className="bg-background border-b border-secondary/65 px-6 py-[13px] h-16">
+    <header className="bg-background border-b border-secondary/50 px-6 py-[13px] h-16">
       <div className="flex items-center justify-between">
         {/* Left side with toggle & title */}
         <div className="flex items-center space-x-4">
@@ -359,7 +359,7 @@ export function Header({ collapsed, setCollapsed, notifications }: DashboardHead
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 transform text-amber-500 h-4 w-4" />
             <Input
               placeholder="Search orders, restaurants, users..."
-              className="pl-10 w-64 border-secondary/70"
+              className="pl-10 w-64 border-secondary/50"
             />
           </div>
           <DropdownMenu>
