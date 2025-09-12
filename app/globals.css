@@ -164,3 +164,21 @@
 .animate-smooth-bounce {
   animation: smoothBounce 2s ease-in-out infinite;
 }
+
+
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.swing-animation {
+  animation: swing 3s ease-in-out infinite;
+}
+

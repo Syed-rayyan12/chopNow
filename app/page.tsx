@@ -1,5 +1,7 @@
 
 import { RestaurantRiderNavbar } from "@/components/customer-panel-components/admin-rider-navbar";
+import ComingSoon from "@/components/customer-panel-components/coming-soon";
+import FeatureSection from "@/components/customer-panel-components/feature-section";
 import { FeaturedRestaurants } from "@/components/customer-panel-components/featured-restaurants";
 import { Footer } from "@/components/customer-panel-components/footer";
 import { Header } from "@/components/customer-panel-components/header";
@@ -16,6 +18,8 @@ export default function Page() {
         <HeroSection />
         <FeaturedRestaurants />
         <PopularCuisines />
+        <FeatureSection/>
+        <ComingSoon/>
       </main>
       <Footer />
     </div>
