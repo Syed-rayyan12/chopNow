@@ -19,8 +19,8 @@ export default function FeatureSection({
                     <path d="M5 22h14" />
                 </svg>
             ),
-            title: "Fast Performance",
-            desc: "Blazing fast load times and optimized rendering for every device.Blazing fast load times and optimized rendering for every device.",
+            title: "Freshly Prepared Meals",
+            desc: "Delicious food made fresh, just the way you like it—every order, every time",
         },
         {
             icon: (
@@ -29,8 +29,8 @@ export default function FeatureSection({
                     <path d="M19.4 15a7 7 0 10-14.8 0" />
                 </svg>
             ),
-            title: "Secure by Default",
-            desc: "Built-in best practices and careful defaults to keep data safe.Blazing fast load times and optimized rendering for every device.",
+            title: "Fast & Reliable Delivery",
+            desc: "Enjoy hot, fresh meals brought straight to your door—always on time.",
         },
         {
             icon: (
@@ -39,7 +39,7 @@ export default function FeatureSection({
                     <path d="M7 21h10" />
                 </svg>
             ),
-            title: "Easy Integrations",
+            title: "Speed You Can Trust",
             desc: "Connect with popular tools and APIs with minimal setup.Blazing fast load times and optimized rendering for every device.",
         },
         {
@@ -49,8 +49,8 @@ export default function FeatureSection({
                     <circle cx="12" cy="10" r="3" />
                 </svg>
             ),
-            title: "Human-centered Design",
-            desc: "Interfaces that feel intuitive and delightful for users.Blazing fast load times and optimized rendering for every device.",
+            title: "Trusted Quality & Service",
+            desc: "Partnering with the best restaurants to bring you meals you can count on.",
         },
     ];
 
