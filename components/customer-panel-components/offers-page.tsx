@@ -19,7 +19,7 @@ const offers = [
     priceRange: "$$",
     discount: "50% OFF",
     image: "/restaurant-1.jpeg",
-    logo: "/italian-restaurant-logo.png",
+    logo: "/res-1.jpeg",
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const offers = [
     priceRange: "$$$",
     discount: "Free Delivery",
     image: "/restaurant-2.jpeg",
-    logo: "/indian-restaurant-logo.png",
+    logo: "/res-2.jpeg",
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const offers = [
     priceRange: "$",
     discount: "30% OFF",
     image: "/restaurant-3.jpeg",
-    logo: "/burger-restaurant-logo.png",
+    logo: "/res-3.jpeg",
   },
   {
     id: 4,
@@ -55,7 +55,7 @@ const offers = [
     priceRange: "$$$$",
     discount: "Buy 1 Get 1",
     image: "/restaurant-4.jpeg",
-    logo: "/japanese-sushi-restaurant-logo.png",
+    logo: "/res-4.jpeg",
   },
   {
     id: 5,
@@ -67,7 +67,7 @@ const offers = [
     priceRange: "$",
     discount: "25% OFF",
     image: "/restaurant-5.jpeg",
-    logo: "/mexican-restaurant-logo.png",
+    logo: "/res-5.jpeg",
   },
   {
     id: 6,
@@ -79,7 +79,7 @@ const offers = [
     priceRange: "$$",
     discount: "Free Delivery",
     image: "/restaurant-6.jpeg",
-    logo: "/healthy-food-restaurant-logo.png",
+    logo: "/res-5.jpeg",
   },
 ]
 
