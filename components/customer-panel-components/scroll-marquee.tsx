@@ -75,14 +75,14 @@ export default function ScrollMarquee() {
   // Example content: duplicate the same block twice for seamless loop
   const content = (
     <>
-      <span className="mx-6 text-9xl font-bold text-secondary">🚀 Welcome to Our Store — Great Deals Everyday! 🚀</span>
-      <span className="mx-6 text-9xl font-bold text-secondary">Shop Now — Free Shipping on Orders Over $50 — Limited Time!</span>
-      <span className="mx-6 text-9xl font-bold text-secondary">New Arrivals — Check Them Out!</span>
+      <span className="mx-6 text-9xl max-md:text-4xl font-bold text-secondary">🚀 Welcome to Our Store — Great Deals Everyday! 🚀</span>
+      <span className="mx-6 text-9xl max-md:text-4xl font-bold text-secondary">Shop Now — Free Shipping on Orders Over $50 — Limited Time!</span>
+      <span className="mx-6 text-9xl max-md:text-4xl font-bold text-secondary">New Arrivals — Check Them Out!</span>
     </>
   );
 
   return (
-    <div ref={containerRef} className="overflow-hidden w-full bg-white py-4">
+    <div ref={containerRef} className="overflow-hidden w-full bg-white py-14 max-sm:pt-22">
       {/* track contains two copies of the content so it looks infinite when we wrap */}
       <div
         ref={trackRef}

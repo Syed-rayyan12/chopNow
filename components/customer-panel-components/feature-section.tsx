@@ -87,7 +87,7 @@ export default function FeatureSection({
             </svg>
 
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 160 160" className="absolute bottom-0 right-0 opacity-[1px]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 160 160" className="absolute bottom-0 max-sm:-bottom-20 max-sm:w-22 max-sm:h-22  right-0 opacity-[1px]">
                 <g stroke="#FF7A00" strokeWidth="5" fill="none">
                     <path d="M20 40 L40 20 L60 40 L80 20 L100 40" />
                     <line x1="30" y1="70" x2="80" y2="70" />
@@ -103,7 +103,7 @@ export default function FeatureSection({
                     <img
                         src={imageSrc}
                         alt={alt}
-                        className="w-[50%] h-auto rounded-2xl  object-cover swing-animation"
+                        className="w-[50%] max-sm:w-full h-auto rounded-2xl  object-cover swing-animation"
                     />
                 </div>
 
@@ -113,10 +113,10 @@ export default function FeatureSection({
                    variants={containerVariants}
                    initial="hidden"
                    whileInView="visible"
-                className=" w-full flex justify-center pl-20 max-md:pl-0 flex-col gap-18">
+                className="md:w-1/2 w-full flex max-md:flex-col justify-center pl-20 max-md:pl-0 flex-col  gap-18">
                     {features.map((f, i) => (
                      
-                        <motion.div variants={itemVariants} key={i} className="flex items-start leading-5 gap-4 ">
+                        <motion.div variants={itemVariants} key={i} className="flex max-md:flex-col items-start leading-5 gap-4 ">
                             {/* Icon container */}
                             <div className="flex-none w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center text-white">
                                 {f.icon}
@@ -125,7 +125,7 @@ export default function FeatureSection({
                             {/* Text: heading + paragraph (this block is also flexible) */}
                             <div className="flex-1 flex flex-col">
                                 <h3 className="text-2xl font-bold leading-tight">{f.title}</h3>
-                                <p className="mt-1 w-[70%] text-sm text-gray-600">{f.desc}</p>
+                                <p className="mt-1 w-[70%] max-md:w-full text-sm text-gray-600">{f.desc}</p>
                             </div>
                         </motion.div>
                     ))}
