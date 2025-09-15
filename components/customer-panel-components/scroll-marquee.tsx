@@ -75,7 +75,7 @@ export default function ScrollMarquee() {
   // Example content: duplicate the same block twice for seamless loop
   const content = (
     <>
-      <span className="mx-6 text-9xl max-md:text-4xl font-bold text-secondary">🚀 Welcome to Our Store — Great Deals Everyday! 🚀</span>
+      <span className="mx-6 text-9xl max-md:text-4xl font-bold text-secondary"> Welcome to Our Store — Great Deals Everyday! </span>
       <span className="mx-6 text-9xl max-md:text-4xl font-bold text-secondary">Shop Now — Free Shipping on Orders Over $50 — Limited Time!</span>
       <span className="mx-6 text-9xl max-md:text-4xl font-bold text-secondary">New Arrivals — Check Them Out!</span>
     </>

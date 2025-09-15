@@ -19,17 +19,18 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "Chop Now - Food Delivery Made Easy",
-  description: "Order your favorite food from the best restaurants near you. Fast delivery, great taste!",
+  description:
+    "Order your favorite food from the best restaurants near you. Fast delivery, great taste!",
   generator: "v0.app",
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <body className="font-sans">
         <AuthProvider>
           <CartProvider>{children}</CartProvider>
