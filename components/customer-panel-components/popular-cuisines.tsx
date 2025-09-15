@@ -1,7 +1,7 @@
 "use client"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { easeOut, motion } from "framer-motion"
 
 const popularCuisines = [
   { id: 1, name: "Funzo", image: "/restaurant-1.jpeg", restaurantCount: 45 },
@@ -14,19 +14,22 @@ const popularCuisines = [
   { id: 8, name: "Savanna Flavors", image: "/restaurant-8.jpeg", restaurantCount: 18 },
 ]
 
-// Directions for staggered entrance
-const directions = ["left", "top", "right", "left", "top", "right", "left", "top"]
-
-export function PopularCuisines() {
-  const getVariants = (dir: string) => {
-    const base = { opacity: 0, x: 0, y: 0 }
-    switch (dir) {
-      case "left": return { hidden: { ...base, x: -100 }, visible: { ...base, opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } } }
-      case "right": return { hidden: { ...base, x: 100 }, visible: { ...base, opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } } }
-      case "top": return { hidden: { ...base, y: -80 }, visible: { ...base, opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } } }
-      default: return { hidden: base, visible: { ...base, opacity: 1, transition: { duration: 0.7, ease: "easeOut" } } }
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
     }
   }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easeOut } }
+}
+
+export function PopularCuisines() {
 
   return (
     <section className="py-16 bg-background relative">
@@ -50,14 +53,16 @@ export function PopularCuisines() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 perspective-[1200px]">
-          {popularCuisines.map((cuisine, index) => (
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 perspective-[1200px]"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+        >
+          {popularCuisines.map((cuisine) => (
             <motion.div
               key={cuisine.id}
-              variants={getVariants(directions[index % directions.length])}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }} // animate back when scroll up
+              variants={itemVariants}
               whileHover={{ scale: 1.05, z: 20 }}
               className="cursor-pointer"
             >
@@ -82,7 +87,7 @@ export function PopularCuisines() {
               </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
