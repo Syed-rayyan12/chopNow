@@ -142,9 +142,16 @@ export function OffersPage() {
 
       <div className="container mx-auto px-4 py-6">
         {/* Promotional Banner */}
-        <div className="mb-8 rounded-lg bg-secondary from-accent/20 to-accent/10 p-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-2">Weekend Special Deals</h2>
-          <p className="text-white">Get up to 50% off on your favorite restaurants this weekend!</p>
+        <div className="mb-8 rounded-lg bg-secondary from-accent/20 to-accent/10 p-6 text-center relative overflow-hidden">
+          <img
+            src="/pet.jpg"
+            alt="Pet"
+            className="absolute inset-0 w-full h-full object-cover right-0 opacity-20"
+          />
+          <div className="relative z-10">
+            <h2 className="text-2xl font-bold text-white mb-2">Weekend Special Deals</h2>
+            <p className="text-white">Get up to 50% off on your favorite restaurants this weekend!</p>
+          </div>
         </div>
 
         {/* Filters and Sorting */}

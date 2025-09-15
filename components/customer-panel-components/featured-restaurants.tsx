@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Star, Clock, Truck } from "lucide-react"
 import Link from "next/link"
+import { easeOut, motion } from "framer-motion"
 
 const featuredRestaurants = [
   {
@@ -47,32 +48,66 @@ const featuredRestaurants = [
   },
 ]
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easeOut } }
+}
+
 export function FeaturedRestaurants() {
   return (
-    <section className="py-16 bg-background ">
+    <section className="py-16 bg-white relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+          <motion.h2
+            className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             Featured{" "}
-            <span className="text-secondary animate-pulse">
+            <span className="text-secondary">
               Restaurants
             </span>
-          </h2>
-          <p className="text-lg text-foreground max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            className="text-lg text-foreground max-w-2xl mx-auto"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+          >
             Discover the most popular restaurants in your area, handpicked for quality and taste.
-          </p>
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+        >
           {featuredRestaurants.map((restaurant) => (
 
             <Link key={restaurant.id} href="/restaurants" passHref>
-              <Card className="group cursor-pointer transition-all duration-300 bg-white border-secondary/50">
+              <motion.div   variants={itemVariants}>
+              <Card
+                className="group cursor-pointer bg-white rounded-2xl border-secondary/50 transform-3d hover:-translate-y-1 duration-300 transition-all  shadow-sm overflow-hidden"
+              
+              >
                 <div className="relative overflow-hidden rounded-t-lg">
                   <img
                     src={restaurant.image || "/placeholder.svg"}
                     alt={restaurant.name}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-48 object-cover"
                   />
                   {restaurant.featured && (
                     <Badge className="absolute top-3 left-3 bg-secondary text-primary-foreground">
@@ -101,10 +136,11 @@ export function FeaturedRestaurants() {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
+                </Card>
+              </motion.div>
             </Link>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

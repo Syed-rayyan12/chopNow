@@ -16,7 +16,7 @@ export default function ComingSoon() {
       <div className="flex flex-col justify-center">
 
       <h2 className="text-4xl font-bold mb-4">Mobile App <span className="text-secondary font-bold">Coming Soon</span></h2>
-      <p className="text-lg text-gray-600 mb-8 px-62">Get ready for the ultimate student experience on the go. Our mobile app will bring all of SayDone's features right to your fingertips.</p>
+      <p className="text-lg text-gray-600 mb-8 px-62 max-md:px-0">Get ready for the ultimate student experience on the go. Our mobile app will bring all of SayDone's features right to your fingertips.</p>
       </div>
 
       {/* Cards */}

@@ -8,6 +8,7 @@ import { Header } from "@/components/customer-panel-components/header";
 
 import { HeroSection } from "@/components/customer-panel-components/hero-section";
 import { PopularCuisines } from "@/components/customer-panel-components/popular-cuisines";
+import ScrollMarquee from "@/components/customer-panel-components/scroll-marquee";
 
 export default function Page() {
   return (
@@ -19,6 +20,7 @@ export default function Page() {
         <FeaturedRestaurants />
         <PopularCuisines />
         <FeatureSection/>
+        <ScrollMarquee/>
         <ComingSoon/>
       </main>
       <Footer />

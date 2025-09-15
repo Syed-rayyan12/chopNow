@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Search, MapPin } from "lucide-react"
+import ExpandableDock from "../ui/expandable-dock"
 
 export function HeroSection() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -45,7 +46,7 @@ export function HeroSection() {
   
         {/* Search Bar */}
         <div className="max-w-2xl mx-auto mb-8">
-          <div className="flex flex-col sm:flex-row gap-4 p-2 bg-background rounded-lg shadow-lg border border-border">
+          <div className="flex flex-col sm:flex-row gap-4 p-2 bg-background rounded-lg shadow-lg text-primay">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
               <Input
@@ -54,7 +55,7 @@ export function HeroSection() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyPress={handleKeyPress}
-                className="pl-10 border-0 focus-visible:ring-0 bg-transparent"
+                className="pl-10  bg-transparent border-none"
               />
             </div>
             <div className="flex items-center max-sm:justify-center gap-2">
@@ -67,6 +68,7 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
+        
         </div>
   
         {/* CTA */}

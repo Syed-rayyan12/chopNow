@@ -182,3 +182,83 @@
   animation: swing 3s ease-in-out infinite;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+
+/* Floating effect */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Rolling + bouncing effect */
+@keyframes roll-bounce {
+  0% {
+    transform: rotate(0deg) translateY(0);
+    transform-origin: center;
+  }
+  50% {
+    transform: rotate(180deg) translateY(-4px);
+    transform-origin: center;
+  }
+  100% {
+    transform: rotate(360deg) translateY(0);
+    transform-origin: center;
+  }
+}
+
+/* Apply animations */
+.float-1 {
+  animation: float 3s ease-in-out infinite;
+}
+
+.float-2 {
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.roll-dot {
+  animation: roll-bounce 4s linear infinite;
+  transform-origin: 90px 40px; /* matches cx,cy of circle */
+}
+
+@keyframes roll-left-right {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-20px) rotate(-180deg);
+  }
+  50% {
+    transform: translateX(0) rotate(-360deg);
+  }
+  75% {
+    transform: translateX(20px) rotate(-540deg);
+  }
+  100% {
+    transform: translateX(0) rotate(-720deg);
+  }
+}
+
+.roll-left-right {
+  animation: roll-left-right 4s ease-in-out infinite;
+  transform-origin: 60px 110px; /* match cx,cy of circle */
+}
+

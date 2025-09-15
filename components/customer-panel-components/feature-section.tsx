@@ -1,10 +1,8 @@
-import React from "react";
+"use client"
+import React, { useState, useEffect,  } from "react";
+import { easeOut, motion } from "framer-motion"
 
-// FeatureSection component
-// Props:
-// - imageSrc: URL for the left image
-// - alt: alt text for the image
-// - items: array of { icon: JSX, title: string, desc: string }
+
 
 export default function FeatureSection({
     imageSrc = "/mobile.png",
@@ -56,8 +54,49 @@ export default function FeatureSection({
 
     const features = items || defaultItems;
 
+  
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: {
+            staggerChildren: 0.4, // delay between each child
+          },
+        },
+      };
+      
+      const itemVariants = {
+        hidden: { opacity: 0, x: 30 }, // start slightly to the right
+        visible: {
+          opacity: 1,
+          x: 0, // slide into place
+          transition: { duration: 0.6, ease: "easeOut" },
+        },
+      };
+      
+   
     return (
-        <section className=" mx-auto px-12 py-12 bg-white">
+        <section  className="relative mx-auto px-12 py-12 bg-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 160 160" className="absolute top-4 left-8">
+                <g stroke="#FF7A00" strokeWidth="4" fill="none">
+                    <polygon points="30,30 50,50 30,70 10,50" className="float-1" />
+                    <polygon points="70,70 90,90 70,110 50,90" className="float-2" />
+                    <circle cx="90" cy="40" r="6" fill="#FF7A00" className="roll-dot" />
+                </g>
+            </svg>
+
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 160 160" className="absolute bottom-0 right-0 opacity-[1px]">
+                <g stroke="#FF7A00" strokeWidth="5" fill="none">
+                    <path d="M20 40 L40 20 L60 40 L80 20 L100 40" />
+                    <line x1="30" y1="70" x2="80" y2="70" />
+                    <line x1="30" y1="90" x2="80" y2="90" />
+                    <circle cx="60" cy="110" r="6" fill="#FF7A00" className="roll-left-right" />
+                </g>
+            </svg>
+
+
             <div className="flex flex-col md:flex-row items-center gap-8">
                 {/* Left: Image */}
                 <div className=" flex justify-center md:w-1/2 w-full">
@@ -69,10 +108,15 @@ export default function FeatureSection({
                 </div>
 
                 {/* Right: 4 headings with icon + paragraph */}
-               
-                <div className="md:w-1/2 w-full flex justify-center pl-20 flex-col gap-18">
+
+                <motion.div
+                   variants={containerVariants}
+                   initial="hidden"
+                   whileInView="visible"
+                className=" w-full flex justify-center pl-20 max-md:pl-0 flex-col gap-18">
                     {features.map((f, i) => (
-                        <div key={i} className="flex items-start leading-5 gap-4">
+                     
+                        <motion.div variants={itemVariants} key={i} className="flex items-start leading-5 gap-4 ">
                             {/* Icon container */}
                             <div className="flex-none w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center text-white">
                                 {f.icon}
@@ -83,9 +127,9 @@ export default function FeatureSection({
                                 <h3 className="text-2xl font-bold leading-tight">{f.title}</h3>
                                 <p className="mt-1 w-[70%] text-sm text-gray-600">{f.desc}</p>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );
