@@ -37,7 +37,7 @@ export function RestaurantRiderNavbar() {
           <DropdownMenuTrigger asChild>
             <div className="relative flex items-center">
               <Button
-                className="bg-background text-foreground px-4 flex border-none hover:bg-none cursor-pointer items-center justify-between gap-2"
+                className="bg-white text-foreground px-4 flex border-none hover:bg-none cursor-pointer items-center justify-between gap-2"
                 variant="my"
               >
                 Select Panel
@@ -50,7 +50,7 @@ export function RestaurantRiderNavbar() {
             </div>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent className="w-56">
+          <DropdownMenuContent className="w-56 bg-white border-secondary/50">
             {/* Rider Panel */}
             <DropdownMenuLabel>Rider Panel</DropdownMenuLabel>
             <DropdownMenuItem onClick={() => navigateTo("/rider-signIn")}>
